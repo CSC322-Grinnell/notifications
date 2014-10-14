@@ -1,0 +1,9 @@
+%h1 Send Message
+
+= form_tag user_path do
+  = label :user, :number, 'Number'
+  = text_field :user, 'number'
+
+  = label :user, :message, 'Message'
+  = text_area :user, :message 'message'
+  = submit_tag 'Send!', :id => 'send_to'

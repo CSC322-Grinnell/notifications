@@ -1,0 +1,10 @@
+class TextController < ApplicationController
+  def index
+   @number = params[:number]
+   @message = params[:message]
+  end
+  
+  def create
+     @text = Text.create!(params[:text])
+  end
+end

@@ -1,0 +1,12 @@
+%h1 Send Text!
+
+= form_for :text, :url => {:controller => 'text', :action => 'index'} do
+  = label :text, :number, 'Number'
+  = text_field :text, 'number'
+
+  = label :text, :message, 'Message'
+  = text_area :text, 'message'
+
+  = submit_tag 'Send!', :id => 'send_to'
+
+  -#= link_to 'New text', new_text_path
