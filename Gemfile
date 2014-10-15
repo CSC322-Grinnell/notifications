@@ -7,7 +7,15 @@ gem 'rails', '3.2.16'
 
 gem 'haml-rails'
 
-gem 'sqlite3'
+gem 'twilio-ruby'
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 
 # Gems used only for assets and not required
