@@ -1,17 +1,16 @@
 class TextController < ApplicationController
-=begin
-  def index
-   @number = params[:number]
-   @message = params[:message]
-  end
-  
-  def create
-     @text = Text.create!(params[:text])
 
-  flash[:notice] = "Text to #{@text.recipient} was successfully created."
-  end
-end
-=end
+    def index
+     @number = params[:number]
+     @message = params[:message]
+    end
+    
+    def create
+     # @text = Text.new(params[:number])
+     render :text => "Text to #{params[:number]} was succesfully created."
+      #flash[:notice] = "Text to #{@text.recipient} was successfully created."
+    end
+
 require "twilio-ruby"
 
   # your Twilio authentication credentials
