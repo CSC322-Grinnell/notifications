@@ -1,4 +1,6 @@
 class TextController < ApplicationController
+require 'rubygems'
+require "twilio-ruby"
 
     def index
      @number = params[:number]
@@ -6,11 +8,20 @@ class TextController < ApplicationController
     end
     
     def create
-     # @text = Text.new(params[:number])
+     @num = '+1' + params[:number].to_s()
      render :text => "Text to #{params[:number]} was succesfully created."
-      #flash[:notice] = "Text to #{@text.recipient} was successfully created."
-    end
 
+     account_sid = 'AC2f8678b32a948acab39c0d426a966d1c'
+	 auth_token = '2162328a31a28e73b4c229e116a4250d'
+	 @client = Twilio::REST::Client.new account_sid, auth_token
+	 message = @client.account.messages.create(:body => params[:message],
+	 :to => @num,
+	 :from => "+19015319781") # Replace with your Twilio number
+	 puts message.sid
+
+    end
+end
+=begin
 require "twilio-ruby"
 
   # your Twilio authentication credentials
@@ -89,3 +100,4 @@ require "twilio-ruby"
   end
 
 end
+=end

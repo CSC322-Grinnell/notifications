@@ -1,19 +1,19 @@
-<h1>Twilio phone reminder demo</h1>
-<h2 style="color: #ff0000"><%= params['msg'] %></h2>
-<h3>Enter your phone number to receive an automated reminder</h3>
-<form action="/text" method="post">
-<input type="text" name="number" />
-<input type="submit" value="Call me!">
-</form>
+-#<h1>Twilio phone reminder demo</h1>
+-#<h2 style="color: #ff0000"><%= params['msg'] %></h2>
+-#<h3>Enter your phone number to receive an automated reminder</h3>
+-#<form action="/text" method="post">
+-#<input type="text" name="number" />
+-#<input type="submit" value="Call me!">
+-#</form>
 
 -#create a new migrate so that you can actually create something
 
--#= form_for :text, :url => {:controller => 'text', :action => 'index'} do
+= form_for :text, :url => {:controller => 'text', :action => 'index'} do
   = label :text, :number, 'Number'
-  = text_field :text, 'number'
+  = text_field :number, ''
 
   = label :text, :message, 'Message'
-  = text_area :text, 'message'
+  = text_area :message, ''
 
   = submit_tag 'Send!', :id => 'send_to'
 
