@@ -38,7 +38,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.2)
     haml (4.0.5)
       tilt
     haml-rails (0.4)
