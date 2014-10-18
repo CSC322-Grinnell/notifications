@@ -9,15 +9,17 @@ require "twilio-ruby"
     
     def create
      @num = '+1' + params[:number].to_s()
-     render :text => "Text to #{params[:number]} was succesfully created."
-
+     #render :text => "Text to #{params[:number]} was succesfully created."
+     flash[:notice] = "Text to #{params[:number]} was succesfully created."
      account_sid = 'AC2f8678b32a948acab39c0d426a966d1c'
-	 auth_token = '2162328a31a28e73b4c229e116a4250d'
-	 @client = Twilio::REST::Client.new account_sid, auth_token
-	 message = @client.account.messages.create(:body => params[:message],
-	 :to => @num,
-	 :from => "+19015319781") # Replace with your Twilio number
-	 puts message.sid
+	   auth_token = '2162328a31a28e73b4c229e116a4250d'
+	   @client = Twilio::REST::Client.new account_sid, auth_token
+	   message = @client.account.messages.create(:body => params[:message],
+	   :to => @num,
+	   :from => "+19015319781") # Replace with your Twilio number
+	   puts message.sid
+
+     redirect_to :text => :create
 
     end
 end
