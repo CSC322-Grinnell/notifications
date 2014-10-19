@@ -7,7 +7,7 @@ require "twilio-ruby"
      @message = params[:message]
     end
     
-    def sendtext
+    def create
      @num = '+1' + params[:number].to_s()
      #render :text => "Text to #{params[:number]} was succesfully created."
      flash[:notice] = "Text to #{params[:number]} was succesfully created."
@@ -19,7 +19,7 @@ require "twilio-ruby"
 	   :from => "+19015319781") # Replace with your Twilio number
 	   puts message.sid
 
-     redirect_to :text => :sendtext#create
+     redirect_to :text => :create
 
     end
 end
