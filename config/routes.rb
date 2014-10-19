@@ -1,5 +1,5 @@
 HeadStart::Application.routes.draw do
-  #get "text/index"
+  #get "text/create"
 
   #get "text/send_text" 
 
@@ -18,8 +18,10 @@ HeadStart::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :text, :user
-
+  #root to: 'text#sendtext'
+  #resources :text, :user
+resources :text
+root :to => redirect('/text')
   # Sample resource route with options:
   #   resources :products do
   #     member do
