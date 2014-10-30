@@ -1,9 +1,9 @@
 = form_for :text, :url => {:controller => 'text', :action => 'index'} do
   = label :text, :number, 'Number'
-  = text_field :number, ''
+  = text_field :number, '', :id => 'aNum'
 
   = label :text, :message, 'Message'
-  = text_area :message, ''
+  = text_area :message, '', :id => 'aMessage'
 
   = submit_tag 'Send!', :id => 'send_to'
 
