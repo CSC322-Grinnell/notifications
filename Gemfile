@@ -11,6 +11,16 @@ gem 'twilio-ruby'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'debugger'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels'
 end
 
 group :production do
