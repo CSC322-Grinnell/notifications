@@ -197,11 +197,8 @@ DEPENDENCIES
   launchy
   pg
   rails (= 3.2.16)
-<<<<<<< HEAD
-  rspec-rails
-=======
   rails_12factor
->>>>>>> 3236e2380ddae4ca807c7c5e53330b7a8dd21edf
+  rspec-rails
   sass-rails (~> 3.2.3)
   sqlite3
   twilio-ruby
