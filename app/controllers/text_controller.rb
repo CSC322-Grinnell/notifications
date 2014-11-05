@@ -13,7 +13,8 @@ def create
 	mult_nums.each {|x| send_text(x)}
 
 	if @invalid_num.length != 0
-		flash[:notice] = "The number(s) #{@invalid_num} are invalid, others sent successfully"
+		inv_num = @invalid_num.to_s.delete! '\"'
+		flash[:notice] = "The number(s) #{inv_num} are invalid, others sent successfully"
 	else
 		flash[:notice] = "Message sent successfully."
 	end
