@@ -1,0 +1,3 @@
+class Parent < ActiveRecord::Base
+  attr_accessible :name, :phoneNumber, :childName, :class
+end

@@ -1,0 +1,15 @@
+-# in app/views/parents/show.html.haml
+
+%h2 Details about #{@parent.name}
+
+%ul#details
+  %li
+    Phone Number:
+    = @parent.phoneNumber
+  %li
+   Child Name:
+   = @parent.childName
+
+= link_to 'Edit', edit_parent_path(@parent)
+= button_to 'Delete', parent_path(@parent), :method => :delete, :confirm => 'Are you sure?'
+= link_to 'Back to parent list', parents_path

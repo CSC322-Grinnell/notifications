@@ -1,0 +1,17 @@
+%h1 Create New Parent
+
+= form_tag parents_path do
+
+  = label :parent, :name, 'Name'
+  = text_field :parent, 'name'
+
+  = label :parent, :phoneName, 'Phone Number'
+  = text_field :parent, 'phoneNumber'
+
+  = label :parent, :childName, 'Child Name'
+  = text_field :parent, 'childName'
+
+  = label :parent, :class, 'Class'
+  = select :parent, :class, ['First','Second','Third','Fourth','Fifth','Sixth']
+
+  = submit_tag 'Save Changes'
