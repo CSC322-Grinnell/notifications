@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.login = :email;
 
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
