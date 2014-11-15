@@ -1,6 +1,7 @@
 class TextController < ApplicationController
 require 'rubygems'
 require "twilio-ruby"
+before_filter :require_user
 
 def index
 end
