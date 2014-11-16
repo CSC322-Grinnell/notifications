@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     # the User has not yet been activated
     if @user.save
       flash[:notice] = "Your account has been created."
-      redirect_to signup_url
+      redirect_to '/user'
     else
       flash[:notice] = "There was a problem creating you."
       render :action => :new
@@ -24,20 +24,27 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @users = User.all
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user # makes our views "cleaner" and more consistent
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to '/user'
     else
       render :action => :edit
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:notice] = "User deleted."
+    redirect_to '/user'
   end
 
 end

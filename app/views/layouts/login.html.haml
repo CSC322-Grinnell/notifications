@@ -6,12 +6,7 @@
     = csrf_meta_tags
   %body
     %h1.title Head Start
-    = link_to 'List of Users', '/user'
-    = link_to 'Send Message', '/text'
-    = link_to 'List of Students(layouts)', '/user' #change link!!!!!!
-    %br/
     #main
-      %br/
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
