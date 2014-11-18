@@ -1,4 +1,4 @@
-class ParentController < ApplicationController
+class ParentsController < ApplicationController
 
 def show
     id = params[:id] # retrieve movie ID from URI route
@@ -30,7 +30,7 @@ def show
   end
 
   def new
-   @parent = Parent.new
+   #@parent = Parent.new
   end
 
   def create

@@ -1,11 +1,9 @@
 HeadStart::Application.routes.draw do
-  resources :students
-
 
   resources :people
 
 
-resources :text
+resources :text, :parents
 root :to => redirect('/text')
-
+root :to => redirect('/parents')
 end

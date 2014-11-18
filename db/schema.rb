@@ -11,13 +11,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141015010642) do
+ActiveRecord::Schema.define(:version => 20141113212102) do
 
-  create_table "texts", :force => true do |t|
-    t.string   "recipient"
-    t.text     "message"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "parents", :force => true do |t|
+    t.string   "name"
+    t.string   "phoneNumber"
+    t.string   "childName"
+    t.string   "class"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.string   "phoneNumber"
+    t.string   "childName"
+    t.string   "childGrade"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "students", :force => true do |t|
+    t.string   "Student_Name"
+    t.string   "Parent_Name"
+    t.string   "Phone_Number"
+    t.string   "Email"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end
