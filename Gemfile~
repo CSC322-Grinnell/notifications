@@ -10,7 +10,7 @@ gem 'rails_12factor'
 
 gem 'haml-rails'
 gem 'selenium-webdriver'
-gem 'poltergeist'
+gem 'capybara/poltergeist'
 gem 'twilio-ruby'
 
 group :development, :test do

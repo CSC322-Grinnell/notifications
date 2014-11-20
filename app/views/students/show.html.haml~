@@ -17,4 +17,4 @@
 \|
 = link_to 'Back', students_path
 \|
-= link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you really sure?' }

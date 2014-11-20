@@ -16,10 +16,10 @@
       %td= student.Parent_Name
       %td= student.Phone_Number
       %td= student.Email
-      %td= link_to 'Show', student
+      %td= link_to 'Show #{student.Student_Name}', student
       %td= link_to 'Edit', edit_student_path(student)
-      %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you really sure?' }
+      %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Student', new_student_path
+= link_to 'Add New Student', new_student_path

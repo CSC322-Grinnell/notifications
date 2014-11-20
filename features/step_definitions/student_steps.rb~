@@ -1,8 +1,8 @@
-Given /the following students exist/ do |students_table|
-  students_table.hashes.each do |student|
+Given /the following students exist/ do |student_table|
+  student_table.hashes.each do |student|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
   
-   Student.create(student)
+   Student.create!(student)
 end
 end
