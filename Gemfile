@@ -9,8 +9,12 @@ gem 'rails_12factor'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'haml-rails'
+
 gem 'selenium-webdriver'
 gem 'poltergeist'
+
+gem 'authlogic'#, :git => "git://github.com/binarylogic/authlogic.git"
+
 gem 'twilio-ruby'
 
 group :development, :test do

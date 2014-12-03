@@ -47,6 +47,14 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^I am logged in as admin$/ do
+  UserSession.create!(User.find_by_email!('admin@example.com'))
+end
+
+Given "I am not logged in" do
+  UserSession.find.try(:destroy)
+end
+
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end

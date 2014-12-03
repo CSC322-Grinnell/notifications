@@ -12,12 +12,16 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
+
     when /^the students page$/ then '/students'
     when /^the details page for \"(.*)\"/i
       student_path(Student.find_by_Student_Name($1))
     when /^the edit page for \"(.*)\"/i
       edit_student_path(Student.find_by_Student_Name($1))
     when /^the text page$/ then '/text'
+    when /^the new user page$/ then '/signup'
+    when /^the login page$/ then '/login'
+    when /^the user page$/ then '/user'
 
     # Ad more mappings here.
     # Here is an example that pulls values out of the Regexp:

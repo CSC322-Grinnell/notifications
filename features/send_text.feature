@@ -4,6 +4,13 @@ Feature: send a text message
   I want to send a text to a phone number
   So that I can notify a parent of an event
 
+Background: some users have been added to database
+
+  Given the following users exist:
+  | name          | email              | password  | password_confirmation | login              |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+  Given I am logged in as admin
+
 Scenario: send a text and receive notice of failure
 	Given I am on the text page
 	When I fill in "aNum" with "334"

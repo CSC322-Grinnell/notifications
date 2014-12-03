@@ -1,6 +1,8 @@
 class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
+before_filter :require_user
+  
   def index
     @students = Student.all
 
