@@ -1,34 +1,40 @@
-Feature: create a user  (not yet implemented)
+Feature: create an administrative user  (not yet implemented)
 
   As a sys admin.
-  I want to be able to create a user
-  So that I can create a database of users
+  I want to be able to create an administrative user
+  So that I can have specific people 
 
 Background: some users have been added to database
 
   Given the following users exist:
-  | first_name | last_name | user_type     | number     | email            | contact |
-  | Joanne	   | Barnes    | administrator | 1112223333 | example@this.com |         |
-  | Lisa       | Angle     | student       |            |                  | Tina    |
-  | Jonny      | Beans     | parent        | 9998887777 | beans@xxx.com    |         |
-  | Laddy      | Norms     | teacher       | 4445556666 | laddy@school.edu |         |
+  | name          | email              | password  | password_confirmation | login              |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+  | Joanne Really | jojo@this.com      | jojo      | jojo                  | jojo@this.com      |
+  | Lisa Snark    | snarky@sarcasm.com | snarks    | snarks                | snarky@sarcasm.com |
+  | Jonny Apple   | apple@xxx.com      | apple     | apple                 | apple@xxx.com      |
+  | Laddy Buck    | laddy@school.edu   | laddybuck | laddybuck             | laddy@school.edu   |
 
-  And I am on the create_user page
+  And I am logged in as admin
 
-Scenario: create a user
-	When I fill in "aFirst_name" with "Alice"
-	And I fill in "a Last_name" with "Walker"
-	And I fill in "aNumber" with "2532363623"
-	And I check "text"
-	And I fill in "aContact" with "Leo"
-	And I fill in "anEmail" with "xxxxx@xxxxxx.com"
-	And I check "administrator"
-	And I press "Create User"
-	Then I should see "User Alice Walker created successfully"
-	Then the following users should exist:
-	| first_name | last_name | user_type     | number     | email            | contact |
-  	| Joanne	 | Barnes    | administrator | 1112223333 | example@this.com |         |
-  	| Lisa       | Angle     | student       |            |                  | Tina    |
-  	| Jonny      | Beans     | parent        | 9998887777 | beans@xxx.com    |         |
- 	| Laddy      | Norms     | teacher       | 4445556666 | laddy@school.edu |         |
- 	| Alice      | Walker    | administrator | 2532363623 | xxxxx@xxxxxx.com |         |
+Scenario: create an admin user
+	
+	And I am on the new user page
+	When I fill in "user_name" with "Alice Walker"
+	And I fill in "user_email" with "xxxxx@xxxxxx.com"
+	And I fill in "user_password" with "cats"
+	And I fill in "user_password_confirmation" with "cats"
+	And I press "Register"
+	Then I should be on the user page
+	And I should see "Your account has been created."
+	
+Scenario: login (happy path)
+ 	And I am on the login page
+ 	And I fill in "user_session_email" with "admin@example.com"
+ 	And I fill in "user_session_password" with "pass"
+ 	And I press "Login"
+ 	Then I should see "Login successful!"
+
+Scenario: attempt to access page when not logged in (sad path)
+  Given I am not logged in
+  And I am on the new user page
+  Then I should see "You must be logged in to access this page"
