@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20141119170647) do
 
-  create_table "parents", :force => true do |t|
-    t.string   "name"
-    t.string   "phoneNumber"
-    t.string   "childName"
-    t.string   "class"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "students", :force => true do |t|
     t.string   "Student_Name"
     t.string   "Parent_Name"

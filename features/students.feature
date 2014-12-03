@@ -8,6 +8,11 @@ Feature: Create, read, update, and delete students
   Given the following students exist:$
   | Student_Name | Parent_Name | Phone_Number | Email                      |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    |
+
+  Given the following users exist:
+  | name          | email              | password  | password_confirmation | login              |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+  Given I am logged in as admin
   And I am on the students page
 
 Scenario: Create a student (happy path)
