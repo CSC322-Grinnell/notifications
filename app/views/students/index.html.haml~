@@ -16,7 +16,7 @@
       %td= student.Parent_Name
       %td= student.Phone_Number
       %td= student.Email
-      %td= link_to 'Show #{student.Student_Name}', student
+      %td= link_to "Show #{student.Student_Name}", student
       %td= link_to 'Edit', edit_student_path(student)
       %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

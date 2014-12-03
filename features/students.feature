@@ -56,7 +56,7 @@ Scenario: Enter an entry without student name (sad path)
   When I follow "Add New Student"
   And I fill in "Parent name" with "Luke Shaw"
   And I press "Save"
+  And I should see "Student name can't be blank"
   And I follow "Back"
-  Then I should not be on the students page
-  Then I should be on the new page
-  And we should see "Student Name can't be blank"
+  Then I should be on the students page
+
