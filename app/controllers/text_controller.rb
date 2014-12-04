@@ -7,12 +7,16 @@ def index
 end
     
 def create
+	@invalid_num = Array.new
+	if params[:commit]== 'Send To All!'
+		send_to_all()
+	else 
+
 	num = params[:number].to_s.delete! '[\"]'
 	mult_nums = num.split(', ')
-	@invalid_num = Array.new
-
+	
 	mult_nums.each {|x| send_text(x)}
-
+	end
 	if @invalid_num.length != 0
 		inv_num = @invalid_num.to_s.delete! '\"'
 		flash[:notice] = "The number(s) #{inv_num} are invalid, others sent successfully"
@@ -21,6 +25,14 @@ def create
 	end
 	render('index')
    # redirect_to :text => :create
+
+end
+
+def send_to_all
+	students = Student.all 
+	students.each do |student|
+		send_text(student.Phone_Number)
+	end
 end
 
 def send_text(number)

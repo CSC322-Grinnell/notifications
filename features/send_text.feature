@@ -37,3 +37,5 @@ Scenario: send a text to multiple valid numbers
 	When I fill in "aMessage" with "This is a test"
 	And I press "Send!"
 	Then I should see "Message sent successfully."
+
+
