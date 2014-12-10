@@ -40,7 +40,6 @@ def send_to_all
 end
 
 def send_text(number)
-	puts "#{params[:message]}"
 	if params[:message] == [""]
 		@invalid_num << "No Message"
 	elsif number.match(/\b\d{10}\b/)
