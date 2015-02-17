@@ -4,6 +4,7 @@ require "twilio-ruby"
 before_filter :require_user
 
 def index
+	@value = ''
 end
     
 def create
@@ -11,7 +12,7 @@ def create
 	if params[:commit]== 'Send To All!'
 		send_to_all()
 	else 
-
+	
 	num = params[:number].to_s.delete! '[\"]'
 	mult_nums = num.split(', ')
 	
@@ -20,16 +21,17 @@ def create
 	if @invalid_num.length != 0
 		if @invalid_num[0] == "No Message"
 			flash[:notice] = "Message Required"
+			@value = num
 		else
 		inv_num = @invalid_num.to_s.delete! '\"'
 		flash[:notice] = "The number(s) #{inv_num} are invalid, others sent successfully"
+		inv_num.delete! '[]'
+		@value = inv_num
 		end
 	else
 		flash[:notice] = "Message sent successfully."
 	end
 	render('index')
-   # redirect_to :text => :create
-
 end
 
 def send_to_all
