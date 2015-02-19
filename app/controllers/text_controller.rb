@@ -42,10 +42,14 @@ def create
 		@value = inv_num
 		end
 	else
-		if num_texts > 1
+		if !num_texts.nil? 
+			if num_texts > 1
 		    flash[:notice] = "Messages sent successfully."
-		else
+			else
 		    flash[:notice] = "Message sent successfully."     
+			end
+		else 
+			flash[:notice] = "Messages sent successfully."
 		end
 	end
 	render('index')
