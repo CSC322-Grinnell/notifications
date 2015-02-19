@@ -15,6 +15,7 @@ def create
 	
 	num = params[:number].to_s.delete! '[\"]'
 	mult_nums = num.split(', ')
+	num_texts = mult_nums.length
 	
 	mult_nums.each {|x| send_text(x)}
 	end
@@ -29,7 +30,11 @@ def create
 		@value = inv_num
 		end
 	else
-		flash[:notice] = "Message sent successfully."
+		if num_texts > 1
+		    flash[:notice] = "Messages sent successfully."
+		else
+		    flash[:notice] = "Message sent successfully."     
+		end
 	end
 	render('index')
 end
