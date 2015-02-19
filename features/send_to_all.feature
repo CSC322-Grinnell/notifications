@@ -22,7 +22,7 @@ Scenario: send a text to all numbers and receive notice of success
 	Given I am on the text page
 	When I fill in "aMessage" with "Avergers assemble!"
 	And I press "Send To All!"
-	Then I should see "Message sent successfully."
+	Then I should see "Messages sent successfully."
 
 Scenario: send a text to all numbers and receive notice of failure
 Given the following students exist:$
@@ -31,7 +31,7 @@ Given the following students exist:$
 	Given I am on the text page
 	When I fill in "aMessage" with "A call to all X-men!"
 	And I press "Send To All!"
-	Then I should see "The number(s) [xxxxxxxxxx] are invalid, others sent successfully"
+	Then I should see "The contact(s) [xxxxxxxxxx] are invalid, others sent successfully"
 
 Scenario: send a text all number with multiple incorrect numbers
 Given the following students exist:$
@@ -41,7 +41,7 @@ Given the following students exist:$
 	Given I am on the text page
 	When I fill in "aMessage" with "Caw Caw"
 	And I press "Send To All!"
-	Then I should see "The number(s) [xxxxxxxxxx, xxxxxxxxxx] are invalid, others sent successfully"
+	Then I should see "The contact(s) [xxxxxxxxxx, xxxxxxxxxx] are invalid, others sent successfully"
 
 
 
