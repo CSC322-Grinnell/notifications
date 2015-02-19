@@ -17,7 +17,19 @@ def create
 	mult_nums = num.split(', ')
 	num_texts = mult_nums.length
 	
-	mult_nums.each {|x| send_text(x)}
+	mult_nums.each {|val| 
+		if is_digit(val)
+		    send_text(val)
+		else
+			aNum = find_number(val)
+			if !aNum.nil?
+				send_text(aNum)
+			else
+				@invalid_num << val
+			end
+
+		end
+	}
 	end
 	if @invalid_num.length != 0
 		if @invalid_num[0] == "No Message"
@@ -25,7 +37,7 @@ def create
 			@value = num
 		else
 		inv_num = @invalid_num.to_s.delete! '\"'
-		flash[:notice] = "The number(s) #{inv_num} are invalid, others sent successfully"
+		flash[:notice] = "The contact(s) #{inv_num} are invalid, others sent successfully"
 		inv_num.delete! '[]'
 		@value = inv_num
 		end
@@ -63,4 +75,23 @@ def send_text(number)
 	end
 end
 
+# Determines whether or not the first digit of the given string is
+# a digit.
+def is_digit(value)
+	value[0].match(/\d/)
+end
+
+# Finds the number of a student or parent given their name.
+# Returns nil if a number is not found.
+def find_number(name)
+	aName = Student.find_by_Student_Name(name)
+	if aName.nil?
+		aName = Student.find_by_Parent_Name(name)
+		if !aName.nil?
+			return aName.Phone_Number
+		end
+	else 
+		return aName.Phone_Number
+	end
+end
 end
