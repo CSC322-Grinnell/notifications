@@ -17,6 +17,8 @@ gem 'authlogic'#, :git => "git://github.com/binarylogic/authlogic.git"
 
 gem 'twilio-ruby'
 
+gem 'rubocop'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
