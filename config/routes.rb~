@@ -1,7 +1,0 @@
-HeadStart::Application.routes.draw do
-  resources :Students
-
-resources :text
-root :to => redirect('/text')
-
-end

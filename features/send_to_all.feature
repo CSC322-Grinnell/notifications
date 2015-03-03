@@ -5,12 +5,17 @@ Feature: send a text to all numbers
   So that I can notify all parents of an event
 
  Background: some users have been added to database
-  Given the following students exist:$
-   | Student_Name | Parent_Name | Phone_Number | Email|
-   | Clint Barton | Bruce Banner   | 2532363623   | teamfirealarm@gmail.com|
-   | Loki    	  | Thor   	    | 2532363623   | teamfirealarm@gmail.com|
-   | Hank Pym     | Tony Stark   | 2532363623   | teamfirealarm@gmail.com|
-   | Peter Parker | Steve Rogers  | 2532363623   | teamfirealarm@gmail.com|
+
+  Given the following classrooms exist:
+  | Classroom |
+  | Room A    |
+
+  Given the following students exist:
+   | Student_Name | Parent_Name | Phone_Number | Email| | Classroom |
+   | Clint Barton | Bruce Banner   | 2532363623   | teamfirealarm@gmail.com| Room A |
+   | Loki    	  | Thor   	    | 2532363623   | teamfirealarm@gmail.com| Room A |
+   | Hank Pym     | Tony Stark   | 2532363623   | teamfirealarm@gmail.com| Room A |
+   | Peter Parker | Steve Rogers  | 2532363623   | teamfirealarm@gmail.com| Room A |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |

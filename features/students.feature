@@ -4,14 +4,19 @@ Feature: Create, read, update, and delete students
   So that I can manage the database of students
   I want to create, read, update, and delete students.
 
+  Given the following classrooms exist:
+  | Classroom |
+  | Room A    |
+
  Background: there is a student in the database
-  Given the following students exist:$
-  | Student_Name | Parent_Name | Phone_Number | Email                      |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    |
+  Given the following students exist:
+  | Student_Name | Parent_Name | Phone_Number | Email                      | Classroom |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |
   | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+
   Given I am logged in as admin
   And I am on the students page
 
@@ -30,6 +35,7 @@ Scenario: Create a student (happy path)
   And I fill in "Parent name" with "Michael Carrick"
   And I fill in "Phone number" with "5551234567"
   And I fill in "Email" with "grinnell@grinnell.edu"
+  And I select "Room A" from "Classroom"
   And I press "Save"
   And I follow "Back"
   Then I should be on the students page
@@ -51,7 +57,6 @@ Scenario: Update a student (happy path)
 Scenario: Delete a student (happy path)
   Given I am on the details page for "Khoa Nguyen"
   When I follow "Delete"
-  #Need javascript support to finish testing this scenario!
   And I confirm the popup
   When I should be on the students page
   And I should not see "Khoa Nguyen"

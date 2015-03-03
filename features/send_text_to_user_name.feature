@@ -5,9 +5,14 @@ Feature: send a text message by a user's name
   So that I don't have to type in the numbers
 
  Background: there is a student in the database
-  Given the following students exist:$
-  | Student_Name | Parent_Name | Phone_Number | Email                      |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    |
+
+  Given the following classrooms exist:
+  | Classroom |
+  | Room A    |
+
+  Given the following students exist:
+  | Student_Name | Parent_Name | Phone_Number | Email                      | Classroom |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |
