@@ -7,11 +7,11 @@ Feature: send a text message by a user's name
  Background: there is a student in the database
 
   Given the following classrooms exist:
-  | Classroom |
+  | name |
   | Room A    |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | Classroom |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
 
   Given the following users exist:

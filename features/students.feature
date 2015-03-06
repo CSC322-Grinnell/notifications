@@ -4,14 +4,15 @@ Feature: Create, read, update, and delete students
   So that I can manage the database of students
   I want to create, read, update, and delete students.
 
+Background: there is a student in the database
   Given the following classrooms exist:
-  | Classroom |
-  | Room A    |
+  | name |
+  | Room |
+  | Party |
 
- Background: there is a student in the database
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | Classroom |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |
@@ -35,7 +36,7 @@ Scenario: Create a student (happy path)
   And I fill in "Parent name" with "Michael Carrick"
   And I fill in "Phone number" with "5551234567"
   And I fill in "Email" with "grinnell@grinnell.edu"
-  And I select "Room A" from "Classroom"
+  And I select "Room" from "Classroom name"
   And I press "Save"
   And I follow "Back"
   Then I should be on the students page

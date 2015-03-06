@@ -7,15 +7,19 @@ Feature: Send a text to all members of a classroom
   Background: there are students and classrooms in the database
 
   Given the following classrooms exist:
-  | Classroom |
+  | name |
   | Room A    |
   | Room B    |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | Classroom |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
   | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com    | Room A    |
   | Rachel       | Papa        | 2532363623   | potato@gmail.com           | Room B    |
+
+  Given the following users exist:
+  | name          | email              | password  | password_confirmation | login              |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
 
   Given I am logged in as admin
   And I am on the classroom page
