@@ -22,6 +22,7 @@ module NavigationHelpers
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then '/login'
     when /^the user page$/ then '/user'
+    when /^the classroom page$/ then '/classroom'
 
     # Ad more mappings here.
     # Here is an example that pulls values out of the Regexp:

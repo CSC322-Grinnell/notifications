@@ -10,6 +10,9 @@
 %p
   %b Email:
   = @student.Email
+%p
+  %b Classroom:
+  = @student.classroom_name
 
 = link_to 'Edit', edit_student_path(@student)
 \|

@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :Parent_Name
       t.string :Phone_Number
       t.string :Email
+      t.string :classroom_name
 
       t.timestamps
     end

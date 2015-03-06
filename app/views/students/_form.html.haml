@@ -18,5 +18,7 @@
   .field
     = f.label :Email
     = f.text_field :Email
-  .actions
+  .field
+    = f.label :classroom_name
+    = f.select :classroom_name, Classroom.all.collect{|n| n.name}, :include_blank => true
     = f.submit 'Save'
