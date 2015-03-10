@@ -47,12 +47,14 @@ class TextController < ApplicationController
         @value = inv_num
       end
     else
-      unless num_texts.nil?
+      if !num_texts.nil?
         if num_texts > 1
           flash[:notice] = 'Messages sent successfully.'
         else
           flash[:notice] = 'Message sent successfully.'
         end
+      else
+      	flash[:notice] = 'Messages sent successfully.'
       end
     end
   end

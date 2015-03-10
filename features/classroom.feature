@@ -16,7 +16,7 @@ Feature: Group stuents into classrooms
   | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
   | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com    | Room A    |
-  | Rachel       | Papa        | 2532363623   | potato@gmail.com           | Room B    |
+  | Rachel       | Papa        | 2532363623   | potato@gmail.com           | Room A    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |
@@ -27,11 +27,11 @@ Feature: Group stuents into classrooms
 
   Scenario: Create a classroom
   When I follow "Add New Classroom"
-  And I fill in "classroom_name" with "Avengers"
+  And I fill in "classroom_name" with "Roomie"
   And I press "Save"
   And I follow "Back"
   Then I should be on the classrooms page
-  And I should see "Avengers"
+  And I should see "Roomie"
 
   Scenario: Delete a classroom
   Given I am on the classroom details page for "Avengers"
@@ -44,10 +44,10 @@ Feature: Group stuents into classrooms
   Given I am on the classrooms page
   Then I should see "Room A"
   And I should see "Room B"
+  And I should see "Avengers"
 
   Scenario: Put students in classroom
-  Given I am on the details page for "Khoa Nguyen"
-  When I follow "Edit"
-  And I select "Room A" from "Classroom name"
+  Given I am on the edit page for "Khoa Nguyen"
+  And I select "Room B" from "Classroom name"
   And I press "Save"
-  Then I should see "Room A"
+  Then I should see "Room B"
