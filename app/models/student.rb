@@ -6,4 +6,5 @@ class Student < ActiveRecord::Base
  validates_length_of :Phone_Number, :is => 10, :allow_blank => true, :message => "must be 10 digits"
  validates_format_of :Email, :with =>/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i ,:allow_blank => true, :message => "format is not valid"
  belongs_to :text
+
 end
