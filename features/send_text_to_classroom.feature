@@ -26,7 +26,7 @@ Feature: Send a text to all members of a classroom
 
   Scenario: Send text to all students within a classroom
   When I follow "Room A"
-  And I follow "Send Message"
+  And I follow "Text Classroom"
   Then I should see "Khoa Nguyen, Lady"
   And I press "Send!"
   Then I should see "Messages sent successfully."

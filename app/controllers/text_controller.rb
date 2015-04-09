@@ -3,12 +3,15 @@ class TextController < ApplicationController
   require 'twilio-ruby'
   before_filter :require_user
 
+  #Determines whether the previous loaded page was from one of the
+  #classrooms. If so, it prepopulates the number field with the 
+  #names of the students within the classroom.
+  #  Side note-- pop_value is short for prepopulation value
   def index
-    puts '---------------'
     @pop_value = ''
-    puts @pop_value
     students = Student.all
     @previous_page = request.referer
+
     unless @previous_page.nil?
       page_split = @previous_page.split(/(?<=classrooms\/)/)
 
@@ -19,13 +22,8 @@ class TextController < ApplicationController
         end
         length = @pop_value.length
         @pop_value = @pop_value[0..-3]
-       # @pop_value.slice!(length-2, length)
-       puts '..............................'
-        puts @pop_value
+      end
     end
-  end
-    
-    puts @previous_page
   end
 
   def create
@@ -38,19 +36,14 @@ class TextController < ApplicationController
       num_texts = mult_nums.length
 
       mult_nums.each do |val|
-        puts 'ggggggggggggggggggg val'
-        puts val
         if digit?(val)
           send_text(val)
         else
           a_num = find_number(val)
-          puts "---#{a_num}--- anum"
           if !a_num.nil? and a_num != 'none'
             send_text(a_num)
           else
-            @invalid_num << val #val is not getting pushed onto invalid num when it is in the database
-            puts '@inv num-----------'
-            puts @invalid_num
+            @invalid_num << val
           end
         end
       end
@@ -61,19 +54,15 @@ class TextController < ApplicationController
   end
 
   def handle_flash_notices(num, num_texts)
-    puts 'inval num--------------------------------'
-    puts @invalid_num
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
-       # @value = num
         @pop_value = num
       else
         inv_num = @invalid_num.to_s.delete! '\"'
         flash[:notice] = "The contact(s) #{inv_num} are invalid,
                           others sent successfully"
         inv_num.delete! '[]'
-        #@value = inv_num
         @pop_value = inv_num
       end
     else
@@ -124,19 +113,19 @@ class TextController < ApplicationController
   # Returns nil if a number is not found.
   def find_number(name)
     a_name = Student.find_by_Student_Name(name)
-    puts "ph-------#{a_name.Phone_Number}-----"
-    puts a_name.Phone_Number.nil? #phone number is not nil
-    puts a_name.Phone_Number.empty?
     unless a_name.nil?
      if a_name.Phone_Number.empty?
       return 'none'
      end
      return a_name.Phone_Number
    end
-  #  return a_name.Phone_Number unless a_name.nil?
 
     a_name = Student.find_by_Parent_Name(name)
-    #error on parents!!!!!!!!!
-    return a_name.Phone_Number unless a_name.nil? or a_name.Phone_Number.nil?
+    unless a_name.nil?
+     if a_name.Phone_Number.empty?
+      return 'none'
+     end
+     return a_name.Phone_Number
+   end
   end
 end
