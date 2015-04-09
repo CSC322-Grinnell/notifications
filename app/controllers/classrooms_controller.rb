@@ -1,3 +1,4 @@
+# Controls the classrooms that are within the Head Start schools.
 class ClassroomsController < ApplicationController
   before_filter :require_user
 
@@ -25,7 +26,7 @@ class ClassroomsController < ApplicationController
       redirect_to @classroom
     else
       flash[:notice] = 'There was a problem creating the classroom.'
-      render :action => :new
+      render action: :new
     end
   end
 

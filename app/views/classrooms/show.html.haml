@@ -11,7 +11,7 @@
       %td= link_to "Details", student
 %br
 
-= link_to 'Text Classroom', '/text'
+= link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
 %br 
 %br
 = link_to 'Back', classrooms_path

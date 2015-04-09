@@ -1,29 +1,23 @@
+# Controls the flow of text messages to members of the Head Start Schools
 class TextController < ApplicationController
   require 'rubygems'
   require 'twilio-ruby'
   before_filter :require_user
 
-  #Determines whether the previous loaded page was from one of the
-  #classrooms. If so, it prepopulates the number field with the 
-  #names of the students within the classroom.
+  # Determines whether the previous loaded page was from one of the
+  # classrooms. If so, it prepopulates the number field with the
+  # names of the students within the classroom.
   #  Side note-- pop_value is short for prepopulation value
   def index
     @pop_value = ''
-    students = Student.all
-    @previous_page = request.referer
+    @classroom_id = params[:classroom_id]
 
-    unless @previous_page.nil?
-      page_split = @previous_page.split(/(?<=classrooms\/)/)
-
-      if page_split[0] == 'http://localhost:3000/classrooms/'
-        a_classroom_name = Classroom.find_by_id(page_split[1]).name
-        Student.find_all_by_classroom_name(a_classroom_name).each do |student|
-          @pop_value += student.Student_Name + ', '
-        end
-        length = @pop_value.length
-        @pop_value = @pop_value[0..-3]
-      end
+    return if @classroom_id.nil?
+    a_classroom_name = Classroom.find_by_id(@classroom_id).name
+    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
+      @pop_value += student.Student_Name + ', '
     end
+    @pop_value = @pop_value[0..-3]
   end
 
   def create
@@ -40,7 +34,7 @@ class TextController < ApplicationController
           send_text(val)
         else
           a_num = find_number(val)
-          if !a_num.nil? and a_num != 'none'
+          if !a_num.nil? && a_num != 'none'
             send_text(a_num)
           else
             @invalid_num << val
@@ -74,7 +68,7 @@ class TextController < ApplicationController
           flash[:notice] = 'Message sent successfully.'
         end
       else
-      	flash[:notice] = 'Messages sent successfully.'
+        flash[:notice] = 'Messages sent successfully.'
       end
     end
   end
@@ -82,7 +76,7 @@ class TextController < ApplicationController
   def send_to_all
     students = Student.all
     students.each do |student|
-    send_text(student.Phone_Number)
+      send_text(student.Phone_Number)
     end
   end
 
@@ -94,10 +88,9 @@ class TextController < ApplicationController
       account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
       auth_token = '48f209948887f585f820760a89915194'
       @client = Twilio::REST::Client.new account_sid, auth_token
-      message = @client.account.messages.create(body: params[:message],
-                                                to: number,
-                                                from: '+16412434422')
-      puts message.sid
+      @client.account.messages.create(body: params[:message],
+                                      to: number,
+                                      from: '+16412434422')
     else
       @invalid_num << number
     end
@@ -114,18 +107,14 @@ class TextController < ApplicationController
   def find_number(name)
     a_name = Student.find_by_Student_Name(name)
     unless a_name.nil?
-     if a_name.Phone_Number.empty?
-      return 'none'
-     end
-     return a_name.Phone_Number
-   end
+      return 'none' if a_name.Phone_Number.empty?
+      return a_name.Phone_Number
+    end
 
     a_name = Student.find_by_Parent_Name(name)
     unless a_name.nil?
-     if a_name.Phone_Number.empty?
-      return 'none'
-     end
-     return a_name.Phone_Number
-   end
+      return 'none' if a_name.Phone_Number.empty?
+      return a_name.Phone_Number
+    end
   end
 end
