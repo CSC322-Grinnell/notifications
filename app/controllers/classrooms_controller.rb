@@ -7,6 +7,10 @@ class ClassroomsController < ApplicationController
 
   def show
     @classroom = Classroom.find(params[:id])
+    @students = Student.all
+    #$pop_value = ''
+    #session[:pop] = '1/2'
+    puts $pop_value
   end
 
   def new
