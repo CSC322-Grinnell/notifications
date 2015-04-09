@@ -1,3 +1,4 @@
+
 class TextController < ApplicationController
   require 'rubygems'
   require 'twilio-ruby'
@@ -7,8 +8,10 @@ class TextController < ApplicationController
     @value = ''
   end
 
+
   def create
     @invalid_num = Array[]
+    @unavailable_num = Array[]
     if params[:commit] == 'Send To All!'
       send_to_all
     else
@@ -22,7 +25,11 @@ class TextController < ApplicationController
         else
           a_num = find_number(val)
           if !a_num.nil?
-            send_text(a_num)
+            if is_available?(val)
+              send_text(a_num)
+            else
+              @unavailable_num << val
+            end
           else
             @invalid_num << val
           end
@@ -34,11 +41,12 @@ class TextController < ApplicationController
     render('index')
   end
 
+
   def handle_flash_notices(num, num_texts)
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
-        @value = num
+               @value = num
       else
         inv_num = @invalid_num.to_s.delete! '\"'
         flash[:notice] = "The contact(s) #{inv_num} are invalid,
@@ -47,11 +55,19 @@ class TextController < ApplicationController
         @value = inv_num
       end
     else
-      unless num_texts.nil?
-        if num_texts > 1
-          flash[:notice] = 'Messages sent successfully.'
-        else
-          flash[:notice] = 'Message sent successfully.'
+      if @unavailable_num.any?
+        una_num = @unavailable_num.to_s.delete! '\"'
+        flash[:notice] = "The contact(s) #{una_num} are unavailable,
+                          others sent successfully"
+        una_num.delete! '[]'
+        @value = una_num
+      else
+        unless num_texts.nil?
+          if num_texts > 1
+            flash[:notice] = 'Messages sent successfully.'
+          else
+            flash[:notice] = 'Message not sent successfully.'
+          end
         end
       end
     end
@@ -81,6 +97,7 @@ class TextController < ApplicationController
     end
   end
 
+
   # Determines whether or not the first digit of the given string is
   # a digit.
   def digit?(value)
@@ -95,5 +112,10 @@ class TextController < ApplicationController
 
     a_name = Student.find_by_Parent_Name(name)
     return a_name.Phone_Number unless a_name.nil?
+  end
+ 
+  def is_available?(name)
+	a_name = Student.find_by_Student_Name(name)
+  return a_name.can_text unless a_name.nil?
   end
 end

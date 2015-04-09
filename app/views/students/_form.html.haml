@@ -19,7 +19,7 @@
     = f.label :Email
     = f.text_field :Email
   .field
-    = f.label :Can_Text
-    = f.text_field :Can_Text
+    = f.label :can_text
+    = f.check_box :can_text, {}, "true", "false"
   .actions
     = f.submit 'Save'
