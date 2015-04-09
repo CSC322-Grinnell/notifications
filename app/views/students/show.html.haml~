@@ -12,7 +12,7 @@
   = @student.Email
 %p
   %b Can text:
-  = @student.can_text
+  = @student.Can_Text
 
 = link_to 'Edit', edit_student_path(@student)
 \|

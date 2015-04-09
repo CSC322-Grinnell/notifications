@@ -20,6 +20,6 @@
     = f.text_field :Email
   .field
     = f.label :can_text
-    = f.check_box :can_text, {}, "true", "false"
+    = f.check_box :Can_Text, {}, "true", "false"
   .actions
     = f.submit 'Save'

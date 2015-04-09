@@ -8,7 +8,6 @@ class TextController < ApplicationController
     @value = ''
   end
 
-
   def create
     @invalid_num = Array[]
     @unavailable_num = Array[]
@@ -21,32 +20,28 @@ class TextController < ApplicationController
 
       mult_nums.each do |val|
         if digit?(val)
-          send_text(val)
+            send_text(val)
         else
-          a_num = find_number(val)
-          if !a_num.nil?
-            if is_available?(val)
-              send_text(a_num)
-            else
-              @unavailable_num << val
+            a_num = find_number(val)
+      	    if !is_available?(a_num)
+        	@unavailable_num << val
+      	    elsif !a_num.nil? && is_available?(a_num)
+        	send_text(a_num)
+       	    else
+                 @invalid_num << val
             end
-          else
-            @invalid_num << val
-          end
-        end
+	end
       end
     end
-
     handle_flash_notices(num, num_texts)
     render('index')
   end
-
 
   def handle_flash_notices(num, num_texts)
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
-               @value = num
+        @value = num
       else
         inv_num = @invalid_num.to_s.delete! '\"'
         flash[:notice] = "The contact(s) #{inv_num} are invalid,
@@ -54,30 +49,25 @@ class TextController < ApplicationController
         inv_num.delete! '[]'
         @value = inv_num
       end
-    else
-      if @unavailable_num.any?
-        una_num = @unavailable_num.to_s.delete! '\"'
-        flash[:notice] = "The contact(s) #{una_num} are unavailable,
-                          others sent successfully"
-        una_num.delete! '[]'
-        @value = una_num
-      else
-        unless num_texts.nil?
-          if num_texts > 1
-            flash[:notice] = 'Messages sent successfully.'
-          else
-            flash[:notice] = 'Message not sent successfully.'
-          end
+    elsif @unavailable_num != 0 
+      unavail_num = @unavailable_num.to_s.delete! '\"'
+      flash[:notice] = "The contact(s) #{unavail_num} are not available to text,
+                          others sent successfully"                
+      unless num_texts.nil?
+        if num_texts > 1
+          flash[:notice] = 'Messages sent successfully.'
+        else 
+          flash[:notice] = 'Message sent successfully.'
         end
       end
     end
   end
 
+
   def send_to_all
     students = Student.all
     students.each do |student|
     send_text(student.Phone_Number)
-    end
   end
 
   def send_text(number)
@@ -92,11 +82,11 @@ class TextController < ApplicationController
                                                 to: number,
                                                 from: '+16412434422')
       puts message.sid
-    else
-      @invalid_num << number
+      else
+        @invalid_num << number
+      end
     end
   end
-
 
   # Determines whether or not the first digit of the given string is
   # a digit.
