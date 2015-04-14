@@ -21,5 +21,8 @@
   .field
     = f.label :can_text
     = f.check_box :can_text, {}, "true", "false"
+  .field
+    = f.label :classroom_name
+    = f.select :classroom_name, Classroom.all.collect{|n| n.name}, :include_blank => true
   .actions
     = f.submit 'Save'

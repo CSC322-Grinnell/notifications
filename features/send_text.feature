@@ -5,9 +5,14 @@ Feature: send a text message
   So that I can notify a parent of an event
 
 Background: some users have been added to database
+
+  Given the following classrooms exist:
+  | name |
+  | Room A    |
+  
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |

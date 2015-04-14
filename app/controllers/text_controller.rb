@@ -1,11 +1,23 @@
-
+# Controls the flow of text messages to members of the Head Start Schools
 class TextController < ApplicationController
   require 'rubygems'
   require 'twilio-ruby'
   before_filter :require_user
 
+  # Determines whether the previous loaded page was from one of the
+  # classrooms. If so, it prepopulates the number field with the
+  # names of the students within the classroom.
+  #  Side note-- pop_value is short for prepopulation value
   def index
-    @value = ''
+    @pop_value = ''
+    @classroom_id = params[:classroom_id]
+
+    return if @classroom_id.nil?
+    a_classroom_name = Classroom.find_by_id(@classroom_id).name
+    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
+      @pop_value += student.Student_Name + ', '
+    end
+    @pop_value = @pop_value[0..-3]
   end
 
 
@@ -25,7 +37,7 @@ class TextController < ApplicationController
         else
           a_num = find_number(val)
           if !a_num.nil?
-            if is_available?(val)
+            if is_available?(val) && a_num != 'none'
               send_text(a_num)
             else
               @unavailable_num << val
@@ -46,27 +58,27 @@ class TextController < ApplicationController
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
-               @value = num
+        @pop_value = num
       else
         inv_num = @invalid_num.to_s.delete! '\"'
         flash[:notice] = "The contact(s) #{inv_num} are invalid,
                           others sent successfully"
         inv_num.delete! '[]'
-        @value = inv_num
+        @pop_value = inv_num
       end
     else
       if @unavailable_num.any?
         una_num = @unavailable_num.to_s.delete! '\"'
-        flash[:notice] = "The contact(s) #{una_num} are unavailable,
+        flash[:notice] = "The contact(s) #{una_num} cannot be contacted via text,
                           others sent successfully"
         una_num.delete! '[]'
-        @value = una_num
+        @pop_value = una_num
       else
         unless num_texts.nil?
           if num_texts > 1
             flash[:notice] = 'Messages sent successfully.'
           else
-            flash[:notice] = 'Message not sent successfully.'
+            flash[:notice] = 'Message sent successfully.'
           end
         end
       end
@@ -76,7 +88,7 @@ class TextController < ApplicationController
   def send_to_all
     students = Student.all
     students.each do |student|
-    send_text(student.Phone_Number)
+      send_text(student.Phone_Number)
     end
   end
 
@@ -88,10 +100,9 @@ class TextController < ApplicationController
       account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
       auth_token = '48f209948887f585f820760a89915194'
       @client = Twilio::REST::Client.new account_sid, auth_token
-      message = @client.account.messages.create(body: params[:message],
-                                                to: number,
-                                                from: '+16412434422')
-      puts message.sid
+      @client.account.messages.create(body: params[:message],
+                                      to: number,
+                                      from: '+16412434422')
     else
       @invalid_num << number
     end
@@ -108,10 +119,16 @@ class TextController < ApplicationController
   # Returns nil if a number is not found.
   def find_number(name)
     a_name = Student.find_by_Student_Name(name)
-    return a_name.Phone_Number unless a_name.nil?
+    unless a_name.nil?
+      return 'none' if a_name.Phone_Number.empty?
+      return a_name.Phone_Number
+    end
 
     a_name = Student.find_by_Parent_Name(name)
-    return a_name.Phone_Number unless a_name.nil?
+    unless a_name.nil?
+      return 'none' if a_name.Phone_Number.empty?
+      return a_name.Phone_Number
+    end
   end
  
   def is_available?(name)

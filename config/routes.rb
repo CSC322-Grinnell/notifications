@@ -1,6 +1,7 @@
 HeadStart::Application.routes.draw do
   resources :students
-
+  resources :classrooms
+  resources :text
   resources :user_sessions
 
   match 'login' => "user_sessions#new",      :as => :login
@@ -12,7 +13,5 @@ HeadStart::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
 
   root :to => 'user_sessions#new'
-
-  resources :text
 
 end
