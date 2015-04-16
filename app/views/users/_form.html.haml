@@ -15,3 +15,7 @@
   = form.label :password_confirmation
   %br/
   = form.password_field :password_confirmation
+%p
+  = form.label :admin
+  %br/
+  = form.check_box :admin, {}, "true", "false"
