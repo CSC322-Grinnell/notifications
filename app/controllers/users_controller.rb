@@ -1,5 +1,5 @@
 class UsersController < ApplicationController    
-  before_filter :require_user
+  before_filter :require_user, :require_admin
 
   def new
     @user = User.new

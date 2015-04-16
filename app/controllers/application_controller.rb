@@ -33,6 +33,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin
+    logger.debug 'ApplicationController::require_admin'
+    unless admin?
+      store_location
+      flash[:notice] = 'You must be an administrator to access this page'
+      return false
+    end
+  end
+
   def store_location
     # session[:return_to] = request.request_uri
   end
@@ -43,6 +52,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    session[:admin] == 'true'
+    return current_user.admin
   end
 end
