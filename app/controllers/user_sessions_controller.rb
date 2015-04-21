@@ -1,5 +1,4 @@
-class UserSessionsController  < ApplicationController#[:new, :create]
-  #before_filter :require_user, :only => :destroy
+class UserSessionsController  < ApplicationController
  layout 'login'
  
   def new
@@ -10,7 +9,8 @@ class UserSessionsController  < ApplicationController#[:new, :create]
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login successful!"
-      redirect_back_or_default account_url(@current_user)
+      puts @current_user
+      redirect_back_or_default '/students' #account_url(@current_user)
     else
       render :action => :new
     end
