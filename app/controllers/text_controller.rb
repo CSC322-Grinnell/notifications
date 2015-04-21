@@ -80,6 +80,8 @@ class TextController < ApplicationController
           else
             flash[:notice] = 'Message sent successfully.'
           end
+        else
+          flash[:notice] = 'Messages sent successfully.'
         end
       end
     end
@@ -132,7 +134,14 @@ class TextController < ApplicationController
   end
  
   def is_available?(name)
-	a_name = Student.find_by_Student_Name(name)
-  return a_name.can_text unless a_name.nil?
+	  a_name = Student.find_by_Student_Name(name)
+    unless a_name.nil?
+      return a_name.can_text
+    end
+
+    a_name = Student.find_by_Parent_Name(name)
+    unless a_name.nil?
+      return a_name.can_text
+    end
   end
 end
