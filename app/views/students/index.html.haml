@@ -21,5 +21,5 @@
         %td= link_to 'Edit', edit_student_path(student)
         %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
-
-= link_to 'Add New Student', new_student_path
+- if admin?
+  = link_to 'Add New Student', new_student_path

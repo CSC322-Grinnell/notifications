@@ -6,8 +6,8 @@
   - @classroom.each do |classroom|
     %tr
       %td= link_to classroom.name, classroom
-    - if admin?
-      %td= link_to 'Remove', classroom, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      - if admin?
+        %td= link_to 'Remove', classroom, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
