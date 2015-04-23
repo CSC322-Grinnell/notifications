@@ -29,6 +29,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    num_admin = User.find_all_by_admin(true)
   end
 
   def update
@@ -42,9 +43,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:notice] = "User deleted."
-    redirect_to '/user'
+    num_admin = User.find_all_by_admin(true)
+
+    if num_admin.size > 1
+      User.find(params[:id]).destroy
+      flash[:notice] = "User deleted."
+    else
+      flash[:notice] = "Unable to delete the last admistrator."
+    end
+      redirect_to '/user'
   end
 
 end
