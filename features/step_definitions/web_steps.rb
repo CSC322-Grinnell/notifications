@@ -56,6 +56,10 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+And "I remove admin" do  
+    first(:link, 'Remove').click
+end
+
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:

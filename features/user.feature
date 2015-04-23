@@ -7,12 +7,12 @@ Feature: create an administrative user  (not yet implemented)
 Background: some users have been added to database
 
   Given the following users exist:
-  | name          | email              | password  | password_confirmation | login              |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
-  | Joanne Really | jojo@this.com      | jojo      | jojo                  | jojo@this.com      |
-  | Lisa Snark    | snarky@sarcasm.com | snarks    | snarks                | snarky@sarcasm.com |
-  | Jonny Apple   | apple@xxx.com      | apple     | apple                 | apple@xxx.com      |
-  | Laddy Buck    | laddy@school.edu   | laddybuck | laddybuck             | laddy@school.edu   |
+  | name          | email              | password  | password_confirmation | login              | admin |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
+  | Joanne Really | jojo@this.com      | jojo      | jojo                  | jojo@this.com      | false |
+  | Lisa Snark    | snarky@sarcasm.com | snarks    | snarks                | snarky@sarcasm.com | false |
+  | Jonny Apple   | apple@xxx.com      | apple     | apple                 | apple@xxx.com      | false |
+  | Laddy Buck    | laddy@school.edu   | laddybuck | laddybuck             | laddy@school.edu   | false |
 
   And I am logged in as admin
 
@@ -38,3 +38,10 @@ Scenario: attempt to access page when not logged in (sad path)
   Given I am not logged in
   And I am on the new user page
   Then I should see "You must be logged in to access this page"
+
+Scenario: delete last admin attempt
+  Given I am logged in as admin
+  And I am on the user page
+  And I remove admin
+  And I confirm the popup
+  Then I should see "Unable to delete the last admistrator."
