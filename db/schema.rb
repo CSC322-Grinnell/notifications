@@ -24,10 +24,9 @@ ActiveRecord::Schema.define(:version => 20150416192957) do
     t.string   "Parent_Name"
     t.string   "Phone_Number"
     t.string   "Email"
-    t.string   "classroom_name"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.boolean  "can_text",       :default => true
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "can_text",     :default => true
   end
 
   create_table "user_sessions", :force => true do |t|

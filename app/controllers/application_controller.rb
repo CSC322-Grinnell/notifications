@@ -38,6 +38,7 @@ class ApplicationController < ActionController::Base
     unless admin?
       store_location
       flash[:notice] = 'You must be an administrator to access this page'
+      redirect_to '/students'
       return false
     end
   end
