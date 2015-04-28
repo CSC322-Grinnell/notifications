@@ -11,13 +11,14 @@ class TextController < ApplicationController
   def index
     @pop_value = ''
     @classroom_id = params[:classroom_id]
+    @student_name = params[:student_name]
 
-    return if @classroom_id.nil?
-    a_classroom_name = Classroom.find_by_id(@classroom_id).name
-    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
-      @pop_value += student.Student_Name + ', '
+    unless @student_name.nil?
+      @pop_value = @student_name
     end
-    @pop_value = @pop_value[0..-3]
+    unless @classroom_id.nil? 
+      parse_classroom
+    end
   end
 
 
@@ -135,4 +136,14 @@ class TextController < ApplicationController
 	a_name = Student.find_by_Student_Name(name)
   return a_name.can_text unless a_name.nil?
   end
+
+  def parse_classroom
+    a_classroom_name = Classroom.find_by_id(@classroom_id).name
+
+    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
+      @pop_value += student.Student_Name + ', '
+    end
+    @pop_value = @pop_value[0..-3]
+  end
 end
+
