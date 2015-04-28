@@ -134,6 +134,9 @@ class TextController < ApplicationController
  
   def is_available?(name)
 	a_name = Student.find_by_Student_Name(name)
+  if a_name.nil?
+    a_name = Student.find_by_Parent_Name(name)
+  end
   return a_name.can_text unless a_name.nil?
   end
 
