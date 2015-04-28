@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
   before_filter :require_user
+  before_filter :require_admin, except: [:create, :index, :show]
+
 
   def index
     @students = Student.all
