@@ -19,8 +19,8 @@ Feature: Group stuents into classrooms
   | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | Room A         |
 
   Given the following users exist:
-  | name          | email              | password  | password_confirmation | login              |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+  | name          | email              | password  | password_confirmation | login              | admin |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
 
   Given I am logged in as admin
   And I am on the classrooms page
