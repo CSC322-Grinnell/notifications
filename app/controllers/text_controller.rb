@@ -16,16 +16,15 @@ class TextController < ApplicationController
     unless @student_name.nil?
       @pop_value = @student_name
     end
-    unless @classroom_id.nil? 
+    unless @classroom_id.nil?
       parse_classroom
     end
   end
 
-
   def create
     @invalid_num = Array[]
     @unavailable_num = Array[]
-    @num_texts =0
+    @num_texts = 0
     if params[:commit] == 'Send To All!'
       send_to_all
     else
@@ -39,7 +38,7 @@ class TextController < ApplicationController
         else
           a_num = find_number(val)
           if !a_num.nil?
-            if is_available?(val) && a_num != 'none'
+            if available?(val) && a_num != 'none'
               send_text(a_num)
             else
               @unavailable_num << val
@@ -54,7 +53,6 @@ class TextController < ApplicationController
     handle_flash_notices(num)
     render('index')
   end
-
 
   def handle_flash_notices(num)
     if @invalid_num.length != 0
@@ -90,7 +88,7 @@ class TextController < ApplicationController
   def send_to_all
     students = Student.all
     students.each do |student|
-      @num_texts+1
+      @num_texts + 1
       unless student.Phone_Number.empty?
         send_text(student.Phone_Number)
       else
@@ -111,13 +109,15 @@ class TextController < ApplicationController
   end
 
   def send_to_twillio(number)
-      account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
-      auth_token = '48f209948887f585f820760a89915194'
-      @client = Twilio::REST::Client.new account_sid, auth_token
-      @client.account.messages.create(body: params[:message],
-                                      to: number,
-                                      from: '+16412434422')
-      #puts '----------MESSAGE SENT TO TWILLIO-----------'
+=begin
+    account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
+    auth_token = '48f209948887f585f820760a89915194'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create(body: params[:message],
+                                    to: number,
+                                    from: '+16412434422')
+=end
+    puts '----------MESSAGE SENT TO TWILLIO-----------'
   end
 
   # Determines whether or not the first digit of the given string is
@@ -141,13 +141,13 @@ class TextController < ApplicationController
       return a_name.Phone_Number
     end
   end
- 
-  def is_available?(name)
-	a_name = Student.find_by_Student_Name(name)
-  if a_name.nil?
-    a_name = Student.find_by_Parent_Name(name)
-  end
-  return a_name.can_text unless a_name.nil?
+
+  def available?(name)
+    a_name = Student.find_by_Student_Name(name)
+    if a_name.nil?
+      a_name = Student.find_by_Parent_Name(name)
+    end
+    return a_name.can_text unless a_name.nil?
   end
 
   def parse_classroom
@@ -159,4 +159,3 @@ class TextController < ApplicationController
     @pop_value = @pop_value[0..-3]
   end
 end
-

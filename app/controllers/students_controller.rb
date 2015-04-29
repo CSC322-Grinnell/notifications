@@ -1,7 +1,7 @@
+# Controller for the students in a class
 class StudentsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin, except: [:create, :index, :show]
-
 
   def index
     @students = Student.all
@@ -26,7 +26,7 @@ class StudentsController < ApplicationController
       redirect_to @student
     else
       flash[:notice] = 'There was a problem creating the student.'
-      render :action => :new
+      render action: :new
     end
   end
 
@@ -37,7 +37,7 @@ class StudentsController < ApplicationController
       flash[:notice] = 'Student updated successfully'
       redirect_to @student
     else
-      render :action => :edit
+      render action: :edit
     end
   end
 
