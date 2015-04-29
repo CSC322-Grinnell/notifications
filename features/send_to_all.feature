@@ -27,7 +27,7 @@ Scenario: send a text to all numbers and receive notice of success
 	Given I am on the text page
 	When I fill in "aMessage" with "Avergers assemble!"
 	And I press "Send To All!"
-	Then I should see "Messages sent successfully."
+	Then I should see "Message sent successfully."
 
 Scenario: send a text to all numbers and receive notice of failure
 Given the following students exist:$

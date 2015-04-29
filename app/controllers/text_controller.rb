@@ -25,12 +25,13 @@ class TextController < ApplicationController
   def create
     @invalid_num = Array[]
     @unavailable_num = Array[]
+    @num_texts =0
     if params[:commit] == 'Send To All!'
       send_to_all
     else
       num = params[:number].to_s.delete! '[\"]'
       mult_nums = num.split(', ')
-      num_texts = mult_nums.length
+      @num_texts = mult_nums.length
 
       mult_nums.each do |val|
         if digit?(val)
@@ -50,12 +51,12 @@ class TextController < ApplicationController
       end
     end
 
-    handle_flash_notices(num, num_texts)
+    handle_flash_notices(num)
     render('index')
   end
 
 
-  def handle_flash_notices(num, num_texts)
+  def handle_flash_notices(num)
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
@@ -75,8 +76,8 @@ class TextController < ApplicationController
         una_num.delete! '[]'
         @pop_value = una_num
       else
-        unless num_texts.nil?
-          if num_texts > 1
+        unless @num_texts.nil?
+          if @num_texts > 1
             flash[:notice] = 'Messages sent successfully.'
           else
             flash[:notice] = 'Message sent successfully.'
@@ -89,7 +90,12 @@ class TextController < ApplicationController
   def send_to_all
     students = Student.all
     students.each do |student|
-      send_text(student.Phone_Number)
+      @num_texts+1
+      unless student.Phone_Number.empty?
+        send_text(student.Phone_Number)
+      else
+        @invalid_num << student.Student_Name
+      end
     end
   end
 
@@ -98,17 +104,21 @@ class TextController < ApplicationController
       @invalid_num << 'No Message'
     elsif number.match(/\b\d{10}\b/)
       number = '+1' + number
+      send_to_twillio(number)
+    else
+      @invalid_num << number
+    end
+  end
+
+  def send_to_twillio(number)
       account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
       auth_token = '48f209948887f585f820760a89915194'
       @client = Twilio::REST::Client.new account_sid, auth_token
       @client.account.messages.create(body: params[:message],
                                       to: number,
                                       from: '+16412434422')
-    else
-      @invalid_num << number
-    end
+      #puts '----------MESSAGE SENT TO TWILLIO-----------'
   end
-
 
   # Determines whether or not the first digit of the given string is
   # a digit.
