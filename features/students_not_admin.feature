@@ -1,8 +1,8 @@
-Feature: Create, read, update, and delete students
+Feature: View students
 
   As a teacher 
-  So that I can manage the database of students
-  I want to create, read, update, and delete students.
+  So that I can see the database of students
+  I want to read the students.
 
 Background: there is a student in the database
   Given the following classrooms exist:

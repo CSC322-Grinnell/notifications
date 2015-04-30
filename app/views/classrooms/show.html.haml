@@ -15,5 +15,7 @@
 %br 
 %br
 = link_to 'Back', classrooms_path
-\|
-= link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+
+- if admin?
+  \|
+  = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
