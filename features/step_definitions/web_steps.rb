@@ -32,6 +32,10 @@ Given /^I am logged in as admin$/ do
   UserSession.create!(User.find_by_email!('admin@example.com'))
 end
 
+Given /^I am logged in as not_admin$/ do
+  UserSession.create!(User.find_by_email!('notadmin@example.com'))
+end
+
 Given "I am not logged in" do
   UserSession.find.try(:destroy)
 end
