@@ -17,8 +17,13 @@
   %b Classroom:
   = @student.classroom_name
 
-= link_to 'Edit', edit_student_path(@student)
+= link_to 'Send Text', text_index_path(:student_name => @student.Student_Name)
 \|
+- if admin?
+  = link_to 'Edit', edit_student_path(@student)
+  \|
 = link_to 'Back', students_path
 \|
-= link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+- if admin?
+  = link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+

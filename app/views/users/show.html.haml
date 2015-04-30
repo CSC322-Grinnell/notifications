@@ -1,17 +1,18 @@
 %h1 User Accounts
-%table#users
-  %thead
-    %tr
-      %th Name
-      %th Email
-      %th
-      %th
-  %tbody
-    - @users.each do |user|
+- if admin?
+  %table#users
+    %thead
       %tr
-        %td= user.name
-        %td= user.email
-        %td= link_to "Edit", edit_user_path(user)
-        %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
+        %th Name
+        %th Email
+        %th
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.name
+          %td= user.email
+          %td= link_to "Edit", edit_user_path(user)
+          %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
 
-= link_to "New User", new_user_path
+  = link_to "New User", new_user_path

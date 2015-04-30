@@ -32,6 +32,10 @@ Given /^I am logged in as admin$/ do
   UserSession.create!(User.find_by_email!('admin@example.com'))
 end
 
+Given /^I am logged in as not_admin$/ do
+  UserSession.create!(User.find_by_email!('notadmin@example.com'))
+end
+
 Given "I am not logged in" do
   UserSession.find.try(:destroy)
 end
@@ -54,6 +58,10 @@ end
 
 When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
+end
+
+And "I remove admin" do  
+    first(:link, 'Remove').click
 end
 
 # Use this to fill in an entire form with data from a table. Example:

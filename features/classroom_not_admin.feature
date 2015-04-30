@@ -1,8 +1,7 @@
-Feature: Group stuents into classrooms
+Feature: Group stuents into classrooms as a techer
 
-  As an administrator
-  so that teachers can notify one class at a time
-  I would like to be able to group students into classes
+  As a teacher
+  I would like to be able to view and text classrooms with students
 
   Background: there are students in the database
 
@@ -20,34 +19,25 @@ Feature: Group stuents into classrooms
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
+  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false |
 
-  Given I am logged in as admin
+  Given I am logged in as not_admin
   And I am on the classrooms page
 
-  Scenario: Create a classroom
-  When I follow "Add New Classroom"
-  And I fill in "classroom_name" with "Roomie"
-  And I press "Save"
-  And I follow "Back"
-  Then I should be on the classrooms page
-  And I should see "Roomie"
+  Scenario: View options available in classroom page
+  Given I am on the classrooms page
+  Then I should not see "Add New Classroom"
+  And I should not see "Remove"
 
-  Scenario: Delete a classroom
+  Scenario: View options available in classroom details page
   Given I am on the classroom details page for "Avengers"
-  When I follow "Delete"
-  And I confirm the popup
-  Then I should be on the classroom page
-  And I should not see "Avengers"
+  Then I should not see "Add New Classroom"
+  And I should see "Text Classroom"
+  And I should not see "Delete"
+
 
   Scenario: List all classrooms
   Given I am on the classrooms page
   Then I should see "Room A"
   And I should see "Room B"
   And I should see "Avengers"
-
-  Scenario: Put students in classroom
-  Given I am on the edit page for "Khoa Nguyen"
-  And I select "Room B" from "Classroom name"
-  And I press "Save"
-  Then I should see "Room B"

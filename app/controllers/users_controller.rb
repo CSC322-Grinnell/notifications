@@ -1,5 +1,6 @@
-class UsersController < ApplicationController    
-  before_filter :require_user
+# Controller for Users such as teachers and administrators
+class UsersController < ApplicationController
+  before_filter :require_user, :require_admin
 
   def new
     @user = User.new
@@ -7,19 +8,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.login = :email;
+    @user.login = :email
 
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
     if @user.save
-      flash[:notice] = "Your account has been created."
+      flash[:notice] = 'Your account has been created.'
       redirect_to '/user'
     else
-      flash[:notice] = "There was a problem creating you."
-      render :action => :new
+      flash[:notice] = 'There was a problem creating you.'
+      render action: :new
     end
-
   end
 
   def show
@@ -32,19 +32,32 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:notice] = "Account updated!"
-      redirect_to '/user'
-    else
-      render :action => :edit
+      @user = User.find(params[:id])
+      if (params[:user][:password]==(params[:user][:password_confirmation]))
+
+        @user.update_attribute(:name , params[:user][:name])
+        @user.update_attribute(:email , params[:user][:email])
+        @user.update_attribute(:password , params[:user][:password])
+        @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
+        @user.update_attribute(:admin , params[:user][:admin])
+        flash[:notice] = 'Account updated!'
+        redirect_to '/user'
+      else
+        flash[:notice] = "Passwords aren't the same"
+        render :action => :edit
+      end
     end
-  end
 
   def destroy
-    User.find(params[:id]).destroy
-    flash[:notice] = "User deleted."
+    num_admin = User.find_all_by_admin(true)
+    if User.find(params[:id]).admin == false
+      User.find(params[:id]).destroy
+    elsif num_admin.size > 1
+      User.find(params[:id]).destroy
+      flash[:notice] = 'User deleted.'
+    else
+      flash[:notice] = 'Unable to delete the last admistrator.'
+    end
     redirect_to '/user'
   end
-
 end

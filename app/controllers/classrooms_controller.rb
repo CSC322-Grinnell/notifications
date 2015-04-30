@@ -1,6 +1,7 @@
 # Controls the classrooms that are within the Head Start schools.
 class ClassroomsController < ApplicationController
   before_filter :require_user
+  before_filter :require_admin, except: [:index, :show]
 
   def index
     @classroom = Classroom.all
