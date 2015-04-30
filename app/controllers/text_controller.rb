@@ -11,25 +11,26 @@ class TextController < ApplicationController
   def index
     @pop_value = ''
     @classroom_id = params[:classroom_id]
+    @student_name = params[:student_name]
 
-    return if @classroom_id.nil?
-    a_classroom_name = Classroom.find_by_id(@classroom_id).name
-    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
-      @pop_value += student.Student_Name + ', '
+    unless @student_name.nil?
+      @pop_value = @student_name
     end
-    @pop_value = @pop_value[0..-3]
+    unless @classroom_id.nil?
+      parse_classroom
+    end
   end
-
 
   def create
     @invalid_num = Array[]
     @unavailable_num = Array[]
+    @num_texts = 0
     if params[:commit] == 'Send To All!'
       send_to_all
     else
       num = params[:number].to_s.delete! '[\"]'
       mult_nums = num.split(', ')
-      num_texts = mult_nums.length
+      @num_texts = mult_nums.length
 
       mult_nums.each do |val|
         if digit?(val)
@@ -37,7 +38,7 @@ class TextController < ApplicationController
         else
           a_num = find_number(val)
           if !a_num.nil?
-            if is_available?(val) && a_num != 'none'
+            if available?(val) && a_num != 'none'
               send_text(a_num)
             else
               @unavailable_num << val
@@ -49,12 +50,11 @@ class TextController < ApplicationController
       end
     end
 
-    handle_flash_notices(num, num_texts)
+    handle_flash_notices(num)
     render('index')
   end
 
-
-  def handle_flash_notices(num, num_texts)
+  def handle_flash_notices(num)
     if @invalid_num.length != 0
       if @invalid_num[0] == 'No Message'
         flash[:notice] = 'Message Required'
@@ -74,8 +74,8 @@ class TextController < ApplicationController
         una_num.delete! '[]'
         @pop_value = una_num
       else
-        unless num_texts.nil?
-          if num_texts > 1
+        unless @num_texts.nil?
+          if @num_texts > 1
             flash[:notice] = 'Messages sent successfully.'
           else
             flash[:notice] = 'Message sent successfully.'
@@ -88,7 +88,12 @@ class TextController < ApplicationController
   def send_to_all
     students = Student.all
     students.each do |student|
-      send_text(student.Phone_Number)
+      @num_texts + 1
+      unless student.Phone_Number.empty?
+        send_text(student.Phone_Number)
+      else
+        @invalid_num << student.Student_Name
+      end
     end
   end
 
@@ -97,17 +102,23 @@ class TextController < ApplicationController
       @invalid_num << 'No Message'
     elsif number.match(/\b\d{10}\b/)
       number = '+1' + number
-      account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
-      auth_token = '48f209948887f585f820760a89915194'
-      @client = Twilio::REST::Client.new account_sid, auth_token
-      @client.account.messages.create(body: params[:message],
-                                      to: number,
-                                      from: '+16412434422')
+      send_to_twillio(number)
     else
       @invalid_num << number
     end
   end
 
+  def send_to_twillio(number)
+=begin
+    account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
+    auth_token = '48f209948887f585f820760a89915194'
+    @client = Twilio::REST::Client.new account_sid, auth_token
+    @client.account.messages.create(body: params[:message],
+                                    to: number,
+                                    from: '+16412434422')
+=end
+    puts '----------MESSAGE SENT TO TWILLIO-----------'
+  end
 
   # Determines whether or not the first digit of the given string is
   # a digit.
@@ -130,9 +141,21 @@ class TextController < ApplicationController
       return a_name.Phone_Number
     end
   end
- 
-  def is_available?(name)
-	a_name = Student.find_by_Student_Name(name)
-  return a_name.can_text unless a_name.nil?
+
+  def available?(name)
+    a_name = Student.find_by_Student_Name(name)
+    if a_name.nil?
+      a_name = Student.find_by_Parent_Name(name)
+    end
+    return a_name.can_text unless a_name.nil?
+  end
+
+  def parse_classroom
+    a_classroom_name = Classroom.find_by_id(@classroom_id).name
+
+    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
+      @pop_value += student.Student_Name + ', '
+    end
+    @pop_value = @pop_value[0..-3]
   end
 end

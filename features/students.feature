@@ -15,8 +15,9 @@ Background: there is a student in the database
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |Room |
 
   Given the following users exist:
-  | name             | email                 | password  | password_confirmation | login              | admin |
-  | Administrator    | admin@example.com     | pass      | pass                  | admin@example.com  | true  |
+
+  | name          | email              | password  | password_confirmation | login              | admin |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
 
   Given I am logged in as admin
   And I am on the students page
