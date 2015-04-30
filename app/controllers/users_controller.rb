@@ -43,8 +43,9 @@ class UsersController < ApplicationController
 
   def destroy
     num_admin = User.find_all_by_admin(true)
-
-    if num_admin.size > 1
+    if User.find(params[:id]).admin == false
+      User.find(params[:id]).destroy
+    elsif num_admin.size > 1
       User.find(params[:id]).destroy
       flash[:notice] = 'User deleted.'
     else
