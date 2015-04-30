@@ -28,10 +28,9 @@ Scenario: Read a student (happy path)
   And I should see "teamfirealarm@gmail.com"
 
 
-Scenario: Find edit button missing
+Scenario: View student information and available options for me
   Given I am on the details page for "Khoa Nguyen"
   Then I should not see "Edit"
-
-Scenario: Find delete button missing
-  Given I am on the details page for "Khoa Nguyen"
-  Then I should not see "Delete"
+  And I should not see "Delete"
+  And I should see "Back"
+  And I should see "Send Text"
