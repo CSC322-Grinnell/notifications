@@ -85,17 +85,6 @@ class TextController < ApplicationController
     end
   end
 
-  def send_to_all
-    students = Student.all
-    students.each do |student|
-      @num_texts + 1
-      unless student.Phone_Number.empty?
-        send_text(student.Phone_Number)
-      else
-        @invalid_num << student.Student_Name
-      end
-    end
-  end
 
   def send_text(number)
     if params[:message] == ['']
