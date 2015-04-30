@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-attr_accessible :login, :email, :persistence_token, :name, :password, :password_confirmation, 
+attr_accessible :login, :email, :persistence_token, :name, :password, :password_confirmation,
 :crypted_password, :admin
 #attr_accessor :password, :password_confirmation, :crypted_password
  acts_as_authentic do |c|

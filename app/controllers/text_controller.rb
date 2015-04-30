@@ -98,15 +98,14 @@ class TextController < ApplicationController
   end
 
   def send_to_twillio(number)
-=begin
     account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
     auth_token = '48f209948887f585f820760a89915194'
     @client = Twilio::REST::Client.new account_sid, auth_token
     @client.account.messages.create(body: params[:message],
                                     to: number,
                                     from: '+16412434422')
-=end
-    puts '----------MESSAGE SENT TO TWILLIO-----------'
+
+    # puts '----------MESSAGE SENT TO TWILLIO-----------'
   end
 
   # Determines whether or not the first digit of the given string is

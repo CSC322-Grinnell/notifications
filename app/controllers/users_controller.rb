@@ -40,13 +40,14 @@ class UsersController < ApplicationController
         @user.update_attribute(:password , params[:user][:password])
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
-        flash[:notice] = "Account updated!"
+        flash[:notice] = 'Account updated!'
         redirect_to '/user'
-    else
-      flash[:notice] = "Passwords aren't the same"
-       render :action => :edit
+      else
+        flash[:notice] = "Passwords aren't the same"
+        render :action => :edit
+      end
     end
-    end
+
   def destroy
     num_admin = User.find_all_by_admin(true)
     if User.find(params[:id]).admin == false

@@ -41,5 +41,3 @@ Feature: Group stuents into classrooms as a techer
   Then I should see "Room A"
   And I should see "Room B"
   And I should see "Avengers"
-
-w
