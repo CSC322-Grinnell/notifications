@@ -1,4 +1,4 @@
-Feature: create an administrative user  (not yet implemented)
+Feature: create an administrative user
 
   As a sys admin.
   I want to be able to create an administrative user
@@ -17,8 +17,8 @@ Background: some users have been added to database
   And I am logged in as admin
 
 Scenario: create an admin user
-	
-	And I am on the new user page
+	Given I am logged in as admin
+  	And I am on the new user page
 	When I fill in "user_name" with "Alice Walker"
 	And I fill in "user_email" with "xxxxx@xxxxxx.com"
 	And I fill in "user_password" with "cats"
@@ -45,3 +45,26 @@ Scenario: delete last admin attempt
   And I remove admin
   And I confirm the popup
   Then I should see "Unable to delete the last admistrator."
+
+
+Scenario: change password
+	Given I am logged in as admin
+	And I am on the edit user page for "Administrator"
+	When I fill in "user_name" with "Alice Walker"
+	And I fill in "user_email" with "Example2@admin.com"
+	And I fill in "user_password" with "dogs"
+	And I fill in "user_password_confirmation" with "dogs"
+	And I press "Update User Info"
+	Then I should be on the user page
+	And I should see "Account updated!"
+
+Scenario: Passwords not the same
+	Given I am logged in as admin
+	And I am on the edit user page for "Administrator"
+	When I fill in "user_name" with "Alice Walker"
+	And I fill in "user_email" with "Example2@admin.com"
+	And I fill in "user_password" with "dogs"
+	And I fill in "user_password_confirmation" with "cats"
+	And I press "Update User Info"
+	Then I am on the edit user page for "Administrator"
+	And I should see "Passwords aren't the same"

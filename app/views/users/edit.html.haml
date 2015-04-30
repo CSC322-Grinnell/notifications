@@ -7,6 +7,10 @@
   %br/
   = label :user, :email, 'Email'
   = text_field :user, 'email'
+  = label :user, :password
+  = password_field :user, :password
+  = label :user, :password_confirmation
+  = password_field :user, :password_confirmation
   = label :user, :admin, 'Admin'
   = check_box :user, :admin, {}, "true", "false"
   %br/

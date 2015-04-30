@@ -32,15 +32,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      flash[:notice] = 'Account updated!'
-      redirect_to '/user'
-    else
-      render action: :edit
-    end
-  end
+      @user = User.find(params[:id])
+      if (params[:user][:password]==(params[:user][:password_confirmation]))
 
+        @user.update_attribute(:name , params[:user][:name])
+        @user.update_attribute(:email , params[:user][:email])
+        @user.update_attribute(:password , params[:user][:password])
+        @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
+        @user.update_attribute(:admin , params[:user][:admin])
+        flash[:notice] = "Account updated!"
+        redirect_to '/user'
+    else
+      flash[:notice] = "Passwords aren't the same"
+       render :action => :edit
+    end
+    end
   def destroy
     num_admin = User.find_all_by_admin(true)
 
