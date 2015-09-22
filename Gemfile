@@ -22,7 +22,7 @@ gem 'simplecov'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'debugger'
+  gem 'pry-byebug'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'capybara'
