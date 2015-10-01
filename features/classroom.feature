@@ -1,4 +1,4 @@
-Feature: Group stuents into classrooms
+Feature: Group students into classrooms
 
   As an administrator
   so that teachers can notify one class at a time
@@ -7,7 +7,7 @@ Feature: Group stuents into classrooms
   Background: there are students in the database
 
   Given the following classrooms exist:
-  | name |
+  | name |it check 
   | Avengers    |
   | Room A   |
   | Room B |
