@@ -12,10 +12,17 @@
   %br/
   = form.password_field :password
 %p
-  = form.label :password_confirmation, 'password confirmation'
+  = form.label :password_confirmation, 'Password confirmation'
   %br/
   = form.password_field :password_confirmation
 %p
   = form.label :admin
   %br/
   = form.check_box :admin, {}, "true", "false"
+%p
+  = form.label :classroom, 'Classroom'
+  %br/
+  - @userclassroom.each do |theclass|
+    =form.label theclass.name
+    =form.check_box :classroom, {}, "true", "false"
+
