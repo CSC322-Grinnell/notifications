@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @userclassroom = Classroom.all
   end
 
   def create
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
     @user = current_user
     @users = User.all
   end
-
+  
   def edit
     @user = User.find(params[:id])
   end
@@ -60,4 +61,5 @@ class UsersController < ApplicationController
     end
     redirect_to '/user'
   end
+  
 end
