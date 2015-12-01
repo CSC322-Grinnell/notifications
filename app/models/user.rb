@@ -9,4 +9,6 @@ attr_accessible :login, :email, :persistence_token, :name, :password, :password_
   end # block optional
 
 validates_inclusion_of :admin, :in => [true, false]
+
+has_and_belongs_to_many :classrooms
 end
