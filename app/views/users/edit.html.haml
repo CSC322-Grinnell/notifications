@@ -13,5 +13,9 @@
   = password_field :user, :password_confirmation
   = label :user, :admin, 'Admin'
   = check_box :user, :admin, {}, "true", "false"
+  = label :user, :classroom, 'Classroom'
+  - Classroom.all.each do |theclass|
+    = theclass.name 
+    =check_box :user, :classroom, {}, "true", "false" 
   %br/
   = submit_tag 'Update User Info'
