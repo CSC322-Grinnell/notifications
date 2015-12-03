@@ -2,6 +2,7 @@
 class ClassroomsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin, except: [:index, :show]
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @classroom = Classroom.all
@@ -14,6 +15,7 @@ class ClassroomsController < ApplicationController
 
   def new
     @classroom = Classroom.new
+    @users = User.all
   end
 
   def edit
@@ -36,4 +38,16 @@ class ClassroomsController < ApplicationController
     flash[:notice] = 'Classroom deleted.'
     redirect_to '/classrooms'
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_classroom
+      @classroom = Classroom.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:classroom).permit(:name, :user_ids => [])
+    end
+    
 end

@@ -13,7 +13,6 @@
         %tr
           %td= user.name
           %td= user.email
-          %td= user.classroom
           %td= link_to "Edit", edit_user_path(user)
           %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
 

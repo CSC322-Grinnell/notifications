@@ -1,5 +1,6 @@
 %h1 Listing of Classrooms
-
+%th Users
+%td= @classroom.users.map {|c| c.name}.join(', ')
 %table{:style=>"border: 1px; width: 50%"}
   %tr
 

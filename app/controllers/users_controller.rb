@@ -1,10 +1,15 @@
 # Controller for Users such as teachers and administrators
 class UsersController < ApplicationController
   before_filter :require_user, :require_admin
+  #probably need this?
+  before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
-    @userclassroom = Classroom.all
+    @classrooms = Classroom.all
+    #temp = Resource.create!(resource_params)
+    #temp.category_ids = params[:category_ids]
+    #temp.save!
   end
 
   def create
@@ -61,5 +66,16 @@ class UsersController < ApplicationController
     end
     redirect_to '/user'
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:name, :classroom_ids => [])
+    end
   
 end

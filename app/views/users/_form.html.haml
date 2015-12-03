@@ -22,7 +22,8 @@
 %p
   = form.label :classroom, 'Classroom'
   %br/
-  - @userclassroom.each do |theclass|
-    =form.label theclass.name
-    =form.check_box :classroom, {}, "true", "false"
+  #Must be fixed
+  #- @userclassroom.all.each do |theclass|
+   # = check_box_tag 'classroom_ids[]', theclass.id, :required =>true
+   # = theclass.name
 
