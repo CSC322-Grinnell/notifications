@@ -16,6 +16,6 @@
   = label :user, :classroom, 'Classroom'
   - Classroom.all.each do |theclass|
     = theclass.name 
-    =check_box :user, :classroom, {}, if params[:classroom]; params[:classroom].include?(theclass) else true end 
+    = check_box :user, :classroom, {}, if 'classroom'; 'classroom' == theclass else false end 
   %br/
   = submit_tag 'Update User Info'

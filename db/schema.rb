@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20151201035307) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin",               :default => false
+    t.string   "classroom"
   end
 
 end
