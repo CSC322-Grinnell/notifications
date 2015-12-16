@@ -2,11 +2,10 @@
 class UsersController < ApplicationController
   before_filter :require_user, :require_admin
   #probably need this?
-  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+#  before_filter :set_user, only: [:show, :edit, :update, :destroy]
 
   def new
     @user = User.new
-    @classrooms = Classroom.all
     #temp = Resource.create!(resource_params)
     #temp.category_ids = params[:category_ids]
     #temp.save!
@@ -38,6 +37,7 @@ class UsersController < ApplicationController
   end
 
   def update
+#      params[:user][:classroom_ids] ||= []
       @user = User.find(params[:id])
       if (params[:user][:password]==(params[:user][:password_confirmation]))
 
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:password , params[:user][:password])
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
+        @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
         flash[:notice] = 'Account updated!'
         redirect_to '/user'
       else

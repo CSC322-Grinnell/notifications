@@ -2,7 +2,7 @@
 class ClassroomsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin, except: [:index, :show]
-  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :set_classroom, only: [:show, :edit, :update, :destroy]
 
   def index
     @classroom = Classroom.all

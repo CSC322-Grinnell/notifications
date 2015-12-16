@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(:version => 20151201035307) do
   end
 
   create_table "classrooms_students", :id => false, :force => true do |t|
-    t.integer "classrooms_id"
-    t.integer "students_id"
+    t.integer "classroom_id"
+    t.integer "student_id"
   end
 
   create_table "classrooms_users", :id => false, :force => true do |t|
-    t.integer "users_id"
-    t.integer "classrooms_id"
+    t.integer "user_id"
+    t.integer "classroom_id"
   end
 
   create_table "students", :force => true do |t|
@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(:version => 20151201035307) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin",               :default => false
-    t.string   "classroom"
   end
 
 end
