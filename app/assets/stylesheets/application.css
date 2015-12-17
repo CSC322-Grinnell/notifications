@@ -30,8 +30,12 @@ padding: 0 20px 20px 20px;
 }
 .back {
     margin-left:3em;
-    font-size:12pt;
     display:block;
+}
+.back a{
+    color: #29393f;
+    font-size:12pt;
+    font-weight:bold;
 }
 .del {
     color: #dd7373;
