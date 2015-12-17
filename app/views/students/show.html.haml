@@ -1,30 +1,33 @@
-%p
-  %b Student name:
-  = @student.Student_Name
-%p
-  %b Parent name:
-  = @student.Parent_Name
-%p
-  %b Phone number:
-  = @student.Phone_Number
-%p
-  %b Email:
-  = @student.Email
-%p
-  %b Can text:
-  = @student.can_text
-%p
-  %b Classroom:
-  - @student.classrooms.each do |room|
-    = room.name
-
-= link_to 'Send Text', text_index_path(:student_name => @student.Student_Name)
-\|
-- if admin?
-  = link_to 'Edit', edit_student_path(@student)
-  \|
-= link_to 'Back', students_path
-\|
-- if admin?
-  = link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
-
+#kids
+  %p
+    %b Student name:
+    = @student.Student_Name
+  %p
+    %b Parent name:
+    = @student.Parent_Name
+  %p
+    %b Phone number:
+    = @student.Phone_Number
+  %p
+    %b Email:
+    = @student.Email
+  %p
+    %b Can text:
+    = @student.can_text
+  %p
+    %b Classroom:
+    - @student.classrooms.each do |room|
+      = room.name
+  %br
+      
+  .links
+    = link_to 'Send Text', text_index_path(:student_name => @student.Student_Name)
+    \|
+    - if admin?
+      = link_to 'Edit', edit_student_path(@student)
+      \|
+    = link_to 'Back', students_path
+    \|
+    - if admin?
+      = link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  
