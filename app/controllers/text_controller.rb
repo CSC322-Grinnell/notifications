@@ -141,11 +141,12 @@ class TextController < ApplicationController
   end
 
   def parse_classroom
-    a_classroom_name = Classroom.find_by_id(@classroom_id).name
-
-    Student.find_all_by_classroom_name(a_classroom_name).each do |student|
+    a_classroom = Classroom.find_by_id(@classroom_id)
+    
+    a_classroom.students.each do |student|
       @pop_value += student.Student_Name + ', '
     end
+
     @pop_value = @pop_value[0..-3]
   end
 end
