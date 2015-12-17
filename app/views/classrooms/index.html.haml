@@ -5,12 +5,12 @@
   
   - current_user.classrooms.each do |room|
     %tr
-      %td= link_to room.name, room
+      %td.links= link_to room.name, room
       - if admin?
-        %td= link_to 'Remove', room, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td.del= link_to 'Remove', room, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-.links
+.new
   - if admin?
     = link_to 'Add New Classroom', new_classroom_path

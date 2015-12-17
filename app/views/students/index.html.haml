@@ -21,11 +21,11 @@
         %td= student.Phone_Number
         %td= student.Email
         %td= student.can_text ? "Yes" : "No"
-        %td= link_to "Show #{student.Student_Name}", student
+        %td.links= link_to "Show #{student.Student_Name}", student
         -if admin?
-          %td= link_to 'Edit', edit_student_path(student)
-          %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td.links= link_to 'Edit', edit_student_path(student)
+          %td.rem= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
-.links
+.new
   - if admin?
     = link_to 'Add New Student', new_student_path

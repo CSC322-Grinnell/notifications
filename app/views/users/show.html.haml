@@ -17,8 +17,8 @@
             - user.classrooms.each do |room|
               = room.name 
               %br
-          %td= link_to "Edit", edit_user_path(user)
-          %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
+          %td.links= link_to "Edit", edit_user_path(user)
+          %td.rem= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
 
-.links
+.new
   = link_to "New User", new_user_path
