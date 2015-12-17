@@ -1,41 +1,56 @@
 html, body {
 margin: 0;
 padding: 0;
-background: White;
-color: darkslategrey;
-font-family: Tahoma, Verdana, sans-serif;
+background: #c0e2d9;
+color: #212e33;
+font-family: 'Play', sans-serif;
 font-size: 10pt;
 }
+
 #main {
 margin: 0;
 padding: 0 20px 20px;
 }
+#top{
+    text-align:center;
+    color: #29393f;
+}
+.links{
+    color: #798478;
+    text-align:right;
+    margin-right:5em;
+}
+.back{
+    margin-left:3em;
+    font-size:12pt;
+}
 a {
 background: transparent;
-color: maroon;
 text-decoration: underline;
 font-weight: bold;
+color: #29393f;
 }
 h1 {
-color: maroon;
+color: #212e33;
 font-size: 150%;
-font-style: italic;
 display: block;
 width: 100%;
-border-bottom: 1px solid darkslategrey;
+border-bottom: 1px solid #212e33;
 padding: 10px;
+font-family: 'Play', sans-serif;
 }
 .title {
 margin: 0 0 1em;
 padding: 10px;
-background-color: lightblue;
+background-color: #587b7f;
 color: white;
-border-bottom: 4px solid gold;
+border-bottom: 4px solid #212e33;
 font-size: 2em;
 font-style: normal;
+font-family: 'Play', sans-serif;
 }
 #notice {
-color: brown;
+color: #dd7373;
 text-indent: 20px;
 }
 #warning {
@@ -48,8 +63,8 @@ display: block;
 font-weight: bold;
 color: teal;
 }
-form  {
-margin: 1m 2em;
+form {
+margin: 1em 2em;
 }
 input{
 display: block;
@@ -57,15 +72,21 @@ display: block;
 #users {
 margin: 10px;
 border-collapse: collapse;
-width: 100%;
+width: 90%;
 border-bottom: 2px solid black;
 }
 #users th{
-border: 2px solid white;
+border: 2px solid #c0e2d9;
 font-weight: bold;
-background-color: aliceblue;
+background-color: #587b7f;
 }
 #users th, #users td{
 padding: 4px;
 text-align: left;
+}
+#kids{
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    width:50%;
 }

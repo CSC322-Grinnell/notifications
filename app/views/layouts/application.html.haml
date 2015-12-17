@@ -4,18 +4,21 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    %link{:href => 'https://fonts.googleapis.com/css?family=Play',
+          :rel => 'stylesheet', :type => 'text/css'}
   %body
     %h1.title Head Start
-    - if admin?
-      = link_to 'List of Users', '/user'
+    #top
+      - if admin?
+        = link_to 'List of Users', '/user'
+        \&nbsp 
+      = link_to 'Send Message', '/text'
       \&nbsp 
-    = link_to 'Send Message', '/text'
-    \&nbsp 
-    = link_to 'List of Students', '/students'
-    \&nbsp 
-    = link_to 'Classrooms', '/classrooms'
-    \&nbsp 
-    = link_to 'Logout', '/logout'
+      = link_to 'List of Students', '/students'
+      \&nbsp 
+      = link_to 'Classrooms', '/classrooms'
+      \&nbsp 
+      = link_to 'Logout', '/logout'
     %br/
     #main
       %br/
@@ -24,3 +27,6 @@
       - elsif flash[:warning]
         #warning.message= flash[:warning]
     = yield
+
+
+//'https://fonts.googleapis.com/css?family=Oswald:400,300'

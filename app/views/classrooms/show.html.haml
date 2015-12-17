@@ -1,21 +1,25 @@
 %h1 #{@classroom.name}
 
-%table
-  %tr
-    %th Student Name
-    %th
-
-  - Student.find_all_by_classroom_name(@classroom.name.to_s).each do |student|
+#kids
+  %table
     %tr
-      %td= student.Student_Name
-      %td= link_to "Details", student
-%br
-
-= link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
+      %th Student Name
+      %th
+      
+    - @classroom.students.each do |student|
+      %tr
+        %td= student.Student_Name
+        %td= link_to "Details", student
+      
+  %br
+  %br
+  = link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
 %br 
 %br
-= link_to 'Back', classrooms_path
+%br
+.back
+  = link_to 'Back', classrooms_path
 
-- if admin?
-  \|
-  = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  - if admin?
+    \|
+    = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
