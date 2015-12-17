@@ -9,17 +9,19 @@
     - @classroom.students.each do |student|
       %tr
         %td= student.Student_Name
-        %td= link_to "Details", student
+        %td.links= link_to "Details", student
       
   %br
   %br
-  = link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
-%br 
-%br
-%br
-.back
-  = link_to 'Back', classrooms_path
-
-  - if admin?
-    \|
-    = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  .links
+    = link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
+  %br 
+  %br
+  %br
+  .new
+    = link_to 'Back', classrooms_path
+  
+    - if admin?
+      \|
+      .del
+        = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
