@@ -2,12 +2,12 @@
 
 %table{:style=>"border: 1px; width: 50%"}
   %tr
-
-  - @classroom.each do |classroom|
+  
+  - current_user.classrooms.each do |room|
     %tr
-      %td= link_to classroom.name, classroom
+      %td= link_to room.name, room
       - if admin?
-        %td= link_to 'Remove', classroom, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Remove', room, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

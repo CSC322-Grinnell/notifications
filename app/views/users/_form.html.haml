@@ -1,21 +1,20 @@
 = render "shared/error_messages", :target => @user
 %p
   = form.label :name
-  %br/
   = form.text_field :name
 %p
   = form.label :email
-  %br/
   = form.text_field :email
 %p
   = form.label :password, form.object.new_record? ? nil : "Change password"
-  %br/
   = form.password_field :password
 %p
-  = form.label :password_confirmation, 'password confirmation'
-  %br/
+  = form.label :password_confirmation, 'Password confirmation'
   = form.password_field :password_confirmation
 %p
   = form.label :admin
-  %br/
   = form.check_box :admin, {}, "true", "false"
+%p
+  - for classroom in Classroom.find(:all)
+    = classroom.name
+    = check_box_tag "user[classroom_ids][]", classroom.id, @user.classrooms.include?(classroom)
