@@ -1,25 +1,30 @@
 %h1 Listing students
 
-%table
+%table#users
   %tr
-    %th Student name
-    %th Parent name
+    %th Student
+    %th Parent
     %th Phone number
     %th Email
-    %th Available
+    %th Can Text?
     %th
-
-  - @students.each do |student|
+    %th
+    %th
+    
+  - current_user.classrooms.each do |room|
     %tr
-      %td= student.Student_Name
-      %td= student.Parent_Name
-      %td= student.Phone_Number
-      %td= student.Email
-      %td= student.can_text
-      %td= link_to "Show #{student.Student_Name}", student
-      -if admin?
-        %td= link_to 'Edit', edit_student_path(student)
-        %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th{:colspan => 8}= room.name
+    - room.students.each do |student|
+      %tr
+        %td= student.Student_Name
+        %td= student.Parent_Name
+        %td= student.Phone_Number
+        %td= student.Email
+        %td= student.can_text ? "Yes" : "No"
+        %td= link_to "Show #{student.Student_Name}", student
+        -if admin?
+          %td= link_to 'Edit', edit_student_path(student)
+          %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 - if admin?
   = link_to 'Add New Student', new_student_path

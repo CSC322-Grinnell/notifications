@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         flash[:notice] = "Passwords aren't the same"
         render :action => :edit
       end
-    end
+  end
 
   def destroy
     num_admin = User.find_all_by_admin(true)

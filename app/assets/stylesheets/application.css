@@ -6,7 +6,7 @@ color: darkslategrey;
 font-family: Tahoma, Verdana, sans-serif;
 font-size: 10pt;
 }
-div#main {
+#main {
 margin: 0;
 padding: 0 20px 20px;
 }
@@ -23,8 +23,9 @@ font-style: italic;
 display: block;
 width: 100%;
 border-bottom: 1px solid darkslategrey;
+padding: 10px;
 }
-h1.title {
+.title {
 margin: 0 0 1em;
 padding: 10px;
 background-color: lightblue;
@@ -48,23 +49,23 @@ font-weight: bold;
 color: teal;
 }
 form  {
-margin: 0 2em;
+margin: 1m 2em;
 }
 input{
 display: block;
 }
-table#users {
+#users {
 margin: 10px;
 border-collapse: collapse;
 width: 100%;
 border-bottom: 2px solid black;
 }
-table#users th {
+#users th{
 border: 2px solid white;
 font-weight: bold;
 background-color: aliceblue;
 }
-table#users th, table#users td {
+#users th, #users td{
 padding: 4px;
 text-align: left;
 }
