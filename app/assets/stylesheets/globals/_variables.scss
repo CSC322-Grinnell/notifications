@@ -1,0 +1,17 @@
+/* font types */
+
+$serif: Georgia, serif;
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/* font styles */
+
+$title-font-size: 42px;
+$headline-font-size: 26px;
+$sub-headline-font-size: 20px;
+$base-font-size: 16px;
+$small-font-size: 13px;
+
+/* font-positioning */
+
+$baseline: 25px;
+$base-line-height: ($baseline/$base-font-size);
