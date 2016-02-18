@@ -20,6 +20,9 @@ gem 'twilio-ruby'
 gem 'rubocop'
 gem 'simplecov'
 
+# In order to avoid the json 1.8.1 bug (https://travis-ci.org/CSC322-Grinnell/notifications/jobs/110022386), force an unbroken version
+  gem 'json', '~>1.8.2'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'pry-byebug'
