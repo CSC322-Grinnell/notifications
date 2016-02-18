@@ -20,6 +20,8 @@ gem 'twilio-ruby'
 gem 'rubocop'
 gem 'simplecov'
 
+gem 'normalize-rails'
+
 # In order to avoid the json 1.8.1 bug (https://travis-ci.org/CSC322-Grinnell/notifications/jobs/110022386), force an unbroken version
   gem 'json', '~>1.8.2'
 
