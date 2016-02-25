@@ -1,0 +1,26 @@
+.button {
+    @include no-select();
+    cursor: hand;
+
+    height: 30px;
+    padding: 14px 24px;
+
+    border-radius: 12px;
+    border-bottom: 2px double mix($action-color, $site-black);
+
+    font-size: $sub-headline-font-size;
+
+    color: $site-white;
+    background-color: $action-color;
+    box-shadow: 1px 1px 10px $site-black;
+}
+
+.button:hover {
+    background-color: lighten($action-color, 6);
+}
+
+.button:active {
+    color: lighten($site-white, 5);
+    background-color: darken($action-color, 3);
+    border-bottom: 2px solid mix($action-color-light, $site-black);
+}
