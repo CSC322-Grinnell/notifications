@@ -1,4 +1,17 @@
 %h2 Login
+
+%br
+%br
+%a.button.button-small
+  I'm a little button!
+%br
+%br
+%a.button
+  I'm a normal-sized button.
+%br
+%br
+%a.button.button-samcustombutton
+  I'm a very large button!
 = form_for @user_session, :as => :user_session, :url => { :action => "create" } do |f|
   = render "shared/error_messages", :target => @user_session
   = f.label :email
