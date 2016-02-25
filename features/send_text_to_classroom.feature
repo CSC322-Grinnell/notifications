@@ -12,10 +12,10 @@ Feature: Send a text to all members of a classroom
   | Room B    |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
-  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com    | Room A    |
-  | Rachel       | Papa        | 2532363623   | potato@gmail.com           | Room B    |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 1    |
+  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com    | 1    |
+  | Rachel       | Papa        | 2532363623   | potato@gmail.com           | 2    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |

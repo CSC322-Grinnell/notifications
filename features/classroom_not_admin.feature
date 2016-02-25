@@ -12,10 +12,10 @@ Feature: Group stuents into classrooms as a techer
   | Room B |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_name |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | Room A         |
-  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | Room A         |
-  | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | Room A         |
+  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | 2       |
+  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | 2         |
+  | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | 2         |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
