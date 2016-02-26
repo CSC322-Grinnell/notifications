@@ -129,6 +129,7 @@ GEM
     netrc (0.10.3)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    normalize-rails (3.0.3)
     parser (2.3.0.6)
       ast (~> 2.2)
     pg (0.18.4)
@@ -270,6 +271,7 @@ DEPENDENCIES
   jquery-rails
   json (~> 1.8.2)
   launchy
+  normalize-rails
   pg
   poltergeist
   pry-byebug
@@ -284,6 +286,3 @@ DEPENDENCIES
   test-unit
   twilio-ruby
   uglifier (>= 1.0.3)
-
-BUNDLED WITH
-   1.11.2

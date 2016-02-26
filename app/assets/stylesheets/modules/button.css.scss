@@ -1,0 +1,56 @@
+$button-margin: 5px;
+$button-border-height: 2px;
+
+@mixin button-measurements($height) {
+    $adjusted-height: $height - ($button-margin * 2);
+    height: $adjusted-height;
+    line-height: $adjusted-height * 0.5;
+    font-size: $adjusted-height * 0.5;
+    padding-top: $adjusted-height * 0.25;
+    padding-bottom: $adjusted-height * 0.25;
+}
+
+.button {
+
+    // These styles are unique to .button and do not apply for .button-small / large
+    @include button-measurements($baseline * 3);
+
+    // These styles are independent of button size
+    @include no-select();
+    cursor: hand;
+
+    display: inline-block;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-top: $button-margin;
+    margin-bottom: $button-margin;
+
+    border-radius: 12px;
+    border-bottom: $button-border-height double mix($action-color, $site-black);
+
+    color: $site-white;
+    background-color: $action-color;
+    box-shadow: 1px 1px 10px $site-black;
+}
+
+.button:hover {
+    background-color: lighten($action-color, 6);
+}
+
+.button:active {
+    color: lighten($site-white, 5);
+    background-color: darken($action-color, 3);
+    border-bottom: 2px solid mix($action-color-light, $site-black);
+}
+
+.button-small {
+    @include button-measurements($baseline * 2);
+}
+
+.button-large {
+    @include button-measurements($baseline * 4);
+}
+
+.button-samcustombutton {
+    @include button-measurements($baseline * 5);
+}
