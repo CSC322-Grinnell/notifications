@@ -20,7 +20,8 @@ gem 'twilio-ruby'
 gem 'rubocop'
 gem 'simplecov'
 
-gem 'normalize-rails' # resets base browser styles. see this url for the styles added. https://goo.gl/SzZnY2
+# Normalize.css is a customisable CSS file that makes browsers render all elements more consistently and in line with modern standards.
+gem 'normalize-rails'
 
 # In order to avoid the json 1.8.1 bug (https://travis-ci.org/CSC322-Grinnell/notifications/jobs/110022386), force an unbroken version
   gem 'json', '~>1.8.2'
