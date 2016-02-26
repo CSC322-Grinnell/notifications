@@ -1,4 +1,7 @@
 language: ruby
+os:
+  - linux
+  - osx
 rvm:
   - 2.1.8
   - 2.2.4
@@ -11,11 +14,6 @@ install:
 script:
   # Run Cucumber Tests
   - bundle exec cucumber
-
-env:
-  - CODECLIMATE_REPO_TOKEN=5acf4ceee0826ad589992619d7853700dc0ad494dd5fd104c99378af22f819e8
-  - ISOLATED=true
-  - ISOLATED=false
 
 matrix:
   # Return results after first failure for required versions, or after all that
@@ -32,3 +30,7 @@ matrix:
 #   useful if you are performing git operations."
 git:
   depth: 3
+
+addons:
+    code_climate:
+        repo_token: 5acf4ceee0826ad589992619d7853700dc0ad494dd5fd104c99378af22f819e8
