@@ -50,7 +50,3 @@ $button-border-height: 2px;
 .button-large {
     @include button-measurements($baseline * 4);
 }
-
-.button-samcustombutton {
-    @include button-measurements($baseline * 5);
-}
