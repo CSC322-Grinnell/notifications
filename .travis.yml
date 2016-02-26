@@ -13,6 +13,7 @@ script:
   - bundle exec cucumber
 
 env:
+  - CODECLIMATE_REPO_TOKEN=5acf4ceee0826ad589992619d7853700dc0ad494dd5fd104c99378af22f819e8
   - ISOLATED=true
   - ISOLATED=false
 

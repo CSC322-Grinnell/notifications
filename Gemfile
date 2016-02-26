@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-#ruby '2.0.0'
 gem 'rails', '3.2.16'
 gem 'rails_12factor'
 
@@ -39,6 +38,9 @@ end
 group :test do
   gem 'cucumber-rails'
   gem 'cucumber-rails-training-wheels'
+  # CodeClimate reports test coverage and scores the DRYness and readibility of
+  #  the project.
+  gem 'codeclimate-test-reporter'
 end
 
 group :production do
