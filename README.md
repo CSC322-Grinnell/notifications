@@ -1,4 +1,4 @@
-# Head Start Parent Notifications [![Build Status](https://travis-ci.org/CSC322-Grinnell/notifications.svg?branch=dev)](https://travis-ci.org/CSC322-Grinnell/notifications)
+# Head Start Parent Notifications [![Build Status](https://travis-ci.org/CSC322-Grinnell/notifications.svg?branch=dev)](https://travis-ci.org/CSC322-Grinnell/notifications)[![Test Coverage](https://codeclimate.com/github/CSC322-Grinnell/notifications/badges/coverage.svg)](https://codeclimate.com/github/CSC322-Grinnell/notifications/coverage)
 =============
 Make it easy for Head Start teachers to notify parents of school closures and other events via text messages.
 
