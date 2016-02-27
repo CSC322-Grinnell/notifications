@@ -13,26 +13,26 @@
 
 # Project Layout 
 
-This project uses [Sass](http://sass-lang.com/), Syntactically Awesome Style Sheets, for ease of use but mainly to achieve very modular code.  There is no overhead to this process and the client is only served one minified .css file, compiled from all the .css.csss files.  
+This project uses [**Sass**](http://sass-lang.com/), Syntactically Awesome Style Sheets, for ease of use but mainly to achieve very modular code.  There is no overhead to this process and the client is only served one minified .css file, compiled from all the .css.csss files.  
 
-To manage the code, we use a simplified variant of [SMACSS](https://smacss.com/) (Scalable and Modular Architecture for CSS).  SMACSS is a style guide and design process and is used in this process.
+To manage the code, we use a simplified variant of [**SMACSS**](https://smacss.com/) (Scalable and Modular Architecture for CSS).  SMACSS is a style guide and design process and is used in this process.
 
 Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts of modules, layout, and globals directories.
 
 ----
 
-- Modules: a discrete, reusable component of a page
+- **Modules**: a discrete, reusable component of a page
     - Modules should function identically or similarly regardless of where they are used on the page.
     - Examples of modules include [buttons](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/modules/button.css.scss), dialog boxes, or error messages.
 
-- Layouts: specific sections of the page.
+- **Layouts**: specific sections of the page.
     - Layout styles define the major components regarding the structure of the page. 
     - Generally, a layout style only has a single selector: a single ID or class name.
         - Major sections like header or footer should use an ID selector, while minor sections should probably use class selectors.
     - For example, a "navbar" section of a page would have its own separate navbar.scss file inside of the layout folder.
         - It may contain selectors that target child elements, such as "#navbar .left-pane", "#navbar .image", etc.
 
-- Globals: reusable variables, mixins, and functions
+- **Globals**: reusable variables, mixins, and functions
     - Any code that is used in more than one file goes here.
 
 - [base.css.scss](https://github.com/CSC322-Grinnell/notifications/blob/css-documentation/app/assets/stylesheets/base.css.scss)
@@ -62,13 +62,13 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 
 ## Overview
 
-- Use *kebab-case* for all variable, mixin, and function names.
+1. Use *kebab-case* for all variable, mixin, and function names.
     > Kebab-case `looks-like-this`, it doesn't `lookLikeThis`.  Don't use CamelCase!
 
-- Do not use Sass modules (the `@extend` keyword)
+2. Do not use Sass modules (the `@extend` keyword).
     > `@extend` hides functionality, cannot accept arguments, and cannot be used across media queries
 
-- Ordering of style sections:
+3. Order your code in a logical manner.
     - Variable declarations come first - `$border-width = 3px`
     - Include mixins next - `@include no-select();`
     - List regular styles next. - `display: block;`
@@ -77,25 +77,26 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 
     An example block with properly ordered sections:
 
-```sass
-.some-class {
-    $color: #123456;
+    ```sass
+    .some-class {
 
-    @extend %module; 
-    @include some-mixin($color);
+        $color: #123456;
 
-    background: teal;
+        @extend %module; 
+        @include some-mixin($color);
 
-    &::after {
-        content: "";
-        display: block;
+        background: teal;
+
+        &::after {
+            content: "";
+            display: block;
+        }
+        > h3 {
+            @include a-different-mixin($color, 20);
+            border-bottom: 1px solid blue;
+        }
     }
-    > h3 {
-        @include a-different-mixin($color, 20);
-        border-bottom: 1px solid blue;
-    }
-}
-```
+    ```
 ----
 
 ## Variables
@@ -114,22 +115,3 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 # General
 
 # Contributing
-
-
-
-### Declare all variables first
-
-
-### Declare mixins second
-
-    * If a mixin is used in more than one file, define it in the mixins file.
-
-
-### Declare styles next
-
-### Indentation
-    * 4 spaces per indentation level.  Do not use tabs.
-    * 
-
-Be consistant about where spaces before/after colons/braces go
-
