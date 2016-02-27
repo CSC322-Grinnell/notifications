@@ -6,6 +6,11 @@
 ##### 4. [Contributing](#contributing)
 ##### 5. [Credits](#credits)
 
+
+
+----
+----
+
 # Project Layout 
 
 This project uses [Sass](http://sass-lang.com/), Syntactically Awesome Style Sheets, for ease of use but mainly to achieve very modular code.  There is no overhead to this process and the client is only served one minified .css file, compiled from all the .css.csss files.  
@@ -30,9 +35,8 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 - Globals: reusable variables, mixins, and functions
     - Any code that is used in more than one file goes here.
 
-- README.md
-- [base.css.scss]()
-- [application.css.scss]()
+- [base.css.scss](https://github.com/CSC322-Grinnell/notifications/blob/css-documentation/app/assets/stylesheets/base.css.scss)
+- [application.css.scss](https://github.com/CSC322-Grinnell/notifications/blob/css-documentation/app/assets/stylesheets/application.css.scss)
 - [globals](https://github.com/CSC322-Grinnell/notifications/tree/dev/app/assets/stylesheets/globals)
     - [_all.css](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/globals/_all.scss)
     - [_functions.css](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/globals/_functions.scss)
@@ -58,14 +62,41 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 
 ## Overview
 
-
-    - 
-
 - Use *kebab-case* for all variable, mixin, and function names.
-    > Kebab-case looks-like-this, it doesn't lookLikeThis.  Don't use CamelCase!
+    > Kebab-case `looks-like-this`, it doesn't `lookLikeThis`.  Don't use CamelCase!
 
-- Consider running [CSScomb](http://csscomb.com/) on your code to ensure it is in-line with these style rules
+- Do not use Sass modules (the `@extend` keyword)
+    > `@extend` hides functionality, cannot accept arguments, and cannot be used across media queries
 
+- Ordering of style sections:
+    - Variable declarations come first - `$border-width = 3px`
+    - Include mixins next - `@include no-select();`
+    - List regular styles next. - `display: block;`
+    - Nested pseudo classes next. - `&::before {}` or `&::hover {}` 
+    - Nested selectors last - `li {}` or `> h3`
+
+    An example block with properly ordered sections:
+
+```sass
+.some-class {
+    $color: #123456;
+
+    @extend %module; 
+    @include some-mixin($color);
+
+    background: teal;
+
+    &::after {
+        content: "";
+        display: block;
+    }
+    > h3 {
+        @include a-different-mixin($color, 20);
+        border-bottom: 1px solid blue;
+    }
+}
+```
+----
 
 ## Variables
 
@@ -102,8 +133,3 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 
 Be consistant about where spaces before/after colons/braces go
 
-List extends first.
-List includes next.
-List regular styles next.
-Nested pseudo classes next. (hover, clicked)
-Nested selectors last. (subclasses)
