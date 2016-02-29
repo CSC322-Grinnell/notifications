@@ -30,6 +30,3 @@ matrix:
 git:
   depth: 3
 
-addons:
-    code_climate:
-        repo_token: 5acf4ceee0826ad589992619d7853700dc0ad494dd5fd104c99378af22f819e8
