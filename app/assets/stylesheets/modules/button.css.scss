@@ -25,18 +25,18 @@ $button-border-height: 2px;
 
     cursor: hand;
 
-    color: $site-white;
-    border-bottom: $button-border-height double mix($action-color, $site-black);
+    color: white;
+    border-bottom: $button-border-height double mix($primary-color-dark, black);
     border-radius: 12px;
-    background-color: $action-color;
-    box-shadow: 1px 1px 10px $site-black;
+    background-color: $primary-color;
+    box-shadow: 1px 1px 10px black;
     &:hover {
-        background-color: lighten($action-color, 6);
+        background-color: lighten($primary-color-dark, 6);
     }
     &:active {
-        color: lighten($site-white, 5);
-        border-bottom: 2px solid mix($action-color-light, $site-black);
-        background-color: darken($action-color, 3);
+        color: lighten(white, 5);
+        border-bottom: 2px solid mix($primary-color, black);
+        background-color: darken($primary-color, 3);
     }
 }
 
