@@ -18,24 +18,20 @@ $base-line-height: ($baseline/$base-font-size);
 
 /* colors */
 
-$site-black: #313C35;
-$site-white: #DBE6DF;
 
-$primary-color: #1F964B;
-$primary-color-dark: #005B22;
-$primary-color-light: #61BE83;
+$primary-color: #8DAF2D; // use with white font
 
-$secondary-color: #CE802B;
-$secondary-color-dark: #7D4100;
-$secondary-color-light: #FFC382;
+// maybe use this for white #FCFDF9
 
-$action-color: #7D1600;
-$action-color-light: #CE472B;
-$action-color-accent: #FF9882;
+$primary-color-dark: #5E751E; // use with white font
+$secondary-color: #F2C83E; // use with brown font
+$tertiary-color: #DB8A11; // use with white font
 
-$link-color: #5891A7;
-$link-color-hovered: #1F6681;
-$link-color-clicked: #033A4E;
+$white-font: white;
+$brown-font: #492E05; 
+
+$creamcolor: #F6E19B; // use with brown font
 
 
 
+$dark-cream: darken($creamcolor, 5);
