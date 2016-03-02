@@ -1,4 +1,4 @@
-Feature: Group stuents into classrooms as a techer
+Feature: Group students into classrooms as a teacher
 
   As a teacher
   I would like to be able to view and text classrooms with students
