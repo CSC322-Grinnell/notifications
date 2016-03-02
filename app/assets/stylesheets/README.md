@@ -6,8 +6,10 @@
 #### 3. [General](#general)
 #### 4. [Contributing](#contributing)
 #### 5. [Credits](#credits)
+
 ----
 ----
+
 # Project Layout 
 
 This project uses [**Sass**](http://sass-lang.com/), Syntactically Awesome Style Sheets, for ease of use but mainly to achieve very modular code.  There is no overhead to this process and the client is only served one minified .css file, compiled from all the .css.csss files.  
@@ -15,7 +17,9 @@ This project uses [**Sass**](http://sass-lang.com/), Syntactically Awesome Style
 To manage the code, we use a simplified variant of [**SMACSS**](https://smacss.com/) (Scalable and Modular Architecture for CSS).  SMACSS is a style guide and design process and is used in this process.
 
 Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts of modules, layout, and globals directories.
+
 ----
+
 - **Modules**: a discrete, reusable component of a page
     - Modules should function identically or similarly regardless of where they are used on the page.
     - Examples of modules include [buttons](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/modules/button.css.scss), dialog boxes, or error messages.
@@ -113,9 +117,13 @@ List of Mixins
 
 Use functions for general and resusable mathematical calculations.  Always declare functions in the [_functions.css](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/globals/_functions.scss) file.
 
+----
+
 # General
 
 Empty for now.
+
+----
 
 # Contributing
 
