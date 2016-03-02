@@ -1,13 +1,16 @@
 language: ruby
 os:
   - linux
+  - osx
 rvm:
   - 2.1.8
   - 2.2.4
   - 2.3.0
 
 install:
+  # Install Gems from Gemfile
   - bundle install
+  # Update database schema
   - bundle exec rake db:migrate
 
 script:
