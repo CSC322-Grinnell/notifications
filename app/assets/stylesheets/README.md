@@ -119,19 +119,17 @@ Use functions for general and resusable mathematical calculations.  Always decla
 ## Colors
 
 General Colors
-```sass
-$primary-color:      #8DAF2D
-$primary-color-dark: #5E751E
-$mica-orange:        #F2C83E
-$mica-yellow:        #DB8A11
-$mica-cream:         #F6E19B
-```
+- Green : [#8DAF2D](http://www.color-hex.com/color/8DAF2D)
+- Dark Green : [#5E751E](http://www.color-hex.com/color/5E751E)
+- Orange : [#F2C83E](http://www.color-hex.com/color/F2C83E)
+- Yellow : [#DB8A11](http://www.color-hex.com/color/DB8A11)
+- Cream : [#F6E19B](http://www.color-hex.com/color/F6E19B)
 
 Text Colors
-```sass
-$white-font:         #FCFDF9
-$brown-font:         #492E05
-```
+- White : [#FCFDF9](http://www.color-hex.com/color/FCFDF9)
+    - Use with Green, Dark Green, and Orange background
+- Brown : [#492E05](http://www.color-hex.com/color/492E05)
+    - Use with Yellow and Cream background
 
 ----
 
