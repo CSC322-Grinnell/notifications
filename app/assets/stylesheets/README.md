@@ -3,9 +3,8 @@
 ----
 #### 1. [Project Layout](#project-layout)
 #### 2. [Style Guide](#style-guide)
-#### 3. [General](#general)
-#### 4. [Contributing](#contributing)
-#### 5. [Credits](#credits)
+#### 3. [Contributing](#contributing)
+#### 4. [Credits](#credits)
 
 ----
 ----
@@ -119,12 +118,6 @@ Use functions for general and resusable mathematical calculations.  Always decla
 
 ----
 
-# General
-
-Empty for now.
-
-----
-
 # Contributing
 
 1. Fork or clone the project
@@ -134,4 +127,10 @@ Empty for now.
 5. Delegate someone to do a code review of your changes
 6. Once that is done, if the project builds without any errors, and the branches can be merged, an admin will merge the branches
 
+----
+
+# Credits
+
+- Kevin Connors
+- Camila Mateo Volkhart
 
