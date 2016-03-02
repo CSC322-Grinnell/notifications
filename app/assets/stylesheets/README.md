@@ -61,6 +61,7 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
 ##### 2. [Variables](#variables)
 ##### 3. [Mixins](#mixins)
 ##### 4. [Functions](#functions)
+##### 5. [Colors](#colors)
 
 ## Overview
 
@@ -99,7 +100,6 @@ Not all of SMACSS's design philosophy is needed, nor used.  We use the concepts 
         }
     }
     ```
-----
 
 ## Variables
 
@@ -115,6 +115,23 @@ List of Mixins
 ## Functions
 
 Use functions for general and resusable mathematical calculations.  Always declare functions in the [_functions.css](https://github.com/CSC322-Grinnell/notifications/blob/dev/app/assets/stylesheets/globals/_functions.scss) file.
+
+## Colors
+
+General Colors
+```sass
+$primary-color:      #8DAF2D
+$primary-color-dark: #5E751E
+$mica-orange:        #F2C83E
+$mica-yellow:        #DB8A11
+$mica-cream:         #F6E19B
+```
+
+Text Colors
+```sass
+$white-font:         #FCFDF9
+$brown-font:         #492E05
+```
 
 ----
 
