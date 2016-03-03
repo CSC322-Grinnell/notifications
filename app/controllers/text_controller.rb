@@ -4,21 +4,22 @@ class TextController < ApplicationController
   require 'twilio-ruby'
   before_filter :require_user
 
-  # Determines whether the previous loaded page was from one of the
-  # classrooms. If so, it prepopulates the number field with the
-  # names of the students within the classroom.
-  #  Side note-- pop_value is short for prepopulation value
-  def index
-    @pop_value = ''
-    @classroom_id = params[:classroom_id]
-    @student_name = params[:student_name]
+  def get
 
-    unless @student_name.nil?
-      @pop_value = @student_name
+  end
+
+  def post
+    text = params[:message]
+    student_ids = params[:students]
+
+    message = Message.create(contents: text, user: @user)
+
+    student_ids.each do |id|
+      student = Student.find_by_id(id)
+      Receipt.create(message: message, student: student)
     end
-    unless @classroom_id.nil?
-      parse_classroom
-    end
+    message.send()
+    redirect_to '/history'
   end
 
   def create
