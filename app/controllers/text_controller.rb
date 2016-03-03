@@ -87,7 +87,6 @@ class TextController < ApplicationController
     end
   end
 
-
   def send_text(number)
     if params[:message] == ['']
       @invalid_num << 'No Message'
@@ -97,17 +96,6 @@ class TextController < ApplicationController
     else
       @invalid_num << number
     end
-  end
-
-  def send_to_twillio(number)
-    account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
-    auth_token = '48f209948887f585f820760a89915194'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.account.messages.create(body: params[:message],
-                                    to: number,
-                                    from: '+16412434422')
-
-    # puts '----------MESSAGE SENT TO TWILLIO-----------'
   end
 
   # Determines whether or not the first digit of the given string is
