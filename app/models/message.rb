@@ -1,3 +1,5 @@
 class Message < ActiveRecord::Base
-  attr_accessible :contents, :from
+   attr_accessible :contents, :user
+
+   has_many :student
 end
