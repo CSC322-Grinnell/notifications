@@ -1,7 +1,6 @@
-= form_for :text, :url => {:controller => 'text', :action => 'index'} do
+= form_for :text, :url => {:controller => 'text', :action => 'index'} do	
   = label :text, :number, 'Name or Number'
   = text_field :number, '', :id => 'aNum', :placeholder => 'e.g. 2223334444, 5556667777', :value => @pop_value
-
   = label :text, :message, 'Message'
   = text_area :message, '', :id => 'aMessage', :placeholder => 'Insert message here.'
 
