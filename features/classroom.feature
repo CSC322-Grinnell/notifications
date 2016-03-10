@@ -26,13 +26,19 @@ Feature: Group students into classrooms
   And I am on the classrooms page
 
 
-  Scenario: Create a classroom
+  Scenario: Create a classroom(happy path)
   When I follow "Add New Classroom"
   And I fill in "classroom_name" with "Roomie"
   And I press "Save"
   And I follow "Back"
   Then I should be on the classrooms page
   And I should see "Roomie"
+
+  Scenario: Create a classroom(sad path)
+  When I follow "Add New Classroom"
+  And I fill in "classroom_name" with ""
+  And I press "Save"
+  Then I should see "error"
 
   Scenario: Delete a classroom
   Given I am on the classroom details page for "Avengers"
