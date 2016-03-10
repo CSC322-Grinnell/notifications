@@ -20,6 +20,12 @@
             </div>
         <% end %>
 
+        <% if @current_user.classroom_ids.length == 0 %>
+            <div>
+                You don't have any students.
+            </div>
+        <% end %>
+
         <% @current_user.classroom_ids.each do |id| %>   
             <div class="class-list">
 
