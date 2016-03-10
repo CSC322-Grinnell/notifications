@@ -41,6 +41,7 @@ Scenario: Read a student (happy path)
 Scenario: View student information and available options for me
   Given I am on the details page for "Khoa Nguyen"
   Then I should not see "Edit"
+  And I should not see "Add New Student"
   And I should not see "Delete"
   And I should see "Back"
   And I should see "Send Text"

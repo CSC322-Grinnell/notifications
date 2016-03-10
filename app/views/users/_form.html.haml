@@ -16,5 +16,7 @@
   = form.check_box :admin, {}, "true", "false"
 %p
   - for classroom in Classroom.find(:all)
-    = classroom.name
-    = check_box_tag "user[classroom_ids][]", classroom.id, @user.classrooms.include?(classroom)
+    - thing = classroom.name
+    %label
+      = thing
+      = check_box_tag "user[classroom_ids][]", classroom.id, @user.classrooms.include?(classroom)

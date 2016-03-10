@@ -74,3 +74,13 @@ Scenario: Enter an entry without student name (sad path)
   And I follow "Back"
   Then I should be on the students page
 
+Scenario: Enter an entry without a classroom (sad path)
+  When I follow "Add New Student"
+  And I fill in "Parent Name *" with "Michael Carrick"
+  And I fill in "Phone number" with "5551234567"
+  And I fill in "Email" with "grinnell@grinnell.edu"
+  And I press "Save"
+  And I should see "must select a classroom"
+  And I follow "Back"
+  Then I should be on the students page
+
