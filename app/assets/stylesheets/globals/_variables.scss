@@ -35,3 +35,8 @@ $creamcolor: #F6E19B; // use with brown font
 
 
 $dark-cream: darken($creamcolor, 5);
+
+/* viewports */
+
+$break-small: 600px;
+$break-large: 1200px;

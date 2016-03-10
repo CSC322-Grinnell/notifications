@@ -1,6 +1,7 @@
 HeadStart::Application.routes.draw do
-  resources :students
   resources :classrooms
+  resources :history
+  resources :students
   resources :text
   resources :user_sessions
 

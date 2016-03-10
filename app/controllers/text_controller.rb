@@ -4,21 +4,22 @@ class TextController < ApplicationController
   require 'twilio-ruby'
   before_filter :require_user
 
-  # Determines whether the previous loaded page was from one of the
-  # classrooms. If so, it prepopulates the number field with the
-  # names of the students within the classroom.
-  #  Side note-- pop_value is short for prepopulation value
-  def index
-    @pop_value = ''
-    @classroom_id = params[:classroom_id]
-    @student_name = params[:student_name]
+  def get
 
-    unless @student_name.nil?
-      @pop_value = @student_name
+  end
+
+  def post
+    text = params[:message]
+    student_ids = params[:students]
+
+    message = Message.create(contents: text, user: @user)
+
+    student_ids.each do |id|
+      student = Student.find_by_id(id)
+      Receipt.create(message: message, student: student)
     end
-    unless @classroom_id.nil?
-      parse_classroom
-    end
+    message.send()
+    redirect_to '/history'
   end
 
   def create
@@ -87,7 +88,6 @@ class TextController < ApplicationController
     end
   end
 
-
   def send_text(number)
     if params[:message] == ['']
       @invalid_num << 'No Message'
@@ -97,17 +97,6 @@ class TextController < ApplicationController
     else
       @invalid_num << number
     end
-  end
-
-  def send_to_twillio(number)
-    account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
-    auth_token = '48f209948887f585f820760a89915194'
-    @client = Twilio::REST::Client.new account_sid, auth_token
-    @client.account.messages.create(body: params[:message],
-                                    to: number,
-                                    from: '+16412434422')
-
-    # puts '----------MESSAGE SENT TO TWILLIO-----------'
   end
 
   # Determines whether or not the first digit of the given string is
