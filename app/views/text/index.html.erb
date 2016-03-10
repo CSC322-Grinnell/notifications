@@ -1,1 +1,4 @@
-<%= render partial: "form", locals: { :user: @user } %>
+
+<% form_for @user do |f| %>
+  <%= render partial: "form", locals: { :user => @user } %>
+<% end %>
