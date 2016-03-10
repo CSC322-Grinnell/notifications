@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Head Start</title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %> 
+    <%= csrf_meta_tags %>
+  <head>
+  <body>
+
+    <%= render '/shared/header' %>
+
+    <main>
+
+<!-- idk how to do this in ERB rn      <% if flash[:notice] %>
+        <div id="notice" class="message"> </div>
+      <% elsif flash[:warning] %>
+        <div id="warning" class="message"> </div>
+      <% end %> -->
+        
+
+      <%= yield %>
+    </main>
+    
+  </body>
+</html>
