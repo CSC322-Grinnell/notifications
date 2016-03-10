@@ -26,6 +26,7 @@ Scenario: Create a student (happy path)
   When I follow "Add New Student"
   And I fill in "Student Name *" with "Wayne Rooney"
   And I fill in "Parent Name *" with "Michael Carrick"
+  And I check "Room"
   And I press "Save"
   And I follow "Back"
   Then I should be on the students page
@@ -38,7 +39,7 @@ Scenario: Create a student (happy path)
   And I fill in "Phone number" with "5551234567"
   And I fill in "Email" with "grinnell@grinnell.edu"
   And I check "Can text"
-  And I select "Room" from "Classroom name"
+  And I check "Room"
   And I press "Save"
   And I follow "Back"
   Then I should be on the students page

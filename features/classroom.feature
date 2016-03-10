@@ -25,6 +25,7 @@ Feature: Group students into classrooms
   Given I am logged in as admin
   And I am on the classrooms page
 
+
   Scenario: Create a classroom
   When I follow "Add New Classroom"
   And I fill in "classroom_name" with "Roomie"
@@ -48,6 +49,6 @@ Feature: Group students into classrooms
 
   Scenario: Put students in classroom
   Given I am on the edit page for "Khoa Nguyen"
-  And I select "Room B" from "Classroom name"
+  And I check "Room B"
   And I press "Save"
   Then I should see "Room B"
