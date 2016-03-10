@@ -3,10 +3,10 @@
 
         <h2>Select Recipients</h2>
 
-        <% if @user.classroom_ids.length > 1 %>
+        <% if @current_user.classroom_ids.length > 1 %>
             <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
                 
-                <% @user.classroom_ids.each do |id| %>   
+                <% @current_user.classroom_ids.each do |id| %>   
                     <div class="class-tab">
                         <input type="checkbox" id="class-tab-<%= id %>" class="show-hide-checkbox">
                         <label for="class-tab-<%= id %>" class="room-label"> 
@@ -20,7 +20,7 @@
             </div>
         <% end %>
 
-        <% @user.classroom_ids.each do |id| %>   
+        <% @current_user.classroom_ids.each do |id| %>   
             <div class="class-list">
 
                 <fieldset id="<%= id %>">
