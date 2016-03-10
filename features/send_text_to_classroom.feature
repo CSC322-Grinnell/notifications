@@ -18,13 +18,14 @@ Feature: Send a text to all members of a classroom
   | Rachel       | Papa        | 2532363623   | potato@gmail.com           | 2    |
 
   Given the following users exist:
-  | name          | email              | password  | password_confirmation | login              |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  |
+  | name          | email              | password  | password_confirmation | login              | admin |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
 
   Given I am logged in as admin
   And I am on the classroom page
 
   Scenario: Send text to all students within a classroom
+  Given I am on the classrooms page
   When I follow "Room A"
   And I follow "Text Classroom"
   Then I should be on the text page

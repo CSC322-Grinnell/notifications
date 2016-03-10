@@ -9,5 +9,11 @@
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :name, "Select teachers who can see this classroom "
+    - for user in User.find(:all)
+      - if !user.admin
+        = user.name
+        = check_box_tag "classroom[user_ids][]", user.id, @classroom.users.include?(user)
   .actions
     = f.submit 'Save'
