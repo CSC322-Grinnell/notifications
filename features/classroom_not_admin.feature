@@ -18,8 +18,8 @@ Feature: Group students into classrooms as a teacher
   | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | 2         |
 
   Given the following users exist:
-  | name          | email              | password  | password_confirmation | login              | admin |
-  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false |
+  | name          | email              | password  | password_confirmation | login              | admin | classroom_ids |
+  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false | 3 |
 
   Given I am logged in as not_admin
   And I am on the classrooms page
@@ -30,7 +30,7 @@ Feature: Group students into classrooms as a teacher
   And I should not see "Remove"
 
   Scenario: View options available in classroom details page
-  Given I am on the classroom details page for "Avengers"
+  Given I am on the classroom details page for "Room B"
   Then I should not see "Add New Classroom"
   And I should see "Text Classroom"
   And I should not see "Delete"
@@ -38,6 +38,5 @@ Feature: Group students into classrooms as a teacher
 
   Scenario: List all classrooms
   Given I am on the classrooms page
-  Then I should see "Room A"
-  And I should see "Room B"
-  And I should see "Avengers"
+  Then I should see "Room B"
+  And I should not see "Avengers"
