@@ -52,3 +52,9 @@ Feature: Group students into classrooms
   And I check "Room B"
   And I press "Save"
   Then I should see "Room B"
+
+  Scenario: List all students in the classroom page
+  Given I am on the classroom I am on the classroom details page for "Avengers"
+  Then I should see "Khoa Nguyen"
+  And I should see "Lady"
+  And I should see "Rachel"
