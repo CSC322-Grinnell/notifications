@@ -25,6 +25,11 @@ body {
     line-height: $base-line-height;    
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 #main-content {
   margin-left: 50px;
   margin-right: 50px;
