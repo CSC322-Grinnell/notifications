@@ -6,14 +6,14 @@ class TextController < ApplicationController
 
   def index
     @classrooms = @current_user.getClassrooms
-    puts "Classrooms:"
     puts @classrooms
 
   end
 
-  def post
+  def create
     text = params[:message]
-    student_ids = params[:students]
+    puts text
+    student_ids = params[:student].values
 
     message = Message.create(contents: text, user: @user)
 

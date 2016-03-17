@@ -1,4 +1,4 @@
-<form>
+<form method = 'POST'>
     <div class="recipients">
 
         <h2>Select Recipients</h2>
@@ -34,9 +34,7 @@
                     <ul>
                         <% classroom.students.each_with_index do |student, index| %>
                             <li>
-
-                                <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>
-                                " class="student-select" />
+                                <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
                                 <label for="student[<%= index %>]"><%= student.Student_Name %></label>
                             </li>
                         <% end %>
@@ -52,12 +50,11 @@
         <h2>Compose Message</h2>
 
         <div class="msg-text-wrapper">
-            <input type="textarea" id="msg-text">
+            <input type="textarea" id="msg-text" name="message">
         </div>
 
         <div class="submit-button-wrapper">
-            <input type="submit" method="POST" value="Send Message">
+            <input type="submit" value="Send Message">
         </div>
-
     </div>
 </form>
