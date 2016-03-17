@@ -11,50 +11,65 @@
 
     <%= render '/shared/header' %>
 
-    <nav class="nav">
+    <div id="main-content">
+      
+      <nav class="nav">
 
-      <ul>
+        <ul>
 
-        <li class="nav-li">
+          <li class="nav-li">
+            <% if @current_user.admin %>
+            <div class="nav-dropdown">History</div>
+    
+            <ul class="nav-submenu">
+              <li><a href="/msg-history"       class="nav-hidden">Messages</a></li>
+              <li><a href="/student-history"   class="nav-hidden">Students</a></li>
+              <li><a href="/classroom-history" class="nav-hidden">Classrooms</a></li>
+              <li><a href="/user-history"      class="nav-hidden">Users</a></li>
+              <% else %>
+              <li><a href="/history">History</a></li>
+              <% end %>              
+            </ul>
+          </li>
+
           <% if @current_user.admin %>
-          <div class="nav-dropdown">History</div>
-          <a href="/msg-history"       class="hidden">Messages</a>
-          <a href="/student-history"   class="hidden">Students</a>
-          <a href="/classroom-history" class="hidden">Classrooms</a>
-          <a href="/user-history"      class="hidden">Users</a>
-          <% else %>
-          <a href="/history">History</a>
+          <li class="nav-li">
+            <div class="nav-dropdown">Edit Data</div>
+
+            <ul class="nav-submenu">
+              <li><a href="/students/edit"       class="nav-hidden">Students </a></li>
+              <li><a href="/classrooms/edit"     class="nav-hidden">Classroom </a></li>
+              <li><a href="/users/edit"          class="nav-hidden">Users </a></li>
+            </ul>
+          </li>
           <% end %>
-        </li>
 
-        <% if @current_user.admin %>
-        <li class="nav-li">
-          <div class="nav-dropdown">Edit Data</div>
-          <a href="/students/edit"       class="hidden">Students </a>
-          <a href="/classrooms/edit"     class="hidden">Classroom </a>
-          <a href="/users/edit"          class="hidden">Users </a>
-        <li>
-        <% end %>
+          <li class="nav-li">
+            <a href="/text" class="">Send Message</a>
+          </li>
 
-        <li class="nav-li">
-          <a href="/text" class="">Send Message</a>
-        </li>
+          <li class="nav-li">
+            <a href="/user" class="nav-dropdown">User</a>
 
-        <li class="nav-li">
-          <a href="/user" class="nav-dropdown">User</a>
-          <a href="/settings" class="hidden">Settings</a>
-          <a href="/logout" class="hidden">Logout</a>
-        </li>
-        
-      </ul>
+            <ul class="nav-submenu">
+              <li><a href="/settings" class="nav-hidden">Settings</a></li>
+              <li><a href="/logout" class="nav-hidden">Logout</a></li>
+            </ul>
+          </li>
+          
+        </ul>
 
-    </nav>
+      </nav>
 
-    <% if flash[:notice] %>
-      <div id="notice" class="message"> <%= flash[:notice] %> </div>
-    <% elsif flash[:warning] %>
-      <div id="warning" class="message"> <%= flash[:warning] %> </div>
-    <% end %> 
+      <% if flash[:notice] %>
+        <div id="notice" class="message"> <%= flash[:notice] %> </div>
+      <% elsif flash[:warning] %>
+        <div id="warning" class="message"> <%= flash[:warning] %> </div>
+      <% end %> 
+
+    </div>
+
+    
 
 
 
