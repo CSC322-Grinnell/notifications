@@ -3,41 +3,41 @@
 
         <h2>Select Recipients</h2>
 
-        <% if @current_user.classroom_ids.length > 1 %>
+        <% if @classrooms.length > 1 %>
             <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
-                
-                <% @current_user.classroom_ids.each do |id| %>   
+
+                <% @classrooms.each do |classroom| %>
                     <div class="class-tab">
-                        <input type="checkbox" id="class-tab-<%= id %>" class="show-hide-checkbox">
-                        <label for="class-tab-<%= id %>" class="room-label"> 
-                            <%= Classroom.findBy(id).name %> 
-                        </label> 
+                        <input type="checkbox" id="class-tab-<%= classroom.id %>" class="show-hide-checkbox">
+                        <label for="class-tab-<%= classroom.id %>" class="room-label">
+                            <%= classroom.name %>
+                        </label>
                         <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
                         <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
-                    </div>  
+                    </div>
                 <% end %>
 
             </div>
         <% end %>
 
-        <% if @current_user.classroom_ids.length == 0 %>
+        <% if @classrooms == 0 %>
             <div>
                 You don't have any students.
             </div>
         <% end %>
 
-        <% @current_user.classroom_ids.each do |id| %>   
+        <% @classrooms.each do |classroom| %>
             <div class="class-list">
 
-                <fieldset id="<%= id %>">
+                <fieldset id="<%= classroom.id %>">
                     <legend>Select Recipients</legend>
                     <ul>
-                        <% Classroom.findBy(id).students.each_with_index do |student, index| %>
+                        <% classroom.students.each_with_index do |student, index| %>
                             <li>
 
                                 <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>
                                 " class="student-select" />
-                                <label for="student[<%= index %>]"><%= student.Student_name %></label>
+                                <label for="student[<%= index %>]"><%= student.Student_Name %></label>
                             </li>
                         <% end %>
                     </ul>
@@ -50,7 +50,7 @@
     <div class="message-input">
 
         <h2>Compose Message</h2>
-        
+
         <div class="msg-text-wrapper">
             <input type="textarea" id="msg-text">
         </div>
