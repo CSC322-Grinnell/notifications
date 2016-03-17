@@ -4,7 +4,7 @@
   <head>
     <title>Head Start</title>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %> 
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   <head>
   <body>
@@ -30,9 +30,9 @@
         <% if @current_user.admin %>
         <li class="nav-li">
           <div class="nav-dropdown">Edit Data</div>
-          <a href="/students/edit"       class="hidden">Students </a>
-          <a href="/classrooms/edit"     class="hidden">Classroom </a>
-          <a href="/users/edit"          class="hidden">Users </a>
+          <a href="/students/"       class="hidden">Students </a>
+          <a href="/classrooms/"     class="hidden">Classroom </a>
+          <a href="/users/"          class="hidden">Users </a>
         <li>
         <% end %>
 
@@ -45,7 +45,7 @@
           <a href="/settings" class="hidden">Settings</a>
           <a href="/logout" class="hidden">Logout</a>
         </li>
-        
+
       </ul>
 
     </nav>
