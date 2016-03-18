@@ -6,22 +6,19 @@ class TextController < ApplicationController
 
   def index
     @classrooms = @current_user.getClassrooms
-    puts @classrooms
-
   end
 
   def create
     text = params[:message]
-    puts text
     student_ids = params[:student].values
 
-    message = Message.create(contents: text, user: @user)
+    message = Message.create(contents: text, user: @current_user)
 
     student_ids.each do |id|
       student = Student.find_by_id(id)
       Receipt.create(message: message, student: student)
     end
-    message.send()
+    message.distribute()
     redirect_to '/history'
   end
 

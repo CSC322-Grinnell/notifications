@@ -1,9 +1,9 @@
 class Message < ActiveRecord::Base
   attr_accessible :contents, :user
-  has_many :student
+  has_many :receipts
 
   # Sends message to all recipients
-  def send()
+  def distribute()
     receipts = Reciept.find_by_Message(self)
     receipts.each do |receipt|
       receipt.send()
