@@ -12,16 +12,11 @@
 
     <main>
 
-<!-- TODO: convert to ERB
-
       <% if flash[:notice] %>
-        <div id="notice" class="message"> </div>
+        <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
-        <div id="warning" class="message"> </div>
+        <div id="warning" class="message"> <%= flash[:warning] %> </div>
       <% end %> 
-
--->
-        
 
       <%= yield %>
     </main>

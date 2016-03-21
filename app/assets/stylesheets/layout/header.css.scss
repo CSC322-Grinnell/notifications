@@ -3,10 +3,13 @@ $header-height-normal: 150px;
 $header-height-large:  200px;
 
 .header {
+    @include no-select();
+
     position: relative;
     width: 100%;
     height: 150px;
     background-color: $primary-color;
+    cursor: default;
 
     @media screen and (max-width: $break-small) {
         height: $header-height-small;
