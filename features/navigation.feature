@@ -14,13 +14,16 @@ Feature: Navbar functionality
   And I am on the classrooms page
 
   Scenario: View the items in the navbar
-  Given I am on the classrooms page
-  Then I should not see "History"
-  And I should not see "Edit Data"
-  And I should not see "Students"
-  And I should not see "Classroom"
-  And I should not see "Users"
-  And I should not see "Send Message"
-  And I should not see "User"
-  And I should not see "Settings"
-  And I should not see "Logout"
+  Then I should see "History"
+  And I should see "Edit Data"
+  And I should see "Students"
+  And I should see "Classroom"
+  And I should see "Users"
+  And I should see "Send Message"
+  And I should see "User"
+  And I should see "Settings"
+  And I should see "Logout"
+
+  Scenario: Navigate to different pages
+  And I follow "Students"
+  Then I should be on the students page
