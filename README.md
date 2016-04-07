@@ -6,8 +6,13 @@ Make it easy for Head Start teachers to notify parents of school closures and ot
 ## Installation
 * Clone the repository into a local directory.
 * `bundle install --without production`
-* `rake db:migrate`
+* `rake db:setup`
 * `rails s`
+
+## Configuration
+* Default Credentials
+  * Username: `admin@example.com`
+  * Password: `pass`
 
 ### F.A.Q.
 _I'm having a problem installing the Postgres `pg` gem. What's up with that?_
