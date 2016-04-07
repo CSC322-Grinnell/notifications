@@ -6,7 +6,7 @@ class Receipt < ActiveRecord::Base
   belongs_to :student
 
   # Send message to student
-  def send()
+  def distribute()
     # TODO: Check status and only send if not already sent
     account_sid = 'ACc3ff9be899397461c075ffcf9e70f35a'
     auth_token = '48f209948887f585f820760a89915194'

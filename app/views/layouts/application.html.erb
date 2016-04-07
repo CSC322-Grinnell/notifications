@@ -4,7 +4,7 @@
   <head>
     <title>Head Start</title>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %> 
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   <head>
   <body>
@@ -43,24 +43,21 @@
             <li><a href="/logout" class="nav-link">Logout</a></li>
           </ul>
         </li>
-        
+
       </ul>
 
     </nav>
 
     <div id="main-content">
-      
-      
 
       <% if flash[:notice] %>
         <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
         <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %> 
+      <% end %>
 
       <%= yield %>
 
     </div>
-   
   </body>
 </html>
