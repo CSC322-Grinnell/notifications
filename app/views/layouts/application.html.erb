@@ -21,13 +21,6 @@
 
         <% if @current_user.admin %>
         <li class="nav-li">
-<<<<<<< HEAD
-          <div class="nav-dropdown">Edit Data</div>
-          <a href="/students/"       class="hidden">Students </a>
-          <a href="/classrooms/"     class="hidden">Classroom </a>
-          <a href="/users/"          class="hidden">Users </a>
-        <li>
-=======
           <div class="nav-dropdown nav-first">Edit Data <img src="assets/dropdownArrow.png" class="nav-dropdown-image"> </div>
 
           <ul class="nav-submenu">
@@ -36,7 +29,6 @@
             <li> <a href="/users/edit" class="nav-link"> Users </a> </li>
           </ul>
         </li>
->>>>>>> dev
         <% end %>
 
         <li class="nav-link nav-li nav-selected">
@@ -57,18 +49,15 @@
     </nav>
 
     <div id="main-content">
-      
-      
 
       <% if flash[:notice] %>
         <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
         <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %> 
+      <% end %>
 
       <%= yield %>
 
     </div>
-   
   </body>
 </html>
