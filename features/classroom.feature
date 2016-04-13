@@ -7,7 +7,7 @@ Feature: Group students into classrooms
   Background: there are students in the database
 
   Given the following classrooms exist:
-  | name |it check 
+  | name |
   | Avengers    |
   | Room A   |
   | Room B |

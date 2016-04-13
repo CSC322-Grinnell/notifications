@@ -5,10 +5,15 @@ Feature: Navbar functionality
   I would like to use the navbar
 
   Given the following users exist:
-
-  Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin | classroom_ids |
-  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false | 3 |
+  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false | 1 |
+
+  Given the following classrooms exist:
+   | name | 
+  | Avengers    |
+  | Room A   |
+  | Room B |
+
 
   Given I am logged in as not_admin
   And I am on the classrooms page
