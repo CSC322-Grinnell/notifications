@@ -4,7 +4,7 @@
   <head>
     <title>Head Start</title>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %> 
+    <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   <head>
   <body>
@@ -24,8 +24,8 @@
           <div class="nav-dropdown nav-first">Edit Data <img src="assets/dropdownArrow.png" class="nav-dropdown-image"> </div>
 
           <ul class="nav-submenu">
-            <li> <a href="/students/edit" class="nav-link"> Students </a> </li>
-            <li> <a href="/classrooms/edit" class="nav-link"> Classroom </a> </li>
+            <li> <a href="/students" class="nav-link"> Students </a> </li>
+            <li> <a href="/classrooms" class="nav-link"> Classroom </a> </li>
             <li> <a href="/users/edit" class="nav-link"> Users </a> </li>
           </ul>
         </li>
@@ -43,24 +43,24 @@
             <li><a href="/logout" class="nav-link">Logout</a></li>
           </ul>
         </li>
-        
+
       </ul>
 
     </nav>
 
     <div id="main-content">
-      
-      
+
+
 
       <% if flash[:notice] %>
         <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
         <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %> 
+      <% end %>
 
       <%= yield %>
 
     </div>
-   
+
   </body>
 </html>
