@@ -39,9 +39,19 @@ nav {
 
 }
 
-.nav-link:hover {
-    background: mix($primary-color-dark, $primary-color);
-    cursor: pointer;
+.nav-link {
+
+    a {
+        display: block;
+        width: 100%;
+        height: 100%;        
+    }
+
+    &:hover {
+        background: mix($primary-color-dark, $primary-color);
+        cursor: pointer;
+    }
+
 }
 
 .nav-dropdown {
