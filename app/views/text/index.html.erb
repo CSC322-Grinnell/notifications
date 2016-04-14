@@ -1,7 +1,7 @@
 <form id="send-message-form" class="sendmessage-form">
     <div class="recipients">
         <div class="recipients-inner-wrapper">
-            <h2>Select Recipients</h2>
+            <h2 class="recipients-title">Select Recipients</h2>
 
             <% if @current_user.classroom_ids.length > 1 %>
                 <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
@@ -10,7 +10,7 @@
                         <div class="class-tab">
                             <input type="checkbox" id="class-tab-<%= id %>" class="show-hide-checkbox">
                             <label for="class-tab-<%= id %>" class="room-label"> 
-                                <%= Classroom.findBy(id).name %> 
+                                <%= Classroom.find(id).name %> 
                             </label> 
                             <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
                             <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
@@ -30,14 +30,14 @@
                 <div class="class-list">
 
                     <fieldset id="<%= id %>">
-                        <legend>Select Recipients</legend>
+                        <legend><%= Classroom.find(id).name %></legend>
                         <ul>
-                            <% Classroom.findBy(id).students.each_with_index do |student, index| %>
+                            <% Classroom.find(id).students.each_with_index do |student, index| %>
                                 <li>
 
-                                    <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>
+                                    <input type="checkbox" id="student[<%= index %>-<%= id %>]" name="student[<%= index %>]" value="<%= student.id %>
                                     " class="student-select" />
-                                    <label for="student[<%= index %>]"><%= student.Student_name %></label>
+                                    <label for="student[<%= index %>-<%= id %>]"><%= student.Student_Name %></label>
                                 </li>
                             <% end %>
                         </ul>
@@ -49,38 +49,37 @@
         </div>
 
     </div>
-    <div class="message-input">
+    <div class="message">
+        <div class="message-inner-wrapper">
 
-    <div class="message-input-inner-wrapper">
-        <div class="message-template-input-wrapper">
+            <div class="message-template-wrapper">
 
-            <h2 class="message-input-title">Select from a template</h2>
+                <h2 class="message-template-title">Select from a template</h2>
 
-            <ul class="message-template-list">
-              <li class="message-template-item">Head Start / Early Head Start classes cancelled due to weather</li> 
-              <li class="message-template-item">Head Start classes will be starting late. Start time will be available from local radio station. </li>
-              <li class="message-template-item">Head Start/Early Head Start classes are closing early today due to weather.  Please pick up your child at _____.</li>
-              <li>Reminder - No Head Start/Early Head Start classes on ______ due to teacher inservice or work day.</li>
-            </ul>
+                <ul class="message-template-list">
+                  <li id="0" class="message-template-item">Head Start class is cancelled</li> 
+                  <li id="1" class="message-template-item">Head Start classes will be starting late</li>
+                  <li id="2" class="message-template-item">Classes are closing early today due to weather.</li>
+                  <li id="3" class="message-template-item">No class on ____ day</li>
+                </ul>
 
+                <div class="message-template-textarea">
+
+                </div>
+
+            </div>
+
+            <div class="message-custom-wrapper">
+                
+                <button class="message-custom-toggle button-small">Or, write a custom message</button>
+                
+                <textarea class="message-custom-textarea hidden" form="send-message-form" id="msg-text"></textarea>
+
+            </div>
+                
+            <div class="submit-button-wrapper">
+                <input class="submit-button button" type="submit" method="POST" value="Send Message">
+            </div>     
         </div>
-
-        <div class="message-custom-input-wrapper">
-            <h2 class="message-input-title message-custom-input-title">Customize your message</h2>
-            
-            
-            <textarea class="message-textarea" form="send-message-form" id="msg-text"></textarea>
-            
-
-        </div>
-            
-        <div class="submit-button-wrapper">
-            <input class="submit-button button" type="submit" method="POST" value="Send Message">
-        </div>     
-    </div>
-
- 
-
-
     </div>
 </form>

@@ -1,0 +1,63 @@
+.message-template-wrapper {}
+
+.message-template-title {}
+
+.message-template-list {
+    list-style-type: none;
+    cursor: pointer;
+    width: 400px;
+    margin: 0 auto; 
+    border: 1px solid $brown-font;
+} 
+
+.message-template-item {
+    padding: 6px 10px;
+    margin-bottom: 2px;
+}
+
+.message-template-item:hover {
+    font-weight: 700;
+}
+
+.message-template-item:last-child {
+    margin-bottom: 0;
+}
+
+.message-template-item:nth-child(odd) {
+    background: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.message-template-item:nth-child(even) {
+    background: rgb(240, 240, 240);
+    text-align: left;
+}
+
+.message-custom-wrapper {}
+
+.message-custom-toggle {
+    text-align: center;
+}
+
+.message-custom-textarea {
+    @include hidden();
+
+    display: block;
+    width: 400px;
+    height: 100px;
+    margin: 0 auto 40px auto;
+    resize: none;
+}
+
+
+.submit-button-wrapper {
+    text-align: center;
+}
+
+.submit-button {
+    background-color: $primary-color;
+    border-radius: 12px;    
+    color: white;
+}
+
+

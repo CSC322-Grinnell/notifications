@@ -1,0 +1,42 @@
+.sendmessage-form {
+
+    color: $brown-font;
+    font-weight: 400;
+    margin: 50px;
+    min-width: 500px;
+
+    @media screen and (max-width: $break-small) {
+        margin: 50px 0; /* no left-right margin */
+    }
+
+    @media screen and (min-width: $break-large) {
+        margin: 50px 100px; /* bigger left-right margin */
+        min-width: 1000px;
+    }
+
+    h2 {
+        font-size: $headline-font-size;
+        text-align: center;
+    }
+
+}
+
+.recipients {
+    width: 50%;
+    float: left;
+}
+
+.message {
+    width: 50%;
+    float: left;
+}
+
+.recipients-inner-wrapper {
+    width: calc(100% - 100px);
+    margin: 0 50px;
+}   
+
+.message-inner-wrapper {
+    width: calc(100% - 100px);
+    margin: 0 50px;
+}

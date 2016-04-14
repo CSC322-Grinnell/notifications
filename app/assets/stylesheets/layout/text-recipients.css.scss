@@ -1,0 +1,32 @@
+.recipients-title {
+    text-align: center;
+}
+
+.class-tabs {
+    height: 50px;
+}
+
+
+.show-hide-checkbox {
+    position: absolute;
+    left: -9999px; /* hide this from the screen */
+    top: -9999px;
+}
+
+.class-tab {
+    float: left;
+    margin-right: 10px;
+    padding: 5px;
+    border-top: 1px solid $brown-font;
+    border-left: 1px solid $brown-font;
+    border-right: 1px solid $brown-font;
+    border-radius: 4px;
+}
+
+.room-label {}
+
+
+
+.class-list ul {
+    list-style-type: none;
+}
