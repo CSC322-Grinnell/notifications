@@ -1,0 +1,76 @@
+.sendmessage-form {
+
+    color: $brown-font;
+    font-weight: 400;
+    margin: 50px 0;
+}
+
+
+.recipients {
+    width: 50%;
+    float: left;
+}
+
+.recipients-inner-wrapper {
+    margin: 0 auto;
+    width: 50%;
+}
+
+
+.message-input {
+    width: 50%;
+    float: left;
+}
+
+.message-input-inner-wrapper {
+    margin: 0 auto;
+    width: 500px;
+}
+
+.message-template-list {
+    list-style-type: none;
+    cursor: pointer;
+    width: 400px;
+    margin: 0 auto; 
+    border: 1px solid $brown-font;
+    padding: 3px 0;
+    overflow: scroll;
+    height: 100px;
+}
+
+.message-template-item {
+    padding: 0px 10px;
+}
+
+.message-template-item:hover {
+    font-weight: 700;
+}
+
+.message-template-item:nth-child(even) {background: rgb(240, 240, 240)}
+.message-template-item:nth-child(odd) {background: rgb(255, 255, 255)}
+
+
+.message-input-title {
+    font-size: $headline-font-size;
+    text-align: center;
+}
+
+
+.message-textarea {
+    display: block;
+    width: 400px;
+    height: 100px;
+    margin: 0 auto 40px auto;
+    resize: none;
+}
+
+.submit-button-wrapper {
+    
+    text-align: center;
+}
+
+.submit-button {
+    background-color: $primary-color;
+    border-radius: 12px;    
+    color: white;
+}
