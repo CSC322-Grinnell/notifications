@@ -50,8 +50,6 @@
 
     <div id="main-content">
 
-
-
       <% if flash[:notice] %>
         <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
@@ -61,6 +59,5 @@
       <%= yield %>
 
     </div>
-
   </body>
 </html>

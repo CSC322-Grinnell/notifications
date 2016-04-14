@@ -1,10 +1,11 @@
 class HistoryController < ApplicationController
+  require 'message'
   before_filter :require_user
 
   @@messagesPerPage = 25
 
-  def get
-    messages = Messages.last(@@messagesPerPage).reverse
-    erb :index, :messages => messages
+  def index
+    @messages = Message.last(@@messagesPerPage).reverse
+    render :index
   end
 end
