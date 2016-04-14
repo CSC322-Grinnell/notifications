@@ -17,12 +17,12 @@
 
       <ul>
 
-        <li id="nav-history" class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'history' %>">
+        <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'history' %>">
           <a href="/history" class="nav-first">History</a>
         </li>
 
         <% if @current_user.admin %>
-        <li id="nav-data" class="nav-li">
+        <li class="nav-li">
           <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users'%>">Edit Data <img src="assets/dropdownArrow.png" class="nav-dropdown-image"> </div>
 
           <ul class="nav-submenu">
@@ -33,11 +33,11 @@
         </li>
         <% end %>
 
-        <li id="nav-text" class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'text' %>">
+        <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'text' %>">
           <a href="/text" class="nav-first">Send Message</a>
         </li>
 
-        <li id="nav-user" class="nav-li">
+        <li class="nav-li">
           <div class="nav-dropdown nav-first">User <img src="assets/dropdownArrow.png" class="nav-dropdown-image"></div>
 
           <ul class="nav-submenu">
