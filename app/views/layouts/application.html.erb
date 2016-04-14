@@ -24,8 +24,8 @@
           <div class="nav-dropdown nav-first">Edit Data <img src="assets/dropdownArrow.png" class="nav-dropdown-image"> </div>
 
           <ul class="nav-submenu">
-            <li> <a href="/students/edit" class="nav-link"> Students </a> </li>
-            <li> <a href="/classrooms/edit" class="nav-link"> Classroom </a> </li>
+            <li> <a href="/students" class="nav-link"> Students </a> </li>
+            <li> <a href="/classrooms" class="nav-link"> Classroom </a> </li>
             <li> <a href="/users/edit" class="nav-link"> Users </a> </li>
           </ul>
         </li>
@@ -49,7 +49,6 @@
     </nav>
 
     <div id="main-content">
-
       <% if flash[:notice] %>
         <div id="notice" class="message"> <%= flash[:notice] %> </div>
       <% elsif flash[:warning] %>
@@ -59,5 +58,6 @@
       <%= yield %>
 
     </div>
+
   </body>
 </html>

@@ -24,6 +24,7 @@ module NavigationHelpers
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then '/login'
     when /^the user page$/ then '/user'
+    when /^the user edit page$/ then '/users/edit'
     when /^the classroom page$/ then '/classrooms'
     when /^the classroom details page for \"(.*)\"/i
        classroom_path(Classroom.find_by_name($1))
