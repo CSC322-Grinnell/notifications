@@ -1,6 +1,8 @@
 <h2>History</h2>
-<% messages.each do |message| %>
-  From: <%= message.user.name %>
-  Message: <%= message.contents %>
+<% @messages.each do |message| %>
+  <b>From:</b> <%= message.user.name %><br />
+  <% @names = Receipt.find_all_by_message_id(message.id).collect { |receipt| receipt.student.Student_Name } %>
+  <b>To:</b> <%= @names.join(", ") %><br />
+  <b>Message:</b> <%= message.contents %><br />
   <br />
 <% end %>
