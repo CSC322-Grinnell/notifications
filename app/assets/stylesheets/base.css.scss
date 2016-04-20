@@ -19,7 +19,7 @@ body {
     padding: 0;
     min-width: 500px;
     color: black;
-    line-height: $base-line-height;    
+    line-height: $base-line-height;
 }
 
 ul {
@@ -28,8 +28,8 @@ ul {
 }
 
 #main-content {
-  margin-left: 50px;
-  margin-right: 50px;
+  position: relative;
+  background-color: $background-color;
 }
 
 ::-webkit-scrollbar {
@@ -42,8 +42,8 @@ ul {
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
-.message {
+.hidden {
   position: absolute;
-  left: 0;
-  right: 0;
+  top: -9999px;
+  left: -9999px;
 }

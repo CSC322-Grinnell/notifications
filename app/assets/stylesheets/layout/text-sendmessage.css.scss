@@ -1,4 +1,6 @@
-.message-template-wrapper {}
+.message-template-wrapper {
+    
+}
 
 .message-template-title {}
 
@@ -33,17 +35,43 @@
     text-align: left;
 }
 
-.message-custom-wrapper {}
+.message-template-input-wrapper {
+    position: relative;
+    padding: 40px 0 40px 10px;
+    height: 240px;
+}
+
+.message-template-prompt {
+    text-align: center;
+}
+
+.message-template-prompt-hidden {
+  opacity: 0;
+  cursor: default;
+}
+
+
+.message-custom-wrapper {
+
+}
 
 .message-custom-toggle {
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    display: block;
+    background-color: $tertiary-color;
+    border: none;
+    color: white;
     text-align: center;
+    font-size: $small-font-size;
 }
 
 .message-custom-textarea {
     @include hidden();
 
     display: block;
-    width: 400px;
     height: 100px;
     margin: 0 auto 40px auto;
     resize: none;
@@ -58,6 +86,13 @@
     background-color: $primary-color;
     border-radius: 12px;    
     color: white;
+}
+
+.template-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid grey;
 }
 
 

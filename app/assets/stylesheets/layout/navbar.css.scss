@@ -2,6 +2,18 @@ nav {
     color: white;
     background: $primary-color-dark;
     height: 50px;
+
+    ul {
+
+        padding: 0 5%;
+
+        &:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+    }
+
 }
 
 .nav-dropdown-image {
@@ -9,6 +21,13 @@ nav {
     position: relative;
     top: 7px;
     left: 4px;
+
+    @media screen and (max-width: $break-small) {
+        left: -4px;
+    }
+    @media screen and (min-width: $break-large) {
+        left: 6px;
+    }
 }
 
 .nav-selected { // this highlights the nav element linking to the current page

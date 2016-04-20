@@ -2,15 +2,14 @@
 
     color: $brown-font;
     font-weight: 400;
-    margin: 50px;
+    padding: 25px;
     min-width: 500px;
 
     @media screen and (max-width: $break-small) {
-        margin: 50px 0; /* no left-right margin */
+        min-width: 600px;
     }
 
     @media screen and (min-width: $break-large) {
-        margin: 50px 100px; /* bigger left-right margin */
         min-width: 1000px;
     }
 
@@ -19,6 +18,12 @@
         text-align: center;
     }
 
+}
+
+.sendmessage-form:after {
+    display: block;
+    content: "";
+    clear: both;
 }
 
 .send-message-recipients {

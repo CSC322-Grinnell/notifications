@@ -1,38 +1,33 @@
 <form id="send-message-form" class="sendmessage-form">
+
     <div class="send-message-recipients">
         <div class="recipients-inner-wrapper">
             <h2 class="recipients-title">Select Recipients</h2>
 
-<form method = 'POST'>
-    <div class="recipients">
-        <% if @classrooms.length > 1 %>
+            <% if @classrooms.length > 1 %>
             <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
 
                 <% @classrooms.each do |classroom| %>
-                    <div class="class-tab">
-                        <input type="checkbox" id="class-tab-<%= classroom.id %>" class="show-hide-checkbox">
-                        <label for="class-tab-<%= classroom.id %>" class="room-label">
-                            <%= classroom.name %>
-                        </label>
-                        <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
-                        <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
-                    </div>
+                <div class="class-tab">
+                    <input type="checkbox" id="class-tab-<%= classroom.id %>" class="show-hide-checkbox">
+                    <label for="class-tab-<%= classroom.id %>" class="room-label">
+                        <%= classroom.name %>
+                    </label>
+                    <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
+                    <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
+                </div>
                 <% end %>
 
-            <% if @current_user.classroom_ids.length == 0 %>
-                <div>
-                    You don't have any students.
-                </div>
+            </div>
             <% end %>
 
-
-        <% if @classrooms == 0 %>
+            <% if @classrooms == 0 %>
             <div>
                 You don't have any students.
             </div>
-        <% end %>
+            <% end %>
 
-        <% @classrooms.each do |classroom| %>
+            <% @classrooms.each do |classroom| %>
             <div class="class-list">
 
                 <fieldset id="<%= classroom.id %>">
@@ -47,11 +42,12 @@
                     </ul>
                 </fieldset>
 
-                </div>
+            </div>
             <% end %>
         </div>
 
     </div>
+
     <div class="send-message-message">
         <div class="message-inner-wrapper">
 
@@ -66,24 +62,27 @@
                   <li id="3" class="message-template-item">No class on ____ day</li>
                 </ul>
 
-                <div class="message-template-textarea">
-
+                <div class="message-template-input-wrapper hidden">
+                    <h3 class="message-template-prompt">Fill in your template</h3>
+                    <div class="message-template-textarea"></div>
+                    <button type="button" class="message-custom-toggle">Write a Custom Message</button>
                 </div>
 
             </div>
 
             <div class="message-custom-wrapper">
-                
-                <button class="message-custom-toggle button-small">Or, write a custom message</button>
-                
+                  
+
                 <textarea class="message-custom-textarea hidden" form="send-message-form" id="msg-text"></textarea>
 
             </div>
                 
-            <div class="submit-button-wrapper">
-                <input class="submit-button button" type="submit" method="POST" value="Send Message">
-            </div>     
+            
 
         </div>
     </div>
+
+    <div class="submit-button-wrapper">
+            <input class="submit-button button" type="submit" method="POST" value="Send Message">
+    </div>     
 </form>

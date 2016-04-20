@@ -13,8 +13,6 @@
 
     <%= render '/shared/header' %>
 
-
-
     <nav class="nav">
 
       <ul>
@@ -53,12 +51,6 @@
     </nav>
 
     <div id="main-content">
-
-      <% if flash[:notice] %>
-        <div id="notice" class="message"> <%= flash[:notice] %> </div>
-      <% elsif flash[:warning] %>
-        <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %> 
 
       <%= yield %>
 
