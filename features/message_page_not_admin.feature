@@ -17,6 +17,7 @@ Background:users and students and classrooms have been added to the database
   | Crusty Jones  | Spice   | 2532363623   | teamfirealarm@gmail.com    | 2    |
   | Sultan Lust  | Everything Nice   | 2532363623   | teamfirealarm@gmail.com    | 1    |
   | Czar Lust  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 2    |
+  | Butt Plugly  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 2    |
   | Princess Lust  | Lump Son  | 2532363623   | teamfirealarm@gmail.com    | 3    |
 
  
@@ -46,7 +47,7 @@ Background:users and students and classrooms have been added to the database
   And I should not see "Princess Lust"
 
   Scenario: Select recipients and send message
-  Then I check "Khoa Nguyen"
+  When I check "Butt Plugly"
   And I check "Crusty Jones"
   And I fill in "aMessage" with "this is a test"
   And I press "Send"

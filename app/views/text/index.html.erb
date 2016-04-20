@@ -34,8 +34,8 @@
                     <ul>
                         <% classroom.students.each_with_index do |student, index| %>
                             <li>
-                                <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
-                                <label for="student[<%= index %>]"><%= student.Student_Name %></label>
+                                <input type="checkbox" id="student[<%= student.id %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
+                                <label for="student[<%= student.id %>]"><%= student.Student_Name %></label>
                             </li>
                         <% end %>
                     </ul>
