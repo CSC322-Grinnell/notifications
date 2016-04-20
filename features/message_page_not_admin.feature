@@ -49,20 +49,20 @@ Background:users and students and classrooms have been added to the database
   Scenario: Select recipients and send message
   When I check "Butt Plugly"
   And I check "Crusty Jones"
-  And I fill in "aMessage" with "this is a test"
-  And I press "Send"
+  And I fill in "msg-text" with "this is a test"
+  And I press "Send Message"
   Then I should see "Message sent successfully to Sultan Lust"
 
   Scenario: Select classroom and send it a message
   Then I check "Room A"
   And I check "Room B"
-  And I fill in 'message' with 'this is a class test'
+  And I fill in 'msg-text' with 'this is a class test'
   And I press "Send"
   Then I should see "Message sent successfully to Class A, Class B"
 
   Scenario: Check for message in history
   Then I check "Czar Lust"
-  And I fill in 'message' with 'this is a history test'
+  And I fill in 'msg-text' with 'this is a history test'
   And I press 'Send'
   And I follow 'History'
   Then I should see 'this is a history test'
