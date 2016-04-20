@@ -46,7 +46,7 @@ Background:users and students and classrooms have been added to the database
   And I should not see "Princess Lust"
 
   Scenario: Select recipients and send message
-  Then I check "Sultan Lust"
+  Then I check "Khoa Nguyen"
   And I check "Crusty Jones"
   And I fill in "aMessage" with "this is a test"
   And I press "Send"
@@ -58,6 +58,13 @@ Background:users and students and classrooms have been added to the database
   And I fill in 'message' with 'this is a class test'
   And I press "Send"
   Then I should see "Message sent successfully to Class A, Class B"
+
+  Scenario: Check for message in history
+  Then I check "Czar Lust"
+  And I fill in 'message' with 'this is a history test'
+  And I press 'Send'
+  And I follow 'History'
+  Then I should see 'this is a history test'
 
   #Scenario: Fill in own number?
 

@@ -42,16 +42,27 @@ Feature: Navbar functionality
   And I should see "Settings"
   And I should see "Logout"
 
-  Scenario: Navigate to different pages
-  And I follow "Students"
+  Scenario: Navigate to Student page
+  When I follow "Students"
   Then I should be on the students page
-  And I follow "Classroom"
+
+  Scenario: Navigate to Classroom page
+  When I follow "Classroom"
   Then I should be on the classrooms page
-  And I follow "Users"
+
+  Scenario: Navigate to Users page
+  When I follow "Users"
   Then I should be on the user edit page
-  And I follow "Text"
+
+  Scenario: Navigate to Send Message page
+  When I follow "Send Message"
   Then I should be on the text page
-  And I follow 'Settings'
+
+  Scenario: Navigate to Settings page
+  When I follow "Settings"
   Then I should be on the settings page
-  And I follow 'Logout'
-  Then I should be on the users_sessions/new page
+
+  Scenario: Navigate to Logout page
+  When I follow "Logout"
+  Then I should be on the login page
+  

@@ -13,6 +13,8 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /^the settings page$/ then '/settings'
+    when /^the login page$/ then '/user_sessions/new'
     when /^the students page$/ then '/students'
     when /^the details page for \"(.*)\"/i
       student_path(Student.find_by_Student_Name($1))
