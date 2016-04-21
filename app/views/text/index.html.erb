@@ -1,88 +1,90 @@
 <form id="send-message-form" class="sendmessage-form">
+    <div class="top-half">
+        <div class="send-message-recipients">
+            <div class="recipients-inner-wrapper">
+                <h2 class="recipients-title">Select Recipients</h2>
 
-    <div class="send-message-recipients">
-        <div class="recipients-inner-wrapper">
-            <h2 class="recipients-title">Select Recipients</h2>
+                <% if @classrooms.length > 1 %>
+                <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
 
-            <% if @classrooms.length > 1 %>
-            <div class="class-tabs"> <!-- this should not get rendered if teacher has only 1 class -->
+                    <% @classrooms.each do |classroom| %>
+                    <div class="class-tab">
+                        <input type="checkbox" id="class-tab-<%= classroom.id %>" class="show-hide-checkbox">
+                        <label for="class-tab-<%= classroom.id %>" class="room-label">
+                            <%= classroom.name %>
+                        </label>
+                        <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
+                        <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
+                    </div>
+                    <% end %>
 
-                <% @classrooms.each do |classroom| %>
-                <div class="class-tab">
-                    <input type="checkbox" id="class-tab-<%= classroom.id %>" class="show-hide-checkbox">
-                    <label for="class-tab-<%= classroom.id %>" class="room-label">
-                        <%= classroom.name %>
-                    </label>
-                    <!-- clicking this label causes its corresponding fieldset to be shown and hides the other tabs -->
-                    <!-- the label for attribute, the input id attribute, and the class-list fieldset element's id are all the same value, allowing css to hide and show the tabs -->
                 </div>
                 <% end %>
 
+                <% if @classrooms == 0 %>
+                <div>
+                    You don't have any students.
+                </div>
+                <% end %>
+
+                <% @classrooms.each do |classroom| %>
+                <div class="class-list">
+
+                    <fieldset id="<%= classroom.id %>">
+                        <legend>Select Recipients</legend>
+                        <ul>
+                            <% classroom.students.each_with_index do |student, index| %>
+                                <li>
+                                    <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
+                                    <label for="student[<%= index %>]"><%= student.Student_Name %></label>
+                                </li>
+                            <% end %>
+                        </ul>
+                    </fieldset>
+
+                </div>
+                <% end %>
             </div>
-            <% end %>
 
-            <% if @classrooms == 0 %>
-            <div>
-                You don't have any students.
-            </div>
-            <% end %>
-
-            <% @classrooms.each do |classroom| %>
-            <div class="class-list">
-
-                <fieldset id="<%= classroom.id %>">
-                    <legend>Select Recipients</legend>
-                    <ul>
-                        <% classroom.students.each_with_index do |student, index| %>
-                            <li>
-                                <input type="checkbox" id="student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
-                                <label for="student[<%= index %>]"><%= student.Student_Name %></label>
-                            </li>
-                        <% end %>
-                    </ul>
-                </fieldset>
-
-            </div>
-            <% end %>
         </div>
 
-    </div>
+        <div class="send-message-message">
+            <div class="message-inner-wrapper">
 
-    <div class="send-message-message">
-        <div class="message-inner-wrapper">
+                <div class="message-template-wrapper">
 
-            <div class="message-template-wrapper">
+                    <h2 class="message-template-title">Select from a template</h2>
 
-                <h2 class="message-template-title">Select from a template</h2>
+                    <ul class="message-template-list">
+                      <li id="0" class="message-template-item">Head Start class is cancelled</li> 
+                      <li id="1" class="message-template-item">Head Start classes will be starting late</li>
+                      <li id="2" class="message-template-item">Classes are closing early today due to weather.</li>
+                      <li id="3" class="message-template-item">No class on ____ day</li>
+                    </ul>
 
-                <ul class="message-template-list">
-                  <li id="0" class="message-template-item">Head Start class is cancelled</li> 
-                  <li id="1" class="message-template-item">Head Start classes will be starting late</li>
-                  <li id="2" class="message-template-item">Classes are closing early today due to weather.</li>
-                  <li id="3" class="message-template-item">No class on ____ day</li>
-                </ul>
+                    <div class="message-template-input-wrapper hidden">
+                        <h3 class="message-template-prompt">Fill in your template</h3>
+                        <div class="message-template-textarea"></div>
+                        <button type="button" class="message-custom-toggle">Write a Custom Message</button>
+                    </div>
 
-                <div class="message-template-input-wrapper hidden">
-                    <h3 class="message-template-prompt">Fill in your template</h3>
-                    <div class="message-template-textarea"></div>
-                    <button type="button" class="message-custom-toggle">Write a Custom Message</button>
+                </div>
+
+                <div class="message-custom-wrapper hidden">
+                    <div></div>
+                    <h2 class="message-custom-title">Send a custom message</h2>
+                    <textarea class="message-custom-textarea" form="send-message-form" id="msg-text"></textarea>
+                    <p class="message-custom-internationalization-warning">
+                        ⚠ Warning: we can't translate custom messages.
+                    </p>
                 </div>
 
             </div>
-
-            <div class="message-custom-wrapper">
-                  
-
-                <textarea class="message-custom-textarea hidden" form="send-message-form" id="msg-text"></textarea>
-
-            </div>
-                
-            
-
         </div>
     </div>
-
-    <div class="submit-button-wrapper">
-            <input class="submit-button button" type="submit" method="POST" value="Send Message">
-    </div>     
+    <div class="bottom-half">
+        <div class="submit-button-wrapper">
+                <input class="submit-button button" type="submit" method="POST" value="Send Message">
+        </div>   
+    </div>
 </form>

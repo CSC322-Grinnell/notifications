@@ -37,7 +37,7 @@
 
 .message-template-input-wrapper {
     position: relative;
-    height: 240px;
+    height: 200px;
 }
 
 .message-template-prompt {
@@ -51,15 +51,13 @@
 
 
 .message-custom-wrapper {
-
+    padding: 0 40px;
 }
 
 .message-custom-toggle {
-    position: absolute;
-    left: auto;
-    right: 0;
-    bottom: 0;
     display: block;
+    float: right;
+    margin-top: 10px;
     background-color: $tertiary-color;
     border: none;
     color: white;
@@ -68,14 +66,18 @@
 }
 
 .message-custom-textarea {
-    @include hidden();
-
     display: block;
+    width: 100%;
     height: 100px;
-    margin: 0 auto 40px auto;
     resize: none;
 }
 
+.message-custom-internationalization-warning {
+    margin-top: 10px;
+    font-size: $small-font-size;
+    font-weight: 700;
+    color: $warning-color;
+}
 
 .submit-button-wrapper {
     text-align: center;

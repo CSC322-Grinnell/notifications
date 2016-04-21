@@ -20,28 +20,25 @@
 
 }
 
-.sendmessage-form:after {
-    display: block;
-    content: "";
-    clear: both;
+.top-half {
+    height: 500px;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
 }
 
 .send-message-recipients {
     width: 50%;
     float: left;
+    padding: 0 50px;
 }
 
 .send-message-message {
     width: 50%;
     float: left;
+    padding: 0 50px;
 }
 
-.recipients-inner-wrapper {
-    width: calc(100% - 100px);
-    margin: 0 50px;
-}   
-
-.message-inner-wrapper {
-    width: calc(100% - 100px);
-    margin: 0 50px;
-}

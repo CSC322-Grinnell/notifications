@@ -61,6 +61,7 @@ $ ->
     # write custom message onclick
 
     $('.message-custom-toggle').click ->
+        $('.message-custom-wrapper').toggleClass('hidden')
         $('.message-template-wrapper').toggleClass('hidden')
 
 messages = [
