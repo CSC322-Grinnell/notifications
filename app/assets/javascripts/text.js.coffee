@@ -38,7 +38,7 @@ $ ->
             msg = firsthalf + '<input type="text" class="template-input" placeholder="' + template.blanks[counter] + '">' + secondhalf
             counter++
 
-        $('.message-template-input-wrapper').removeClass('hidden') # unhide entire template input section
+        $('.message-template-input-wrapper').removeClass('hidden-force') # unhide entire template input section
         showMessagePrompt() # unhide h3 prompt
         if counter == 0
             hideMessagePrompt() # hide h3 prompt if no input is required
@@ -52,8 +52,6 @@ $ ->
         $('.template-input').keyup ->
             resizeInput.call($(this))
 
-        $('.message-custom-toggle').toggleClass('hidden')
-
     # fill template blank onchange
 
 
@@ -64,7 +62,7 @@ $ ->
 
     $('.message-custom-toggle').click ->
         $('.message-custom-wrapper').toggleClass('hidden')
-        $('.message-template-wrapper').toggleClass('hidden')
+        $('.message-template-wrapper').toggleClass('hidden-force')
 
 messages = [
     {

@@ -37,7 +37,6 @@
 
 .message-template-input-wrapper {
     position: relative;
-    height: 200px;
 }
 
 .message-template-prompt {
@@ -64,6 +63,10 @@
     color: white;
     text-align: center;
     font-size: $small-font-size;
+}
+
+.message-custom-no-template {
+
 }
 
 .message-custom-textarea {
