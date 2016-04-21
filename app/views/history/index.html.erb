@@ -1,8 +1,10 @@
 <h2>History</h2>
 <% @messages.each do |message| %>
+  <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
   <b>From:</b> <%= message.user.name %><br />
   <% @names = Receipt.find_all_by_message_id(message.id).collect { |receipt| receipt.student.Student_Name } %>
   <b>To:</b> <%= @names.join(", ") %><br />
   <b>Message:</b> <%= message.contents %><br />
+
   <br />
 <% end %>
