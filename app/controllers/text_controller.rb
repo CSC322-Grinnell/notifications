@@ -7,6 +7,7 @@ class TextController < ApplicationController
   end
 
   def create
+    # TODO: Verify and validate input
     text = params[:message]
     student_ids = params[:student].values
 
