@@ -55,6 +55,8 @@
 
                     <h2 class="message-template-title">Select from a template</h2>
 
+
+
                     <ul class="message-template-list">
                       <li id="0" class="message-template-item">Head Start class is cancelled</li> 
                       <li id="1" class="message-template-item">Head Start classes will be starting late</li>
@@ -62,10 +64,12 @@
                       <li id="3" class="message-template-item">No class on ____ day</li>
                     </ul>
 
+                    <button type="button" class="message-custom-toggle">Write a Custom Message</button>
+
                     <div class="message-template-input-wrapper hidden">
                         <h3 class="message-template-prompt">Fill in your template</h3>
-                        <div class="message-template-textarea"></div>
-                        <button type="button" class="message-custom-toggle">Write a Custom Message</button>
+                        <div class="message-template-textarea" name="message"></div>
+                        <button type="button" class="message-custom-toggle hidden">Write a Custom Message</button>
                     </div>
 
                 </div>
@@ -73,7 +77,7 @@
                 <div class="message-custom-wrapper hidden">
                     <div></div>
                     <h2 class="message-custom-title">Send a custom message</h2>
-                    <textarea class="message-custom-textarea" form="send-message-form" id="msg-text"></textarea>
+                    <textarea class="message-custom-textarea" form="send-message-form" id="msg-text" name="message"></textarea>
                     <p class="message-custom-internationalization-warning">
                         ⚠ Warning: we can't translate custom messages.
                     </p>
