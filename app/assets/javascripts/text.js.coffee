@@ -52,6 +52,8 @@ $ ->
         $('.template-input').keyup ->
             resizeInput.call($(this))
 
+        $('.message-custom-toggle').toggleClass('hidden')
+
     # fill template blank onchange
 
 

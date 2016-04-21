@@ -7,9 +7,7 @@ class TextController < ApplicationController
   end
 
   def create
-
     puts params
-
     text = params[:message]
     student_ids = params[:student].values
 
