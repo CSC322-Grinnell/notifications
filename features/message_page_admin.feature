@@ -1,5 +1,5 @@
 Feature: send text messages
-  As a teacher
+  As an admin
   I want to send texts to classrooms and individuals
   So that I can notify students of school events
 
@@ -22,7 +22,7 @@ Background:users and students and classrooms have been added to the database
  
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login         |    admin   | 
-  | NotAdministrator | notadmin@example.com  | pass | pass          | admin@example.com  | false | 
+  | Administrator | admin@example.com  | pass | pass          | admin@example.com  | true | 
 
 
   Given the following classrooms_users exist:
@@ -37,13 +37,14 @@ Background:users and students and classrooms have been added to the database
   Scenario: View classrooms
   Then I should see "Room A"
   And I should see "Room B"
+  And I should see "Room C"
 
   Scenario: View students
   Then I should see "Khoa Nguyen"
   And I should see "Crusty Jones"
   And I should see "Sultan Lust"
   And I should see "Czar Lust"
-  And I should not see ""
+ 
 
 
 
