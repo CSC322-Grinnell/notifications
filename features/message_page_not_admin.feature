@@ -31,44 +31,42 @@ Background:users and students and classrooms have been added to the database
   | 1| 1|
   | 2| 1|
 
-  Given the following messages exits:
-  
 
 
   Given I am logged in as not_admin
   And I am on the text page
 
-  Scenario: View classrooms
+Scenario: View classrooms
   Then I should see "Room A"
   And I should see "Room B"
 
-  Scenario: View students
+Scenario: View students
   Then I should see "Khoa Nguyen"
   And I should see "Crusty Jones"
   And I should see "Sultan Lust"
   And I should see "Czar Lust"
   And I should not see "Princess Lust"
 
-  Scenario: Select recipients and send message
+Scenario: Select recipients and send a message
   When I check "Butt Plugly"
   And I check "Crusty Jones"
   And I fill in "msg-text" with "this is a test"
   And I press "Send Message"
   Then I should see "Message sent successfully to Sultan Lust"
 
-  Scenario: Select classroom and send it a message
-  Then I check "Room A"
+Scenario: Select classroom and send a message
+  When I check "Room A"
   And I check "Room B"
-  And I fill in 'msg-text' with 'this is a test'
+  And I fill in "msg-text" with "this is a test"
   And I press "Send Message"
   Then I should see "Message sent successfully to Class A, Class B"
 
-  Scenario: Check for message in history
-  Then I check "Czar Lust"
-  And I fill in 'msg-text' with 'this is a test'
-  And I press 'Send Message'
-  And I follow 'History'
-  Then I should see 'this is a test'
+Scenario: Check for message in history
+  When I check "Czar Lust"
+  And I fill in "msg-text" with "this is a test"
+  And I press "Send Message"
+  And I follow "History"
+  Then I should see "this is a test"
 
 
   #Scenario: Send failed
