@@ -66,7 +66,11 @@ $ ->
                 $(element).prop("checked", false)
         verifyInput()
 
-
+    $('#masonry-container').masonry
+        itemSelector: '.recipients-class-list'
+        columnWidth: (containerWidth) =>
+            return containerWidth / 2
+    
     ## section text-sendmessage
 
     # select template onclick
@@ -79,7 +83,7 @@ $ ->
         while msg.indexOf("_$_") > 0
             firsthalf = msg.substring(0, msg.indexOf("_$_"))
             secondhalf = msg.substring(msg.indexOf("_$_") + 3)
-            msg = firsthalf + '<input type="text" class="template-input" required placeholder="' + template.blanks[counter] + '">' + secondhalf
+            msg = firsthalf + '<input type="text" class="message-template-input" required placeholder="' + template.blanks[counter] + '">' + secondhalf
             counter++
 
         $('.message-template-input-wrapper').removeClass('hidden-force') # unhide entire template input section
@@ -91,11 +95,11 @@ $ ->
         verifyInput()
 
 
-        $(".template-input").each (index, element) =>
+        $(".message-template-input").each (index, element) =>
             $(element).css('min-width', getPlaceholderWidth(element) + 7)
             resizeInput.call($(element))
 
-        $('.template-input').keyup ->
+        $('.message-template-input').keyup ->
             resizeInput.call($(this))
             verifyInput()
 

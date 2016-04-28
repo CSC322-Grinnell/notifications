@@ -1,10 +1,47 @@
-.recipients-class-list {
-    overflow-y: scroll;
+$containerSmall: 300px;
+$containerMedium: 400px;
+$containerLarge: 600px;
 
-    &:after {
-        display: block;
-        content: "";
-        clear: both;
+#masonry-container {
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    width: $containerMedium;
+    margin: 0 auto;
+    border-radius: 5px;
+    clear: both;
+    -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+
+    @media screen and (max-width: $break-small) {
+        width: $containerSmall;
+    }
+
+    @media screen and (min-width: $break-large) {
+        width: $containerLarge;
+    }
+
+  &.clearfix:before, &.clearfix:after {
+    content: ""; display: table; 
+  }
+
+  &.clearfix:after {clear: both;}
+
+  &.clearfix { zoom: 1; }
+}
+
+.recipients-class-list {
+    width: $containerMedium / 2;
+
+    @media screen and (max-width: $break-small) {
+        width: $containerSmall / 2
+    }
+
+    @media screen and (min-width: $break-large) {
+        width: $containerLarge / 2;
     }
 }
 
@@ -14,14 +51,13 @@
 
 .recipients-classroom {
 
+    width: 100%;
+
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
     margin: 0;
-
-    float: left;
-    width: 50%;
 
     &.hidden {
         @include hidden();

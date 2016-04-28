@@ -10,30 +10,32 @@
                 </div>
                 <% end %>
 
-                <% @classrooms.each_with_index do |classroom, index| %>
-                <div class="class-list">
+                <div id="masonry-container" class="clearfix">
+                    <% @classrooms.each_with_index do |classroom, index| %>
+                    <div class="recipients-class-list has-gutters">
 
-                    <% if classroom.students.length > 0 %>
-                    <fieldset id="classroom-<%= classroom.id %>" class="recipients-classroom">
-                        <legend><%= classroom.name %></legend>
-                        <div class="recipients-classroom-title"><%= classroom.name %></div>
-                        <ul>
-                            <% classroom.students.each_with_index do |student, index| %>
-                                <li>
-                                    <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="recipients-student-select" />
-                                    <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.Student_Name %></label>
-                                </li>
-                            <% end %>
-                        </ul>
-                        <input type="checkbox" id="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">
-                        <label for="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">Select All</label>
-                    </fieldset>
+                        <% if classroom.students.length > 0 %>
+                        <fieldset id="classroom-<%= classroom.id %>" class="recipients-classroom">
+                            <legend><%= classroom.name %></legend>
+                            <div class="recipients-classroom-title"><%= classroom.name %></div>
+                            <ul>
+                                <% classroom.students.each_with_index do |student, index| %>
+                                    <li>
+                                        <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="recipients-student-select" />
+                                        <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.Student_Name %></label>
+                                    </li>
+                                <% end %>
+                            </ul>
+                            <input type="checkbox" id="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">
+                            <label for="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">Select All</label>
+                        </fieldset>
+                        <% end %>
+
+                    </div>
                     <% end %>
-
                 </div>
-                <% end %>
-            </div>
 
+            </div>
         </div>
 
         <div class="send-message-message">

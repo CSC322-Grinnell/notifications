@@ -7,8 +7,8 @@ class Message < ActiveRecord::Base
 
   # Sends message to all recipients
   def distribute()
-    account_sid = 'ACf91b9f14d8e436a70de5dc8c37a82baf'
-    auth_token = 'f2a3429001ecef51f36940d514eec0dd'
+    account_sid = 'ACa9e2c26aa9c541562abfa60f22c17895'
+    auth_token = '11d34276495a1f8acfb15958672aff55'
     client = Twilio::REST::Client.new account_sid, auth_token
     receipts = Receipt.find_all_by_message_id(self)
     receipts.each do |receipt|

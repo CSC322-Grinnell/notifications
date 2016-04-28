@@ -9,9 +9,9 @@ html {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
@@ -24,12 +24,12 @@ body {
 }
 
 ul {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #main-content {
-  position: relative;
+    position: relative;
 }
 
 ::-webkit-scrollbar {
@@ -43,11 +43,11 @@ ul {
 }
 
 .hidden {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
 }
 
 .hidden-force {
-  display: none;
+    display: none;
 }

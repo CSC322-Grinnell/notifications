@@ -91,18 +91,14 @@
 .submit-button {
     background-color: $primary-color;
     color: white;
-
-    &.inactive {
-        opacity: 0.6;
-        background-color: mix($primary-color, rgb(150, 150, 150));
-    }
 }
 
-.template-input {
+.message-template-input {
     border-top: none;
     border-left: none;
     border-right: none;
     border-bottom: 1px solid grey;
+    background-color: $background-color;
 }
 
 
