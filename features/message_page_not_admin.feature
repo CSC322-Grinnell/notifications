@@ -13,12 +13,12 @@ Background:users and students and classrooms have been added to the database
 
   Given the following students exist:
   | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 1    |
-  | Crusty Jones  | Spice   | 2532363623   | teamfirealarm@gmail.com    | 2    |
-  | Sultan Lust  | Everything Nice   | 2532363623   | teamfirealarm@gmail.com    | 1    |
-  | Czar Lust  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 2    |
-  | Butt Plugly  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 2    |
-  | Princess Lust  | Lump Son  | 2532363623   | teamfirealarm@gmail.com    | 3    |
+  | Khoa Nguyen  | Jason Liu   | 15005550006  | teamfirealarm@gmail.com    | 1    |
+  | Crusty Jones  | Spice   | 15005550006   | teamfirealarm@gmail.com    | 2    |
+  | Sultan Lust  | Everything Nice   | 15005550006   | teamfirealarm@gmail.com    | 1    |
+  | Czar Lust  | Jason Liu   | 15005550006   | teamfirealarm@gmail.com    | 2    |
+  | Butt Plugly  | Jason Liu   | 15005550006   | teamfirealarm@gmail.com    | 2    |
+  | Princess Lust  | Lump Son  | 15005550006  | teamfirealarm@gmail.com    | 3    |
 
  
   Given the following users exist:
@@ -47,19 +47,21 @@ Scenario: View students
   And I should see "Czar Lust"
   And I should not see "Princess Lust"
 
-Scenario: Select recipients and send a message
+Scenario: Select multiple recipients and send a message
   When I check "Butt Plugly"
   And I check "Crusty Jones"
   And I fill in "msg-text" with "this is a test"
   And I press "Send Message"
-  Then I should see "Message sent successfully to Sultan Lust"
+  Then I should see be on the history page
+  And I should see "this is a test"
 
 Scenario: Select classroom and send a message
   When I check "Room A"
   And I check "Room B"
-  And I fill in "msg-text" with "this is a test"
+  And I fill in "msg-text" with "this is a classroom test"
   And I press "Send Message"
-  Then I should see "Message sent successfully to Class A, Class B"
+  Then I should see be on the history page
+  And I should see "this is a classroom test"
 
 Scenario: Check for message in history
   When I check "Czar Lust"
