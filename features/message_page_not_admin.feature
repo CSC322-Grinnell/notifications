@@ -39,6 +39,7 @@ Background:users and students and classrooms have been added to the database
 Scenario: View classrooms
   Then I should see "Room A"
   And I should see "Room B"
+  And I should not see "Room C"
 
 Scenario: View students
   Then I should see "Khoa Nguyen"
