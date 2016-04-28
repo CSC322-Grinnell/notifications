@@ -58,6 +58,10 @@ Feature: Navbar functionality
   When I follow "Send Message"
   Then I should be on the text page
 
+  Scenario: Navigate to History page
+  When I follow "History"
+  Then I should be on the history page
+
   Scenario: Navigate to Settings page
   When I follow "Settings"
   Then I should be on the settings page
