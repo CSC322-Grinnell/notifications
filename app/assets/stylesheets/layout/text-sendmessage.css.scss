@@ -1,0 +1,104 @@
+.message-template-wrapper {
+    
+}
+
+.message-template-title {}
+
+.message-template-list {
+    list-style-type: none;
+    cursor: pointer;
+    width: 400px;
+    margin: 0 auto; 
+    border: 1px solid $brown-font;
+} 
+
+.message-template-item {
+    padding: 6px 10px;
+    margin-bottom: 2px;
+}
+
+.message-template-item:hover {
+    font-weight: 700;
+}
+
+.message-template-item:last-child {
+    margin-bottom: 0;
+}
+
+.message-template-item:nth-child(odd) {
+    background: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.message-template-item:nth-child(even) {
+    background: rgb(240, 240, 240);
+    text-align: left;
+}
+
+.message-template-input-wrapper {
+    position: relative;
+}
+
+.message-template-prompt {
+    text-align: center;
+}
+
+.message-template-prompt-hidden {
+  opacity: 0;
+  cursor: default;
+}
+
+
+.message-custom-wrapper {
+    padding: 0 40px;
+}
+
+.message-custom-toggle {
+    display: block;
+    float: right;
+    margin-top: 10px;
+    margin-right: 25px;
+    background-color: $tertiary-color;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: $small-font-size;
+
+}
+
+.message-custom-no-template {
+
+}
+
+.message-custom-textarea {
+    display: block;
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+.message-custom-internationalization-warning {
+    margin-top: 10px;
+    font-size: $small-font-size;
+    font-weight: 700;
+    color: $warning-color;
+}
+
+.submit-button-wrapper {
+    text-align: center;
+}
+
+.submit-button {
+    background-color: $primary-color;
+    color: white;
+}
+
+.message-template-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid grey;
+    background-color: $background-color;
+}
+
+
