@@ -1,0 +1,46 @@
+.sendmessage-form {
+
+    color: $brown-font;
+    font-weight: 400;
+    padding: 25px;
+    min-width: 500px;
+
+    @media screen and (max-width: $break-small) {
+        min-width: 600px;
+    }
+
+    @media screen and (min-width: $break-large) {
+        min-width: 1000px;
+    }
+
+    h2 {
+        font-size: $headline-font-size;
+        text-align: center;
+    }
+
+}
+
+.top-half {
+    height: 500px;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+
+
+}
+
+.send-message-recipients {
+    width: 50%;
+    float: left;
+    padding: 0 50px;
+}
+
+.send-message-message {
+    width: 50%;
+    float: left;
+    padding: 0 50px;
+}
+

@@ -4,14 +4,14 @@
   <head>
     <title>Head Start</title>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application' %> 
     <%= csrf_meta_tags %>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <head>
   <body>
 
     <%= render '/shared/header' %>
-
-
 
     <nav class="nav">
 
@@ -28,7 +28,7 @@
           <ul class="nav-submenu">
             <li> <a href="/students" class="nav-link"> Students </a> </li>
             <li> <a href="/classrooms" class="nav-link"> Classroom </a> </li>
-            <li> <a href="/users/edit" class="nav-link"> Users </a> </li>
+            <li> <a href="/users" class="nav-link"> Users </a> </li>
           </ul>
         </li>
         <% end %>
@@ -45,18 +45,12 @@
             <li><a href="/logout" class="nav-link">Logout</a></li>
           </ul>
         </li>
-
+        
       </ul>
 
     </nav>
 
     <div id="main-content">
-
-      <% if flash[:notice] %>
-        <div id="notice" class="message"> <%= flash[:notice] %> </div>
-      <% elsif flash[:warning] %>
-        <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %>
 
       <%= yield %>
 

@@ -9,9 +9,9 @@ html {
 }
 
 *, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 body {
@@ -19,15 +19,35 @@ body {
     padding: 0;
     min-width: 500px;
     color: black;
-    line-height: $base-line-height;    
+    line-height: $base-line-height;
+    background-color: $background-color;
 }
 
 ul {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #main-content {
-  margin-left: 50px;
-  margin-right: 50px;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.hidden {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.hidden-force {
+    display: none;
 }

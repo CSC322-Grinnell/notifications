@@ -6,3 +6,9 @@
   -ms-user-select: none;       /* IE/Edge */
   user-select: none;   
 }
+
+@mixin hidden() {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}

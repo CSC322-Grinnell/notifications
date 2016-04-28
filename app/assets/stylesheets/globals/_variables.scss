@@ -18,23 +18,22 @@ $base-line-height: ($baseline/$base-font-size);
 
 /* colors */
 
+$primary-color: #8DAF2D; // use with $white-font
+$primary-color-dark: #5E751E; // use with $white-font
+$secondary-color: #F2C83E; // use with $brown-font
+$tertiary-color: #DB8A11; // use with $white-font
 
-$primary-color: #8DAF2D; // use with white font
-
-// maybe use this for white #FCFDF9
-
-$primary-color-dark: #5E751E; // use with white font
-$secondary-color: #F2C83E; // use with brown font
-$tertiary-color: #DB8A11; // use with white font
-
+/* font colors */
 $white-font: white;
 $brown-font: #492E05; 
 
+/* misc colors */
 $creamcolor: #F6E19B; // use with brown font
-
-
-
 $dark-cream: darken($creamcolor, 5);
+$background-color: #FCFDF9;
+$warning-color: rgb(179,58,58);
+
+
 
 /* viewports */
 
