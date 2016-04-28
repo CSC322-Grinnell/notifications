@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160302040355) do
+ActiveRecord::Schema.define(:version => 20160428194318) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(:version => 20160302040355) do
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.boolean  "can_text",       :default => true
+    t.string   "locale"
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "translations", :force => true do |t|
+    t.integer "template_id"
+    t.string  "locale"
+    t.string  "translation"
   end
 
   create_table "user_sessions", :force => true do |t|
@@ -83,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20160302040355) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin",               :default => false
+    t.string   "locale"
   end
 
 end
