@@ -23,21 +23,22 @@ showMessagePrompt = () ->
     $('.message-template-prompt').removeClass('message-template-prompt-hidden')
     $('.message-template-prompt').attr("aria-hidden", false)
 
-getTemplatePlaintext = () ->
-    template = $(".message-template-textarea")
-    console.log(template.children())
-
 numStudentsSelected = () =>
-    console.log( $('.recipients-student-select:checked').length)
     return $('.recipients-student-select:checked').length
 
-checkTemplateInputs = () =>
+messageNotEmpty = () =>
+    if $('.message-template-wrapper').hasClass('hidden-force')
+        return $('.message-custom-textarea').val().length > 0
+    else 
+        return templatesNotEmpty() && !$('.message-template-textarea').is(':empty')
+
+templatesNotEmpty = () =>
     return $(".message-template-textarea").children().toArray().reduce (previousValue, currentValue) =>
         return previousValue && currentValue.value.length > 0
     , true
 
 verifyInput = () =>
-    if checkTemplateInputs() && numStudentsSelected() > 0
+    if  messageNotEmpty() && numStudentsSelected() > 0
         $('.submit-button').removeClass('inactive')
     else
         $('.submit-button').removeClass('inactive')
@@ -70,6 +71,7 @@ $ ->
 
     # select template onclick
     $(".message-template-item").click ->   
+
         template = messages[$(this)[0].id]
         msg = template.text
         counter = 0
@@ -86,6 +88,8 @@ $ ->
             hideMessagePrompt() # hide h3 prompt if no input is required
 
         $(".message-template-textarea").html(msg) # fill textarea with template message
+        verifyInput()
+
 
         $(".template-input").each (index, element) =>
             $(element).css('min-width', getPlaceholderWidth(element) + 7)
@@ -98,30 +102,34 @@ $ ->
     # write custom message onclick
 
     $('.message-custom-toggle').click ->
+        $('.message-custom-textarea').val('')
         $('.message-custom-wrapper').toggleClass('hidden')
         $('.message-template-wrapper').toggleClass('hidden-force')
+        verifyInput()
 
+    $('.message-custom-textarea').keyup ->
+        verifyInput()
 
     # send message onclick
 
-    $('.submit-button').submit ->
-        console.log(5)
-        if $(this).hasClass('invalid')
+    $('#send-message-form').submit (event) =>
+        if $('.submit-button').hasClass('inactive')
             return false
+        else
+            return true
+
 
     $('.submit-button').click ->
-
-        # if ('.submit-button').hasClass('invalid')
-
-        # verifyInput()
-
         
-        #     return true # break out, don't submit form
-        # else
-        #     $(".message-template-textarea").children().map (index, element) =>
-        #         $(element).replaceWith(element.value)
+        verifyInput()
+
+        if ('.submit-button').hasClass('invalid')
+            return true # break out, don't submit form
+        else
+            $(".message-template-textarea").children().map (index, element) =>
+                $(element).replaceWith(element.value)
             
-        #     $('.message-custom-textarea').text($(".message-template-textarea").text())
+            $('.message-custom-textarea').text($(".message-template-textarea").text())
 
 messages = [
     {

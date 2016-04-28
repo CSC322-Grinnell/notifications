@@ -20,6 +20,7 @@ body {
     min-width: 500px;
     color: black;
     line-height: $base-line-height;
+    background-color: $background-color;
 }
 
 ul {
@@ -29,7 +30,6 @@ ul {
 
 #main-content {
   position: relative;
-  background-color: $background-color;
 }
 
 ::-webkit-scrollbar {

@@ -1,38 +1,27 @@
+.recipients-class-list {
+    overflow-y: scroll;
+
+    &:after {
+        display: block;
+        content: "";
+        clear: both;
+    }
+}
+
 .recipients-title {
     text-align: center;
 }
 
-.recipients-class-tabs {
-    height: 50px;
-}
-
-.recipients-class-tab {
-    float: left;
-    margin-right: 10px;
-}
-
-.recipients-show-hide-checkbox {
-    position: absolute;
-    left: -9999px; /* hide this from the screen */
-    top: -9999px;
-
-    &:checked ~ label {
-        color: white;
-        background-color: $brown-font;
-    }
-
-}
-
-.recipients-room-label {
-    padding: 2px 10px;
-    border-top: 1px solid $brown-font;
-    border-left: 1px solid $brown-font;
-    border-right: 1px solid $brown-font;
-    border-radius: 4px;
-}
-
 .recipients-classroom {
 
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    margin: 0;
+
+    float: left;
+    width: 50%;
 
     &.hidden {
         @include hidden();
@@ -44,11 +33,18 @@
 
     & ul {
         list-style-type: none;
+
+        & li {
+            margin-bottom: 5px;
+        }
     }
+
+
 }
 
 .recipients-classroom-title {
-
+    font-weight: 700;
+    font-size: $sub-headline-font-size;
 }
 
 .recipients-student-select {
