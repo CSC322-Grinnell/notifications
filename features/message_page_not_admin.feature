@@ -78,6 +78,18 @@ Scenario: Check for message in history
   And I press "Send Message"
   Then I should see "Message text too long"
 
+  Scenario: No recipients
+    When I fill in "msg-text" with "this is a sad test"
+    And I press "Send Message"
+    Then I should be on the text page
+    And I should see "select a recipient"
+
+  Scenario: No message text
+    When I check "Czar Lust"
+    And I press "Send Message"
+    Then I should be on the text page
+    And I should see "message body is required"
+
 
 
 
