@@ -63,6 +63,7 @@
     color: white;
     text-align: center;
     font-size: $small-font-size;
+
 }
 
 .message-custom-no-template {
@@ -89,8 +90,12 @@
 
 .submit-button {
     background-color: $primary-color;
-    border-radius: 12px;    
     color: white;
+
+    &.inactive {
+        opacity: 0.6;
+        background-color: mix($primary-color, rgb(150, 150, 150));
+    }
 }
 
 .template-input {
