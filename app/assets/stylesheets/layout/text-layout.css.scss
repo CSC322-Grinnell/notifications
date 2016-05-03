@@ -13,11 +13,11 @@
 }
 
 .top-half {
-    position: fixed;
-    width: 100%;
-    top: $header-height-normal + $nav-height;
-    bottom: $main-content-bottom-half-height;
-    overflow-y: scroll;
+    // position: fixed;
+    // width: 100%;
+    // top: $header-height-normal + $nav-height;
+    // bottom: $main-content-bottom-half-height;
+    // overflow-y: scroll; 
 
     margin-bottom: 20px;
     padding-bottom: 20px;
@@ -40,10 +40,10 @@
 }
 
 .bottom-half {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: $main-content-bottom-half-height;
+    // position: fixed;
+    // bottom: 0;
+    // width: 100%;
+    // height: $main-content-bottom-half-height;
 }
 
 .submit-button-wrapper {
