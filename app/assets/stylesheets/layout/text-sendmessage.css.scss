@@ -21,17 +21,9 @@ $containerLarge: 500px;
     list-style-type: none;
     cursor: pointer;
 
-    width: $containerSmall;
+    width: 100%;
     margin: 0 auto; 
     border: 1px solid $brown-font;
-
-    @media screen and (max-width: $break-small) {
-        width: $containerSmall;
-    }
-
-    @media screen and (min-width: $break-large) {
-        width: $containerMedium;
-    }
 
 } 
 
@@ -66,16 +58,31 @@ $containerLarge: 500px;
   cursor: default;
 }
 
+.message-template-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid grey;
+    background-color: $background-color;
+}
 
 .message-custom-wrapper {
-    padding: 0 40px;
+    max-width: $containerMedium;
+    margin: 0 auto;
+
+    @media screen and (max-width: $break-small) {
+        max-width: $containerSmall;
+    }
+
+    @media screen and (min-width: $break-large) {
+        max-width: $containerLarge;
+    }
 }
 
 .message-custom-toggle {
     display: block;
     float: right;
     margin-top: 10px;
-    margin-right: 25px;
     background-color: $tertiary-color;
     border: none;
     color: white;
@@ -97,12 +104,22 @@ $containerLarge: 500px;
     color: $warning-color;
 }
 
-.message-template-input {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid grey;
-    background-color: $background-color;
+
+.submit-button-wrapper {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.submit-button {
+    background-color: $primary-color;
+    color: white;
+
+    @media screen and (max-width: $break-small) {
+        width: 100% !important;
+        padding: 0 !important;
+
+    }
+
 }
 
 

@@ -35,7 +35,7 @@ $containerLarge: 600px;
 .recipients-class-list {
     width: $containerMedium / 2;
 
-    @for $i from 1 through 8 {
+    @for $i from 1 through 5 {
         &:nth-child(#{$i}) {
             background-color: rgb(255 - (2 * $i), 255 - (2 * $i), 255 - (2 * $i));
         }
@@ -97,6 +97,10 @@ $containerLarge: 600px;
 .recipients-classroom-title {
     font-weight: 700;
     font-size: $sub-headline-font-size;
+
+    @media screen and (max-width: $break-small) {
+        font-size: $base-font-size;
+    }
 }
 
 .recipients-student-select {
