@@ -3,15 +3,7 @@
     color: $brown-font;
     font-weight: 400;
     padding: 25px;
-    min-width: 500px;
-
-    @media screen and (max-width: $break-small) {
-        min-width: 600px;
-    }
-
-    @media screen and (min-width: $break-large) {
-        min-width: 1000px;
-    }
+    min-width: $break-small;
 
     h2 {
         font-size: $headline-font-size;
@@ -21,7 +13,23 @@
 }
 
 .top-half {
-    height: 500px;
+    position: fixed;
+    width: 100%;
+    top: $header-height-normal + $nav-height;
+    bottom: $main-content-bottom-half-height;
+    overflow-y: scroll;
+
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px dotted rgba(150, 150, 150, 0.5);
+
+    @media screen and (max-width: $break-small) {
+        top: $header-height-small + $nav-height;
+    }
+
+    @media screen and (min-width: $break-large) {
+        top: $header-height-large + $nav-height;
+    }
 
     &:after {
         display: block;
@@ -29,7 +37,22 @@
         clear: both;
     }
 
+}
 
+.bottom-half {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $main-content-bottom-half-height;
+}
+
+.submit-button-wrapper {
+    text-align: center;
+}
+
+.submit-button {
+    background-color: $primary-color;
+    color: white;
 }
 
 .send-message-recipients {
@@ -43,4 +66,6 @@
     float: left;
     padding: 0 50px;
 }
+
+
 
