@@ -1,0 +1,19 @@
+<h2> Listing of Classrooms </h2>
+
+<table>
+  <tr>
+    <% if current_user.admin? %>
+      <% Classroom.find(:all).each do |room| %>
+        <tr>
+          <td><%= link_to room.name, room %></td>
+          <td><%= link_to "Remove", room, action: "delete", data: {confirm: "Are you sure?"} %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <% current_user.classrooms.each do |room| %>
+        <tr>
+          <td><%= link_to room.name, room %></td>
+        </tr>
+      <% end %>
+    <% end %>
+</table
