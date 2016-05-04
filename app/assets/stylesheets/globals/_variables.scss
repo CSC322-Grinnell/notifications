@@ -31,11 +31,26 @@ $brown-font: #492E05;
 $creamcolor: #F6E19B; // use with brown font
 $dark-cream: darken($creamcolor, 5);
 $background-color: #FCFDF9;
+$background-color-alt: rgb(240, 240, 240); /* used with n-th child for list-like things */
 $warning-color: rgb(179,58,58);
 
 
 
 /* viewports */
 
+$header-height-small:  100px;
+$header-height-normal: 150px;
+$header-height-large:  200px;
+
+$nav-height: 50px;
+
+
 $break-small: 600px;
-$break-large: 1200px;
+$break-medium: 900px;
+$break-large: 1280px;
+
+$height-768: 768px;
+$height-800: 800px;
+$height-900: 900px;
+$height-1024: 1024px;
+$height-1050: 1050px;

@@ -32,6 +32,9 @@ messageNotEmpty = () =>
     else 
         return templatesNotEmpty() && !$('.message-template-textarea').is(':empty')
 
+messageTooLong = () =>
+    return $('.message-custom-textarea').val().length > 144 # SMS limit - two messages will be sent
+
 templatesNotEmpty = () =>
     return $(".message-template-textarea").children().toArray().reduce (previousValue, currentValue) =>
         return previousValue && currentValue.value.length > 0
@@ -46,7 +49,7 @@ verifyInput = () =>
 
 $ ->
 
-    ## section text-recipients
+  ## section text-recipients
 
     # show and hide classrooms
     $('.recipients-room-label').click ->
@@ -69,9 +72,12 @@ $ ->
     $('#masonry-container').masonry
         itemSelector: '.recipients-class-list'
         columnWidth: (containerWidth) =>
-            return containerWidth / 2
+            if $('body').width() < 900
+                return containerWidth
+            else 
+                return containerWidth / 2
     
-    ## section text-sendmessage
+  ## section text-sendmessage
 
     # select template onclick
     $(".message-template-item").click ->   
@@ -94,17 +100,17 @@ $ ->
         $(".message-template-textarea").html(msg) # fill textarea with template message
         verifyInput()
 
-
+        # place blanks for user to fill in 
         $(".message-template-input").each (index, element) =>
             $(element).css('min-width', getPlaceholderWidth(element) + 7)
             resizeInput.call($(element))
 
+        # scale blanks to fit either placeholder or user inputted string
         $('.message-template-input').keyup ->
             resizeInput.call($(this))
             verifyInput()
 
     # write custom message onclick
-
     $('.message-custom-toggle').click ->
         $('.message-custom-textarea').val('')
         $('.message-custom-wrapper').toggleClass('hidden')
@@ -114,14 +120,16 @@ $ ->
     $('.message-custom-textarea').keyup ->
         verifyInput()
 
-    # send message onclick
+        $('.message-custom-length-warning').addClass('hidden-force')
+        if messageTooLong('.message-custom-length-warning') 
+            $('.message-custom-length-warning').removeClass('hidden-force')
 
+    # send message onclick
     $('#send-message-form').submit (event) =>
         if $('.submit-button').hasClass('inactive')
             return false
         else
             return true
-
 
     $('.submit-button').click ->
         
