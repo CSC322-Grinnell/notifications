@@ -7,9 +7,9 @@ Background:users and students and classrooms have been added to the database
 
   Given the following classrooms exist:
   |name|
-  |Room A|
-  |Room B|
-  |Room C|
+  |RoomA|
+  |RoomB|
+  |RoomC|
 
   Given the following students exist:
   | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
@@ -37,9 +37,9 @@ Background:users and students and classrooms have been added to the database
   And I am on the text page
 
 Scenario: View classrooms
-  Then I should see "Room A"
-  And I should see "Room B"
-  And I should see "Room C"
+  Then I should see "RoomA"
+  And I should see "RoomB"
+  And I should see "RoomC"
 
 Scenario: View students
   Then I should see "Khoa Nguyen"
@@ -63,8 +63,8 @@ Scenario: Select multiple recipients and send a message
   And I should see "this is a test"
 
 Scenario: Select classroom and send a message
-  When I check "Room A"
-  And I check "Room B"
+  When I check "recipients-select-all-RoomA"
+  And I check "recipients-select-all-RoomA"
   And I fill in "msg-text" with "this is a classroom test"
   And I press "Send Message"
   Then I should be on the history page
