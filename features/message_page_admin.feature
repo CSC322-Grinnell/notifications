@@ -48,6 +48,12 @@ Scenario: View students
   And I should see "Czar Lust"
   And I should see "Princess Lust"
 
+Scenario:Select single recipient and send message
+  When I check "Butt Plugly"
+  And I click "Head Start class is cancelled"
+  And I press "Send Message"
+  Then I should be on the history page
+
 Scenario: Select multiple recipients and send a message
   When I check "Butt Plugly"
   And I check "Crusty Jones"
