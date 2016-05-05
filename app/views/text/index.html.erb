@@ -14,24 +14,6 @@
                     <% @classrooms.each_with_index do |classroom, index| %>
                     <div class="recipients-class-list has-gutters">
 
-
-        <% if @classrooms == 0 %>
-            <div>
-                You don't have any students.
-            </div>
-        <% end %>
-
-        <% @classrooms.each do |classroom| %>
-            <div class="class-list">
-
-                <fieldset id="<%= classroom.id %>">
-                    <legend>Select Recipients</legend>
-                    <ul>
-                        <% classroom.students.each_with_index do |student, index| %>
-                            <li>
-                                <input type="checkbox" id="student[<%= student.id %>]" name="student[<%= index %>]" value="<%= student.id %>" class="student-select" />
-                                <label for="student[<%= student.id %>]"><%= student.Student_Name %></label>
-                            </li>
                         <% if classroom.students.length > 0 %>
                         <fieldset id="classroom-<%= classroom.id %>" class="recipients-classroom">
                             <legend><%= classroom.name %></legend>
