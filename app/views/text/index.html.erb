@@ -15,7 +15,7 @@
                     <div class="recipients-class-list has-gutters">
 
                         <% if classroom.students.length > 0 %>
-                        <fieldset id="classroom-<%= classroom.id %>" class="recipients-classroom">
+                        <fieldset id="classroom-<%= classroom.name %>" class="recipients-classroom">
                             <legend><%= classroom.name %></legend>
                             <div class="recipients-classroom-title"><%= classroom.name %></div>
                             <ul>
@@ -26,8 +26,8 @@
                                     </li>
                                 <% end %>
                             </ul>
-                            <input type="checkbox" id="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">
-                            <label for="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">Select All</label>
+                            <input type="checkbox" id="recipients-select-all-<%= classroom.name %>" class="recipients-select-all">
+                            <label for="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">Select all</label>
                         </fieldset>
                         <% end %>
 
@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="submit-button-wrapper">
-                    <input class="submit-button button inactive" type="submit" value="Send Message">
+                    <input id="submit-button-right-side" class="submit-button button inactive" type="submit" value="Send Message">
                 </div>   
 
             </div>
