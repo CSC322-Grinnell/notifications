@@ -23,7 +23,9 @@
 
         <% if @current_user.admin %>
         <li class="nav-li">
-          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users'%>">Edit Data <img src="assets/dropdownArrow.png" class="nav-dropdown-image"> </div>
+          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users'%>">
+            Edit Data  <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
 
           <ul class="nav-submenu">
             <li> <a href="/students" class="nav-link"> Students </a> </li>
@@ -38,7 +40,9 @@
         </li>
 
         <li class="nav-li">
-          <div class="nav-dropdown nav-first">User <img src="assets/dropdownArrow.png" class="nav-dropdown-image"></div>
+          <div class="nav-dropdown nav-first">
+            User <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
 
           <ul class="nav-submenu">
             <li><a href="/settings" class="nav-link">Settings</a></li>
