@@ -16,30 +16,39 @@ $containerLarge: 600px;
      -moz-border-radius: 5px;
           border-radius: 5px;
 
-    @media screen and (max-width: $break-small) {
-        width: $containerSmall;
+    @media screen and (max-width: $break-medium) {
+        width: 100%;
     }
-
     @media screen and (min-width: $break-large) {
         width: $containerLarge;
     }
 
-  &.clearfix:before, &.clearfix:after {
+    &.clearfix:before, &.clearfix:after {
     content: ""; display: table; 
-  }
+    }
 
-  &.clearfix:after {clear: both;}
+    &.clearfix:after {clear: both;}
 
-  &.clearfix { zoom: 1; }
+    &.clearfix { zoom: 1; }
 }
 
 .recipients-class-list {
     width: $containerMedium / 2;
 
-    @media screen and (max-width: $break-small) {
-        width: $containerSmall / 2
+    @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+            background-color: rgb(255 - (2 * $i), 255 - (2 * $i), 255 - (2 * $i));
+        }
+    }
+    
+    &:nth-child(2) {
+        background-color: $background-color;
     }
 
+    @media screen and (max-width: $break-medium) {
+        width: 100%;
+        position: relative; /* override masonry for single column layout */
+    }
     @media screen and (min-width: $break-large) {
         width: $containerLarge / 2;
     }
@@ -50,14 +59,21 @@ $containerLarge: 600px;
 }
 
 .recipients-classroom {
+    @include border-box;
 
     width: 100%;
-
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-
     margin: 0;
+    padding: 20px;
+
+    @media screen and (max-width: $break-small) {
+        padding: 0px;
+    }
+    @media screen and (max-width: $break-medium) {
+        padding: 10px;
+    }
+    @media screen and (min-width: $break-large) {
+        padding: 20px 30px;
+    }
 
     &.hidden {
         @include hidden();
@@ -81,6 +97,10 @@ $containerLarge: 600px;
 .recipients-classroom-title {
     font-weight: 700;
     font-size: $sub-headline-font-size;
+
+    @media screen and (max-width: $break-small) {
+        font-size: $base-font-size;
+    }
 }
 
 .recipients-student-select {

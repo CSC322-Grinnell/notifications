@@ -17,7 +17,7 @@ html {
 body {
     margin: 0;
     padding: 0;
-    min-width: 500px;
+    min-width: $break-small;
     color: black;
     line-height: $base-line-height;
     background-color: $background-color;

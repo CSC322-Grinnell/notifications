@@ -11,13 +11,6 @@
     <%= render '/shared/header' %>
 
     <main>
-
-      <% if flash[:notice] %>
-        <div id="notice" class="message"> <%= flash[:notice] %> </div>
-      <% elsif flash[:warning] %>
-        <div id="warning" class="message"> <%= flash[:warning] %> </div>
-      <% end %> 
-
       <%= yield %>
     </main>
     

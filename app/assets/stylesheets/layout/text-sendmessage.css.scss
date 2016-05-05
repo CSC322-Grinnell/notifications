@@ -1,5 +1,18 @@
+$containerSmall: 300px;
+$containerMedium: 400px;
+$containerLarge: 500px;
+
 .message-template-wrapper {
-    
+    max-width: $containerMedium;
+    margin: 0 auto;
+
+    @media screen and (max-width: $break-small) {
+        max-width: $containerSmall;
+    }
+
+    @media screen and (min-width: $break-large) {
+        max-width: $containerLarge;
+    }
 }
 
 .message-template-title {}
@@ -7,32 +20,29 @@
 .message-template-list {
     list-style-type: none;
     cursor: pointer;
-    width: 400px;
+
+    width: 100%;
     margin: 0 auto; 
     border: 1px solid $brown-font;
+
 } 
 
 .message-template-item {
     padding: 6px 10px;
     margin-bottom: 2px;
-}
 
-.message-template-item:hover {
-    font-weight: 700;
-}
-
-.message-template-item:last-child {
-    margin-bottom: 0;
-}
-
-.message-template-item:nth-child(odd) {
-    background: rgb(255, 255, 255);
-    text-align: left;
-}
-
-.message-template-item:nth-child(even) {
-    background: rgb(240, 240, 240);
-    text-align: left;
+    &:hover {
+        font-weight: 700;
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+    &:nth-child(odd) {
+        background-color: $background-color;
+    }
+    &:nth-child(even) {
+        background-color: $background-color-alt;
+    }
 }
 
 .message-template-input-wrapper {
@@ -48,26 +58,36 @@
   cursor: default;
 }
 
+.message-template-input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid grey;
+    background-color: $background-color;
+}
 
 .message-custom-wrapper {
-    padding: 0 40px;
+    max-width: $containerMedium;
+    margin: 0 auto;
+
+    @media screen and (max-width: $break-small) {
+        max-width: $containerSmall;
+    }
+
+    @media screen and (min-width: $break-large) {
+        max-width: $containerLarge;
+    }
 }
 
 .message-custom-toggle {
     display: block;
     float: right;
     margin-top: 10px;
-    margin-right: 25px;
     background-color: $tertiary-color;
     border: none;
     color: white;
     text-align: center;
     font-size: $small-font-size;
-
-}
-
-.message-custom-no-template {
-
 }
 
 .message-custom-textarea {
@@ -77,28 +97,29 @@
     resize: none;
 }
 
-.message-custom-internationalization-warning {
+.message-custom-warning {
     margin-top: 10px;
     font-size: $small-font-size;
     font-weight: 700;
     color: $warning-color;
 }
 
+
 .submit-button-wrapper {
+    margin-top: 60px;
     text-align: center;
 }
 
 .submit-button {
     background-color: $primary-color;
     color: white;
-}
 
-.message-template-input {
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid grey;
-    background-color: $background-color;
+    @media screen and (max-width: $break-small) {
+        width: 100% !important;
+        padding: 0 !important;
+
+    }
+
 }
 
 
