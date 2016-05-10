@@ -25,8 +25,7 @@ module NavigationHelpers
     when /^the text page$/ then '/text'
     when /^the new user page$/ then '/signup'
     when /^the login page$/ then '/login'
-    when /^the user page$/ then '/user'
-    when /^the user edit page$/ then '/users/edit'
+    when /^the users page$/ then '/users'
     when /^the classroom page$/ then '/classrooms'
     when /^the history page$/ then '/history'
     when /^the classroom details page for \"(.*)\"/i

@@ -37,7 +37,7 @@ Feature: Navbar functionality
   And I should see "Students"
   And I should see "Classroom"
   And I should see "Users"
-  And I should see "Send Message"
+  And I should see "Send a Message"
   And I should see "User"
   And I should see "Settings"
   And I should see "Logout"
@@ -47,15 +47,15 @@ Feature: Navbar functionality
   Then I should be on the students page
 
   Scenario: Navigate to Classroom page
-  When I follow "Classroom"
+  When I follow "Classrooms"
   Then I should be on the classrooms page
 
   Scenario: Navigate to Users page
   When I follow "Users"
-  Then I should be on the user edit page
+  Then I should be on the users page
 
   Scenario: Navigate to Send Message page
-  When I follow "Send Message"
+  When I follow "Send a Message"
   Then I should be on the text page
 
   Scenario: Navigate to History page
