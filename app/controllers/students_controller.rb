@@ -16,10 +16,6 @@ class StudentsController < ApplicationController
     @classrooms = Classroom.all
   end
 
-  def edit
-    @student = Student.find(params[:id])
-  end
-
   def create
     @student = Student.new(params[:student])
     if @student.save

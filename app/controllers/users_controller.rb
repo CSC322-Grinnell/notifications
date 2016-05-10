@@ -20,18 +20,18 @@ class UsersController < ApplicationController
     # the User has not yet been activated
     if @user.save
       flash[:notice] = 'Your account has been created.'
-      redirect_to '/user'
+      redirect_to '/users'
     else
       flash[:notice] = 'There was a problem creating your account.'
       render action: :new
     end
   end
 
-  def show
+  def index
     @user = current_user
     @users = User.all
   end
-  
+
   def edit
     @user = User.find(params[:id])
   end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
         flash[:notice] = 'Account updated!'
-        redirect_to '/user'
+        redirect_to '/users'
       else
         flash[:notice] = "Passwords aren't the same"
         render :action => :edit
@@ -65,9 +65,9 @@ class UsersController < ApplicationController
     else
       flash[:notice] = 'Unable to delete the last admistrator.'
     end
-    redirect_to '/user'
+    redirect_to '/users'
   end
-  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -78,5 +78,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :classroom_ids => [])
     end
-  
+
 end
