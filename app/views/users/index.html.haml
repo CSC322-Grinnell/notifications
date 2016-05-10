@@ -14,6 +14,6 @@
           %td= user.name
           %td= user.email
           %td= link_to "Edit", edit_user_path(user)
-          %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
+          %td{:id => "user#{user.name}"}= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
 
   = link_to "New User", new_user_path

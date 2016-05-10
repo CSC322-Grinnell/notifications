@@ -1,6 +1,6 @@
 Feature: Navbar functionality
 
-  As an admin
+  As a user
   So that I can navigate to different pages
   I would like to use the navbar
 
@@ -20,39 +20,25 @@ Feature: Navbar functionality
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
-
-  Given I am logged in as admin
-  And I am on the classrooms page
+  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false |
 
 
-
-  Given I am logged in as admin
-  And I am on the classrooms page
+  Given I am logged in as not_admin
+  And I am on the text page
   
 
   Scenario: View the items in the navbar
   Then I should see "History"
-  And I should see "Edit Data"
-  And I should see "Students"
-  And I should see "Classroom"
-  And I should see "Users"
+  And I should not see "Edit Data"
+  And I should not see "Students"
+  And I should not see "Classrooms"
+  And I should not see "Users"
   And I should see "Send a Message"
   And I should see "User"
   And I should see "Settings"
   And I should see "Logout"
 
-  Scenario: Navigate to Student page
-  When I follow "Students"
-  Then I should be on the students page
 
-  Scenario: Navigate to Classroom page
-  When I follow "Classrooms"
-  Then I should be on the classrooms page
-
-  Scenario: Navigate to Users page
-  When I follow "Users"
-  Then I should be on the users page
 
   Scenario: Navigate to Send Message page
   When I follow "Send a Message"

@@ -51,7 +51,7 @@ Scenario: delete last admin attempt
   And I remove admin
   And I confirm the popup
   Then I should be on the users page
-  And I should not see "admin@example.com"
+  And I should not see "userAdministrator"
   #Then I should see "Unable to delete the last admistrator."
 
 
