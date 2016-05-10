@@ -53,19 +53,29 @@ Scenario:Select single recipient and send message
   And I click "Head Start class is cancelled"
   And I press "submit-button-right-side"
   Then I should be on the history page
+  And I should see "Head Start class is cancelled"
 
-Scenario: Select multiple recipients and send a message
+Scenario: Select multiple recipients and send a custom message
   When I check "Butt Plugly"
   And I check "Crusty Jones"
+  And I press "Write a Custom Message"
   And I fill in "msg-text" with "this is a test"
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "this is a test"
 
-Scenario: Select classroom and send a message
+Scenario: Select classrooms and send a custom message
   When I check "recipients-select-all-RoomA"
   And I check "recipients-select-all-RoomA"
   And I fill in "msg-text" with "this is a classroom test"
+  And I press "submit-button-right-side"
+  Then I should be on the history page
+  And I should see "this is a classroom test"
+
+Scenario: Select classrooms and send a message
+  When I check "recipients-select-all-RoomA"
+  And I check "recipients-select-all-RoomA"
+  And I click "Classes are closing early today due to weather."
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "this is a classroom test"
