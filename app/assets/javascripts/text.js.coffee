@@ -144,9 +144,6 @@ $ ->
         
         if $('.message-custom-wrapper').hasClass('hidden')
 
-            # don't submit message data since we are using a template
-            $('#msg-text').remove()
-
             # add a DOM element to submit the templateData element
             $('<input form="send-message-form" name="templateData" id="template-data" type="hidden" value="1">').appendTo(".message-template-wrapper")
 
