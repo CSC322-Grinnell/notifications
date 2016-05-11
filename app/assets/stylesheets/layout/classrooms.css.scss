@@ -1,0 +1,72 @@
+$num-columns: 4;
+
+.classrooms-wrapper {
+  @include border-box();
+
+  width: 100%;
+  margin-top: 50px;
+  padding: 50px;
+
+  color: $brown-font;
+
+  border: 1px solid red;
+}
+
+.classrooms-title {
+  text-align: center;
+}
+
+.classrooms-table {
+  display: table;
+  margin: 0 auto;
+  border: 1px solid rgba(150, 150, 150, 0.5);
+}
+
+.classrooms-row {
+  display: table-row;
+
+  margin-bottom: 10px;
+
+  &:nth-child(even) {
+    background-color: $background-color;
+  }
+
+  &:nth-child(odd) {
+    background-color: $background-color-alt;
+  }
+
+}
+
+.classrooms-edit-button {
+  color: $brown-font;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.classrooms-info {
+  font-size: $sub-headline-font-size;
+}
+
+.classrooms-delete {
+
+}
+
+.classrooms-delete-button {
+  color: white;
+  text-decoration: none;
+}
+
+.classrooms-cell {
+  display: table-cell;
+  width: 100% / $num-columns;
+  padding: 20px;
+}
+
+.classrooms-add-new-wrapper {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.classrooms-add-new-button {
+  text-decoration: none;
+}

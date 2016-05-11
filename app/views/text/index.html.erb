@@ -59,6 +59,8 @@
 
                     <button type="button" class="message-custom-toggle">Write a Custom Message</button>
 
+                    <input form="send-message-form" name="templateData" id="template-data" type="hidden" value="1">
+
                 </div>
 
                 <div class="message-custom-wrapper hidden">
@@ -74,16 +76,19 @@
                     <button type="button" class="message-custom-toggle"><- Back to templates</button>
                 </div>
 
-                <div class="submit-button-wrapper">
-                    <input class="submit-button button inactive" type="submit" value="Send Message">
+                <div id="submit-button-right-side" class="submit-button-wrapper">
+                    <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
                 </div>   
 
             </div>
         </div>
     </div>
     <div class="bottom-half">
-        <div class="submit-button-wrapper">
-                <input class="submit-button button inactive" type="submit" value="Send Message">
+        <div id="submit-button-bottom-side" class="submit-button-wrapper">
+                <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
         </div>
     </div>
+
+    
+
 </form>
