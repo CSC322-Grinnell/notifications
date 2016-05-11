@@ -144,15 +144,21 @@ $ ->
         
         if $('.message-custom-wrapper').hasClass('hidden')
 
-            postData = {
+            # don't submit message data since we are using a template
+            $('#msg-text').remove()
+
+            # add a DOM element to submit the templateData element
+            $('<input form="send-message-form" name="templateData" id="template-data" type="hidden" value="1">').appendTo(".message-template-wrapper")
+
+            templateData = {
                 template: $('.template-selected')[0].id,
                 blanks: {}
             }
 
             $(".message-template-textarea").children().each (index, element) =>
-                postData.blanks[$(element).attr("placeholder")] = element.value
+                templateData.blanks[$(element).attr("placeholder")] = element.value
 
-            $("#template-data").val(encodeURIComponent(JSON.stringify(postData)))
+            $("#template-data").val(encodeURIComponent(JSON.stringify(templateData)))
 
 messages = [
     {
