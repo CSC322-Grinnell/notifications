@@ -1,20 +1,19 @@
-$button-margin: 5px;
 $button-border-height: 2px;
 
 @mixin button-measurements($height) {
-    $adjusted-height: $height - ($button-margin * 2);
+    font-size: $height * .5;
+    line-height: $height * .5;
 
-    font-size: $adjusted-height * .5;
-    line-height: $adjusted-height * .5;
-
-    height: $adjusted-height;
-    padding-top: $adjusted-height * .25;
-    padding-bottom: $adjusted-height * .25;
+    height: $height;
+    padding-top: $height * .25;
+    padding-bottom: $height * .25;
+    padding-left: $height;
+    padding-right: $height;
 }
 
 @mixin button-colors($color, $darkcolor) {
     border: 1px solid darken($color, 2);
-    box-shadow: 1px 1px 6px darken($color, 6);
+    box-shadow: 1px 1px 1px darken($color, 6);
     background-color: $color;
 
     &:hover {
@@ -39,7 +38,8 @@ $button-border-height: 2px;
 
 .button {
     @include no-select();
-    @include button-measurements($baseline * 3);
+    @include border-box();
+    @include button-measurements($baseline * 2);
 
     display: inline-block;
     cursor: hand;
@@ -48,8 +48,6 @@ $button-border-height: 2px;
     text-shadow: 0px 1px 2px rgba(100, 100, 100, 0.8);
     color: white;
 
-    margin-top: $button-margin;
-    margin-bottom: $button-margin;
     padding-right: 50px;
     padding-left: 50px;
 
@@ -75,11 +73,11 @@ $button-border-height: 2px;
 }
 
 .button-small {
-    @include button-measurements($baseline * 2);
+    @include button-measurements($baseline);
 }
 
 .button-large {
-    @include button-measurements($baseline * 4);
+    @include button-measurements($baseline * 3);
 }
 
 .button-primary-color {
@@ -88,4 +86,12 @@ $button-border-height: 2px;
 
 .button-tertiary-color {
     @include button-colors($tertiary-color, darken($tertiary-color, 12));
+}
+
+.button-warning-color {
+    @include button-colors($warning-color, darken($warning-color, 12));
+}
+
+.button-cream-color {
+    @include button-colors($cream-color, darken($cream-color, 12));
 }
