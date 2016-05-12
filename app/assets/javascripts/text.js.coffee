@@ -82,6 +82,12 @@ $ ->
     # select template onclick
     $(".message-template-item").click ->   
 
+        # mark other templates as unselected
+        $('.message-template-item').removeClass('template-selected')
+
+        # mark this template as selected
+        $(this).addClass('template-selected')
+
         template = messages[$(this)[0].id]
         msg = template.text
         counter = 0
@@ -126,7 +132,8 @@ $ ->
 
     # send message onclick
     $('#send-message-form').submit (event) =>
-        if $('.submit-button').hasClass('inactive')
+        
+        if $('.submit-button:first').hasClass('inactive')
             return false
         else
             return true
@@ -134,14 +141,21 @@ $ ->
     $('.submit-button').click ->
         
         verifyInput()
+        
+        if $('.message-custom-wrapper').hasClass('hidden')
 
-        if ('.submit-button').hasClass('invalid')
-            return true # break out, don't submit form
-        else
-            $(".message-template-textarea").children().map (index, element) =>
-                $(element).replaceWith(element.value)
-            
-            $('.message-custom-textarea').text($(".message-template-textarea").text())
+            # add a DOM element to submit the templateData element
+            $('<input form="send-message-form" name="templateData" id="template-data" type="hidden" value="1">').appendTo(".message-template-wrapper")
+
+            templateData = {
+                template: $('.template-selected')[0].id,
+                blanks: {}
+            }
+
+            $(".message-template-textarea").children().each (index, element) =>
+                templateData.blanks[$(element).attr("placeholder")] = element.value
+
+            $("#template-data").val(encodeURIComponent(JSON.stringify(templateData)))
 
 messages = [
     {

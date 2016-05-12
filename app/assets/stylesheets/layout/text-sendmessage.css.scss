@@ -5,32 +5,30 @@ $containerLarge: 500px;
 .message-template-wrapper {
     max-width: $containerMedium;
     margin: 0 auto;
-
     @media screen and (max-width: $break-small) {
         max-width: $containerSmall;
     }
-
     @media screen and (min-width: $break-large) {
         max-width: $containerLarge;
     }
 }
 
-.message-template-title {}
+
 
 .message-template-list {
+    width: 100%;
+    margin: 0 auto;
+
     list-style-type: none;
+
     cursor: pointer;
 
-    width: 100%;
-    margin: 0 auto; 
     border: 1px solid $brown-font;
-
-} 
+}
 
 .message-template-item {
-    padding: 6px 10px;
     margin-bottom: 2px;
-
+    padding: 6px 10px;
     &:hover {
         font-weight: 700;
     }
@@ -54,72 +52,75 @@ $containerLarge: 500px;
 }
 
 .message-template-prompt-hidden {
-  opacity: 0;
-  cursor: default;
+    cursor: default;
+
+    opacity: 0;
 }
 
 .message-template-input {
     border-top: none;
-    border-left: none;
     border-right: none;
     border-bottom: 1px solid grey;
+    border-left: none;
     background-color: $background-color;
 }
 
 .message-custom-wrapper {
     max-width: $containerMedium;
     margin: 0 auto;
-
     @media screen and (max-width: $break-small) {
         max-width: $containerSmall;
     }
-
     @media screen and (min-width: $break-large) {
         max-width: $containerLarge;
     }
 }
 
 .message-custom-toggle {
+    font-size: $small-font-size;
+
     display: block;
     float: right;
+
     margin-top: 10px;
-    background-color: $tertiary-color;
-    border: none;
-    color: white;
+
     text-align: center;
-    font-size: $small-font-size;
+
+    color: white;
+    border: none;
+    background-color: $tertiary-color;
 }
 
 .message-custom-textarea {
     display: block;
+
     width: 100%;
     height: 100px;
+
     resize: none;
 }
 
 .message-custom-warning {
-    margin-top: 10px;
     font-size: $small-font-size;
     font-weight: 700;
+
+    margin-top: 10px;
+
     color: $warning-color;
 }
 
 
 .submit-button-wrapper {
     margin-top: 60px;
+
     text-align: center;
 }
 
 .submit-button {
-    background-color: $primary-color;
     color: white;
-
+    background-color: $primary-color;
     @media screen and (max-width: $break-small) {
         width: 100% !important;
         padding: 0 !important;
-
     }
-
 }
-
-

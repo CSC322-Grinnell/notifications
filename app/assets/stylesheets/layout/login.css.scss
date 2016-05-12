@@ -1,21 +1,22 @@
-.login-wrapper { /* the form */
+.login-wrapper {
+    /* the form */
     width: 500px;
     margin: 100px auto;
     padding: 50px 50px 20px 50px;
-    border-radius: 20px;
+
     color: $white-font;
+    border-radius: 20px;
     background-color: $primary-color;
 }
 
 .login-labels {
     @include text-shadow();
-    font-weight: 700;
+
     font-size: $sub-headline-font-size;
+    font-weight: 700;
 }
 
 .login-inputs {
-    
-
     & > input {
         width: 100%;
     }
@@ -23,6 +24,7 @@
 
 .login-email {
     margin-bottom: 20px;
+
     color: $white-font;
 }
 
@@ -36,9 +38,4 @@
 
 .login-submit {
     text-align: center;
-
-    & > input {
-        background-color: $tertiary-color;
-    }
 }
-

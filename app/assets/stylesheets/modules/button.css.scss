@@ -1,69 +1,97 @@
-$button-margin: 5px;
 $button-border-height: 2px;
 
 @mixin button-measurements($height) {
-    $adjusted-height: $height - ($button-margin * 2);
+    font-size: $height * .5;
+    line-height: $height * .5;
 
-    font-size: $adjusted-height * .5;
-    line-height: $adjusted-height * .5;
+    height: $height;
+    padding-top: $height * .25;
+    padding-bottom: $height * .25;
+    padding-left: $height;
+    padding-right: $height;
+}
 
-    height: $adjusted-height;
-    padding-top: $adjusted-height * .25;
-    padding-bottom: $adjusted-height * .25;
+@mixin button-colors($color, $darkcolor) {
+    border: 1px solid darken($color, 2);
+    box-shadow: 1px 1px 1px darken($color, 6);
+    background-color: $color;
+
+    &:hover {
+        background-color: lighten($darkcolor, 6);
+    }
+
+    &:active {
+        box-shadow: 1px 1px 6px lighten($color, 6) !important; /* don't show :focus style when clicking*/
+        background-color: darken($darkcolor, 3);
+    }
+
+    &:focus {
+        border: 1px solid lighten($color, 6);
+        box-shadow: 0 0 20px 2px lighten($color, 6);
+    }
+
+    &.inactive {
+        background-color: mix($color, rgb(150, 150, 150), 0.75);
+        border-color: mix($color, rgb(150, 150, 150), 0.75);
+    }        
 }
 
 .button {
     @include no-select();
-    @include button-measurements($baseline * 3);
+    @include border-box();
+    @include button-measurements($baseline * 2);
 
     display: inline-block;
     cursor: hand;
 
     font-weight: 700;
     text-shadow: 0px 1px 2px rgba(100, 100, 100, 0.8);
+    color: white;
 
-    margin-top: $button-margin;
-    margin-bottom: $button-margin;
     padding-right: 50px;
     padding-left: 50px;
 
-    border: 1px solid darken($primary-color, 2);
     border-radius: 15px;
-    box-shadow: 1px 1px 6px darken($primary-color, 6);
 
-    background-color: $primary-color;
-    color: white;
-    
     &:hover {
-        background-color: lighten($primary-color-dark, 6);
+        
     }
 
     &:active {
         outline: none;
-        box-shadow: 1px 1px 6px lighten($primary-color, 6) !important; /* don't show :focus style when clicking*/
-        background-color: darken($primary-color-dark, 3);
     }
 
     &:focus {
         outline: none;
-        border: 1px solid lighten($primary-color, 6);
-        box-shadow: 0 0 20px 2px lighten($primary-color, 6);
     }
 
     &.inactive {
         cursor: not-allowed;
-        background-color: mix($primary-color, rgb(150, 150, 150), 0.75);
         box-shadow: none;
-        border-color: mix($primary-color, rgb(150, 150, 150), 0.75);
     }        
-
     
 }
 
 .button-small {
-    @include button-measurements($baseline * 2);
+    @include button-measurements($baseline);
 }
 
 .button-large {
-    @include button-measurements($baseline * 4);
+    @include button-measurements($baseline * 3);
+}
+
+.button-primary-color {
+    @include button-colors($primary-color, $primary-color-dark);
+}
+
+.button-tertiary-color {
+    @include button-colors($tertiary-color, darken($tertiary-color, 12));
+}
+
+.button-warning-color {
+    @include button-colors($warning-color, darken($warning-color, 12));
+}
+
+.button-cream-color {
+    @include button-colors($cream-color, darken($cream-color, 12));
 }
