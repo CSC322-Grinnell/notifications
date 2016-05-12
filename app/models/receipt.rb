@@ -13,10 +13,8 @@ class Receipt < ActiveRecord::Base
     # TODO: Check status and only send if not already sent
     client.account.messages.create(
 
-      #testnum=+15005550006
-      #realnum=+12406410583
-
-      :from => '+15005550006',
+      #:from => '+15005550006',
+      :from => '+16412438808',
       :to => student.Phone_Number,
       :body => message.contents
     )
