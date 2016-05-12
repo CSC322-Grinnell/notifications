@@ -1,91 +1,74 @@
 .sendmessage-form {
+    font-weight: 400;
 
     overflow: hidden;
 
-    color: $brown-font;
-    font-weight: 400;
-    padding: 15px;
     min-width: $break-small;
+    padding: 15px;
 
+    color: $brown-font;
     @media screen and (max-width: $break-small) {
-        padding: 0px;
+        padding: 0;
     }
-
     @media screen and (min-width: $break-large) {
         padding: 30px;
     }
-
     h2 {
-        text-align: center;
         font-size: $sub-headline-font-size;
 
+        text-align: center;
         @media screen and (max-width: $break-small) {
             font-size: $sub-headline-font-size;
         }
-
         @media screen and (min-width: $break-large) {
             font-size: $headline-font-size;
         }
     }
-
 }
 
 .top-half {
     width: 100%;
-
     @media screen and (min-width: $break-large) {
         top: $header-height-large + $nav-height;
     }
-
     & .send-message-recipients {
+        float: left;
+        overflow-x: hidden;
+        overflow-y: scroll;
 
         width: 50%;
         height: 570px;
-        float: left;
-        padding: 0 0px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-
+        padding: 0 0;
         @media screen and (max-width: $break-small) and (max-height: $height-768) {
             padding: 0 10px;
-            
         }
     }
-
     .send-message-message {
-        
+        float: left;
 
         width: 50%;
-        float: left;
-        padding: 0 0px;
-
+        padding: 0 0;
         @media screen and (max-width: $break-small) {
             padding: 0 10px;
         }
     }
-
     .submit-button {
         @media screen and (min-height: 900px) {
             display: none;
         }
     }
-
     &:after {
         display: block;
-        content: "";
         clear: both;
-    }
 
+        content: "";
+    }
 }
 
 .bottom-half {
-
     .submit-button {
         @media screen and (max-height: 900px) {
             display: none;
         }
     }
 }
-
-
-

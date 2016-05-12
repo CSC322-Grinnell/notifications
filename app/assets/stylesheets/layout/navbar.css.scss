@@ -1,28 +1,25 @@
-nav { 
+nav {
+    height: $nav-height;
 
     color: white;
     background: $primary-color-dark;
-    height: $nav-height;
-
     ul {
-
         padding: 0 5%;
-
         &:after {
             display: block;
-            content: "";
             clear: both;
+
+            content: "";
         }
     }
-
 }
 
 .nav-dropdown-image {
-    display: inline-block;
     position: relative;
     top: 7px;
     left: 4px;
 
+    display: inline-block;
     @media screen and (max-width: $break-small) {
         left: -4px;
     }
@@ -31,90 +28,88 @@ nav {
     }
 }
 
-.nav-selected { // this highlights the nav element linking to the current page
+.nav-selected {
+    // this highlights the nav element linking to the current page
     font-weight: bold;
 }
 
-.nav-li { // this describes <a> elements or <li> elements  or .nav-submenus
-    list-style: none;
+.nav-li {
+    line-height: 50px;
+
+    position: relative;
+
     display: block;
-    position:relative;
-    width: 25%;
     float: left;
-    background: $primary-color-dark;
+
+    width: 25%;
+    // this describes <a> elements or <li> elements  or .nav-submenus
+
+    list-style: none;
+
     text-align: center;
-    line-height: 50px; 
 
+    background: $primary-color-dark;
     a {
-        color: white;
-        text-decoration: none; 
-    }
+        text-decoration: none;
 
+        color: white;
+    }
     div {
         @include no-select();
-        cursor: default;
+
         display: block;
 
+        cursor: default;
     }
-
 }
 
 .nav-link {
-
-    text-shadow: 0px 1px 2px rgba(100, 100, 100, 0.8);
-
+    text-shadow: 0 1px 2px rgba(100, 100, 100, .8);
     a {
         display: block;
+
         width: 100%;
-        height: 100%; 
-        text-shadow: 0px 1px 2px rgba(100, 100, 100, 0.8);       
-    }
+        height: 100%;
 
+        text-shadow: 0 1px 2px rgba(100, 100, 100, .8);
+    }
     &:hover {
-        background: mix($primary-color-dark, $primary-color);
         cursor: pointer;
-    }
 
+        background: mix($primary-color-dark, $primary-color);
+    }
 }
 
 .nav-dropdown {
     width: 100%;
-    height: 50px;   
+    height: 50px;
 }
 
-.nav-li:hover .nav-submenu { // show submenu when hovering dropdown
+.nav-li:hover .nav-submenu {
+    // show submenu when hovering dropdown
     z-index: 100;
+
     opacity: 1;
 }
 
 .nav-submenu {
-    z-index: -1;
     position: absolute;
+    z-index: -1;
     top: 100%;
-    left: 0px;
-    
-    width: 100%;
-    padding: 5px 0px;
-    
-    opacity: 0;
-    transition: opacity linear 0.15s;
-    background: darken($primary-color-dark, 5);
-    box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+    left: 0;
 
+    width: 100%;
+    padding: 5px 0;
+
+    transition: opacity linear .15s;
+
+    opacity: 0;
+    background: darken($primary-color-dark, 5);
+    box-shadow: 0 2px 3px rgba(0,0,0,.2);
     .nav-link {
         display: block;
     }
-
     .nav-link:hover {
-        box-shadow: 0px 2px 2px rgba(40, 65, 40, 0.4);
+        box-shadow: 0 2px 2px rgba(40, 65, 40, .4);
     }
-
 }
-
-
-
-
-
-
-
-
