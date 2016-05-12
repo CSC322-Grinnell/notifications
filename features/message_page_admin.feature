@@ -26,13 +26,6 @@ Background:users and students and classrooms have been added to the database
   | Administrator | admin@example.com  | pass | pass          | admin@example.com  | true | 
 
 
-  Given the following classrooms_users exist:
-  |classroom_id| user_id|
-  | 1| 1|
-  | 2| 1|
-
-
-
   Given I am logged in as admin
   And I am on the text page
 
@@ -48,12 +41,20 @@ Scenario: View students
   And I should see "Czar Lust"
   And I should see "Princess Lust"
 
-Scenario:Select single recipient and send message
+Scenario:Select single recipient and template send message
   When I check "Butt Plugly"
   And I click "Head Start class is cancelled"
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "Head Start class is cancelled"
+
+Scenario:Select single recipient and custom send message
+  When I check "Butt Plugly"
+  And I press "Write a Custom Message"
+   And I fill in "msg-text" with "this single recipient custom message"
+  And I press "submit-button-right-side"
+  Then I should be on the history page
+  And I should see "this single recipient custom message"
 
 Scenario: Select multiple recipients and send a custom message
   When I check "Butt Plugly"
@@ -67,6 +68,7 @@ Scenario: Select multiple recipients and send a custom message
 Scenario: Select classrooms and send a custom message
   When I check "recipients-select-all-RoomA"
   And I check "recipients-select-all-RoomA"
+  And I press "Write a Custom Message"
   And I fill in "msg-text" with "this is a classroom test"
   And I press "submit-button-right-side"
   Then I should be on the history page
