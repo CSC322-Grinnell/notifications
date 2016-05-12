@@ -12,7 +12,8 @@ class Receipt < ActiveRecord::Base
   def distribute(client)
     # TODO: Check status and only send if not already sent
     client.account.messages.create(
-      :from => '+15005550006',
+      #:from => '+15005550006',
+      :from => '+16412438808',
       :to => student.Phone_Number,
       :body => message.contents
     )
