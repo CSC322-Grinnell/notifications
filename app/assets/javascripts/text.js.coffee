@@ -95,7 +95,7 @@ $ ->
         while msg.indexOf("_$_") > 0
             firsthalf = msg.substring(0, msg.indexOf("_$_"))
             secondhalf = msg.substring(msg.indexOf("_$_") + 3)
-            msg = firsthalf + '<input type="text" class="message-template-input" required placeholder="' + template.blanks[counter] + '">' + secondhalf
+            msg = firsthalf + '<input type="text" id="messageinput" class="message-template-input" required placeholder="' + template.blanks[counter] + '">' + secondhalf
             counter++
 
         $('.message-template-input-wrapper').removeClass('hidden-force') # unhide entire template input section

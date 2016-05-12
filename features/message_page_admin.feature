@@ -47,6 +47,8 @@ Scenario:Select single recipient and template send message
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "Head Start class is cancelled"
+  And I should see "Butt Plugly"
+
 
 Scenario:Select single recipient and custom send message
   When I check "Butt Plugly"
@@ -55,6 +57,7 @@ Scenario:Select single recipient and custom send message
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "this single recipient custom message"
+  And I should see "Butt Plugly"
 
 Scenario: Select multiple recipients and send a custom message
   When I check "Butt Plugly"
@@ -64,6 +67,8 @@ Scenario: Select multiple recipients and send a custom message
   And I press "submit-button-right-side"
   Then I should be on the history page
   And I should see "this is a test"
+  And I should see "Butt Plugly"
+  And I should see "Crusty Jones"
 
 Scenario: Select classrooms and send a custom message
   When I check "recipients-select-all-RoomA"
@@ -74,7 +79,7 @@ Scenario: Select classrooms and send a custom message
   Then I should be on the history page
   And I should see "this is a classroom test"
 
-Scenario: Select classrooms and send a message
+Scenario: Select classrooms and send a template message
   When I check "recipients-select-all-RoomA"
   And I check "recipients-select-all-RoomA"
   And I click "Classes are closing early today due to weather."
@@ -84,6 +89,7 @@ Scenario: Select classrooms and send a message
 
 Scenario: Check for message in history
   When I check "Czar Lust"
+  And I press "Write a Custom Message"
   And I fill in "msg-text" with "this is a test"
   And I press "submit-button-right-side"
   Then I should see "this is a test"
@@ -97,17 +103,39 @@ Scenario: Check for message in history
   And I press "submit-button-right-side"
   Then I should see "Message text too long"
 
-  Scenario: No recipients
+  Scenario: No recipients custom message
     When I fill in "msg-text" with "this is a sad test"
     And I press "submit-button-right-side"
     Then I should be on the text page
-    And I should see "select a recipient"
+
+
+  Scenario: No recipients custom message
+    #When I press "Write a Custom Message"
+    When I fill in "msg-text" with "this is a sad test"
+    And I press "submit-button-right-side"
+    Then I should be on the text page
+
+  Scenario: No recipients templated message
+    When I click "Classes are closing early today due to weather."
+    And I fill in "msg-text" with "this is a sad test"
+    And I press "submit-button-right-side"
+    Then I should be on the text page
 
   Scenario: No message text
     When I check "Czar Lust"
     And I press "submit-button-right-side"
     Then I should be on the text page
-    And I should see "message body is required"
+
+  Scenario:Select single recipient and template send message with input
+    When I check "Butt Plugly"
+    And I click "No class on ____ day"
+    And I fill in "messageinput" with "09/02/93"
+    And I press "submit-button-right-side"
+    Then I should be on the history page
+    And I should see "Head Start class is cancelled"
+    And I should see "Butt Plugly"
+
+
 
 
 
