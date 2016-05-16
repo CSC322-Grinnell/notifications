@@ -117,6 +117,9 @@ Always declare mixins in [_mixins.css](https://github.com/CSC322-Grinnell/notifi
 
 List of Mixins
 - no-select() - disables text select, with vendor prefixes
+- hidden() - hides an element without removing it from the page
+- border-box() - vendor prefixes the border-box box-sizing style
+- text-shadow() - shortcut for "text-shadow: 0px 1px 2px rgba(100, 100, 100, 0.8);"
 
 ## Functions
 
