@@ -1,8 +1,32 @@
 language: ruby
+os:
+  - linux
 rvm:
-  - "2.1.8"
-  - "2.2.4"
-  - "2.3.0"
+  - 2.1.8
+  - 2.2.4
+  - 2.3.0
 
-script: 
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
+install:
+  - bundle install
+  - bundle exec rake db:migrate
+
+script:
+  # Run Cucumber Tests
+  - bundle exec cucumber
+
+matrix:
+  # Return results after first failure for required versions, or after all that
+  #  is left to build allows failures.
+  fast_finish: true
+  # Not yet supported versions should be allowed to fail without effecting the
+  #  build's cumulative status
+  allow_failures:
+    - rvm: 1.8.7
+    - rvm: 1.9.2
+    - rvm: 1.9.3
+
+# "Travis CI clones repositories to a depth of 50 commits, which is only really
+#   useful if you are performing git operations."
+git:
+  depth: 3
+

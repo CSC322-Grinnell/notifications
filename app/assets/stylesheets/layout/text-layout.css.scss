@@ -1,0 +1,74 @@
+.sendmessage-form {
+    font-weight: 400;
+
+    overflow: hidden;
+
+    min-width: $break-small;
+    padding: 15px;
+
+    color: $brown-font;
+    @media screen and (max-width: $break-small) {
+        padding: 0;
+    }
+    @media screen and (min-width: $break-large) {
+        padding: 30px;
+    }
+    h2 {
+        font-size: $sub-headline-font-size;
+
+        text-align: center;
+        @media screen and (max-width: $break-small) {
+            font-size: $sub-headline-font-size;
+        }
+        @media screen and (min-width: $break-large) {
+            font-size: $headline-font-size;
+        }
+    }
+}
+
+.top-half {
+    width: 100%;
+    @media screen and (min-width: $break-large) {
+        top: $header-height-large + $nav-height;
+    }
+    & .send-message-recipients {
+        float: left;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        width: 50%;
+        height: 570px;
+        padding: 0 0;
+        @media screen and (max-width: $break-small) and (max-height: $height-768) {
+            padding: 0 10px;
+        }
+    }
+    .send-message-message {
+        float: left;
+
+        width: 50%;
+        padding: 0 0;
+        @media screen and (max-width: $break-small) {
+            padding: 0 10px;
+        }
+    }
+    .submit-button {
+        @media screen and (min-height: 900px) {
+            display: none;
+        }
+    }
+    &:after {
+        display: block;
+        clear: both;
+
+        content: "";
+    }
+}
+
+.bottom-half {
+    .submit-button {
+        @media screen and (max-height: 900px) {
+            display: none;
+        }
+    }
+}

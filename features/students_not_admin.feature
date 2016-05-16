@@ -11,15 +11,25 @@ Background: there is a student in the database
   | Party |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | can_text | classroom_name |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |Room |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | can_text | classroom_ids |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |1 |
+  | Bert Starr   | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |2 |
+  | Kenny Winker | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |2 |
+  | Lord Snow    | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |1 |
 
   Given the following users exist:
-  | name             | email                 | password  | password_confirmation | login              | admin |
-  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false |
+  | name             | email                 | password  | password_confirmation | login              | admin | classroom_ids |
+  | NotAdministrator | notadmin@example.com  | pass      | pass                  | admin@example.com  | false | 1 |
 
   Given I am logged in as not_admin
   And I am on the students page
+
+Scenario: View students
+  Given I am on the students page
+  Then I should see "Khoa Nguyen"
+  And I should see "Lord Snow"
+  And I should not see "Kenny Winker"
+  And I should not see "Bert Starr"
 
 
 Scenario: Read a student (happy path)

@@ -1,0 +1,19 @@
+<%= form_for @user_session do |f| %>
+<div class="login-wrapper"> 
+  <div class="login-email">
+    <div class="login-labels"> <%= f.label :email %> </div>
+    <div class="login-inputs"> <%= f.text_field :email %> </div>
+  </div>
+  <div class="login-password">
+    <div class="login-labels"> <%= f.label :password %> </div>
+    <div class="login-inputs"> <%= f.password_field :password %> </div>
+  </div>
+    <div class="login-remember-me">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me %>
+  </div>
+  <div class="login-submit">
+    <%= f.submit "Log In", :class => 'button button-tertiary-color' %>
+  </div>
+</div>
+<% end %>

@@ -13,10 +13,10 @@ Feature: Group students into classrooms
   | Room B |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_name |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | Room A         |
-  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | Room A         |
-  | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | Room A         |
+  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | 1        |
+  | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | 1         |
+  | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | 1         |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
@@ -24,6 +24,7 @@ Feature: Group students into classrooms
 
   Given I am logged in as admin
   And I am on the classrooms page
+
 
   Scenario: Create a classroom
   When I follow "Add New Classroom"
@@ -48,6 +49,6 @@ Feature: Group students into classrooms
 
   Scenario: Put students in classroom
   Given I am on the edit page for "Khoa Nguyen"
-  And I select "Room B" from "Classroom name"
+  And I check "Room B"
   And I press "Save"
   Then I should see "Room B"

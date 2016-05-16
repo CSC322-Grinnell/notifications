@@ -1,4 +1,4 @@
-%h1 Listing students
+%h2 Listing students
 
 %table#users
   %tr
@@ -10,21 +10,36 @@
     %th
     %th
     %th
-    
-  - current_user.classrooms.each do |room|
-    %tr
-      %th{:colspan => 8}= room.name
-    - room.students.each do |student|
-      %tr
-        %td= student.Student_Name
-        %td= student.Parent_Name
-        %td= student.Phone_Number
-        %td= student.Email
-        %td= student.can_text ? "Yes" : "No"
-        %td= link_to "Show #{student.Student_Name}", student
-        -if admin?
-          %td= link_to 'Edit', edit_student_path(student)
-          %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+    - if current_user.admin?
+      - Classroom.find(:all).each do |room| 
+        %tr
+          %th{:colspan => 8}= room.name
+        - room.students.each do |student|
+          %tr
+            %td= student.Student_Name
+            %td= student.Parent_Name
+            %td= student.Phone_Number
+            %td= student.Email
+            %td= student.can_text ? "Yes" : "No"
+            %td= link_to "Show #{student.Student_Name}", student
+            %td= link_to 'Edit', edit_student_path(student)
+            %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - else
+      - current_user.classrooms.each do |room|
+        %tr
+          %th{:colspan => 8}= room.name
+        - room.students.each do |student|
+          %tr
+            %td= student.Student_Name
+            %td= student.Parent_Name
+            %td= student.Phone_Number
+            %td= student.Email
+            %td= student.can_text ? "Yes" : "No"
+            %td= link_to "Show #{student.Student_Name}", student
+
+
+  
 %br
 - if admin?
   = link_to 'Add New Student', new_student_path

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Head Start</title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %> 
+    <%= csrf_meta_tags %>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <head>
+  <body>
+
+    <%= render '/shared/header' %>
+
+    <nav class="nav">
+
+      <ul>
+
+        <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'history' %>">
+          <a href="/history" class="nav-first">History</a>
+        </li>
+
+        <% if @current_user.admin %>
+        <li class="nav-li">
+          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users'%>">
+            Edit Data  <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
+
+          <ul class="nav-submenu">
+            <li> <a href="/students" class="nav-link"> Students </a> </li>
+            <li> <a href="/classrooms" class="nav-link"> Classrooms </a> </li>
+            <li> <a href="/users" class="nav-link"> Users </a> </li>
+          </ul>
+        </li>
+        <% end %>
+
+        <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'text' %>">
+          <a href="/text" class="nav-first">Send Message</a>
+        </li>
+
+        <li class="nav-li">
+          <div class="nav-dropdown nav-first">
+            User <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
+
+          <ul class="nav-submenu">
+            <li><a href="/settings" class="nav-link">Settings</a></li>
+            <li><a href="/logout" class="nav-link">Logout</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+
+    </nav>
+
+    <div id="main-content">
+
+      <%= yield %>
+
+    </div>
+
+  </body>
+</html>

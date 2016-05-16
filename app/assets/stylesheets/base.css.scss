@@ -1,0 +1,53 @@
+@import "globals/all";
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-width: $break-small;
+    color: black;
+    line-height: $base-line-height;
+    background-color: $background-color;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+#main-content {
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+.hidden {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+.hidden-force {
+    display: none;
+}

@@ -1,0 +1,115 @@
+nav {
+    height: $nav-height;
+
+    color: white;
+    background: $primary-color-dark;
+    ul {
+        padding: 0 5%;
+        &:after {
+            display: block;
+            clear: both;
+
+            content: "";
+        }
+    }
+}
+
+.nav-dropdown-image {
+    position: relative;
+    top: 7px;
+    left: 4px;
+
+    display: inline-block;
+    @media screen and (max-width: $break-small) {
+        left: -4px;
+    }
+    @media screen and (min-width: $break-large) {
+        left: 6px;
+    }
+}
+
+.nav-selected {
+    // this highlights the nav element linking to the current page
+    font-weight: bold;
+}
+
+.nav-li {
+    line-height: 50px;
+
+    position: relative;
+
+    display: block;
+    float: left;
+
+    width: 25%;
+    // this describes <a> elements or <li> elements  or .nav-submenus
+
+    list-style: none;
+
+    text-align: center;
+
+    background: $primary-color-dark;
+    a {
+        text-decoration: none;
+
+        color: white;
+    }
+    div {
+        @include no-select();
+
+        display: block;
+
+        cursor: default;
+    }
+}
+
+.nav-link {
+    text-shadow: 0 1px 2px rgba(100, 100, 100, .8);
+    a {
+        display: block;
+
+        width: 100%;
+        height: 100%;
+
+        text-shadow: 0 1px 2px rgba(100, 100, 100, .8);
+    }
+    &:hover {
+        cursor: pointer;
+
+        background: mix($primary-color-dark, $primary-color);
+    }
+}
+
+.nav-dropdown {
+    width: 100%;
+    height: 50px;
+}
+
+.nav-li:hover .nav-submenu {
+    // show submenu when hovering dropdown
+    z-index: 100;
+
+    opacity: 1;
+}
+
+.nav-submenu {
+    position: absolute;
+    z-index: -1;
+    top: 100%;
+    left: 0;
+
+    width: 100%;
+    padding: 5px 0;
+
+    transition: opacity linear .15s;
+
+    opacity: 0;
+    background: darken($primary-color-dark, 5);
+    box-shadow: 0 2px 3px rgba(0,0,0,.2);
+    .nav-link {
+        display: block;
+    }
+    .nav-link:hover {
+        box-shadow: 0 2px 2px rgba(40, 65, 40, .4);
+    }
+}

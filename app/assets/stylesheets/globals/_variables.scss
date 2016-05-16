@@ -1,0 +1,56 @@
+/* font types */
+
+$serif: Georgia, serif;
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/* font styles */
+
+$title-font-size: 42px;
+$headline-font-size: 26px;
+$sub-headline-font-size: 20px;
+$base-font-size: 16px;
+$small-font-size: 13px;
+
+/* font-positioning */
+
+$baseline: 25px;
+$base-line-height: ($baseline/$base-font-size);
+
+/* colors */
+
+$primary-color: #8DAF2D; // use with $white-font
+$primary-color-dark: #5E751E; // use with $white-font
+$secondary-color: #F2C83E; // use with $brown-font
+$tertiary-color: #DB8A11; // use with $white-font
+
+/* font colors */
+$white-font: white;
+$brown-font: #492E05; 
+
+/* misc colors */
+$cream-color: #F6E19B; // use with brown font
+$dark-cream: darken($cream-color, 5);
+$background-color: #FCFDF9;
+$background-color-alt: rgb(240, 240, 240); /* used with n-th child for list-like things */
+$warning-color: rgb(179,58,58);
+
+
+
+/* viewports */
+
+$header-height-small:  100px;
+$header-height-normal: 150px;
+$header-height-large:  200px;
+
+$nav-height: 50px;
+
+
+$break-small: 600px;
+$break-medium: 900px;
+$break-large: 1280px;
+
+$height-768: 768px;
+$height-800: 800px;
+$height-900: 900px;
+$height-1024: 1024px;
+$height-1050: 1050px;

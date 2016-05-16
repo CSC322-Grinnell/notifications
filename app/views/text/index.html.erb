@@ -1,0 +1,92 @@
+<form id="send-message-form" class="sendmessage-form" method = 'POST'>
+    <div class="top-half">
+        <div class="send-message-recipients">
+            <div class="recipients-inner-wrapper">
+                <h2 class="recipients-title">Select Recipients</h2>
+
+                <% if @classrooms == 0 %>
+                <div>
+                    You don't have any students.  Sorry, you can't send any messages.
+                </div>
+                <% end %>
+
+                <div id="masonry-container" class="clearfix">
+                    <% @classrooms.each_with_index do |classroom, index| %>
+                    <div class="recipients-class-list has-gutters">
+
+                        <% if classroom.students.length > 0 %>
+                        <fieldset id="classroom-<%= classroom.id %>" class="recipients-classroom">
+                            <legend><%= classroom.name %></legend>
+                            <div class="recipients-classroom-title"><%= classroom.name %></div>
+                            <ul>
+                                <% classroom.students.each_with_index do |student, index| %>
+                                    <li>
+                                        <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="recipients-student-select" />
+                                        <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.Student_Name %></label>
+                                    </li>
+                                <% end %>
+                            </ul>
+                            <input type="checkbox" id="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">
+                            <label for="recipients-select-all-<%= classroom.id %>" class="recipients-select-all">Select All</label>
+                        </fieldset>
+                        <% end %>
+
+                    </div>
+                    <% end %>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="send-message-message">
+            <div class="message-inner-wrapper">
+
+                <div class="message-template-wrapper">
+
+                    <h2 class="message-template-title">Select from a template</h2>
+
+                    <ul class="message-template-list">
+                      <li id="0" class="message-template-item">Head Start class is cancelled</li> 
+                      <li id="1" class="message-template-item">Head Start classes will be starting late</li>
+                      <li id="2" class="message-template-item">Classes are closing early today due to weather.</li>
+                      <li id="3" class="message-template-item">No class on ____ day</li>
+                    </ul>
+
+                    <div class="message-template-input-wrapper hidden-force">
+                        <h3 class="message-template-prompt">Fill in your template</h3>
+                        <div class="message-template-textarea" name="message"></div>
+                    </div>
+
+                    <button type="button" class="message-custom-toggle">Write a Custom Message</button>
+
+                </div>
+
+                <div class="message-custom-wrapper hidden">
+                    <div></div>
+                    <h2 class="message-custom-title">Send a custom message</h2>
+                    <textarea class="message-custom-textarea" form="send-message-form" id="msg-text" name="message"></textarea>
+                    <p class="message-custom-internationalization-warning message-custom-warning">
+                        ⚠ Warning: we can't translate custom messages.
+                    </p>
+                    <p class="message-custom-length-warning message-custom-warning hidden-force">
+                        ⚠ Warning: your message is large and will result in multiple texts being sent.
+                    </p>
+                    <button type="button" class="message-custom-toggle"><- Back to templates</button>
+                </div>
+
+                <div id="submit-button-right-side" class="submit-button-wrapper">
+                    <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
+                </div>   
+
+            </div>
+        </div>
+    </div>
+    <div class="bottom-half">
+        <div id="submit-button-bottom-side" class="submit-button-wrapper">
+                <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
+        </div>
+    </div>
+
+    
+
+</form>

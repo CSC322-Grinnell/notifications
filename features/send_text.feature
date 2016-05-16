@@ -11,8 +11,8 @@ Background: some users have been added to database
   | Room A    |
   
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_name |
-  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | Room A    |
+  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
+  | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 1    |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              |
