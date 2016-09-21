@@ -27,10 +27,20 @@ class StudentsController < ApplicationController
     end
   end
 
+def edit
+  @student = Student.find(params[:id])
+end
+
   def update
+    @id = params[:id]
     @student = Student.find(params[:id])
 
     if @student.update_attributes(params[:student])
+      @student.update_attribute(:Student_Name , params[:students][:name])
+      @student.update_attribute(:Parent_Name , params[:students][:parent_name])
+      @student.update_attribute(:Email , params[:students][:email])
+      @student.update_attribute(:Phone_Number , params[:students][:phone])
+      #@student.update_attribute(:classroom_ids , params[:students][:classrooms])
       flash[:notice] = 'Student updated successfully'
       redirect_to @student
     else

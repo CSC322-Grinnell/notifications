@@ -16,7 +16,7 @@
 %p
   %b Classroom:
   - @student.classrooms.each do |room|
-    = room.name
+    = room.name + ", "
 
 = link_to 'Send Text', text_index_path(:student_name => @student.Student_Name)
 \|

@@ -2,21 +2,24 @@
 
 = form_tag user_path(@user), :method => :put do
 
-  = label :user, :name, 'Name'
+  = label :user, :name, 'Name: '
   = text_field :user, 'name'
   %br/
-  = label :user, :email, 'Email'
+  = label :user, :email, 'Email: '
   = text_field :user, 'email'
+  %br/
   = label :user, :password
   = password_field :user, :password
+  %br/
   = label :user, :password_confirmation
   = password_field :user, :password_confirmation
-  = label :user, :admin, 'Admin'
+  %br/
+  = label :user, :admin, 'Admin: '
   = check_box :user, :admin, {}, "true", "false"
-  = label :user, :classroom, 'Classroom'
+  %br/
+  = label :user, :classroom, 'Classrooms: '
   - for classroom in Classroom.find(:all)
     = classroom.name
     = check_box_tag "user[classroom_ids][]", classroom.id, @user.classrooms.include?(classroom)
-
   %br/
   = submit_tag 'Update User Info'

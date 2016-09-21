@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
         flash[:notice] = 'Account updated!'
-        redirect_to '/users'
+        redirect_to @user
       else
         flash[:notice] = "Passwords aren't the same"
         render :action => :edit

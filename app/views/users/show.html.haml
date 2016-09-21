@@ -1,0 +1,17 @@
+%p
+  %b User name:
+  = @user.name
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Classroom:
+  - @user.classrooms.each do |room|
+    = room.name
+
+\|
+- if admin?
+  = link_to 'Edit', edit_user_path(@user)
+  \|
+= link_to 'Back', users_path
+\|

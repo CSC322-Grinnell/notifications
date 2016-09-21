@@ -9,11 +9,15 @@
         %th
         %th
     %tbody
-      - @users.each do |user|
+    
+      - Classroom.find(:all).each do |room| 
         %tr
-          %td= user.name
-          %td= user.email
-          %td= link_to "Edit", edit_user_path(user)
-          %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
+        - @users.each do |user|
+          %tr
+            %td= user.name
+            %td= user.email
+            %td= room.name
+            %td= link_to "Edit", edit_user_path(user)
+            %td= link_to "Remove", user, method: :delete, data: { confirm: "Are you sure?" }
 
   = link_to "New User", new_user_path
