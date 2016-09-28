@@ -1,18 +1,26 @@
 %h2 Edit student
 
+%h2 (BE SURE TO FILL OUT EACH FIELD, OTHERWISE IT WILL APPEAR BLANK, PAL)
+
 = form_tag "/students/#{@student[:id]}", :method => :put do
 
   = label :student, :name, 'Name'
-  = text_field :students, 'name'
+  = text_field :students, 'name', :value => "#{@student[:Student_Name]}"
   %br/
   = label :students, :parent_name, 'Parent name'
-  = text_field :students, 'parent_name'
+  = text_field :students, :parent_name, :value => "#{@student[:Parent_Name]}"
   %br/
   = label :students, :email, "Email"
-  = text_field :students, 'email'
+  = text_field :students, 'email', :value => "#{@student[:Email]}"
   %br/
   = label :students, :phone, 'Phone number'
-  = text_field :students, 'phone'
+  = text_field :students, :phone, :value => "#{@student[:Phone_Number]}"
+  %br/
+  = label :students, :classroom, 'Classroom: '
+  - for classroom in Classroom.find(:all) 
+    - thing = classroom.name
+    %label 
+      = thing  
+      = check_box_tag "students[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
   %br/
   = submit_tag 'Update Student Info'
-
