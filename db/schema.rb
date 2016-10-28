@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161026191641) do
+ActiveRecord::Schema.define(:version => 20161028192520) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "name"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20161026191641) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.integer  "student_id"
     t.string   "Name"
     t.string   "Phone_Number"
     t.string   "Email"
@@ -39,6 +38,13 @@ ActiveRecord::Schema.define(:version => 20161026191641) do
     t.boolean  "can_text",     :default => true
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "contacts_students", :force => true do |t|
+    t.integer  "student_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "messages", :force => true do |t|
