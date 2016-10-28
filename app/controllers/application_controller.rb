@@ -56,4 +56,8 @@ class ApplicationController < ActionController::Base
   def admin?
     return current_user.admin
   end
+  
+  # Send a text message
+  def txtmsg
+  end
 end
