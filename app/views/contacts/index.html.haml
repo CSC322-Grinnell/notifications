@@ -1,0 +1,50 @@
+%h2 Listing contacts
+
+%table#users
+  %tr
+    %td <b>Contact</b>
+    %td <b>Phone number</b>
+    %td <b>Email</b>
+    %td <b>Language</b>
+    %td <b>Can Text?</b>
+    %td <b>Classroom</b>
+    %th
+    %th
+
+    - if current_user.admin?
+      - Classroom.find(:all).each do |room|
+        %tr
+        - room.students.each do |student|
+          %tr
+          - student.contacts.each do |contact|
+            %tr
+              %td= contact.Name
+              %td= contact.Phone_Number
+              %td= contact.Email
+              %td= contact.language
+              %td= contact.can_text ? "Yes" : "No"
+              //%td= room.name
+              %td= link_to "Show #{contact.Name}", contact
+              %td= link_to 'Edit', edit_contact_path(contact)
+              %td= link_to 'Delete', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+    - else
+      - current_user.classrooms.each do |room|
+        %tr
+        - room.students.each do |student|
+          %tr
+          - student.contacts.each do |contact|
+            %tr
+            %th{:colspan => 8}= room.name
+              %td= contact.Name
+              %td= contact.Phone_Number
+              %td= contact.Email
+              %td= contact.language
+              %td= contact.can_text ? "Yes" : "No"
+              //%td= room.name
+              %td= link_to "Show #{contact.Name}", contact
+
+
+  
+%br
+- if admin?
+  = link_to 'Add New Contact', new_contact_path
