@@ -1,0 +1,23 @@
+%p
+  %b Contact name:
+  = @contact.Name
+%p
+  %b Phone number:
+  = @contact.Phone_Number
+%p
+  %b Email:
+  = @contact.Email
+%p
+  %b Can text:
+  = @contact.can_text
+
+= link_to 'Send Text', text_index_path(:contact_name => @contact.Contact_Name)
+\|
+- if admin?
+  = link_to 'Edit', edit_contact_path(@contact)
+  \|
+= link_to 'Back', contacts_path
+\|
+- if admin?
+  = link_to 'Delete', contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+
