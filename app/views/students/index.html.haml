@@ -3,10 +3,6 @@
 %table#users
   %tr
     %td <b>Student</b>
-    %td <b>Parent</b>
-    %td <b>Phone number</b>
-    %td <b>Email</b>
-    %td <b>Can Text?</b>
     %td <b>Classroom</b>
     %th
     %th
@@ -17,10 +13,6 @@
         - room.students.each do |student|
           %tr
             %td= student.Student_Name
-            %td= student.Parent_Name
-            %td= student.Phone_Number
-            %td= student.Email
-            %td= student.can_text ? "Yes" : "No"
             %td= room.name
             %td= link_to "Show #{student.Student_Name}", student
             %td= link_to 'Edit', edit_student_path(student)
@@ -32,10 +24,6 @@
         - room.students.each do |student|
           %tr
             %td= student.Student_Name
-            %td= student.Parent_Name
-            %td= student.Phone_Number
-            %td= student.Email
-            %td= student.can_text ? "Yes" : "No"
             %td= link_to "Show #{student.Student_Name}", student
 
 

@@ -4,6 +4,7 @@
     %thead
       %tr
         %th Name
+        %th Phone Number
         %th Email
         %th Class
         %th
@@ -15,6 +16,7 @@
         - @users.each do |user|
           %tr
             %td= user.name
+            %td= user.phone_number
             %td= user.email
             %td= room.name
             %td= link_to "Edit", edit_user_path(user)
