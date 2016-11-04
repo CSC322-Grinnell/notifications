@@ -1,66 +1,64 @@
 
-# Controller for the students in a class
-class StudentsController < ApplicationController
+# Controller for the contacts in a class
+class ContactsController < ApplicationController
   before_filter :require_user
   before_filter :require_admin, except: [:create, :index, :show]
 
   def index
-    @students = Student.all
+    @contacts = Contact.all
   end
 
   def show
-    @student = Student.find(params[:id])
+    @contact = Contact.find(params[:id])
   end
 
   def new
-    @student = Student.new
-    @classrooms = Classroom.all
+    @contact = Contact.new
   end
 
   def create
-    @student = Student.new(params[:student])
-    @student.Phone_Number.gsub!(/\D/, '') #make the student phone number only digits, so they can be counted easy
-    if @student.save
-      flash[:notice] = 'Student was successfully created.'
-      redirect_to @student
+    @contact = Contact.new(params[:contact])
+    @contact.Phone_Number.gsub!(/\D/, '') #make the contact phone number only digits, so they can be counted easy
+    if @contact.save
+      flash[:notice] = 'Contact was successfully created.'
+      redirect_to @contact
     else
-      flash[:notice] = 'There was a problem creating the student.'
+      flash[:notice] = 'There was a problem creating the contact.'
       render action: :new
     end
   end
 
 def edit
-  @student = Student.find(params[:id])
+  @contact = Contact.find(params[:id])
 end
 
   def update
     @id = params[:id]
-    @student = Student.find(params[:id])
+    @contact = Contact.find(params[:id])
 
-    if @student.update_attributes(params[:student])
+    if @contact.update_attributes(params[:contact])
       
-      params[:students][:phone].to_s.gsub!(/\D/, '')
-      @phone_valid = params[:students][:phone].to_s.length == 10
-      @student.update_attribute(:Student_Name , params[:students][:name])
-      @student.update_attribute(:Parent_Name , params[:students][:parent_name])
-      @student.update_attribute(:Email , params[:students][:email])
-      @student.update_attribute(:classroom_ids, params[:students][:classroom_ids])
+      params[:contacts][:phone].to_s.gsub!(/\D/, '')
+      @phone_valid = params[:contacts][:phone].to_s.length == 10
+      @contact.update_attribute(:Name , params[:contacts][:name])
+      @contact.update_attribute(:Email , params[:contacts][:email])
+      @contact.update_attribute(:language , params[:contacts][:language])
       
       if @phone_valid
-        @student.update_attribute(:Phone_Number , params[:students][:phone])
+        @contact.update_attribute(:Phone_Number , params[:contacts][:phone])
       else
         flash[:notice] = "Phone number is invalid."
       end
-      flash[:notice] = 'Student updated successfully'
-      redirect_to @student
+      flash[:notice] = 'Contact updated successfully'
+      redirect_to @contact
     else
       render action: :edit
     end
   end
 
   def destroy
-    Student.find(params[:id]).destroy
-    flash[:notice] = 'Student deleted.'
-    redirect_to '/students'
+    Contact.find(params[:id]).destroy
+    flash[:notice] = 'Contact deleted.'
+    redirect_to '/contacts'
   end
 end

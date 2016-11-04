@@ -11,7 +11,7 @@
   %b Can text:
   = @contact.can_text
 
-= link_to 'Send Text', text_index_path(:contact_name => @contact.Contact_Name)
+= link_to 'Send Text', text_index_path(:Name => @contact.Name)
 \|
 - if admin?
   = link_to 'Edit', edit_contact_path(@contact)
