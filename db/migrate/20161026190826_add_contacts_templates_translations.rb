@@ -5,7 +5,6 @@ class AddContactsTemplatesTranslations < ActiveRecord::Migration
       t.string :Name
       t.string :Phone_Number
       t.string :Email
-      t.string :relationship
       t.string :language, :default=> "english"
       t.boolean :can_text, :default=> true
       t.timestamps

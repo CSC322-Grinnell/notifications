@@ -51,6 +51,7 @@ class UsersController < ApplicationController
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
+        @user.update_attribute(:phone_number , params[:user][:phone_number])        
         flash[:notice] = 'Account updated!'
         redirect_to @user
       else

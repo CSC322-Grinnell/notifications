@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 
 gem 'rails', '~>3.2.22.2'
 gem 'rails_12factor'
@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'rubocop'
 gem 'simplecov'
 gem 'masonry-rails'
+gem 'table_print'
 
 # Normalize.css is a customisable CSS file that makes browsers render all
 #   elements more consistently and in line with modern standards.

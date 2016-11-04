@@ -7,6 +7,7 @@ class Message < ActiveRecord::Base
 
   # Sends message to all recipients
   def distribute()
+    #to do: find some way to hide ID and TOKEN
     account_sid = 'ACec51e723174bd5e3920e04c471fce279'
     auth_token = 'f79b115b533d4ba29f0bb0cc150cf0ab'
     #account_sid = 'SKa9949dade58a54485cb618099ed15bdb'
