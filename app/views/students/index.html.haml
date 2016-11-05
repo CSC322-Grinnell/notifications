@@ -8,7 +8,7 @@
     %td{:style=>"width: 100px"} <b>Classroom</b>
 
 
-    - Student.find(:all).each do |student|
+    - Student.order(:Student_Name).each do |student|
       %tr
         %td= link_to "#{student.Student_Name}", student
         %td= link_to 'Edit', edit_student_path(student), class: "btn"
@@ -17,14 +17,14 @@
           %td= Classroom.find_by_id(classroom_ids).name
 
 %h2 Listing students by Classroom
-- Classroom.find(:all).each do |room|
+- Classroom.order(:name).each do |room|
   %h3 #{room.name}
   %table.classes
     %tr
       %td{:style=>"width: 150px"} <b>Student</b>
       %th
       %th
-      - room.students.each do |student|
+      - room.students.order(:Student_Name).each do |student|
         %tr
           %td= link_to "#{student.Student_Name}", student
           %td= link_to 'Edit', edit_student_path(student)
