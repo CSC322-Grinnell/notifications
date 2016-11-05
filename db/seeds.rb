@@ -1,12 +1,13 @@
 
 user = User.create(
   name: 'Administrator',
-  password: 'password',
-  password_confirmation: 'password',
+  password: 'pass',
+  password_confirmation: 'pass',
   email: 'admin@example.com',
   login: 'admin@example.com',
   admin: true,
-  phone_number: '6419909034')
+  #phone_number: '6419909034')
+  phone_number: '5073849727')
  # :classroom_ids => 0)
 
 

@@ -1,30 +1,43 @@
-%h2 Listing students
+%h2 Listing students by Name
 
-%table#users
+%table#students
   %tr
-    %td <b>Student</b>
-    %td <b>Classroom</b>
+    %td{:style=>"width: 150px"} <b>Student</b>
     %th
-    %th
+    %th{:style=>"width: 100px"}
+    %td{:style=>"width: 100px"} <b>Classroom</b>
 
-    - if current_user.admin?
-      - Classroom.find(:all).each do |room| 
+
+    - Student.find(:all).each do |student|
+      %tr
+        %td= link_to "#{student.Student_Name}", student
+        %td= link_to 'Edit', edit_student_path(student), class: "btn"
+        %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - student.classroom_ids.each do |classroom_ids|
+          %td= Classroom.find_by_id(classroom_ids).name
+
+%h2 Listing students by Classroom
+- Classroom.find(:all).each do |room|
+  %h3 #{room.name}
+  %table.classes
+    %tr
+      %td{:style=>"width: 150px"} <b>Student</b>
+      %th
+      %th
+      - room.students.each do |student|
         %tr
-        - room.students.each do |student|
-          %tr
-            %td= student.Student_Name
-            %td= room.name
-            %td= link_to "Show #{student.Student_Name}", student
-            %td= link_to 'Edit', edit_student_path(student)
-            %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
-    - else
-      - current_user.classrooms.each do |room|
-        %tr
-          %th{:colspan => 8}= room.name
-        - room.students.each do |student|
-          %tr
-            %td= student.Student_Name
-            %td= link_to "Show #{student.Student_Name}", student
+          %td= link_to "#{student.Student_Name}", student
+          %td= link_to 'Edit', edit_student_path(student)
+          %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tr
+-#    - else
+-#      - current_user.classrooms.each do |room|
+-#        %tr
+-#          %th{:colspan => 8}= room.name
+-#        - room.students.each do |student|
+-#          %tr
+-#            %td= student.Student_Name
+-#            %td= link_to "Show #{student.Student_Name}", student
 
 
   
