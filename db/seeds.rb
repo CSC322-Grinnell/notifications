@@ -6,8 +6,7 @@ user = User.create(
   email: 'admin@example.com',
   login: 'admin@example.com',
   admin: true,
-  #phone_number: '6419909034')
-  phone_number: '5073849727')
+  phone_number: '6419909034')
  # :classroom_ids => 0)
 
 
@@ -35,14 +34,19 @@ contact = Contact.create(
 
 contact2 = Contact.create(
   Name: 'Seth',
-  Phone_Number: '5073849727',
+  Phone_Number: '4155193104',
   Email: 'good@good.com')
 
-user.classroom_ids = [classroom.id]
+user.classroom_ids = [classroom.id, classroom2.id]
 user.save
 
 classroom.user_ids = [user.id]
 classroom.save
+
+
+classroom2.user_ids = [user.id]
+classroom2.save
+
 
 classroom.student_ids = [student.id]
 classroom.save

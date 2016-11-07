@@ -6,7 +6,7 @@ HeadStart::Application.routes.draw do
   resources :text
   resources :user_sessions
   resources :users  # give us our some normal resource routes for users
-  resource :user, :as => 'account'  # a convenience route
+  resources :user, :as => 'account'  # a convenience route
 
   root :to => 'user_sessions#new'
 

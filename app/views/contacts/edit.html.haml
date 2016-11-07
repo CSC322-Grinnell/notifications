@@ -1,18 +1,18 @@
 %h2 Edit contacts
 
-= form_tag "/contacts/#{@contacts[:id]}", :method => :put do
+= form_tag "/contacts/#{@contact[:id]}", :method => :put do
 
   = label :contacts, :name, 'Name'
-  = text_field :contacts, 'name', :value => "#{@contacts[:Name]}" #
+  = text_field :contacts, 'name'
   %br/
   = label :contacts, :emaeil, "Email"
-  = text_field :contacts, 'email', :value => "#{@contacts[:Email]}"
+  = text_field :contacts, 'email'
   %br/
   = label :contacts, :phone, 'Phone number'
-  = text_field :contacts, :phone, :value => "#{@contacts[:Phone_Number]}"
+  = text_field :contacts, :phone
   %br/
   = label :contacts, :language, 'Preferred language: '
-  = text_field :contacts, :language, :value => "#{@contacts[:Language]}"
+  = text_field :contacts, :language
   %br/
   = submit_tag 'Update Contacts Info'
   
