@@ -1,4 +1,5 @@
-
+# ADAM'S NOTE FROM 11/11: 
+# Updating contacts does not work the same way updating students works, need to compare to ensure they're the same process
 # Controller for the contacts in a class
 class ContactsController < ApplicationController
   before_filter :require_user
