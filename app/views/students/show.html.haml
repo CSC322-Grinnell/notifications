@@ -5,6 +5,20 @@
   %b Classroom:
   - @student.classrooms.each do |room|
     = room.name
+%p
+  %table#contacts
+    %td{:style=>"width: 150px"} <b>Contact Name</b>
+    %td{:style=>"width: 150px"} <b>Phone Number</b>
+    %td{:style=>"width: 150px"} <b>Can they text?</b>
+    - @student.contacts.each do |contact|
+      %tr
+        %td= link_to "#{contact.Name}", contact
+        %td= contact.Phone_Number
+        %td= contact.can_text
+        %td= link_to 'Edit', edit_contact_path(contact), class: "btn"
+  
+  
+  
 
 - if admin?
   = link_to 'Edit', edit_student_path(@student)

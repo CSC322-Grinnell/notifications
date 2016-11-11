@@ -11,6 +11,16 @@
     %label 
       = thing  
       = check_box_tag "students[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
+  %p
+  %table#contacts
+    %td{:style=>"width: 150px"} <b>Contact Name</b>
+    %td{:style=>"width: 150px"} <b>Phone Number</b>
+    %td{:style=>"width: 150px"} <b>Can they text?</b>
+    - @student.contacts.each do |contact|
+      %tr
+        %td= link_to "#{contact.Name}", contact
+        %td= contact.Phone_Number
+        %td= contact.can_text
   %br/
   = submit_tag 'Update Student Info'
   
