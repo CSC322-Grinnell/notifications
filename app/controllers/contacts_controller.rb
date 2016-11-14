@@ -44,6 +44,7 @@ end
       @contact.update_attribute(:Name , params[:contacts][:name])
       @contact.update_attribute(:Email , params[:contacts][:email])
       @contact.update_attribute(:language , params[:contacts][:language])
+      @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
       
       if @phone_valid
         @contact.update_attribute(:Phone_Number , params[:contacts][:phone])

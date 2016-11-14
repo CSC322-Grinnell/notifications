@@ -10,6 +10,10 @@
 %p
   %b Can text:
   = @contact.can_text
+%p
+  %b Associated students:
+  - @contact.students.each do |student|
+    = student.Student_Name + "\n"
 
 = link_to 'Send Text', text_index_path(:Name => @contact.Name)
 \|
