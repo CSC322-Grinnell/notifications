@@ -3,16 +3,16 @@
 = form_tag "/contacts/#{@contact[:id]}", :method => :put do
 
   = label :contacts, :name, 'Name'
-  = text_field :contacts, 'name'
+  = text_field :contacts, 'name', :value => "#{@contact[:Name]}" #
   %br/
-  = label :contacts, :emaeil, "Email"
-  = text_field :contacts, 'email'
+  = label :contacts, :email, "Email"
+  = text_field :contacts, 'email', :value => "#{@contact[:Email]}" #
   %br/
   = label :contacts, :phone, 'Phone number'
-  = text_field :contacts, :phone
+  = text_field :contacts, :phone, :value => "#{@contact[:Phone_Number]}" #
   %br/
   = label :contacts, :language, 'Preferred language: '
-  = text_field :contacts, :language
+  = text_field :contacts, :language, :value => "#{@contact[:language]}" #
   %br/
   = submit_tag 'Update Contacts Info'
   
