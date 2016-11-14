@@ -7,17 +7,24 @@
           %li= msg
 
   .field
-    = f.label :Contact_Name, 'Name *'
+    = f.label :Contact_Name, 'Name *:'
     = f.text_field :Name
   .field
-    = f.label :Phone_Number
+    = f.label :Phone_Number, "Phone number: "
     = f.text_field :Phone_Number
   .field
-    = f.label :Email
+    = f.label :Email, "Email: "
     = f.text_field :Email
   .field
     = f.label :can_text
     = f.check_box :can_text, {}, "true", "false"
+  .field
+    = f.label :Associate_Student, "Associate student: "
+    - for student in Student.find(:all)
+      - thing = student.Student_Name
+      %label 
+        = thing 
+        = check_box_tag "contact[student_ids][]", student.id
     %br
 
   .actions
