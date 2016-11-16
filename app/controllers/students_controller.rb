@@ -45,6 +45,7 @@ end
       #@student.update_attribute(:Parent_Name , params[:students][:parent_name])
       #@student.update_attribute(:Email , params[:students][:email])
       @student.update_attribute(:classroom_ids, params[:students][:classroom_ids])
+      @student.update_attribute(:contact_ids, params[:students][:contact_ids])
       
       #if @phone_valid
       #  @student.update_attribute(:Phone_Number , params[:students][:phone])

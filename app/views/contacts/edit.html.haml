@@ -17,7 +17,7 @@
   = label :contacts, :student_ids, 'Associated students: '
   %br/
   -for classroom in Classroom.find(:all)
-    %div.classroom{ :style => "border-style: solid; width: 400px; float: left" }
+    %div.classroom{ :style => "border-style: solid; width: 400px" }
       <b> 
       = classroom.name
       </b>
@@ -27,7 +27,6 @@
           = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
           = student.Student_Name
           %br/
-  %br/
   %br/
   %br/
   = submit_tag 'Update Contacts Info'

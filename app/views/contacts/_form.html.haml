@@ -1,3 +1,4 @@
+
 = form_for @contact do |f|
   - if @contact.errors.any?
     #error_explanation
@@ -18,7 +19,22 @@
   .field
     = f.label :can_text
     = f.check_box :can_text, {}, "true", "false"
-    %br
+  .field
+    = f.label :Associated_students
+    %br/
+    -for classroom in Classroom.find(:all)
+      %div.classroom{ :style => "border-style: solid; width: 400px" }
+        <b> 
+        = classroom.name
+        </b>
+        %br/
+        - for student in classroom.students
+          %label
+            = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+            = student.Student_Name
+            %br/
+  %br/
 
   .actions
     = f.submit 'Save'
+  

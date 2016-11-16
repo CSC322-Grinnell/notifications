@@ -5,22 +5,25 @@
   = label :student, :name, 'Name'
   = text_field :students, 'name', :value => "#{@student[:Student_Name]}" #
   %br/
+  %br/
   = label :students, :classroom, 'Classroom: '
+  %br/  
   - for classroom in Classroom.find(:all) 
     - thing = classroom.name
     %label 
       = thing  
       = check_box_tag "students[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
-  %p
-  %table#contacts
-    %td{:style=>"width: 150px"} <b>Contact Name</b>
-    %td{:style=>"width: 150px"} <b>Phone Number</b>
-    %td{:style=>"width: 150px"} <b>Can they text?</b>
-    - @student.contacts.each do |contact|
-      %tr
-        %td= link_to "#{contact.Name}", contact
-        %td= contact.Phone_Number
-        %td= contact.can_text
+      %br/
+  %br/
+  = label :student, :Contacts, 'Associated contacts: '
+  %br/
+  -for contact in Contact.find(:all)
+    %label
+      = check_box_tag "students[contact_ids][]", contact.id, @student.contacts.include?(contact)
+      = contact.Name
+      %br/
+  %br/
+  = link_to 'Add New Contact', new_contact_path
   %br/
   = submit_tag 'Update Student Info'
   
