@@ -22,7 +22,7 @@
       = classroom.name
       </b>
       %br/
-      - for student in classroom.students
+      - for student in classroom.students.order(:Student_Name)
         %label
           = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
           = student.Student_Name
@@ -30,4 +30,5 @@
   %br/
   %br/
   = submit_tag 'Update Contacts Info'
+
   

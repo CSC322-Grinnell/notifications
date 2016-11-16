@@ -11,6 +11,9 @@
   %b Can text:
   = @contact.can_text
 %p
+  %b Language:
+  = @contact.language
+%p
   %b Associated students:
   - @contact.students.each do |student|
     = student.Student_Name + "\n"

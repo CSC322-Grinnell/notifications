@@ -37,7 +37,7 @@ end
     @id = params[:id]
     @contact = Contact.find(params[:id])
 
-    if @contact.update_attributes(params[:contact])
+    #if @contact.update_attributes(params[:contact])
       
       params[:contacts][:phone].to_s.gsub!(/\D/, '')
       @phone_valid = params[:contacts][:phone].to_s.length == 10
@@ -50,12 +50,13 @@ end
         @contact.update_attribute(:Phone_Number , params[:contacts][:phone])
       else
         flash[:notice] = "Phone number is invalid."
+        return render action: :edit
       end
       flash[:notice] = 'Contact updated successfully'
       redirect_to @contact
-    else
-      render action: :edit
-    end
+    #else
+    #  render action: :edit
+    #end
   end
 
   def destroy
