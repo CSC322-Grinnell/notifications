@@ -7,7 +7,6 @@ class MessageController < ApplicationController
         @Users = User.all
         @Users.each do |user|
             if "+1" + user.phone_number == @sender
-                puts "you got mail from: " + user.name
                 outgoing_message = Message.create(contents: @incomingmsg, user: user)
 
                 user.classroom_ids.each do |classroom_id|

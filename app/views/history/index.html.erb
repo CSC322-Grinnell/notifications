@@ -1,18 +1,21 @@
+<!-- put some div boxes in it! -->
+
 <h2>History</h2>
 <% @messages.each do |message| %>
-  <%@names = Receipt.find_all_by_message_id(message.id).collect { |receipt| receipt.student }%>
-  
-  <%if @names == [nil]%>
-    <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
-    <b>From:</b> <%= message.user.name %><br />
-    <b>To:</b> <%= "STUDENT NO LONGER EXISTS"%><br />
-    <b>Message:</b> <%= message.contents %><br />
-  <%else%>
-    <%@names = Receipt.find_all_by_message_id(message.id).collect { |receipt| receipt.student.Student_Name }%>
-    <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
-    <b>From:</b> <%= message.user.name %><br />
-    <b>To:</b> <%= @names.join(" ") %><br />
-    <b>Message:</b> <%= message.contents %><br />
+  <%Receipt.find_all_by_message_id(message.id).each do |receipt|%>
+    <%@thisStudent = receipt.student%>
+    <%if @thisStudent == nil%>
+      <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
+      <b>From:</b> <%= message.user.name %><br />
+      <b>To:</b> <%= "STUDENT NO LONGER EXISTS"%><br />
+      <b>Message:</b> <%= message.contents %><br />
+    <%else%>
+      <em><b>To: </b><%= @thisStudent.Student_Name%></em><br /> 
+      <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
+      <b>From:</b> <%= message.user.name %><br />
+      <b>Message:</b> <%= message.contents %><br />
+    <%end%>
   <%end%>
-  <br />
+  --------------------------------------------------------
+  <br>
 <% end %>
