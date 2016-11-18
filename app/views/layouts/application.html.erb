@@ -40,17 +40,32 @@
         <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'text' %>">
           <a href="/text" class="nav-first">Send Message</a>
         </li>
+        
+        <% if @current_user.admin %>
+        <li class="nav-li">
+          <div class="nav-dropdown nav-first">
+            Admin <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
 
+          <ul class="nav-submenu">
+            <li><a href=<%= "/users/#{@current_user[:id]}" %> class="nav-link">Settings</a></li>
+            <li><a href="/logout" class="nav-link">Logout</a></li>
+          </ul>
+        </li>
+        <% end %>
+        
+        <% if !@current_user.admin %> 
         <li class="nav-li">
           <div class="nav-dropdown nav-first">
             User <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
           </div>
 
           <ul class="nav-submenu">
-            <li><a href="/settings" class="nav-link">Settings</a></li>
+            <li><a href=<%= "/users/#{@current_user[:id]}" %> class="nav-link">Settings</a></li>
             <li><a href="/logout" class="nav-link">Logout</a></li>
           </ul>
         </li>
+        <% end %>
         
       </ul>
 

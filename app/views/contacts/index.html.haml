@@ -2,6 +2,7 @@
 
 %table#users
   %tr
+  - if current_user.admin?
     %td{:style=>"width: 150px"} <b>Contact</b>
     %th
     %th{:style=>"width: 100px"}
@@ -12,8 +13,6 @@
     %td{:style=>"width: 100px"} <b>Students</b>
     %th
     %th
-
-    - if current_user.admin?
       - Contact.find(:all).each do |contact|
         %tr
           %td= link_to "#{contact.Name}", contact
@@ -25,22 +24,26 @@
           %td= contact.can_text ? "Yes" : "No"
           - contact.student_ids.each do |student_ids|
             %td= Student.find_by_id(student_ids).Student_Name
-    - else
-      - current_user.classrooms.each do |room|
+  - else  
+    %td <b>Contact</b>
+    %td <b>Phone number</b>
+    %td <b>Email</b>
+    %td <b>Language</b>
+    %td <b>Can Text?</b>
+    %th
+    %th
+    - current_user.classrooms.each do |room|
+      %tr
+      - room.students.each do |student|
         %tr
-        - room.students.each do |student|
+        - student.contacts.each do |contact|
           %tr
-          - student.contacts.each do |contact|
-            %tr
-            %th{:colspan => 8}= room.name
-            %tr
-              %td= contact.Name
-              %td= contact.Phone_Number
-              %td= contact.Email
-              %td= contact.language
-              %td= contact.can_text ? "Yes" : "No"
-              //%td= room.name
-              %td= link_to "Show #{contact.Name}", contact
+            %td= contact.Name
+            %td= contact.Phone_Number
+            %td= contact.Email
+            %td= contact.language
+            %td= contact.can_text ? "Yes" : "No"
+            %td= link_to "Show #{contact.Name}", contact
 
 
   
