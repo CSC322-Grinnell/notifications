@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   
   def not_admin
     if params[:id] && User.find(params[:id]) == current_user
-      #checks if the current user is looking at the 
+      #checks if the current user is looking at themself
       return true
     else
       require_admin
