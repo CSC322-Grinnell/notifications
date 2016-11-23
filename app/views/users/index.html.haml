@@ -24,8 +24,6 @@
           %td= user.admin
           - user.classroom_ids.each do |classroom_ids|
             %td= Classroom.find_by_id(classroom_ids).name
-- else
-  %td HELLO MY LADY HELLO MY HONEY HELLO MY RAGTIME GAL
 
 
   = link_to "Add New User", new_user_path
