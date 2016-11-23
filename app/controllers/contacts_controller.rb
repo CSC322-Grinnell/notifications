@@ -3,7 +3,7 @@
 # Controller for the contacts in a class
 class ContactsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :require_admin, except: [:create, :index, :show]
 
   def index
     @contacts = Contact.all

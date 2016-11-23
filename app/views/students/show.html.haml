@@ -20,11 +20,9 @@
   
   
 
-- if admin?
-  = link_to "Edit #{@student.Student_Name}", edit_student_path(@student)
-  \|
+= link_to "Edit #{@student.Student_Name}", edit_student_path(@student)
+\|
 = link_to 'Back', students_path
 \|
-- if admin?
-  = link_to "Delete #{@student.Student_Name}", student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+= link_to "Delete #{@student.Student_Name}", student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
 
