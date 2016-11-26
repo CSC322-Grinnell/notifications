@@ -9,8 +9,9 @@
   = @user.email
 %p
   %b Classroom:
+  = " | "
   - @user.classrooms.each do |room|
-    = room.name
+    = room.name + " | "
 
 \|
 = link_to 'Edit', edit_user_path(@user)

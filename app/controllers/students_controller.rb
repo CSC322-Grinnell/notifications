@@ -29,9 +29,9 @@ class StudentsController < ApplicationController
     end
   end
 
-def edit
-  @student = Student.find(params[:id])
-end
+  def edit
+    @student = Student.find(params[:id])
+  end
 
   def update
     @id = params[:id]

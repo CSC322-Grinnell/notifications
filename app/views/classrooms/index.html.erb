@@ -6,22 +6,39 @@
       <% Classroom.find(:all).each do |room| %>
       <div class="classrooms-row">
         <div class="classrooms-name classrooms-cell">
-          <%= room.name %>
+          <td><%= link_to room.name, room %></td>
+        </div>
+        <div class="classrooms-name classrooms-cell">
+          <% room.user_ids.each do |user_ids| %>
+            <p>
+              <%= User.find_by_id(user_ids).name %>
+            </p>
+          <% end %>
         </div>
         <div class="classrooms-edit classrooms-cell">
-          <%= link_to "Edit", room, class: "classrooms-edit-button button button-small button-cream-color" %>
+          <%= link_to "Edit", edit_classroom_path(room), class: "classrooms-edit-button button button-small button-cream-color" %>
         </div>
         <div class="class-rooms-delete classrooms-cell">
           <%= link_to "Delete", room, method: "delete", data: { confirm: "Are you sure?" }, class: "classrooms-delete-button button button-small button-warning-color" %>
         </div>
       </div>
     <% end %>
+    
   <% else %>
+    <div class="classrooms-wrapper">
     <h2 class="classrooms-title"> My Classrooms </h2>
       <% current_user.classrooms.each do |room| %>
       <div class="classrooms-row">
-        <div class="classrooms-info classrooms-cell"><%= link_to room.name, room %></div>
-      </div>
+        <div class="classrooms-info classrooms-cell">
+          <td><%= link_to room.name, room %></td>
+        </div>
+        <div class="classrooms-name classrooms-cell">
+          <% room.user_ids.each do |user_ids| %>
+            <p>
+              <%= User.find_by_id(user_ids).name %>
+            </p>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
     </div>

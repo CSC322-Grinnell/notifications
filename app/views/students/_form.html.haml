@@ -9,14 +9,16 @@
   .field
     = f.label :Student_Name, 'Student Name *'
     = f.text_field :Student_Name
-    %br
+    %br/
+    %br/
   .field
-    = f.label :Classroom
+    = f.label :Classroom, "Classrooms:"
     - for classroom in Classroom.find(:all)
       - thing = classroom.name
-      %label 
-        = thing 
+      %label
+        %br/
         = check_box_tag "student[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
+        = thing 
 
   .actions
     = f.submit 'Save'

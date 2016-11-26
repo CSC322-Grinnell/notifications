@@ -1,4 +1,4 @@
 %h1 Register
 = form_for @user do |f|
   = render :partial => "form", :object => f, :locals => { :user => @user }
-  = f.submit "New User"
+  = f.submit "Add New User"

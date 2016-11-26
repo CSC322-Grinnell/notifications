@@ -9,7 +9,7 @@
     %td <b>Email</b>
     %td <b>Language</b>
     %td <b>Can Text?</b>
-    %td{:style=>"width: 100px"} <b>Students</b>
+    %td <b>Students</b>
     %th
     %th
       - Contact.find(:all).each do |contact|
@@ -22,7 +22,8 @@
           %td= contact.language
           %td= contact.can_text ? "Yes" : "No"
           - contact.student_ids.each do |student_ids|
-            %td= Student.find_by_id(student_ids).Student_Name
+            %td= " | " + Student.find_by_id(student_ids).Student_Name
+          %td= " | "
 /  - if !current_user.admin?
 /    %td <b>Contact</b>
 /    %td <b>Phone number</b>
