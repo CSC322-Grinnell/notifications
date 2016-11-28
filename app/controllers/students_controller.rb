@@ -2,7 +2,7 @@
 # Controller for the students in a class
 class StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :require_admin, except: [:create, :index, :show]
 
   def index
     @students = Student.all
@@ -15,10 +15,13 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
     @classrooms = Classroom.all
+    @contacts = Contact.all
+    @contact = Contact.new
   end
 
   def create
     @student = Student.new(params[:student])
+    @contact = Contact.new(params[:contact])
     #@student.Phone_Number.gsub!(/\D/, '') #make the student phone number only digits, so they can be counted easy
     if @student.save
       flash[:notice] = 'Student was successfully created.'
