@@ -1,38 +1,62 @@
-<div class="classrooms-wrapper">
-  <h2 class="classrooms-title"> Edit Classrooms </h2>
 
   <div class="classrooms-table">
   <% if current_user.admin? %>
-    <% Classroom.find(:all).each do |room| %>
+    <div class="classrooms-wrapper">
+    <h2 class="classrooms-title"> Edit Classrooms </h2>
+    
     <div class="classrooms-row">
-      <div class="classrooms-name classrooms-cell">
-        <%= room.name %>
+      <div class="classrooms-title classrooms-cell">
+        <td><b>CLASSROOM</b></td>
       </div>
-      <div class="classrooms-name classrooms-cell">
-       0 teachers
-      </div>
-      <div class="classrooms-edit classrooms-cell">
-        <%= link_to "Edit", room, class: "classrooms-edit-button button button-small button-cream-color" %>
-      </div>
-      <div class="class-rooms-delete classrooms-cell">
-        <%= link_to "Delete", room, method: "delete", data: { confirm: "Are you sure?" }, class: "classrooms-delete-button button button-small button-warning-color" %>
+      <div class="classrooms-title classrooms-cell">
+        <td><b>TEACHERS</b></td>
       </div>
     </div>
+      <% Classroom.find(:all).each do |room| %>
+      <div class="classrooms-row">
+        <div class="classrooms-name classrooms-cell">
+          <%= link_to room.name, room %>
+        </div>
+        <div class="classrooms-name classrooms-cell">
+          <% room.user_ids.each do |user_ids| %>
+            <p>
+              <%= User.find_by_id(user_ids).name %>
+            </p>
+          <% end %>
+        </div>
+        <div class="classrooms-edit classrooms-cell">
+          <%= link_to "Edit", edit_classroom_path(room), class: "classrooms-edit-button button button-small button-cream-color" %>
+        </div>
+        <div class="class-rooms-delete classrooms-cell">
+          <%= link_to "Delete", room, method: "delete", data: { confirm: "Are you sure?" }, class: "classrooms-delete-button button button-small button-warning-color" %>
+        </div>
+      </div>
     <% end %>
+    
   <% else %>
-    <% current_user.classrooms.each do |room| %>
-    <div class="classrooms-row">
-      <div class="classrooms-info classrooms-cell"><%= link_to room.name, room %></div>
-    </div>
+    <div class="classrooms-wrapper">
+    <h2 class="classrooms-title"> My Classrooms </h2>
+      <% current_user.classrooms.each do |room| %>
+      <div class="classrooms-row">
+        <div class="classrooms-info classrooms-cell">
+          <td><%= link_to room.name, room %></td>
+        </div>
+        <div class="classrooms-name classrooms-cell">
+          <% room.user_ids.each do |user_ids| %>
+            <p>
+              <%= User.find_by_id(user_ids).name %>
+            </p>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
-  </div>
-
-  <div class="classrooms-add-new-wrapper">
-  <% if current_user.admin? %>
-    <%= link_to 'Add New Classroom', new_classroom_path, class: "classrooms-add-new-button button button-primary-color" %>
-  <% end %>
-  </div>
+    </div>
+  
+    <div class="classrooms-add-new-wrapper">
+    <% if current_user.admin? %>
+      <%= link_to 'Add New Classroom', new_classroom_path, class: "classrooms-add-new-button button button-primary-color" %>
+    <% end %>
+    </div>
 
 </div>
 

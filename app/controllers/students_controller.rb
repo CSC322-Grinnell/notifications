@@ -2,7 +2,7 @@
 # Controller for the students in a class
 class StudentsController < ApplicationController
   before_filter :require_user
-  #before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :not_admin, except: [:create, :index, :show]
 
   def index
     @students = Student.all
@@ -32,9 +32,9 @@ class StudentsController < ApplicationController
     end
   end
 
-def edit
-  @student = Student.find(params[:id])
-end
+  def edit
+    @student = Student.find(params[:id])
+  end
 
   def update
     @id = params[:id]

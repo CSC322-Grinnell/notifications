@@ -8,7 +8,7 @@
   .field
     = f.label :Student_Name, 'Student Name *'
     = f.text_field :Student_Name
-    %br
+    %br/
   .field
     = f.label :Classroom, 'Classroom : '
     - for classroom in Classroom.find(:all)
@@ -32,4 +32,3 @@
     = f.submit 'Save'
   %br
   = render 'contacts/form'
-

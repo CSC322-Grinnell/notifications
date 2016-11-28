@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   end # block optional
 
+  validates_presence_of :name, :message => "can't be blank"
   validates_inclusion_of :admin, :in => [true, false]
 
   has_and_belongs_to_many :classrooms
