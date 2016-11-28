@@ -3,10 +3,19 @@
   <% if current_user.admin? %>
     <div class="classrooms-wrapper">
     <h2 class="classrooms-title"> Edit Classrooms </h2>
+    
+    <div class="classrooms-row">
+      <div class="classrooms-title classrooms-cell">
+        <td><b>CLASSROOM</b></td>
+      </div>
+      <div class="classrooms-title classrooms-cell">
+        <td><b>TEACHERS</b></td>
+      </div>
+    </div>
       <% Classroom.find(:all).each do |room| %>
       <div class="classrooms-row">
         <div class="classrooms-name classrooms-cell">
-          <td><%= link_to room.name, room %></td>
+          <%= link_to room.name, room %>
         </div>
         <div class="classrooms-name classrooms-cell">
           <% room.user_ids.each do |user_ids| %>

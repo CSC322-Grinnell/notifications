@@ -20,21 +20,32 @@
     = f.label :can_text
     = f.check_box :can_text, {}, "true", "false"
   .field
+    = f.label :language, "Language: "
+    = f.text_field :language
+  .field
     = f.label :Associated_students
     %br/
-    -for classroom in Classroom.find(:all)
-      %div.classroom{ :style => "border-style: solid; width: 400px" }
-        <b> 
-        = classroom.name
-        </b>
+    /-for classroom in Classroom.find(:all)
+    /  %div.classroom{ :style => "border-style: solid; width: 400px" }
+    /    <b> 
+    /    = classroom.name
+    /    </b>
+    /    %br/
+    /    - for student in classroom.students
+    /      %label
+    /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+    /        = student.Student_Name
+    /        %br/
+    - for student in Student.find(:all)
+      %label
+        = check_box_tag "contacts[student_ids][]", student.id
+        = student.Student_Name
         %br/
-        - for student in classroom.students
-          %label
-            = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
-            = student.Student_Name
-            %br/
+  %br/
+  
+  * denotes a required field
   %br/
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Add New Contact'
   

@@ -19,6 +19,7 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
+    #@contact.update_attribute(:student_ids, params[:contacts][:student_ids])
     @contact.Phone_Number.gsub!(/\D/, '') #make the contact phone number only digits, so they can be counted easy
     if @contact.save
       flash[:notice] = 'Contact was successfully created.'
@@ -37,7 +38,7 @@ end
     @id = params[:id]
     @contact = Contact.find(params[:id])
 
-    #if @contact.update_attributes(params[:contact])
+    if @contact.update_attributes(params[:contact])
       
       params[:contacts][:phone].to_s.gsub!(/\D/, '')
       @phone_valid = params[:contacts][:phone].to_s.length == 10
@@ -54,9 +55,9 @@ end
       end
       flash[:notice] = 'Contact updated successfully'
       redirect_to @contact
-    #else
-    #  render action: :edit
-    #end
+    else
+      render action: :edit
+    end
   end
 
   def destroy

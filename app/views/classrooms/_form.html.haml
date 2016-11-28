@@ -7,17 +7,25 @@
           %li= msg
 
   .field
-    = f.label :name
+    = f.label :name, "Name*"
     = f.text_field :name
     %br/
     %br/
   .field
-    = f.label :name, "Teachers: "
+    = f.label :user_ids, "Teachers: "
     - for user in User.find(:all)
-      - if !user.admin
-        %br/
-        = check_box_tag "classroom[user_ids][]", user.id, @classroom.users.include?(user)
-        = user.name
+      %br/
+      = check_box_tag "classroom[user_ids][]", user.id
+      = user.name
+  %br/
+  .field
+    = f.label :student_ids, "Students: "
+    - for student in Student.find(:all)
+      %br/
+      = check_box_tag "classroom[student_ids][]", student.id
+      = student.Student_Name
+  %br/
+  * denotes a required field
   %br/
   .actions
-    = f.submit 'Save'
+    = f.submit 'Add New Classroom'
