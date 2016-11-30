@@ -24,6 +24,10 @@ Make it easy for Head Start teachers to notify parents of school closures and ot
 * In the terminal, type:
 * `rake db:reset db:migrate`
 
+## Running Tests
+* `rake db:test:prepare`
+* `cucumber --require features features/students.feature`
+
 ### F.A.Q.
 _I'm having a problem installing the Postgres `pg` gem. What's up with that?_
 

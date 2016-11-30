@@ -12,11 +12,10 @@
   .field
     = f.label :Classroom, 'Classroom : '
     - for classroom in Classroom.find(:all)
-      %label 
+      %label
+        %br/
         = check_box_tag "student[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
-        = classroom.name 
-        |
-  %br
+        = classroom.name  
   %br
   .field
     = label :student, :Contacts, 'Associated contacts: '
@@ -26,9 +25,6 @@
         = check_box_tag "student[contact_ids][]", contact.id, @student.contacts.include?(contact)
         = contact.Name
         %br/
-    %br/
-    = link_to 'Add New Contact', new_contact_path, data: { confirm: "Create new contact without saving changes?" }
+  %br/
   .actions
-    = f.submit 'Save'
-  %br
-  = render 'contacts/form'
+    = f.submit 'Save and create new contact'
