@@ -15,14 +15,17 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
     @classrooms = Classroom.all
+    @contacts = Contact.all
+    @contact = Contact.new
   end
 
   def create
     @student = Student.new(params[:student])
+    @contact = Contact.new(params[:contact])
     #@student.Phone_Number.gsub!(/\D/, '') #make the student phone number only digits, so they can be counted easy
     if @student.save
       flash[:notice] = 'Student was successfully created.'
-      redirect_to @student
+      redirect_to new_contact_path
     else
       flash[:notice] = 'There was a problem creating the student.'
       render action: :new

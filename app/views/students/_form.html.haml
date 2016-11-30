@@ -10,25 +10,21 @@
     = f.text_field :Student_Name
     %br/
   .field
-    = f.label :Classroom, "Classrooms:"
+    = f.label :Classroom, 'Classroom : '
     - for classroom in Classroom.find(:all)
-      - thing = classroom.name
       %label
         %br/
         = check_box_tag "student[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
-        = thing
-  %br/
+        = classroom.name  
+  %br
   .field
-    = f.label :Contacts, "Contacts:"
-    - for contact in Contact.find(:all)
-      - thing = contact.Name
+    = label :student, :Contacts, 'Associated contacts: '
+    %br/
+    -for contact in Contact.find(:all)
       %label
-        %br/
         = check_box_tag "student[contact_ids][]", contact.id, @student.contacts.include?(contact)
-        = thing
+        = contact.Name
+        %br/
   %br/
-  * denotes a required field
-  %br/
-
   .actions
-    = f.submit 'Add New Student'
+    = f.submit 'Save and create new contact'

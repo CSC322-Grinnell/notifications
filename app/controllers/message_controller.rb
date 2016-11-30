@@ -15,10 +15,8 @@ class MessageController < ApplicationController
                             student = Student.find_by_id(student_id)
                             student.contacts.each do |contact|
                                 @existing_receipts = Receipt.find_all_by_message_id(outgoing_message.id)
-                                puts @existing_receipts.length
                                 if @existing_receipts.length == 0
                                     Receipt.create(message: outgoing_message, contact: contact)
-                                    puts contact.Name
                                 else
                                     @AlreadyExists = false
                                     @existing_receipts.each do |old_receipt|

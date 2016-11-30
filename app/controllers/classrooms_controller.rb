@@ -30,7 +30,10 @@ class ClassroomsController < ApplicationController
       
       @classroom.update_attribute(:name , params[:classrooms][:name])
       @classroom.update_attribute(:student_ids, params[:classrooms][:student_ids])
-      @classroom.update_attribute(:user_ids, params[:classrooms][:user_ids])
+      
+      if admin?
+        @classroom.update_attribute(:user_ids, params[:classrooms][:user_ids])
+      end
       
       #if @phone_valid
       #  @student.update_attribute(:Phone_Number , params[:students][:phone])

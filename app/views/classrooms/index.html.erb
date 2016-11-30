@@ -5,10 +5,10 @@
     <h2 class="classrooms-title"> Edit Classrooms </h2>
     
     <div class="classrooms-row">
-      <div class="classrooms-title classrooms-cell">
+      <div class="classrooms-name classrooms-cell">
         <td><b>CLASSROOM</b></td>
       </div>
-      <div class="classrooms-title classrooms-cell">
+      <div class="classrooms-name classrooms-cell">
         <td><b>TEACHERS</b></td>
       </div>
     </div>
@@ -36,6 +36,14 @@
   <% else %>
     <div class="classrooms-wrapper">
     <h2 class="classrooms-title"> My Classrooms </h2>
+    <div class="classrooms-row">
+      <div class="classrooms-name classrooms-cell">
+        <td><b>CLASSROOM</b></td>
+      </div>
+      <div class="classrooms-name classrooms-cell">
+        <td><b>TEACHERS</b></td>
+      </div>
+    </div>
       <% current_user.classrooms.each do |room| %>
       <div class="classrooms-row">
         <div class="classrooms-info classrooms-cell">
@@ -48,9 +56,12 @@
             </p>
           <% end %>
         </div>
+        <div class="classrooms-edit classrooms-cell">
+          <%= link_to "Edit", edit_classroom_path(room), class: "classrooms-edit-button button button-small button-cream-color" %>
+        </div>
+      </div>  
       <% end %>
     <% end %>
-    </div>
   
     <div class="classrooms-add-new-wrapper">
     <% if current_user.admin? %>
