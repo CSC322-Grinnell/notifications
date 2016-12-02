@@ -4,11 +4,12 @@ class MessageController < ApplicationController
         @AccountID = params[:AccountSid]
         @sender = params[:From]
         @incomingmsg = params[:Body]
-        render formats: :xml
+        validUser = false
         @Users = User.all
         if ENV_CONFIG['TWILIO_SID'] == @AccountID
             @Users.each do |user|
                 if "+1" + user.phone_number == @sender 
+                    validUser = true
                     outgoing_message = Message.create(contents: @incomingmsg, user: user)
                     user.classroom_ids.each do |classroom_id|
                         Classroom.find_by_id(classroom_id).student_ids.each do |student_id|
@@ -34,6 +35,11 @@ class MessageController < ApplicationController
                     outgoing_message.distribute()
                 end
             end
+        end # if ...
+        if (validUser)
+            render formats: :xml
+        else
+            render :file => "message/altmsg.xml.erb", formats: :xml
         end
-    end
+    end # textmsg
 end

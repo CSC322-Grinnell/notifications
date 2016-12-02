@@ -9,10 +9,14 @@ Background: there is a student in the database
   | name |
   | Room |
   | Party |
+  
+  Given the following contacts exist:
+  | Name      | Phone_Number  | Email          | language | can_text  |
+  | Uzo Nwike | 5159916928    | uzo@email.com  | English  | true      |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number| Email                  | can_text | classroom_ids |
-  | Khoa Nguyen  | Jason Liu   | 2532363623  | teamfirealarm@gmail.com| true     | 1 |
+  | Student_Name |
+  | Adam Hudson  |
 
   Given the following users exist:
 
@@ -25,22 +29,17 @@ Background: there is a student in the database
 Scenario: Create a student (happy path)
   When I follow "Add New Student"
   And I fill in "Student Name *" with "Wayne Rooney"
-  And I fill in "Parent Name *" with "Michael Carrick"
   And I check "Room"
+  And I check "Uzo Nwike"
   And I press "Save"
-  And I follow "Back"
-  Then I should be on the students page
+  Then I should be on the details page for "Wayne Rooney"
   And I should see "Wayne Rooney"
 
 Scenario: Create a student (happy path)
   When I follow "Add New Student"
   And I fill in "Student Name *" with "Wayne Rooney"
-  And I fill in "Parent Name *" with "Michael Carrick"
-  And I fill in "Phone number" with "5551234567"
-  And I fill in "Email" with "grinnell@grinnell.edu"
-  And I check "Can text"
-  And I check "Room"
-  And I press "Save"
+  And I press "Uzo Nwike"
+  And I press ""
   And I follow "Back"
   Then I should be on the students page
   And I should see "Wayne Rooney"
