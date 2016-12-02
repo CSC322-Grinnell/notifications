@@ -38,14 +38,13 @@
     /        %br/
     - for student in Student.find(:all)
       %label
-        = check_box_tag "contacts[student_ids][]", student.id
+        = check_box_tag "contact[student_ids][]", student.id
         = student.Student_Name
         %br/
   %br/
   
   * denotes a required field
   %br/
-
   .actions
     = f.submit 'Add New Contact'
   

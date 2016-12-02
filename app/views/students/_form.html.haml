@@ -18,7 +18,7 @@
         = classroom.name  
   %br
   .field
-    = label :student, :Contacts, 'Associated contacts: '
+    = label :student, :Contacts, 'Associate existing contacts: '
     %br/
     -for contact in Contact.find(:all)
       %label
@@ -27,4 +27,4 @@
         %br/
   %br/
   .actions
-    = f.submit 'Save and create new contact'
+    = f.submit 'Save'

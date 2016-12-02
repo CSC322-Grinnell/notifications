@@ -19,7 +19,6 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(params[:contact])
-    @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
     @contact.Phone_Number.gsub!(/\D/, '') #make the contact phone number only digits, so they can be counted easy
     if @contact.save
       flash[:notice] = 'Contact was successfully created.'
