@@ -5,7 +5,8 @@
   %b Classroom:
   = " | "
   - @student.classrooms.each do |room|
-    = room.name + " | "
+    = link_to "#{room.name}", room
+    = " | "
 %p
   %table#contacts
     %td{:style=>"width: 150px"} <b>Contact Name</b>

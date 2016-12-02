@@ -15,7 +15,9 @@ class TextController < ApplicationController
 
     student_ids.each do |id|
       student = Student.find_by_id(id)
-      Receipt.create(message: message, student: student)
+      student.contacts.each do |contact|
+        Receipt.create(message: message, contact: contact)
+      end
     end
     message.distribute()
     redirect_to '/history'

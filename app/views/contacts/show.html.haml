@@ -17,7 +17,8 @@
   %b Associated students:
   = " | "
   - @contact.students.each do |student|
-    = student.Student_Name + " | "
+    = link_to" #{student.Student_Name}", student
+    = " | "
 
 \|
 = link_to "Edit #{@contact.Name}", edit_contact_path(@contact)
