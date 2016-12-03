@@ -3,19 +3,21 @@
 <h2>History</h2>
 <% @messages.each do |message| %>
   <%Receipt.find_all_by_message_id(message.id).each do |receipt|%>
-    <%@thisContact = receipt.contact%>
-    <%if @thisContact == nil%>
-      <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
-      <b>From:</b> <%= message.user.name %><br />
-      <b>To:</b> <%= "CONTACT NO LONGER EXISTS"%><br />
-      <b>Message:</b> <%= message.contents %><br />
-    <%else%>
-      <em><b>To: </b><%= @thisContact.Name%></em><br /> 
-      <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
-      <b>From:</b> <%= message.user.name %><br />
-      <b>Message:</b> <%= message.contents %><br />
+    <% if admin? || message.user == current_user %>
+      <%@thisContact = receipt.contact%>
+      <%if @thisContact == nil%>
+        <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
+        <b>From:</b> <%= message.user.name %><br />
+        <b>To:</b> <%= "CONTACT NO LONGER EXISTS"%><br />
+        <b>Message:</b> <%= message.contents %><br />
+      <%else%>
+        <em><b>To: </b><%= @thisContact.Name%></em><br /> 
+        <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
+        <b>From:</b> <%= message.user.name %><br />
+        <b>Message:</b> <%= message.contents %><br />
+      <%end%>
+    --------------------------------------------------------
+    <br>
     <%end%>
   <%end%>
-  --------------------------------------------------------
-  <br>
-<% end %>
+<%end%>

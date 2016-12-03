@@ -7,11 +7,10 @@ class TextController < ApplicationController
   end
 
   def create
-    puts params
+    #puts params
     text = params[:message]
     student_ids = params[:student].values
-    puts "HEYHEYEHYEHEYEH"
-    puts student_ids
+    #puts student_ids
     message = Message.create(contents: text, user: @current_user)
 
     student_ids.each do |id|
