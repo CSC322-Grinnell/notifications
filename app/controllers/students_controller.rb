@@ -45,21 +45,20 @@ class StudentsController < ApplicationController
     @id = params[:id]
     @student = Student.find(params[:id])
 
-    if @student.update_attributes(params[:student])
-      
-      #params[:students][:phone].to_s.gsub!(/\D/, '')
-      #@phone_valid = params[:students][:phone].to_s.length == 10
+    @name_exists = params[:students][:name].length > 0
+    #@phone_valid = params[:students][:phone].to_s.length == 10
+    if @name_exists
       @student.update_attribute(:Student_Name , params[:students][:name])
-      #@student.update_attribute(:Parent_Name , params[:students][:parent_name])
-      #@student.update_attribute(:Email , params[:students][:email])
-      @student.update_attribute(:classroom_ids, params[:students][:classroom_ids])
-      @student.update_attribute(:contact_ids, params[:students][:contact_ids])
-      
-      #if @phone_valid
-      #  @student.update_attribute(:Phone_Number , params[:students][:phone])
-      #else
-      #  flash[:notice] = "Phone number is invalid."
-      #end
+    else
+      flash[:notice] = 'Name cannot be blank'
+    end
+    #@student.update_attribute(:Parent_Name , params[:students][:parent_name])
+    #@student.update_attribute(:Email , params[:students][:email])
+    @student.update_attribute(:classroom_ids, params[:students][:classroom_ids])
+    @student.update_attribute(:contact_ids, params[:students][:contact_ids])
+    
+   
+    if !flash[:notice]
       flash[:notice] = 'Student updated successfully'
       redirect_to @student
     else

@@ -52,18 +52,24 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       if (params[:user][:password]==(params[:user][:password_confirmation]))
 
-        @user.update_attribute(:name , params[:user][:name])
+        @name_exists = params[:user][:name].length > 0
+        if (@name_exists)
+          @user.update_attribute(:name , params[:user][:name])
+        else
+          flash[:notice] = "Name cannot be blank"
+        end
         @user.update_attribute(:email , params[:user][:email])
         @user.update_attribute(:password , params[:user][:password])
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
-        @user.update_attribute(:phone_number , params[:user][:phone_number])        
-        flash[:notice] = 'Account updated!'
-        redirect_to @user
-      else
-        flash[:notice] = "Passwords aren't the same"
-        render :action => :edit
+        @user.update_attribute(:phone_number , params[:user][:phone_number])       
+        if !flash[:notice]
+          flash[:notice] = 'Account updated!'
+          redirect_to @user
+        else
+          render :action => :edit
+        end
       end
   end
 
