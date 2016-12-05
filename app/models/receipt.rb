@@ -3,8 +3,6 @@ class Receipt < ActiveRecord::Base
   require 'twilio-ruby'
 
   attr_accessible :message, :contact
-  # TODO: Add message status enumerated type
-  #  Unsent/Queued/Sent/Delivered/Errored
   belongs_to :message
   belongs_to :contact
 
