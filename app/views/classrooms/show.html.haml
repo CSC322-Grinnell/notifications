@@ -20,13 +20,15 @@
       %td= user.name
       - if admin?
         %td= link_to "Show #{user.name}", user
-%br/
-\|
-= link_to "Edit #{@classroom.name}", edit_classroom_path(@classroom)
-\|
-= link_to "Delete #{@classroom.name}", classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
-\|
-%br/
+
+- if @classroom.user_ids.include?(current_user.id)
+  %br/
+  \|
+  = link_to "Edit #{@classroom.name}", edit_classroom_path(@classroom)
+  \|
+  = link_to "Delete #{@classroom.name}", classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  \|
+  %br/
 %br/
 \|
 = link_to 'List Students', students_path

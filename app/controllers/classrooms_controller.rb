@@ -12,7 +12,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
     @students = Student.all
   end
-
+  
   def new
     @classroom = Classroom.new
     @users = User.all
