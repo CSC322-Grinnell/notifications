@@ -15,5 +15,6 @@ HeadStart::Application.routes.draw do
   match 'msg-history' => 'history#index', :as => :history
   match 'signup' => 'users#new', :as => :signup
   match 'txtmsg' => 'message#txtmsg', :as => :txtmsg
+  match 'settings' => 'users#new', :as => :settings
 
 end

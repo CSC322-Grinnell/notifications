@@ -5,7 +5,7 @@
     %td{:style=>"width: 150px"} <b>Student</b>
     %th
     %th{:style=>"width: 100px"}
-    %td{:style=>"width: 100px"} <b>Classroom</b>
+    %td <b>Classroom</b>
 
 
     - Student.order(:Student_Name).each do |student|
@@ -14,7 +14,8 @@
         %td= link_to 'Edit', edit_student_path(student), class: "btn"
         %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
         - student.classroom_ids.each do |classroom_ids|
-          %td= Classroom.find_by_id(classroom_ids).name
+          %td= " | " + Classroom.find_by_id(classroom_ids).name
+        %td= " | "
 
 %h2 Listing students by Classroom
 - Classroom.order(:name).each do |room|
@@ -42,5 +43,4 @@
 
   
 %br
-- if admin?
-  = link_to 'Add New Student', new_student_path
+= link_to 'Add New Student', new_student_path

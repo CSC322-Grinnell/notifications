@@ -16,13 +16,16 @@
   %br/
   = label :user, :password_confirmation
   = password_field :user, :password_confirmation
-  %br/
-  = label :user, :admin, 'Admin: '
-  = check_box :user, :admin, {}, "true", "false"
+  - if admin?
+    %br/
+    = label :user, :admin, 'Admin: '
+    = check_box :user, :admin, {}, "true", "false"
   %br/
   = label :user, :classroom, 'Classrooms: '
+  %br/
   - for classroom in Classroom.find(:all)
     = classroom.name
     = check_box_tag "user[classroom_ids][]", classroom.id, @user.classrooms.include?(classroom)
+    %br/
   %br/
   = submit_tag 'Update User Info'

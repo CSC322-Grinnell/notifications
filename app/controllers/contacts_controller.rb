@@ -3,7 +3,7 @@
 # Controller for the contacts in a class
 class ContactsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :require_admin, except: [:create, :index, :show]
 
   def index
     @contacts = Contact.all
@@ -37,7 +37,7 @@ end
     @id = params[:id]
     @contact = Contact.find(params[:id])
 
-    #if @contact.update_attributes(params[:contact])
+    if @contact.update_attributes(params[:contact])
       
       params[:contacts][:phone].to_s.gsub!(/\D/, '')
       @phone_valid = params[:contacts][:phone].to_s.length == 10
@@ -55,9 +55,9 @@ end
       end
       flash[:notice] = 'Contact updated successfully'
       redirect_to @contact
-    #else
-    #  render action: :edit
-    #end
+    else
+      render action: :edit
+    end
   end
 
   def destroy

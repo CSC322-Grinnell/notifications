@@ -15,16 +15,26 @@
   = @contact.language
 %p
   %b Associated students:
+  = " | "
   - @contact.students.each do |student|
-    = student.Student_Name + "\n"
+    = link_to" #{student.Student_Name}", student
+    = " | "
 
-= link_to 'Send Text', text_index_path(:Name => @contact.Name)
+\|
+= link_to "Edit #{@contact.Name}", edit_contact_path(@contact)
+\|
+= link_to "Delete #{@contact.Name}", contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+\|
+%br/
+%br/
+\|
+= link_to 'List Students', students_path
+\|
+= link_to 'List Contacts', contacts_path
+\|
+= link_to 'List Classrooms', classrooms_path
 \|
 - if admin?
-  = link_to 'Edit', edit_contact_path(@contact)
+  = link_to 'List Users', users_path
   \|
-= link_to 'Back', contacts_path
-\|
-- if admin?
-  = link_to 'Delete', contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
 

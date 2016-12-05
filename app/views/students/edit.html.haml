@@ -23,7 +23,7 @@
       = contact.Name
       %br/
   %br/
-  = link_to 'Add New Contact', new_contact_path
+  = link_to 'Add New Contact', new_contact_path, data: { confirm: "Create new contact without saving changes to #{@student[:Student_Name]}?" }
   %br/
   = submit_tag 'Update Student Info'
   

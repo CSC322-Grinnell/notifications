@@ -1,3 +1,4 @@
+config/environment_variables.yml
 *.rbc
 capybara-*.html
 .rspec

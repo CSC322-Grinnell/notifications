@@ -16,17 +16,24 @@
   %br/
   = label :contacts, :student_ids, 'Associated students: '
   %br/
-  -for classroom in Classroom.find(:all)
-    %div.classroom{ :style => "border-style: solid; width: 400px" }
-      <b> 
-      = classroom.name
-      </b>
+  - for student in Student.find(:all)
+    %label
+      = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+      = student.Student_Name
       %br/
-      - for student in classroom.students.order(:Student_Name)
-        %label
-          = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
-          = student.Student_Name
-          %br/
+  /-for classroom in Classroom.find(:all)
+  /  %div.classroom{ :style => "border-style: solid; width: 400px" }
+  /    <b> 
+  /    = classroom.name
+  /    </b>
+  /    %br/
+  /    - for student in classroom.students.order(:Student_Name)
+  /      %label
+  /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+  /        = student.Student_Name
+  /        %br/
+  
+  %br/
   %br/
   %br/
   = submit_tag 'Update Contacts Info'

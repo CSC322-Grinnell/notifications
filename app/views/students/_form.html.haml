@@ -5,18 +5,27 @@
       %ul
         - @student.errors.full_messages.each do |msg|
           %li= msg
-
   .field
     = f.label :Student_Name, 'Student Name *'
     = f.text_field :Student_Name
-    %br
+    %br/
   .field
-    = f.label :Classroom
+    = f.label :Classroom, 'Classroom : '
     - for classroom in Classroom.find(:all)
-      - thing = classroom.name
-      %label 
-        = thing 
+      %label
+        %br/
         = check_box_tag "student[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
-
+        = classroom.name  
+  %br
+  .field
+    = label :student, :Contacts, 'Associate existing contacts: '
+    %br/
+    -for contact in Contact.find(:all)
+      %label
+        = check_box_tag "student[contact_ids][]", contact.id, @student.contacts.include?(contact)
+        = contact.Name
+        %br/
+  %br/
+  If you do not assign an existing contact, saving will redirect you to the new contact page.
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save Student'

@@ -2,7 +2,7 @@
 # Controller for the students in a class
 class StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :not_admin, except: [:create, :index, :show]
 
   def index
     @students = Student.all
@@ -15,6 +15,8 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
     @classrooms = Classroom.all
+    @contacts = Contact.all
+    @contact = Contact.new
   end
 
   def create
@@ -22,16 +24,22 @@ class StudentsController < ApplicationController
     #@student.Phone_Number.gsub!(/\D/, '') #make the student phone number only digits, so they can be counted easy
     if @student.save
       flash[:notice] = 'Student was successfully created.'
-      redirect_to @student
+      # If new student has no contacts, create a new contact
+      if @student.contact_ids == []
+        redirect_to new_contact_path
+      # Else, redirect to the student
+      else
+        redirect_to @student
+      end
     else
       flash[:notice] = 'There was a problem creating the student.'
       render action: :new
     end
   end
 
-def edit
-  @student = Student.find(params[:id])
-end
+  def edit
+    @student = Student.find(params[:id])
+  end
 
   def update
     @id = params[:id]

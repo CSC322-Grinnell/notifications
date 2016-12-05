@@ -19,21 +19,21 @@ classroom2 = Classroom.create(
   name: 'classroom2')
   
 student = Student.create(
-  Student_Name: 'Matt Guthrie')
+  Student_Name: 'Seth')
 #  :classroom_ids => 0, #Classroom.where(:name => 'classroom1'),
 #  :contact_ids => 0) #Contact.where(:name => 'John'))
 
 student2 = Student.create(
-  Student_Name: 'Bib Hanson')
+  Student_Name: 'Niko')
 
 contact = Contact.create(
-  Name: 'John',
+  Name: 'Seth Parent',
   Phone_Number: '5075813958',
   Email: 'guthriem@grinnell.edu')
 #  :student_ids => 0) #Student.where(:name => 'Matt Guthrie'))
 
 contact2 = Contact.create(
-  Name: 'Seth',
+  Name: 'Niko Parent',
   Phone_Number: '4155193104',
   Email: 'good@good.com')
 

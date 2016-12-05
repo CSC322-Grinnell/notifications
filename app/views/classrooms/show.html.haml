@@ -2,20 +2,41 @@
 
 %table
   %tr
-    %th Student Name
-    %th
+    %td{:style=>"width: 200px"} <b>Students</b>
+    %th 
 
   - @classroom.students.each do |student|
     %tr
       %td= student.Student_Name
-      %td= link_to "Details", student
+      %td= link_to "Show #{student.Student_Name}", student
 %br
+%table
+  %tr
+    %td{:style=>"width: 200px"} <b>Teachers</b>
+    %th 
 
-= link_to 'Text Classroom', text_index_path(:classroom_id => @classroom.id)
-%br 
-%br
-= link_to 'Back', classrooms_path
+  - @classroom.users.each do |user|
+    %tr
+      %td= user.name
+      - if admin?
+        %td= link_to "Show #{user.name}", user
 
-- if admin?
+- if @classroom.user_ids.include?(current_user.id) && admin?
+  %br/
   \|
-  = link_to 'Delete', classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  = link_to "Edit #{@classroom.name}", edit_classroom_path(@classroom)
+  \|
+  = link_to "Delete #{@classroom.name}", classroom_path(@classroom), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  \|
+  %br/
+%br/
+\|
+= link_to 'List Students', students_path
+\|
+= link_to 'List Contacts', contacts_path
+\|
+= link_to 'List Classrooms', classrooms_path
+\|
+- if admin?
+  = link_to 'List Users', users_path
+  \|

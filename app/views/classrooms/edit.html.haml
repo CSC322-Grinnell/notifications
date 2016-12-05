@@ -1,0 +1,36 @@
+%h2 Edit Classroom
+
+= form_tag "/classrooms/#{@classroom[:id]}", :method => :put do
+
+  = label :classroom, :name, 'Classroom Name'
+  = text_field :classrooms, 'name', :value => "#{@classroom[:name]}" #
+  %br/
+  %br/
+  = label :classroom, :student, 'Students: '
+  %br/
+  - Student.order(:Student_Name).each do |student|
+    %tr
+      %td= check_box_tag "classrooms[student_ids][]", student.id, @classroom.students.include?(student)
+      %td= student.Student_Name
+      %br/
+  /- for student in Student.order.find(:all) 
+  /  - thing = student.Student_Name
+  /  %label 
+  /    = thing  
+  /    = check_box_tag "classrooms[student_ids][]", student.id, @classroom.students.include?(student)
+  /    %br/
+  %br/
+  - if admin?
+    = label :classroom, :users, 'Teachers: '
+    %br/
+    - for user in User.find(:all) 
+      - thing = user.name
+      %label 
+        = thing  
+        = check_box_tag "classrooms[user_ids][]", user.id, @classroom.users.include?(user)
+        %br/
+    %br/
+    %br/
+  = submit_tag 'Update Classroom Info'
+
+  

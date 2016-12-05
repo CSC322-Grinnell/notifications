@@ -1,7 +1,7 @@
 # Controls the classrooms that are within the Head Start schools.
 class ClassroomsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:index, :show]
+  #before_filter :require_admin, except: [:index, :show]
   before_filter :set_classroom, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -12,7 +12,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.find(params[:id])
     @students = Student.all
   end
-
+  
   def new
     @classroom = Classroom.new
     @users = User.all
@@ -20,6 +20,34 @@ class ClassroomsController < ApplicationController
 
   def edit
     @classroom = Classroom.find(params[:id])
+    if (!admin? && !@classroom.user_ids.include?(current_user.id))
+      redirect_to '/students'
+    end
+  end
+  
+  def update
+    @id = params[:id]
+    @classroom = Classroom.find(params[:id])
+
+    if @classroom.update_attributes(params[:classroom])
+      
+      @classroom.update_attribute(:name , params[:classrooms][:name])
+      @classroom.update_attribute(:student_ids, params[:classrooms][:student_ids])
+      
+      if admin?
+        @classroom.update_attribute(:user_ids, params[:classrooms][:user_ids])
+      end
+      
+      #if @phone_valid
+      #  @student.update_attribute(:Phone_Number , params[:students][:phone])
+      #else
+      #  flash[:notice] = "Phone number is invalid."
+      #end
+      flash[:notice] = 'Classroom updated successfully'
+      redirect_to @classroom
+    else
+      render action: :edit
+    end
   end
 
   def create

@@ -21,7 +21,7 @@
                             <ul>
                                 <% classroom.students.order(:Student_Name).each_with_index do |student, index| %>
                                     <li>
-                                        <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= index %>]" value="<%= student.id %>" class="recipients-student-select" />
+                                        <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= student.id %>]" value="<%= student.id %>" class="recipients-student-select" />
                                         <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.Student_Name %></label>
                                     </li>
                                 <% end %>
@@ -40,10 +40,10 @@
 
         <div class="send-message-message">
             <div class="message-inner-wrapper">
-
+<!--
                 <div class="message-template-wrapper">
-
-                    <h2 class="message-template-title">Select from a template</h2>
+                  
+                    <h2 class="message-template-title">Send a Message</h2>
 
                     <ul class="message-template-list">
                       <li id="0" class="message-template-item">Head Start class is cancelled</li> 
@@ -60,33 +60,34 @@
                     <button type="button" class="message-custom-toggle">Write a Custom Message</button>
 
                 </div>
-
-                <div class="message-custom-wrapper hidden">
-                    <div></div>
-                    <h2 class="message-custom-title">Send a custom message</h2>
+-->
+                <div class="message-custom-wrapper">
+                    <h2 class="message-custom-title">Send a message</h2>
                     <textarea class="message-custom-textarea" form="send-message-form" id="msg-text" name="message"></textarea>
-                    <p class="message-custom-internationalization-warning message-custom-warning">
-                        ⚠ Warning: we can't translate custom messages.
-                    </p>
                     <p class="message-custom-length-warning message-custom-warning hidden-force">
                         ⚠ Warning: your message is large and will result in multiple texts being sent.
                     </p>
-                    <button type="button" class="message-custom-toggle"><- Back to templates</button>
+                    
+                    
+                    
+                    
                 </div>
 
-                <div id="submit-button-right-side" class="submit-button-wrapper">
-                    <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
-                </div>   
+                    <div id="submit-button-bottom-side" class="submit-button-wrapper">
+                        <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">    
+                    </div>   
+
 
             </div>
         </div>
     </div>
+    <!--
     <div class="bottom-half">
         <div id="submit-button-bottom-side" class="submit-button-wrapper">
                 <input class="submit-button button button-primary-color inactive" type="submit" value="Send Message">
         </div>
     </div>
-
+-->
     
 
 </form>
