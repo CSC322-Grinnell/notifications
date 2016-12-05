@@ -39,7 +39,7 @@ Scenario: create an admin user
 	And I fill in "user_password" with "cats"
 	And I fill in "user_password_confirmation" with "cats"
 	And I check "Admin"
-	When I press "Register"
+	When I press "Save User"
 	Then I should be on the users page
 	Then I should see "Alice Walker"
     Then I should see "xxxxx@xxxxxx.com"
