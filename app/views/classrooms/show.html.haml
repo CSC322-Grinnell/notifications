@@ -21,7 +21,7 @@
       - if admin?
         %td= link_to "Show #{user.name}", user
 
-- if @classroom.user_ids.include?(current_user.id)
+- if @classroom.user_ids.include?(current_user.id) || admin?
   %br/
   \|
   = link_to "Edit #{@classroom.name}", edit_classroom_path(@classroom)
