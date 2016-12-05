@@ -61,7 +61,7 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
 end
 
 And "I remove admin" do  
-    first(:link, 'Remove').click
+    first(:link, 'Delete').click
 end
 
 # Use this to fill in an entire form with data from a table. Example:
