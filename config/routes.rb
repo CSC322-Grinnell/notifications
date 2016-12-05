@@ -14,6 +14,7 @@ HeadStart::Application.routes.draw do
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'msg-history' => 'history#index', :as => :history
   match 'signup' => 'users#new', :as => :signup
+  match 'newcontact' => 'contacts#new', :as => :newcontact
   match 'txtmsg' => 'message#txtmsg', :as => :txtmsg
   match 'settings' => 'users#new', :as => :settings
 
