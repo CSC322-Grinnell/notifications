@@ -28,7 +28,7 @@
           <%= link_to "Edit", edit_classroom_path(room), class: "classrooms-edit-button button button-small button-cream-color" %>
         </div>
         <div class="class-rooms-delete classrooms-cell">
-          <%= link_to "Delete", room, method: "delete", data: { confirm: "Are you sure?" }, class: "classrooms-delete-button button button-small button-warning-color" %>
+          <%= link_to "Delete", room, method: "delete", data: { confirm: "Are you sure you want to delete #{room.name}?" }, class: "classrooms-delete-button button button-small button-warning-color" %>
         </div>
       </div>
     <% end %>
@@ -64,9 +64,7 @@
     <% end %>
   
     <div class="classrooms-add-new-wrapper">
-    <% if current_user.admin? %>
-      <%= link_to 'Add New Classroom', new_classroom_path, class: "classrooms-add-new-button button button-primary-color" %>
-    <% end %>
+    <%= link_to 'Add New Classroom', new_classroom_path, class: "classrooms-add-new-button button button-primary-color" %>
     </div>
 
 </div>

@@ -15,7 +15,7 @@
     = f.label :user_ids, "Teachers: "
     - for user in User.find(:all)
       %br/
-      = check_box_tag "classroom[user_ids][]", user.id
+      = check_box_tag "classroom[user_ids][]", user.id, user == current_user
       = user.name
   %br/
   .field
@@ -28,4 +28,4 @@
   * denotes a required field
   %br/
   .actions
-    = f.submit 'Add New Classroom'
+    = f.submit 'Save Classroom'
