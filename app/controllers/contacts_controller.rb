@@ -41,11 +41,12 @@ end
       
       params[:contacts][:phone].to_s.gsub!(/\D/, '')
       @phone_valid = params[:contacts][:phone].to_s.length == 10
-      @contact.update_attribute(:Name , params[:contacts][:name])
-      @contact.update_attribute(:Email , params[:contacts][:email])
+      foo = @contact.update_attributes(:Name => params[:contacts][:name])
+      puts "*** UPDATING [#{foo}] DONE"
+      @contact.update_attributes(:Email =>  params[:contacts][:email])
       @contact.update_attribute(:language , params[:contacts][:language])
       @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
-      
+      @contact.save
       if @phone_valid
         @contact.update_attribute(:Phone_Number , params[:contacts][:phone])
       else

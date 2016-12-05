@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   end # block optional
 
   validates_inclusion_of :admin, :in => [true, false]
-
+  validates_confirmation_of :password, :message => "Passwords aren't the same"
+  validates_presence_of :password_confirmation, :message => "can't be blank"
   has_and_belongs_to_many :classrooms
 
   def getClassrooms
