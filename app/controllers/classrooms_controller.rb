@@ -20,7 +20,7 @@ class ClassroomsController < ApplicationController
 
   def edit
     @classroom = Classroom.find(params[:id])
-    if (!admin? || !@classroom.user_ids.include?(current_user.id))
+    if (!admin? && !@classroom.user_ids.include?(current_user.id))
       redirect_to '/students'
     end
   end

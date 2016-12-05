@@ -16,8 +16,9 @@
 \|
 = link_to "Edit #{@user.name}", edit_user_path(@user)
 \|
-= link_to "Delete #{@user.name}", user_path(@user), :method => :delete, :data => { :confirm => 'Are you really sure?' }
-\|
+- if !current_user == @user
+  = link_to "Delete #{@user.name}", user_path(@user), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  \|
 %br/
 %br/
 \|

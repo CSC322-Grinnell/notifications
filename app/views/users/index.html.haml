@@ -18,7 +18,10 @@
         %tr
           %td= link_to "#{user.name}", user
           %td= link_to "Edit", edit_user_path(user)
-          %td= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }
+          - if current_user.id != user.id
+            %td= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }
+          - else
+            %th
           %td= user.phone_number
           %td= user.email
           %td= user.admin
