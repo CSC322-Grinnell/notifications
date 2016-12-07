@@ -7,8 +7,8 @@ class Message < ActiveRecord::Base
 
   # Sends message to all recipients
   def distribute()
-    account_sid = 'TWILIO_SID'
-    auth_token = 'TWILIO_AUTH_TOKEN'
+    account_sid = TWILIO_SID
+    auth_token = TWILIO_AUTH_TOKEN
     client = Twilio::REST::Client.new account_sid, auth_token
     receipts = Receipt.find_all_by_message_id(self)
     #could we sort receipts here so there is only one for each contact then only distribute those???
