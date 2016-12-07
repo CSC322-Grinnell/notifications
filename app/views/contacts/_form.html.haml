@@ -1,0 +1,50 @@
+
+= form_for @contact do |f|
+  - if @contact.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
+      %ul
+        - @contact.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :Contact_Name, 'Name *:'
+    = f.text_field :Name
+  .field
+    = f.label :Phone_Number, "Phone number: "
+    = f.text_field :Phone_Number
+  .field
+    = f.label :Email, "Email: "
+    = f.text_field :Email
+  .field
+    = f.label :can_text
+    = f.check_box :can_text, {}, "true", "false"
+  .field
+    = f.label :language, "Language: "
+    = f.text_field :language
+  .field
+    = f.label :Associated_students
+    %br/
+    /-for classroom in Classroom.find(:all)
+    /  %div.classroom{ :style => "border-style: solid; width: 400px" }
+    /    <b> 
+    /    = classroom.name
+    /    </b>
+    /    %br/
+    /    - for student in classroom.students
+    /      %label
+    /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+    /        = student.Student_Name
+    /        %br/
+    - for student in Student.find(:all)
+      %label
+        = check_box_tag "contact[student_ids][]", student.id
+        = student.Student_Name
+        %br/
+  %br/
+  
+  * denotes a required field
+  %br/
+  .actions
+    = f.submit 'Save Contact'
+  

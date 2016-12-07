@@ -9,10 +9,24 @@ Make it easy for Head Start teachers to notify parents of school closures and ot
 * `rake db:setup`
 * `rails s`
 
+## Preregistration
+* Before running anything, create the environmental stuff
+
 ## Configuration
 * Default Credentials
   * Username: `admin@example.com`
   * Password: `pass`
+
+## Running Locally
+* `rails s -b $IP -p $PORT`
+
+## Reset Data
+* In the terminal, type:
+* `rake db:reset db:migrate`
+
+## Running Tests
+* `rake db:test:prepare`
+* `cucumber --require features features/students.feature`
 
 ### F.A.Q.
 _I'm having a problem installing the Postgres `pg` gem. What's up with that?_

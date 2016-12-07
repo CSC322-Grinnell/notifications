@@ -119,8 +119,10 @@ $containerLarge: 500px;
 .submit-button {
     color: white;
     background-color: $primary-color;
+/*    
     @media screen and (max-width: $break-small) {
         width: 100% !important;
         padding: 0 !important;
     }
+    */
 }

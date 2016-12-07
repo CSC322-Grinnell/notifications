@@ -1,7 +1,8 @@
+
 # Controller for the students in a class
 class StudentsController < ApplicationController
   before_filter :require_user
-  before_filter :require_admin, except: [:create, :index, :show]
+  #before_filter :not_admin, except: [:create, :index, :show]
 
   def index
     @students = Student.all
@@ -14,23 +15,50 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
     @classrooms = Classroom.all
+    @contacts = Contact.all
+    @contact = Contact.new
   end
 
   def create
     @student = Student.new(params[:student])
+    #@student.Phone_Number.gsub!(/\D/, '') #make the student phone number only digits, so they can be counted easy
     if @student.save
       flash[:notice] = 'Student was successfully created.'
-      redirect_to @student
+      # If new student has no contacts, create a new contact
+      if @student.contact_ids == []
+        redirect_to new_contact_path
+      # Else, redirect to the student
+      else
+        redirect_to @student
+      end
     else
       flash[:notice] = 'There was a problem creating the student.'
       render action: :new
     end
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
   def update
+    @id = params[:id]
     @student = Student.find(params[:id])
 
-    if @student.update_attributes(params[:student])
+    @name_exists = params[:students][:name].length > 0
+    #@phone_valid = params[:students][:phone].to_s.length == 10
+    if @name_exists
+      @student.update_attribute(:Student_Name , params[:students][:name])
+    else
+      flash[:notice] = 'Name cannot be blank'
+    end
+    #@student.update_attribute(:Parent_Name , params[:students][:parent_name])
+    #@student.update_attribute(:Email , params[:students][:email])
+    @student.update_attribute(:classroom_ids, params[:students][:classroom_ids])
+    @student.update_attribute(:contact_ids, params[:students][:contact_ids])
+    
+   
+    if !flash[:notice]
       flash[:notice] = 'Student updated successfully'
       redirect_to @student
     else

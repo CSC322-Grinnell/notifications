@@ -7,12 +7,13 @@ class Message < ActiveRecord::Base
 
   # Sends message to all recipients
   def distribute()
-    account_sid = 'ACec51e723174bd5e3920e04c471fce279'
-    auth_token = 'f79b115b533d4ba29f0bb0cc150cf0ab'
-    #account_sid = 'SKa9949dade58a54485cb618099ed15bdb'
-    #auth_token = 'XiG07bySRatOqGLd92E1Tf5MpyUHytDx'
+    account_sid = ENV_CONFIG['TWILIO_SID']
+    auth_token = ENV_CONFIG['TWILIO_AUTH_TOKEN']
     client = Twilio::REST::Client.new account_sid, auth_token
     receipts = Receipt.find_all_by_message_id(self)
+    #could we sort receipts here so there is only one for each contact then only distribute those???
+    #Then in receipt.distribute, we just distribute everything we get so it isnt a mess there
+    #Could we change receipt to have a contact attribute instead of student? Then this would be simple
     receipts.each do |receipt|
       receipt.distribute(client)
     end

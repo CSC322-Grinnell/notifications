@@ -1,14 +1,21 @@
 # Controller for Users such as teachers and administrators
 class UsersController < ApplicationController
-  before_filter :require_user, :require_admin
-  #probably need this?
-#  before_filter :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :require_user, :not_admin
 
   def new
     @user = User.new
     #temp = Resource.create!(resource_params)
     #temp.category_ids = params[:category_ids]
     #temp.save!
+  end
+  
+  def not_admin
+    if params[:id] && User.find(params[:id]) == current_user
+      #checks if the current user is looking at themself
+      return true
+    else
+      require_admin
+    end
   end
 
   def create
@@ -32,6 +39,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -41,17 +52,24 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       if (params[:user][:password]==(params[:user][:password_confirmation]))
 
-        @user.update_attribute(:name , params[:user][:name])
+        @name_exists = params[:user][:name].length > 0
+        if (@name_exists)
+          @user.update_attribute(:name , params[:user][:name])
+        else
+          flash[:notice] = "Name cannot be blank"
+        end
         @user.update_attribute(:email , params[:user][:email])
         @user.update_attribute(:password , params[:user][:password])
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
-        flash[:notice] = 'Account updated!'
-        redirect_to '/users'
-      else
-        flash[:notice] = "Passwords aren't the same"
-        render :action => :edit
+        @user.update_attribute(:phone_number , params[:user][:phone_number])       
+        if !flash[:notice]
+          flash[:notice] = 'Account updated!'
+          redirect_to @user
+        else
+          render :action => :edit
+        end
       end
   end
 

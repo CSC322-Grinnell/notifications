@@ -1,7 +1,33 @@
-%h2 Editing student
+%h2 Edit student
 
-= render 'form'
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
 
-= link_to 'Show', @student
-\|
-= link_to 'Back', students_path
+= form_tag "/students/#{@student[:id]}", :method => :put do
+
+  = label :student, :name, 'Name'
+  = text_field :students, 'name', :value => "#{@student[:Student_Name]}" #
+  %br/
+  %br/
+  = label :students, :classroom, 'Classroom: '
+  %br/  
+  - for classroom in Classroom.find(:all) 
+    - thing = classroom.name
+    %label 
+      = thing  
+      = check_box_tag "students[classroom_ids][]", classroom.id, @student.classrooms.include?(classroom)
+      %br/
+  %br/
+  = label :student, :Contacts, 'Associated contacts: '
+  %br/
+  -for contact in Contact.find(:all)
+    %label
+      = check_box_tag "students[contact_ids][]", contact.id, @student.contacts.include?(contact)
+      = contact.Name
+      %br/
+  %br/
+  = link_to 'Add New Contact', new_contact_path, data: { confirm: "Create new contact without saving changes to #{@student[:Student_Name]}?" }
+  %br/
+  = submit_tag 'Update Student Info'
+  

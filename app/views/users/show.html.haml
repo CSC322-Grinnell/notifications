@@ -1,0 +1,33 @@
+%p
+  %b User name:
+  = @user.name
+%p
+  %b Phone Number:
+  = @user.phone_number
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Classroom:
+  = " | "
+  - @user.classrooms.each do |room|
+    = room.name + " | "
+
+\|
+= link_to "Edit #{@user.name}", edit_user_path(@user)
+\|
+- if !current_user == @user
+  = link_to "Delete #{@user.name}", user_path(@user), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+  \|
+%br/
+%br/
+\|
+= link_to 'List Students', students_path
+\|
+= link_to 'List Contacts', contacts_path
+\|
+= link_to 'List Classrooms', classrooms_path
+\|
+- if admin?
+  = link_to 'List Users', users_path
+  \|

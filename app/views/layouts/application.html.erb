@@ -23,7 +23,7 @@
 
         <% if @current_user.admin %>
         <li class="nav-li">
-          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users'%>">
+          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users' ||  params[:controller] == 'contacts'%>">
             Edit Data  <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
           </div>
 
@@ -31,6 +31,23 @@
             <li> <a href="/students" class="nav-link"> Students </a> </li>
             <li> <a href="/classrooms" class="nav-link"> Classrooms </a> </li>
             <li> <a href="/users" class="nav-link"> Users </a> </li>
+            <li> <a href="/contacts" class="nav-link"> Contacts </a> </li>
+            
+          </ul>
+        </li>
+        <% end %>
+        
+        <% if !@current_user.admin %>
+        <li class="nav-li">
+          <div class="nav-dropdown nav-first <%= 'nav-selected' if params[:controller] == 'students' || params[:controller] == 'classrooms' || params[:controller] == 'users' ||  params[:controller] == 'contacts'%>">
+            Edit Data  <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+          </div>
+
+          <ul class="nav-submenu">
+            <li> <a href="/students" class="nav-link"> Students </a> </li>
+            <li> <a href="/contacts" class="nav-link"> Contacts </a> </li>
+            <li> <a href="/classrooms" class="nav-link"> Classrooms </a> </li>
+            
           </ul>
         </li>
         <% end %>
@@ -38,14 +55,15 @@
         <li class="nav-link nav-li <%= 'nav-selected' if params[:controller] == 'text' %>">
           <a href="/text" class="nav-first">Send Message</a>
         </li>
-
+        
+        
         <li class="nav-li">
           <div class="nav-dropdown nav-first">
-            User <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
+            <%= current_user.name %> <%= image_tag "dropdownArrow.png", :class => "nav-dropdown-image" %>
           </div>
 
           <ul class="nav-submenu">
-            <li><a href="/settings" class="nav-link">Settings</a></li>
+            <li><a href=<%= "/users/#{@current_user[:id]}" %> class="nav-link">Settings</a></li>
             <li><a href="/logout" class="nav-link">Logout</a></li>
           </ul>
         </li>

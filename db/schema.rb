@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160302040355) do
+ActiveRecord::Schema.define(:version => 20161130194246) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(:version => 20160302040355) do
     t.integer "classroom_id"
   end
 
+  create_table "contacts", :force => true do |t|
+    t.string   "Name"
+    t.string   "Phone_Number"
+    t.string   "Email"
+    t.string   "language",     :default => "english"
+    t.boolean  "can_text",     :default => true
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "contacts_students", :force => true do |t|
+    t.integer "student_id"
+    t.integer "contact_id"
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "contents"
     t.integer  "user_id"
@@ -38,20 +53,25 @@ ActiveRecord::Schema.define(:version => 20160302040355) do
 
   create_table "receipts", :force => true do |t|
     t.integer  "message_id"
-    t.integer  "student_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "contact_id"
   end
 
   create_table "students", :force => true do |t|
     t.string   "Student_Name"
-    t.string   "Parent_Name"
-    t.string   "Phone_Number"
-    t.string   "Email"
-    t.string   "classroom_name"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.boolean  "can_text",       :default => true
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string "template_name"
+  end
+
+  create_table "translations", :force => true do |t|
+    t.integer "template_id"
+    t.string  "language"
+    t.string  "message"
   end
 
   create_table "user_sessions", :force => true do |t|
@@ -83,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20160302040355) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.boolean  "admin",               :default => false
+    t.string   "phone_number"
   end
 
 end

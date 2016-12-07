@@ -9,10 +9,19 @@ Background: there is a student in the database
   | name |
   | Room |
   | Party |
+  
+  Given the following contacts exist:
+  | Name      | Phone_Number  | Email          | language | can_text  |
+  | Uzo Nwike | 5159916928    | uzo@email.com  | English  | true      |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number| Email                  | can_text | classroom_ids |
-  | Khoa Nguyen  | Jason Liu   | 2532363623  | teamfirealarm@gmail.com| true     | 1 |
+  | Student_Name |
+  | Adam Hudson  |
+  
+  #Given the following students_classrooms exist:
+    
+  #| Student       | Classrooms                |
+  #| Adam Hudson   | Room                      |
 
   Given the following users exist:
 
@@ -22,40 +31,34 @@ Background: there is a student in the database
   Given I am logged in as admin
   And I am on the students page
 
-Scenario: Create a student (happy path)
+Scenario: Create a student (with contact)
   When I follow "Add New Student"
   And I fill in "Student Name *" with "Wayne Rooney"
-  And I fill in "Parent Name *" with "Michael Carrick"
   And I check "Room"
+  And I check "Uzo Nwike"
   And I press "Save"
-  And I follow "Back"
-  Then I should be on the students page
+  Then I should be on the details page for "Wayne Rooney"
   And I should see "Wayne Rooney"
 
-Scenario: Create a student (happy path)
+Scenario: Create a student (without contact)
   When I follow "Add New Student"
-  And I fill in "Student Name *" with "Wayne Rooney"
-  And I fill in "Parent Name *" with "Michael Carrick"
-  And I fill in "Phone number" with "5551234567"
-  And I fill in "Email" with "grinnell@grinnell.edu"
-  And I check "Can text"
-  And I check "Room"
+  And I fill in "Student Name *" with "Alexis Sanchez"
+  And I check "Party"
   And I press "Save"
-  And I follow "Back"
-  Then I should be on the students page
-  And I should see "Wayne Rooney"
+  Then I should be on the new contact page
 
 Scenario: Read a student (happy path)
-  When I follow "Show Khoa Nguyen"
-  Then I should be on the details page for "Khoa Nguyen"
-  And I should see "teamfirealarm@gmail.com"
+  When I follow "Adam Hudson"
+  Then I should be on the details page for "Adam Hudson"
+  #And I should see "Room"
+  And I should see "Uzo Nwike"
 
 Scenario: Update a student (happy path)
-  Given I am on the details page for "Khoa Nguyen"
-  When I follow "Edit"
-  And I fill in "Student Name *" with "Thu Nguyen"
+  Given I am on the details page for "Adam Hudson"
+  When I follow "Edit Adam Hudson"
+  And I fill in "Name" with "Niko Takayesu"
   And I press "Save"
-  Then I should be on the details page for "Thu Nguyen"
+  Then I should be on the details page for "Niko Takayesu"
 
 
 Scenario: Delete a student (happy path)

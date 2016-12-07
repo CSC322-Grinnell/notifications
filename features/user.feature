@@ -6,6 +6,10 @@ Feature: create an administrative user
 
 Background: some users have been added to database
 
+  Given the following classrooms exist:
+  | name          | 
+  | classroom 1   |
+  
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
   | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
@@ -13,9 +17,20 @@ Background: some users have been added to database
   | Lisa Snark    | snarky@sarcasm.com | snarks    | snarks                | snarky@sarcasm.com | false |
   | Jonny Apple   | apple@xxx.com      | apple     | apple                 | apple@xxx.com      | false |
   | Laddy Buck    | laddy@school.edu   | laddybuck | laddybuck             | laddy@school.edu   | false |
-
+  
   And I am logged in as admin
 
+Scenario: log in as admin
+    Given I am logged in as admin
+    And I am on the text page
+    Then I should see "Edit Data"
+    
+Scenario: view users
+    Given I am logged in as admin
+    And I am on the users page
+    Then I should see "Administrator"
+    Then I should see "Laddy Buck"
+    
 Scenario: create an admin user
 	Given I am logged in as admin
   	And I am on the new user page
@@ -23,10 +38,11 @@ Scenario: create an admin user
 	And I fill in "user_email" with "xxxxx@xxxxxx.com"
 	And I fill in "user_password" with "cats"
 	And I fill in "user_password_confirmation" with "cats"
-	And I press "Register"
+	And I check "Admin"
+	When I press "Save User"
 	Then I should be on the users page
-	And I should see "Alice Walker"
-  And I should see "xxxxx@xxxxxx.com"
+	Then I should see "Alice Walker"
+    Then I should see "xxxxx@xxxxxx.com"
 
 Scenario: login (happy path)
  	And I am on the login page
@@ -61,7 +77,7 @@ Scenario: change password
 	And I fill in "user_password" with "dogs"
 	And I fill in "user_password_confirmation" with "dogs"
 	And I press "Update User Info"
-	Then I should be on the users page
+	Then I should be on the user details page for "Alice Walker"
   And I should see "Alice Walker"
 	And I should see "Example2@admin.com"
 

@@ -2,29 +2,38 @@
   %b Student name:
   = @student.Student_Name
 %p
-  %b Parent name:
-  = @student.Parent_Name
-%p
-  %b Phone number:
-  = @student.Phone_Number
-%p
-  %b Email:
-  = @student.Email
-%p
-  %b Can text:
-  = @student.can_text
-%p
   %b Classroom:
+  = " | "
   - @student.classrooms.each do |room|
-    = room.name
+    = link_to "#{room.name}", room
+    = " | "
+%p
+  %table#contacts
+    %td{:style=>"width: 150px"} <b>Contact Name</b>
+    %td{:style=>"width: 150px"} <b>Phone Number</b>
+    %td{:style=>"width: 150px"} <b>Can they text?</b>
+    - @student.contacts.each do |contact|
+      %tr
+        %td= link_to "#{contact.Name}", contact
+        %td= contact.Phone_Number
+        %td= contact.can_text
+        %td= link_to "Edit #{contact.Name}", edit_contact_path(contact), class: "btn"
+  
 
-= link_to 'Send Text', text_index_path(:student_name => @student.Student_Name)
+\|
+= link_to "Edit #{@student.Student_Name}", edit_student_path(@student)
+\|
+= link_to "Delete #{@student.Student_Name}", student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+\|
+%br/
+%br/
+\|
+= link_to 'List Students', students_path
+\|
+= link_to 'List Contacts', contacts_path
+\|
+= link_to 'List Classrooms', classrooms_path
 \|
 - if admin?
-  = link_to 'Edit', edit_student_path(@student)
+  = link_to 'List Users', users_path
   \|
-= link_to 'Back', students_path
-\|
-- if admin?
-  = link_to 'Delete', student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
-

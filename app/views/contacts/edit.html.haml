@@ -1,0 +1,44 @@
+%h2 Edit contacts
+
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
+
+= form_tag "/contacts/#{@contact[:id]}", :method => :put do
+
+  = label :contacts, :name, 'Name'
+  = text_field :contacts, 'name', :value => "#{@contact[:Name]}" #
+  %br/
+  = label :contacts, :email, "Email"
+  = text_field :contacts, 'email', :value => "#{@contact[:Email]}" #
+  %br/
+  = label :contacts, :phone, 'Phone number'
+  = text_field :contacts, :phone, :value => "#{@contact[:Phone_Number]}" #
+  %br/
+  = label :contacts, :language, 'Preferred language: '
+  = text_field :contacts, :language, :value => "#{@contact[:language]}" #
+  %br/
+  = label :contacts, :student_ids, 'Associated students: '
+  %br/
+  - for student in Student.find(:all)
+    %label
+      = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+      = student.Student_Name
+      %br/
+  /-for classroom in Classroom.find(:all)
+  /  %div.classroom{ :style => "border-style: solid; width: 400px" }
+  /    <b> 
+  /    = classroom.name
+  /    </b>
+  /    %br/
+  /    - for student in classroom.students.order(:Student_Name)
+  /      %label
+  /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
+  /        = student.Student_Name
+  /        %br/
+  %br/
+  %br/
+  %br/
+  = submit_tag 'Update Contacts Info'
+
+  

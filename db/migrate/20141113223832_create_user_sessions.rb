@@ -1,4 +1,4 @@
- class CreateUserSessions < ActiveRecord::Migration
+class CreateUserSessions < ActiveRecord::Migration
  def change
     create_table :user_sessions do |t|
       t.string :session_id, :null => false
@@ -9,5 +9,5 @@
     add_index :user_sessions, :session_id
     add_index :user_sessions, :updated_at
 
-  end
+ end
 end

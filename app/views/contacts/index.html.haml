@@ -1,0 +1,51 @@
+%h2 Listing contacts
+
+%table#users
+  %tr
+    %td{:style=>"width: 150px"} <b>Contact</b>
+    %th
+    %th
+    %td <b>Phone number</b>
+    %td <b>Email</b>
+    %td <b>Language</b>
+    %td <b>Can Text?</b>
+    %td <b>Students</b>
+    %th
+    %th
+      - Contact.find(:all).each do |contact|
+        %tr
+          %td= link_to "#{contact.Name}", contact
+          %td= link_to 'Edit', edit_contact_path(contact)
+          %td= link_to 'Delete', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          %td= contact.Phone_Number
+          %td= contact.Email
+          %td= contact.language
+          %td= contact.can_text ? "Yes" : "No"
+          - contact.student_ids.each do |student_ids|
+            %td= " | " + Student.find_by_id(student_ids).Student_Name
+          %td= " | "
+/  - if !current_user.admin?
+/    %td <b>Contact</b>
+/    %td <b>Phone number</b>
+/    %td <b>Email</b>
+/    %td <b>Language</b>
+/    %td <b>Can Text?</b>
+/    %th
+/    %th
+/    - current_user.classrooms.each do |room|
+/      %tr
+/      - room.students.each do |student|
+/        %tr
+/        - student.contacts.each do |contact|
+/          %tr
+/            %td= contact.Name
+/            %td= contact.Phone_Number
+/            %td= contact.Email
+/            %td= contact.language
+/            %td= contact.can_text ? "Yes" : "No"
+/            %td= link_to "Show #{contact.Name}", contact
+
+
+  
+%br
+= link_to 'Add New Contact', new_contact_path
