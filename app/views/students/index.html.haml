@@ -8,7 +8,7 @@
     %td <b>Classroom</b>
 
 
-    - Student.order(:Student_Name).each do |student|
+    - Student.order(:student_name).each do |student|
       %tr
         %td= link_to "#{student.Student_Name}", student
         %td= link_to 'Edit', edit_student_path(student), class: "btn"
@@ -25,7 +25,7 @@
       %td{:style=>"width: 150px"} <b>Student</b>
       %th
       %th
-      - room.students.order(:Student_Name).each do |student|
+      - room.students.order(:student_name).each do |student|
         %tr
           %td= link_to "#{student.Student_Name}", student
           %td= link_to 'Edit', edit_student_path(student)
