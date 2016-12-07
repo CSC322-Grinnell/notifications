@@ -1,5 +1,9 @@
 %h1 Edit User
 
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
+
 = form_tag "/users/#{@user[:id]}", :method => :put do
 
   = label :user, :name, 'Name: '

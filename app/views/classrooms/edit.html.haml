@@ -1,5 +1,9 @@
 %h2 Edit Classroom
 
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
+
 = form_tag "/classrooms/#{@classroom[:id]}", :method => :put do
 
   = label :classroom, :name, 'Classroom Name'

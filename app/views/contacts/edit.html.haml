@@ -1,5 +1,9 @@
 %h2 Edit contacts
 
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
+
 = form_tag "/contacts/#{@contact[:id]}", :method => :put do
 
   = label :contacts, :name, 'Name'
@@ -32,7 +36,6 @@
   /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
   /        = student.Student_Name
   /        %br/
-  
   %br/
   %br/
   %br/
