@@ -19,12 +19,12 @@ classroom2 = Classroom.create(
   name: 'classroom2')
   
 student = Student.create(
-  Student_Name: 'Seth')
+  student_name: 'Seth')
 #  :classroom_ids => 0, #Classroom.where(:name => 'classroom1'),
 #  :contact_ids => 0) #Contact.where(:name => 'John'))
 
 student2 = Student.create(
-  Student_Name: 'Niko')
+  student_name: 'Niko')
 
 contact = Contact.create(
   Name: 'Seth Parent',

@@ -1,6 +1,6 @@
 %p
   %b Student name:
-  = @student.Student_Name
+  = @student.student_name
 %p
   %b Classroom:
   = " | "
@@ -21,9 +21,9 @@
   
 
 \|
-= link_to "Edit #{@student.Student_Name}", edit_student_path(@student)
+= link_to "Edit #{@student.student_name}", edit_student_path(@student)
 \|
-= link_to "Delete #{@student.Student_Name}", student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+= link_to "Delete #{@student.student_name}", student_path(@student), :method => :delete, :data => { :confirm => 'Are you really sure?' }
 \|
 %br/
 %br/

@@ -22,7 +22,7 @@
                                 <% classroom.students.order(:student_name).each_with_index do |student, index| %>
                                     <li>
                                         <input type="checkbox" id="classroom-<%= classroom.id %>-student[<%= index %>]" name="student[<%= student.id %>]" value="<%= student.id %>" class="recipients-student-select" />
-                                        <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.Student_Name %></label>
+                                        <label for="classroom-<%= classroom.id %>-student[<%= index %>]"><%= student.student_name %></label>
                                     </li>
                                 <% end %>
                             </ul>

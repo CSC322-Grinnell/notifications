@@ -4,13 +4,13 @@ describe "students/index" do
   before(:each) do
     assign(:students, [
       stub_model(Student,
-        :Student_Name => "Student Name",
+        :student_name => "Student Name",
         :Parent_Name => "Parent Name",
         :Phone_Number => "Phone Number",
         :Email => "Email"
       ),
       stub_model(Student,
-        :Student_Name => "Student Name",
+        :student_name => "Student Name",
         :Parent_Name => "Parent Name",
         :Phone_Number => "Phone Number",
         :Email => "Email"

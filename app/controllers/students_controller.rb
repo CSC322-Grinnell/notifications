@@ -48,7 +48,7 @@ class StudentsController < ApplicationController
     @name_exists = params[:students][:name].length > 0
     #@phone_valid = params[:students][:phone].to_s.length == 10
     if @name_exists
-      @student.update_attribute(:Student_Name , params[:students][:name])
+      @student.update_attribute(:student_name , params[:students][:name])
     else
       flash[:notice] = 'Name cannot be blank'
     end

@@ -23,7 +23,7 @@
   - for student in Student.find(:all)
     %label
       = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
-      = student.Student_Name
+      = student.student_name
       %br/
   /-for classroom in Classroom.find(:all)
   /  %div.classroom{ :style => "border-style: solid; width: 400px" }
@@ -31,10 +31,10 @@
   /    = classroom.name
   /    </b>
   /    %br/
-  /    - for student in classroom.students.order(:Student_Name)
+  /    - for student in classroom.students.order(:student_name)
   /      %label
   /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
-  /        = student.Student_Name
+  /        = student.student_name
   /        %br/
   %br/
   %br/

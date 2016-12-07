@@ -12,7 +12,7 @@ Feature: Send a text to student from show page
   | Room B    |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
+  | student_name | Parent_Name | Phone_Number | Email                      | classroom_ids |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 1    |
   | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com    | 1    |
   | Rachel       | Papa        | 2532363623   | potato@gmail.com           | 2    |

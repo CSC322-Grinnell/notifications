@@ -15,7 +15,7 @@ Background: there is a student in the database
   | Uzo Nwike | 5159916928    | uzo@email.com  | English  | true      |
 
   Given the following students exist:
-  | Student_Name |
+  | student_name |
   | Adam Hudson  |
   
   #Given the following students_classrooms exist:
