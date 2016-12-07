@@ -29,20 +29,24 @@ class ClassroomsController < ApplicationController
     @id = params[:id]
     @classroom = Classroom.find(params[:id])
 
-    if @classroom.update_attributes(params[:classroom])
-      
+    @name_exists = params[:classrooms][:name].length > 0  
+    if @name_exists
       @classroom.update_attribute(:name , params[:classrooms][:name])
-      @classroom.update_attribute(:student_ids, params[:classrooms][:student_ids])
-      
-      if admin?
-        @classroom.update_attribute(:user_ids, params[:classrooms][:user_ids])
-      end
-      
-      #if @phone_valid
-      #  @student.update_attribute(:Phone_Number , params[:students][:phone])
-      #else
-      #  flash[:notice] = "Phone number is invalid."
-      #end
+    else
+      flash[:notice] = "Name cannot be blank"
+    end
+    @classroom.update_attribute(:student_ids, params[:classrooms][:student_ids])
+    
+    if admin?
+      @classroom.update_attribute(:user_ids, params[:classrooms][:user_ids])
+    end
+    
+    #if @phone_valid
+    #  @student.update_attribute(:Phone_Number , params[:students][:phone])
+    #else
+    #  flash[:notice] = "Phone number is invalid."
+    #end
+    if !flash[:notice]
       flash[:notice] = 'Classroom updated successfully'
       redirect_to @classroom
     else

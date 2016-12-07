@@ -36,6 +36,29 @@ end
   def update
     @id = params[:id]
     @contact = Contact.find(params[:id])
+<<<<<<< HEAD
+    
+    params[:contacts][:phone].to_s.gsub!(/\D/, '')
+    @phone_valid = params[:contacts][:phone].to_s.length == 10
+    @name_exists = params[:contacts][:name].length > 0
+    #@contact.update_attribute(:Name , params[:contacts][:name])
+    @contact.update_attribute(:Email , params[:contacts][:email])
+    @contact.update_attribute(:language , params[:contacts][:language])
+    @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
+    
+    if @name_exists
+      @contact.update_attribute(:Name , params[:contacts][:name])
+    else
+      flash[:notice] = 'Name cannot be blank'
+    end
+    if @phone_valid
+      @contact.update_attribute(:Phone_Number, params[:contacts][:phone])
+    else
+      flash[:notice] = "Phone number is invalid."
+    end
+    if !flash[:notice]
+      flash[:notice] = "Contact updated successfully"
+=======
 
     if @contact.update_attributes(params[:contact])
       
@@ -54,6 +77,7 @@ end
         return render action: :edit
       end
       flash[:notice] = 'Contact updated successfully'
+>>>>>>> 039bd9995149294245dc44f6ae8cc75a1760b6e3
       redirect_to @contact
     else
       render action: :edit
