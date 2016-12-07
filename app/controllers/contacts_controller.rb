@@ -36,7 +36,6 @@ end
   def update
     @id = params[:id]
     @contact = Contact.find(params[:id])
-<<<<<<< HEAD
     
     params[:contacts][:phone].to_s.gsub!(/\D/, '')
     @phone_valid = params[:contacts][:phone].to_s.length == 10
@@ -58,26 +57,6 @@ end
     end
     if !flash[:notice]
       flash[:notice] = "Contact updated successfully"
-=======
-
-    if @contact.update_attributes(params[:contact])
-      
-      params[:contacts][:phone].to_s.gsub!(/\D/, '')
-      @phone_valid = params[:contacts][:phone].to_s.length == 10
-      foo = @contact.update_attributes(:Name => params[:contacts][:name])
-      puts "*** UPDATING [#{foo}] DONE"
-      @contact.update_attributes(:Email =>  params[:contacts][:email])
-      @contact.update_attribute(:language , params[:contacts][:language])
-      @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
-      @contact.save
-      if @phone_valid
-        @contact.update_attribute(:Phone_Number , params[:contacts][:phone])
-      else
-        flash[:notice] = "Phone number is invalid."
-        return render action: :edit
-      end
-      flash[:notice] = 'Contact updated successfully'
->>>>>>> 039bd9995149294245dc44f6ae8cc75a1760b6e3
       redirect_to @contact
     else
       render action: :edit
