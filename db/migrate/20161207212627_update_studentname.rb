@@ -4,6 +4,6 @@ class UpdateStudentname < ActiveRecord::Migration
   end
 
   def down
-    rename_column :students, :studnet_name, :Student_Name
+    rename_column :students, :student_name, :Student_Name
   end
 end
