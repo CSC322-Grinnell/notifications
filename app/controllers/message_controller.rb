@@ -6,7 +6,8 @@ class MessageController < ApplicationController
         @incomingmsg = params[:Body]
         validUser = false
         @Users = User.all
-        if ENV_CONFIG['TWILIO_SID'] == @AccountID
+        if 'TWILIO_SID' == @AccountID
+        #if ENV_CONFIG['TWILIO_SID'] == @AccountID
             @Users.each do |user|
                 if "+1" + user.phone_number == @sender 
                     validUser = true
