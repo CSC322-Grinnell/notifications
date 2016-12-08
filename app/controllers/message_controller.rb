@@ -4,9 +4,14 @@ class MessageController < ApplicationController
         @AccountID = params[:AccountSid]
         @sender = params[:From]
         @incomingmsg = params[:Body]
+        @call = params[:CallSid]
         validUser = false
+        validCall = false
         @Users = User.all
-        if ENV_CONFIG['TWILIO_SID'] == @AccountID
+        puts params
+        if @call != nil
+            validCall = true
+        elsif ENV_CONFIG['TWILIO_SID'] == @AccountID
             @Users.each do |user|
                 if "+1" + user.phone_number == @sender #checks if valid user
                     validUser = true
@@ -36,7 +41,9 @@ class MessageController < ApplicationController
                 end
             end
         end # if ...
-        if (validUser) #responds to the incoming number based on if they are a valid user or not
+        if validCall
+            render :file => "message/call.xml.erb", formats: :xml
+        elsif (validUser) #responds to the incoming number based on if they are a valid user or not
             render formats: :xml
         else
             render :file => "message/altmsg.xml.erb", formats: :xml
