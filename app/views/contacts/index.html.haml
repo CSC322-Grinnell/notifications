@@ -12,7 +12,7 @@
     %td <b>Students</b>
     %th
     %th
-      - Contact.order(:Name).each do |contact|
+      - Contact.find(:all).each do |contact|
         %tr
           %td= link_to "#{contact.Name}", contact
           %td= link_to 'Edit', edit_contact_path(contact)
