@@ -23,7 +23,7 @@
     -for contact in Contact.find(:all)
       %label
         = check_box_tag "student[contact_ids][]", contact.id, @student.contacts.include?(contact)
-        = contact.Name
+        = contact.name
         %br/
   %br/
   If you do not assign an existing contact, saving will redirect you to the new contact page.

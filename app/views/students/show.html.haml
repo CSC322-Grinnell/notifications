@@ -14,10 +14,10 @@
     %td{:style=>"width: 150px"} <b>Can they text?</b>
     - @student.contacts.each do |contact|
       %tr
-        %td= link_to "#{contact.Name}", contact
+        %td= link_to "#{contact.name}", contact
         %td= contact.Phone_Number
         %td= contact.can_text
-        %td= link_to "Edit #{contact.Name}", edit_contact_path(contact), class: "btn"
+        %td= link_to "Edit #{contact.name}", edit_contact_path(contact), class: "btn"
   
 
 \|

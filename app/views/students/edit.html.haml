@@ -24,7 +24,7 @@
   -for contact in Contact.find(:all)
     %label
       = check_box_tag "students[contact_ids][]", contact.id, @student.contacts.include?(contact)
-      = contact.Name
+      = contact.name
       %br/
   %br/
   = link_to 'Add New Contact', new_contact_path, data: { confirm: "Create new contact without saving changes to #{@student[:student_name]}?" }

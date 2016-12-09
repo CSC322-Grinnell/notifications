@@ -1,6 +1,6 @@
 %p
   %b Contact name:
-  = @contact.Name
+  = @contact.name
 %p
   %b Phone number:
   = @contact.Phone_Number
@@ -21,9 +21,9 @@
     = " | "
 
 \|
-= link_to "Edit #{@contact.Name}", edit_contact_path(@contact)
+= link_to "Edit #{@contact.name}", edit_contact_path(@contact)
 \|
-= link_to "Delete #{@contact.Name}", contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+= link_to "Delete #{@contact.name}", contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
 \|
 %br/
 %br/

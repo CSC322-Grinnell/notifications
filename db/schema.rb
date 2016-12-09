@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161207212627) do
+ActiveRecord::Schema.define(:version => 20161209171356) do
 
   create_table "classrooms", :force => true do |t|
     t.string   "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20161207212627) do
   end
 
   create_table "contacts", :force => true do |t|
-    t.string   "Name"
+    t.string   "name"
     t.string   "Phone_Number"
     t.string   "Email"
     t.string   "language",     :default => "english"

@@ -12,9 +12,9 @@
     %td <b>Students</b>
     %th
     %th
-      - Contact.find(:all).each do |contact|
+      - Contact.order(:name).each do |contact|
         %tr
-          %td= link_to "#{contact.Name}", contact
+          %td= link_to "#{contact.name}", contact
           %td= link_to 'Edit', edit_contact_path(contact)
           %td= link_to 'Delete', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
           %td= contact.Phone_Number

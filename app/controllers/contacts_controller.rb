@@ -46,7 +46,7 @@ end
     @contact.update_attribute(:student_ids, params[:contacts][:student_ids])
     
     if @name_exists
-      @contact.update_attribute(:Name , params[:contacts][:name])
+      @contact.update_attribute(:name , params[:contacts][:name])
     else
       flash[:notice] = 'Name cannot be blank'
     end

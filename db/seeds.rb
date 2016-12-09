@@ -27,13 +27,13 @@ student2 = Student.create(
   student_name: 'Niko')
 
 contact = Contact.create(
-  Name: 'Seth Parent',
+  name: 'Seth Parent',
   Phone_Number: '5075813958',
   Email: 'guthriem@grinnell.edu')
 #  :student_ids => 0) #Student.where(:name => 'Matt Guthrie'))
 
 contact2 = Contact.create(
-  Name: 'Niko Parent',
+  name: 'Niko Parent',
   Phone_Number: '4155193104',
   Email: 'good@good.com')
 

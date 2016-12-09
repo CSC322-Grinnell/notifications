@@ -11,7 +11,7 @@
         <b>To:</b> <%= "CONTACT NO LONGER EXISTS"%><br />
         <b>Message:</b> <%= message.contents %><br />
       <%else%>
-        <em><b>To: </b><%= @thisContact.Name%></em><br /> 
+        <em><b>To: </b><%= @thisContact.name%></em><br /> 
         <b>Timestamp:</b> <%= Time.zone.at(message.created_at).strftime("%m.%d.%y %H:%M %Z") %> <br />
         <b>From:</b> <%= message.user.name %><br />
         <b>Message:</b> <%= message.contents %><br />

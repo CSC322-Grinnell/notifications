@@ -6,8 +6,8 @@
 
 = form_tag "/contacts/#{@contact[:id]}", :method => :put do
 
-  = label :contacts, :name, 'Name'
-  = text_field :contacts, 'name', :value => "#{@contact[:Name]}" #
+  = label :contacts, :name, 'name'
+  = text_field :contacts, 'name', :value => "#{@contact[:name]}" #
   %br/
   = label :contacts, :email, "Email"
   = text_field :contacts, 'email', :value => "#{@contact[:Email]}" #
