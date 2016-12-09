@@ -21,7 +21,7 @@
   %br/
   = label :student, :Contacts, 'Associated contacts: '
   %br/
-  -for contact in Contact.find(:all)
+  -for contact in Contact.order(:name)
     %label
       = check_box_tag "students[contact_ids][]", contact.id, @student.contacts.include?(contact)
       = contact.name
