@@ -70,6 +70,9 @@ class UsersController < ApplicationController
         else
           render :action => :edit
         end
+      else
+        flash[:notice] = "Passwords aren't the same"
+        render :action => :edit
       end
   end
 
