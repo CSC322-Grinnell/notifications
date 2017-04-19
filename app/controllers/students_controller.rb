@@ -34,6 +34,7 @@ class StudentsController < ApplicationController
     else
       flash[:notice] = 'There was a problem creating the student.'
       render action: :new
+      print("we are here")
     end
   end
 

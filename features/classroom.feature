@@ -20,7 +20,7 @@ Feature: Group students into classrooms
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  | 
 
   Given I am logged in as admin
   And I am on the classrooms page
