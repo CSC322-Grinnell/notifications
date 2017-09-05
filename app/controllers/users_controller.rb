@@ -21,15 +21,26 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     @user.login = :email
-
+    @password_valid = false
+    if @user.password != nil
+      @password_length = @user.password.length > 7
+      @password_uppercase = @user.password =~ /[A-Z]/ #checks if password contains uppercase letter
+      @password_number = @user.password =~ /\d/ #checks if password contains a number
+      @password_valid = true
+    end
     # Saving without session maintenance to skip
     # auto-login which can't happen here because
     # the User has not yet been activated
-    if @user.save
-      flash[:notice] = 'Your account has been created.'
-      redirect_to '/users'
+    if(@password_valid && @password_length && @password_uppercase && @password_number)
+      if @user.save
+        flash[:notice] = 'Your account has been created.'
+        redirect_to '/users'
+      else
+        flash[:notice] = 'There was a problem creating your account.'
+        render action: :new
+      end
     else
-      flash[:notice] = 'There was a problem creating your account.'
+      flash[:notice] = "Password must contain at least one number, uppercase letter, and be at least 8 characters"
       render action: :new
     end
   end
@@ -53,13 +64,20 @@ class UsersController < ApplicationController
       if (params[:user][:password]==(params[:user][:password_confirmation]))
 
         @name_exists = params[:user][:name].length > 0
+        @password_length = params[:user][:password].length > 7
+        @password_uppercase = (params[:user][:password] =~ /[A-Z]/) #checks if password contains uppercase letter
+        @password_number = (params[:user][:password] =~ /\d/) #checks if password contains a number
         if (@name_exists)
           @user.update_attribute(:name , params[:user][:name])
         else
           flash[:notice] = "Name cannot be blank"
         end
         @user.update_attribute(:email , params[:user][:email])
-        @user.update_attribute(:password , params[:user][:password])
+        if(@password_length && @password_uppercase && @password_number)
+          @user.update_attribute(:password , params[:user][:password])
+        else
+          flash[:notice] = "Password must contain at least one number, uppercase letter, and be at least 8 characters"
+        end
         @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
         @user.update_attribute(:admin , params[:user][:admin])
         @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
