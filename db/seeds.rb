@@ -1,8 +1,8 @@
 
 user = User.create(
   name: 'Administrator',
-  password: 'pass',
-  password_confirmation: 'pass',
+  password: 'Password1',
+  password_confirmation: 'Password1',
   email: 'admin@example.com',
   login: 'admin@example.com',
   admin: true,

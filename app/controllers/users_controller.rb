@@ -4,9 +4,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    #temp = Resource.create!(resource_params)
-    #temp.category_ids = params[:category_ids]
-    #temp.save!
   end
   
   def not_admin
@@ -59,39 +56,37 @@ class UsersController < ApplicationController
   end
 
   def update
-#      params[:user][:classroom_ids] ||= []
-      @user = User.find(params[:id])
-      if (params[:user][:password]==(params[:user][:password_confirmation]))
-
-        @name_exists = params[:user][:name].length > 0
-        @password_length = params[:user][:password].length > 7
-        @password_uppercase = (params[:user][:password] =~ /[A-Z]/) #checks if password contains uppercase letter
-        @password_number = (params[:user][:password] =~ /\d/) #checks if password contains a number
-        if (@name_exists)
-          @user.update_attribute(:name , params[:user][:name])
-        else
-          flash[:notice] = "Name cannot be blank"
-        end
-        @user.update_attribute(:email , params[:user][:email])
-        if(@password_length && @password_uppercase && @password_number)
-          @user.update_attribute(:password , params[:user][:password])
-        else
-          flash[:notice] = "Password must contain at least one number, uppercase letter, and be at least 8 characters"
-        end
-        @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
-        @user.update_attribute(:admin , params[:user][:admin])
-        @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
-        @user.update_attribute(:phone_number , params[:user][:phone_number])       
-        if !flash[:notice]
-          flash[:notice] = 'Account updated!'
-          redirect_to @user
-        else
-          render :action => :edit
-        end
+    @user = User.find(params[:id])
+    if (params[:user][:password]==(params[:user][:password_confirmation]))
+      @name_exists = params[:user][:name].length > 0
+      @password_length = params[:user][:password].length > 7
+      @password_uppercase = (params[:user][:password] =~ /[A-Z]/) #checks if password contains uppercase letter
+      @password_number = (params[:user][:password] =~ /\d/) #checks if password contains a number
+      if (@name_exists)
+        @user.update_attribute(:name , params[:user][:name])
       else
-        flash[:notice] = "Passwords aren't the same"
+        flash[:notice] = "Name cannot be blank"
+      end
+      @user.update_attribute(:email , params[:user][:email])
+      if(@password_length && @password_uppercase && @password_number)
+        @user.update_attribute(:password , params[:user][:password])
+      else
+        flash[:notice] = "Password must contain at least one number, uppercase letter, and be at least 8 characters"
+      end
+      @user.update_attribute(:password_confirmation , params[:user][:password_confirmation])
+      @user.update_attribute(:admin , params[:user][:admin])
+      @user.update_attribute(:classroom_ids , params[:user][:classroom_ids])
+      @user.update_attribute(:phone_number , params[:user][:phone_number])       
+      if !flash[:notice]
+        flash[:notice] = 'Account updated!'
+        redirect_to @user
+      else
         render :action => :edit
       end
+    else
+      flash[:notice] = "Passwords aren't the same"
+      render :action => :edit
+    end
   end
 
   def destroy
