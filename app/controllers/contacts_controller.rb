@@ -36,6 +36,7 @@ end
   def update
     @id = params[:id]
     @contact = Contact.find(params[:id])
+
     
     params[:contacts][:phone].to_s.gsub!(/\D/, '')
     @phone_valid = params[:contacts][:phone].to_s.length == 10
@@ -57,6 +58,7 @@ end
     end
     if !flash[:notice]
       flash[:notice] = "Contact updated successfully"
+
       redirect_to @contact
     else
       render action: :edit
