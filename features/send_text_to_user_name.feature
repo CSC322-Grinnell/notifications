@@ -11,7 +11,7 @@ Feature: send a text message by a user's name
   | Room A    |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | classroom_ids |
+  | student_name | Parent_Name | Phone_Number | Email                      | classroom_ids |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | 1    |
 
   Given the following users exist:

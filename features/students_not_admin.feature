@@ -11,7 +11,7 @@ Background: there is a student in the database
   | Party |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                      | can_text | classroom_ids |
+  | student_name | Parent_Name | Phone_Number | Email                      | can_text | classroom_ids |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |1 |
   | Bert Starr   | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |2 |
   | Kenny Winker | Jason Liu   | 2532363623   | teamfirealarm@gmail.com    | true     |2 |

@@ -12,7 +12,7 @@ Feature: Group students into classrooms as a teacher
   | Room B |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
+  | student_name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | 2       |
   | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | 2         |
   | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | 2         |

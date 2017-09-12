@@ -8,9 +8,9 @@
     %td <b>Classroom</b>
 
 
-    - Student.order(:Student_Name).each do |student|
+    - Student.order(:student_name).each do |student|
       %tr
-        %td= link_to "#{student.Student_Name}", student
+        %td= link_to "#{student.student_name}", student
         %td= link_to 'Edit', edit_student_path(student), class: "btn"
         %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
         - student.classroom_ids.each do |classroom_ids|
@@ -25,9 +25,9 @@
       %td{:style=>"width: 150px"} <b>Student</b>
       %th
       %th
-      - room.students.order(:Student_Name).each do |student|
+      - room.students.order(:student_name).each do |student|
         %tr
-          %td= link_to "#{student.Student_Name}", student
+          %td= link_to "#{student.student_name}", student
           %td= link_to 'Edit', edit_student_path(student)
           %td= link_to 'Delete', student, :method => :delete, :data => { :confirm => 'Are you sure?' }
       %tr
@@ -37,8 +37,8 @@
 -#          %th{:colspan => 8}= room.name
 -#        - room.students.each do |student|
 -#          %tr
--#            %td= student.Student_Name
--#            %td= link_to "Show #{student.Student_Name}", student
+-#            %td= student.student_name
+-#            %td= link_to "Show #{student.student_name}", student
 
 
   

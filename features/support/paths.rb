@@ -15,11 +15,11 @@ module NavigationHelpers
 
     when /^the students page$/ then '/students'
     when /^the student details page for \"(.*)\"/i
-      student_path(Student.find_by_Student_Name($1))
+      student_path(Student.find_by_student_name($1))
     when /^the user details page for \"(.*)\"/i
       user_path(User.find_by_name($1))
     when /^the edit page for \"(.*)\"/i
-      edit_student_path(Student.find_by_Student_Name($1))
+      edit_student_path(Student.find_by_student_name($1))
     when /^the edit user page for \"(.*)\"/i
       edit_user_path(User.find_by_name($1))
       

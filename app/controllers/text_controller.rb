@@ -25,11 +25,11 @@ class TextController < ApplicationController
             if old_receipt.contact == contact 
                 @AlreadyExists = true
             end
+          end
+          if @AlreadyExists == false
+              Receipt.create(message: message, contact: contact)
+          end
         end
-        if @AlreadyExists == false
-            Receipt.create(message: message, contact: contact)
-        end
-      end
     end
       
       

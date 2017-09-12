@@ -15,7 +15,7 @@ Make it easy for Head Start teachers to notify parents of school closures and ot
 ## Configuration
 * Default Credentials
   * Username: `admin@example.com`
-  * Password: `pass`
+  * Password: `Password1`
 
 ## Running Locally
 * `rails s -b $IP -p $PORT`

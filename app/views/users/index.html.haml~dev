@@ -1,0 +1,32 @@
+%h1 Users
+- if admin?
+  %table#users
+    %thead
+      %tr
+        %td{:style=>"width: 200px"} <b>Name</b>
+        %th
+        %th
+        %td{:style=>"width: 150px"} <b>Phone Number</b>
+        %td{:style=>"width: 200px"} <b>Email</b>
+        %td{:style=>"width: 100px"} <b>Is admin?</b>
+        %td <b>Classrooms</b>
+        %th
+        %th
+    %tbody
+    
+      - User.find(:all).each do |user|
+        %tr
+          %td= link_to "#{user.name}", user
+          %td= link_to "Edit", edit_user_path(user)
+          - if current_user.id != user.id
+            %td= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure?" }
+          - else
+            %th
+          %td= user.phone_number
+          %td= user.email
+          %td= user.admin
+          - user.classroom_ids.each do |classroom_ids|
+            %td= " | " + Classroom.find_by_id(classroom_ids).name
+          %td= " | "
+  %br/
+  = link_to "Add New User", new_user_path

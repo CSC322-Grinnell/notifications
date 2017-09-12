@@ -23,7 +23,7 @@ describe StudentsController do
   # This should return the minimal set of attributes required to create a valid
   # Student. As you add validations to Student, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "Student_Name" => "MyString" } }
+  let(:valid_attributes) { { "student_name" => "MyString" } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -85,14 +85,14 @@ describe StudentsController do
       it "assigns a newly created but unsaved student as @student" do
         # Trigger the behavior that occurs when invalid params are submitted
         Student.any_instance.stub(:save).and_return(false)
-        post :create, {:student => { "Student_Name" => "invalid value" }}, valid_session
+        post :create, {:student => { "student_name" => "invalid value" }}, valid_session
         assigns(:student).should be_a_new(Student)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Student.any_instance.stub(:save).and_return(false)
-        post :create, {:student => { "Student_Name" => "invalid value" }}, valid_session
+        post :create, {:student => { "student_name" => "invalid value" }}, valid_session
         response.should render_template("new")
       end
     end
@@ -106,8 +106,8 @@ describe StudentsController do
         # specifies that the Student created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Student.any_instance.should_receive(:update_attributes).with({ "Student_Name" => "MyString" })
-        put :update, {:id => student.to_param, :student => { "Student_Name" => "MyString" }}, valid_session
+        Student.any_instance.should_receive(:update_attributes).with({ "student_name" => "MyString" })
+        put :update, {:id => student.to_param, :student => { "student_name" => "MyString" }}, valid_session
       end
 
       it "assigns the requested student as @student" do
@@ -128,7 +128,7 @@ describe StudentsController do
         student = Student.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Student.any_instance.stub(:save).and_return(false)
-        put :update, {:id => student.to_param, :student => { "Student_Name" => "invalid value" }}, valid_session
+        put :update, {:id => student.to_param, :student => { "student_name" => "invalid value" }}, valid_session
         assigns(:student).should eq(student)
       end
 
@@ -136,7 +136,7 @@ describe StudentsController do
         student = Student.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Student.any_instance.stub(:save).and_return(false)
-        put :update, {:id => student.to_param, :student => { "Student_Name" => "invalid value" }}, valid_session
+        put :update, {:id => student.to_param, :student => { "student_name" => "invalid value" }}, valid_session
         response.should render_template("edit")
       end
     end

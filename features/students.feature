@@ -11,11 +11,11 @@ Background: there is a student in the database
   | Party |
   
   Given the following contacts exist:
-  | Name      | Phone_Number  | Email          | language | can_text  |
+  | name      | Phone_Number  | Email          | language | can_text  |
   | Uzo Nwike | 5159916928    | uzo@email.com  | English  | true      |
 
   Given the following students exist:
-  | Student_Name |
+  | student_name |
   | Adam Hudson  |
   
   #Given the following students_classrooms exist:
