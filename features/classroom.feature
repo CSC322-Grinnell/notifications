@@ -13,14 +13,14 @@ Feature: Group students into classrooms
   | Room B |
 
   Given the following students exist:
-  | Student_Name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
+  | student_name | Parent_Name | Phone_Number | Email                     | can_text | classroom_ids |
   | Khoa Nguyen  | Jason Liu   | 2532363623   | teamfirealarm@gmail.com   | true     | 1        |
   | Lady         | Ralf        | 2532363623   | teamfirealarm@gmail.com   | true     | 1         |
   | Rachel       | Papa        | 2532363623   | potato@gmail.com          | true     | 1         |
 
   Given the following users exist:
   | name          | email              | password  | password_confirmation | login              | admin |
-  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  |
+  | Administrator | admin@example.com  | pass      | pass                  | admin@example.com  | true  | 
 
   Given I am logged in as admin
   And I am on the classrooms page

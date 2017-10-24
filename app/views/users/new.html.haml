@@ -1,4 +1,9 @@
 %h1 Register
+
+.alert
+  - if flash[:notice]
+    = flash[:notice] 
+
 = form_for @user do |f|
   = render :partial => "form", :object => f, :locals => { :user => @user }
   = f.submit "Save User"

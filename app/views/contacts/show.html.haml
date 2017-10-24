@@ -1,6 +1,6 @@
 %p
   %b Contact name:
-  = @contact.Name
+  = @contact.name
 %p
   %b Phone number:
   = @contact.Phone_Number
@@ -17,13 +17,13 @@
   %b Associated students:
   = " | "
   - @contact.students.each do |student|
-    = link_to" #{student.Student_Name}", student
+    = link_to" #{student.student_name}", student
     = " | "
 
 \|
-= link_to "Edit #{@contact.Name}", edit_contact_path(@contact)
+= link_to "Edit #{@contact.name}", edit_contact_path(@contact)
 \|
-= link_to "Delete #{@contact.Name}", contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
+= link_to "Delete #{@contact.name}", contact_path(@contact), :method => :delete, :data => { :confirm => 'Are you really sure?' }
 \|
 %br/
 %br/

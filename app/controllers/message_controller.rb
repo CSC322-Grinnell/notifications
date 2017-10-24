@@ -11,7 +11,7 @@ class MessageController < ApplicationController
         puts params
         if @call != nil
             validCall = true
-        elsif ENV_CONFIG['TWILIO_SID'] == @AccountID
+        elsif ENV['TWILIO_SID'] == @AccountID
             @Users.each do |user|
                 if "+1" + user.phone_number == @sender #checks if valid user
                     validUser = true

@@ -1,8 +1,8 @@
 
 user = User.create(
   name: 'Administrator',
-  password: 'pass',
-  password_confirmation: 'pass',
+  password: 'Password1',
+  password_confirmation: 'Password1',
   email: 'admin@example.com',
   login: 'admin@example.com',
   admin: true,
@@ -19,21 +19,21 @@ classroom2 = Classroom.create(
   name: 'classroom2')
   
 student = Student.create(
-  Student_Name: 'Seth')
+  student_name: 'Seth')
 #  :classroom_ids => 0, #Classroom.where(:name => 'classroom1'),
 #  :contact_ids => 0) #Contact.where(:name => 'John'))
 
 student2 = Student.create(
-  Student_Name: 'Niko')
+  student_name: 'Niko')
 
 contact = Contact.create(
-  Name: 'Seth Parent',
+  name: 'Seth Parent',
   Phone_Number: '5075813958',
   Email: 'guthriem@grinnell.edu')
 #  :student_ids => 0) #Student.where(:name => 'Matt Guthrie'))
 
 contact2 = Contact.create(
-  Name: 'Niko Parent',
+  name: 'Niko Parent',
   Phone_Number: '4155193104',
   Email: 'good@good.com')
 

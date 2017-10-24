@@ -9,7 +9,7 @@
 
   .field
     = f.label :Contact_Name, 'Name *:'
-    = f.text_field :Name
+    = f.text_field :name
   .field
     = f.label :Phone_Number, "Phone number: "
     = f.text_field :Phone_Number
@@ -34,12 +34,12 @@
     /    - for student in classroom.students
     /      %label
     /        = check_box_tag "contacts[student_ids][]", student.id, @contact.students.include?(student)
-    /        = student.Student_Name
+    /        = student.student_name
     /        %br/
     - for student in Student.find(:all)
       %label
         = check_box_tag "contact[student_ids][]", student.id
-        = student.Student_Name
+        = student.student_name
         %br/
   %br/
   

@@ -23,7 +23,7 @@
     - for student in Student.find(:all)
       %br/
       = check_box_tag "classroom[student_ids][]", student.id
-      = student.Student_Name
+      = student.student_name
   %br/
   * denotes a required field
   %br/
